@@ -7,9 +7,18 @@ const { initializeDb } = require('./db');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-initializeDb().catch((error) => {
-  console.error('Failed to initialize database:', error);
-});
+(async () => {
+  try {
+    await initializeDb();
+
+    app.listen(PORT, () => {
+      console.log(`HeritageLink server running at http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error('Failed to initialize database:', error);
+    process.exit(1);
+  }
+})();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -35,11 +44,5 @@ app.get('/experience/:id', (req, res) => {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
-
-if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`HeritageLink server running at http://localhost:${PORT}`);
-  });
-}
 
 module.exports = app;
