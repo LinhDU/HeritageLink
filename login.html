@@ -63,72 +63,137 @@
 							<div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3 shadow-sm" style="width: 56px; height: 56px; background-color: var(--color-primary); overflow: hidden;">
 								<img src="images/logo-icon.png" alt="HeritageLink Logo" style="width: 100%; height: 100%; object-fit: cover;">
 							</div>
-							<h1 class="h3 font-weight-bold text-forest-green mb-1">Đăng nhập HeritageLink</h1>
-							<p class="text-muted small">Cổng kết nối đa vai trò: Du khách • Đại sứ • Nghệ nhân • Quản trị</p>
+							<h1 class="h3 font-weight-bold text-forest-green mb-1" id="auth-title">Cổng tài khoản HeritageLink</h1>
+							<p class="text-muted small" id="auth-subtitle">Cổng kết nối đa vai trò: Du khách • Đại sứ • Nghệ nhân • Quản trị</p>
 						</div>
 
-						<form id="standalone-login-form">
-							<!-- 1-Click Role Switcher for instant Demo testing -->
-							<div class="mb-4">
-								<label class="small font-weight-bold text-muted text-uppercase d-block mb-2 letter-spacing-1">
-									Tài khoản kiểm thử thẩm định (Dành cho Ban Giám khảo):
-								</label>
-								<div class="row g-2 mb-2 no-gutters">
-									<div class="col-3 p-1">
-										<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn active" onclick="selectRole('admin', 'admin@heritagelink.vn', 'admin123')" id="btn-role-admin">
-											<span class="d-block font-weight-bold" style="font-size: 11px;">Admin</span>
-											<small style="font-size: 10px;">Quản trị viên</small>
-										</button>
-									</div>
-									<div class="col-3 p-1">
-										<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn" onclick="selectRole('ambassador', 'daisu@heritagelink.vn', 'daisu123')" id="btn-role-ambassador">
-											<span class="d-block font-weight-bold" style="font-size: 11px;">Đại sứ</span>
-											<small style="font-size: 10px;">Sinh viên</small>
-										</button>
-									</div>
-									<div class="col-3 p-1">
-										<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn" onclick="selectRole('host', 'hodan@heritagelink.vn', 'hodan123')" id="btn-role-host">
-											<span class="d-block font-weight-bold" style="font-size: 11px;">Hộ dân</span>
-											<small style="font-size: 10px;">Nghệ nhân (85%)</small>
-										</button>
-									</div>
-									<div class="col-3 p-1">
-										<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn" onclick="selectRole('client', 'client@heritagelink.vn', 'client123')" id="btn-role-client">
-											<span class="d-block font-weight-bold" style="font-size: 11px;">Du khách</span>
-											<small style="font-size: 10px;">Khách đặt vé</small>
-										</button>
-									</div>
-								</div>
-
-								<div id="role-description-badge" class="p-3 small rounded-10 text-center bg-soft-stone text-forest-green border">
-									<strong>Super Admin:</strong> Kiểm duyệt hồ sơ 3 tiêu chí, đối soát 4 bên (85/5/2/8) và quản trị toàn hệ thống.
-								</div>
-							</div>
-
-							<div class="form-group mb-3">
-								<label class="small font-weight-bold text-dark mb-1">Địa chỉ Email</label>
-								<input type="email" id="login-email" name="email" class="form-control rounded-10" placeholder="admin@heritagelink.vn" value="admin@heritagelink.vn" required />
-							</div>
-
-							<div class="form-group mb-3">
-								<div class="d-flex justify-content-between align-items-center mb-1">
-									<label class="small font-weight-bold text-dark mb-0">Mật khẩu</label>
-									<span class="small text-muted font-italic">Được tự động điền theo vai trò trên</span>
-								</div>
-								<input type="password" id="login-password" name="password" class="form-control rounded-10" placeholder="••••••••" value="admin123" required />
-							</div>
-
-							<button type="submit" id="login-submit-btn" class="btn btn-primary btn-block font-weight-bold py-3 mb-3 shadow-lg">
-								Đăng nhập hệ thống
+						<!-- Tab Switcher -->
+						<div class="d-flex p-1 bg-light rounded-15 mb-4 border">
+							<button type="button" class="btn btn-sm btn-block font-weight-bold py-2 rounded-10 btn-primary" id="tab-login-btn" onclick="switchAuthTab('login')" style="margin-right: 2px;">
+								Đăng nhập
 							</button>
+							<button type="button" class="btn btn-sm btn-block font-weight-bold py-2 rounded-10 btn-light text-muted" id="tab-register-btn" onclick="switchAuthTab('register')" style="margin-left: 2px; margin-top: 0;">
+								Đăng ký mới
+							</button>
+						</div>
 
-							<div id="login-alert" class="alert d-none small font-weight-bold text-center" role="alert"></div>
+						<!-- LOGIN SECTION -->
+						<div id="login-section">
+							<form id="standalone-login-form">
+								<!-- 1-Click Role Switcher for instant Demo testing -->
+								<div class="mb-4">
+									<label class="small font-weight-bold text-muted text-uppercase d-block mb-2 letter-spacing-1">
+										Tài khoản kiểm thử thẩm định (Dành cho Ban Giám khảo):
+									</label>
+									<div class="row g-2 mb-2 no-gutters">
+										<div class="col-3 p-1">
+											<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn active" onclick="selectRole('admin', 'admin@heritagelink.vn', 'admin123')" id="btn-role-admin">
+												<span class="d-block font-weight-bold" style="font-size: 11px;">Admin</span>
+												<small style="font-size: 10px;">Quản trị viên</small>
+											</button>
+										</div>
+										<div class="col-3 p-1">
+											<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn" onclick="selectRole('ambassador', 'daisu@heritagelink.vn', 'daisu123')" id="btn-role-ambassador">
+												<span class="d-block font-weight-bold" style="font-size: 11px;">Đại sứ</span>
+												<small style="font-size: 10px;">Sinh viên</small>
+											</button>
+										</div>
+										<div class="col-3 p-1">
+											<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn" onclick="selectRole('host', 'hodan@heritagelink.vn', 'hodan123')" id="btn-role-host">
+												<span class="d-block font-weight-bold" style="font-size: 11px;">Hộ dân</span>
+												<small style="font-size: 10px;">Nghệ nhân (85%)</small>
+											</button>
+										</div>
+										<div class="col-3 p-1">
+											<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn" onclick="selectRole('client', 'client@heritagelink.vn', 'client123')" id="btn-role-client">
+												<span class="d-block font-weight-bold" style="font-size: 11px;">Du khách</span>
+												<small style="font-size: 10px;">Khách đặt vé</small>
+											</button>
+										</div>
+									</div>
 
-							<div class="text-center mt-3 pt-3 border-top">
-								<span class="small text-muted">Bạn là sinh viên muốn tham gia mạng lưới? </span>
-								<a href="ambassador-apply.html" class="small font-weight-bold text-accent">Đăng ký làm Đại sứ Di sản →</a>
-							</div>
-						</form>
+									<div id="role-description-badge" class="p-3 small rounded-10 text-center bg-soft-stone text-forest-green border">
+										<strong>Super Admin:</strong> Kiểm duyệt hồ sơ 3 tiêu chí, đối soát 4 bên (85/5/2/8) và quản trị toàn hệ thống.
+									</div>
+								</div>
+
+								<div class="form-group mb-3">
+									<label class="small font-weight-bold text-dark mb-1">Địa chỉ Email</label>
+									<input type="email" id="login-email" name="email" class="form-control rounded-10" placeholder="admin@heritagelink.vn" value="admin@heritagelink.vn" required />
+								</div>
+
+								<div class="form-group mb-3">
+									<div class="d-flex justify-content-between align-items-center mb-1">
+										<label class="small font-weight-bold text-dark mb-0">Mật khẩu</label>
+										<span class="small text-muted font-italic">Tự động điền theo vai trò trên</span>
+									</div>
+									<input type="password" id="login-password" name="password" class="form-control rounded-10" placeholder="••••••••" value="admin123" required />
+								</div>
+
+								<button type="submit" id="login-submit-btn" class="btn btn-primary btn-block font-weight-bold py-3 mb-3 shadow-lg">
+									Đăng nhập hệ thống
+								</button>
+
+								<div id="login-alert" class="alert d-none small font-weight-bold text-center" role="alert"></div>
+
+								<div class="text-center mt-3 pt-3 border-top">
+									<span class="small text-muted">Chưa có tài khoản? </span>
+									<a href="javascript:void(0)" onclick="switchAuthTab('register')" class="small font-weight-bold text-accent">Tạo tài khoản mới ngay →</a>
+								</div>
+							</form>
+						</div>
+
+						<!-- REGISTER SECTION -->
+						<div id="register-section" class="d-none">
+							<form id="standalone-register-form">
+								<div class="form-group mb-3">
+									<label class="small font-weight-bold text-dark mb-1">Họ và tên <span class="text-danger">*</span></label>
+									<input type="text" id="reg-name" class="form-control rounded-10" placeholder="Nguyễn Văn A" required />
+								</div>
+
+								<div class="row">
+									<div class="col-md-6 form-group mb-3">
+										<label class="small font-weight-bold text-dark mb-1">Địa chỉ Email <span class="text-danger">*</span></label>
+										<input type="email" id="reg-email" class="form-control rounded-10" placeholder="email@gmail.com" required />
+									</div>
+									<div class="col-md-6 form-group mb-3">
+										<label class="small font-weight-bold text-dark mb-1">Số điện thoại <span class="text-danger">*</span></label>
+										<input type="tel" id="reg-phone" class="form-control rounded-10" placeholder="0912 345 678" required />
+									</div>
+								</div>
+
+								<div class="form-group mb-3">
+									<label class="small font-weight-bold text-dark mb-1">Vai trò tham gia</label>
+									<select id="reg-role" class="form-control rounded-10 font-weight-bold">
+										<option value="client" selected>🎒 Du khách (Khám phá, đặt tour & sưu tầm tem di sản)</option>
+										<option value="ambassador">🎓 Đại sứ Sinh viên (Đồng hành, tạo hồ sơ di sản & nhận 5%)</option>
+										<option value="host">🏺 Hộ dân / Nghệ nhân (Cung cấp trải nghiệm & nhận 85%)</option>
+									</select>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6 form-group mb-3">
+										<label class="small font-weight-bold text-dark mb-1">Mật khẩu <span class="text-danger">*</span></label>
+										<input type="password" id="reg-password" class="form-control rounded-10" placeholder="Tối thiểu 6 ký tự" required />
+									</div>
+									<div class="col-md-6 form-group mb-3">
+										<label class="small font-weight-bold text-dark mb-1">Xác nhận mật khẩu <span class="text-danger">*</span></label>
+										<input type="password" id="reg-password-confirm" class="form-control rounded-10" placeholder="Nhập lại mật khẩu" required />
+									</div>
+								</div>
+
+								<button type="submit" id="reg-submit-btn" class="btn btn-primary btn-block font-weight-bold py-3 mb-3 shadow-lg">
+									Tạo tài khoản & Đăng nhập ngay
+								</button>
+
+								<div id="reg-alert" class="alert d-none small font-weight-bold text-center" role="alert"></div>
+
+								<div class="text-center mt-3 pt-3 border-top">
+									<span class="small text-muted">Đã có tài khoản? </span>
+									<a href="javascript:void(0)" onclick="switchAuthTab('login')" class="small font-weight-bold text-accent">Đăng nhập tại đây →</a>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -148,6 +213,31 @@
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
+		function switchAuthTab(tab) {
+			const loginSection = document.getElementById('login-section');
+			const registerSection = document.getElementById('register-section');
+			const tabLoginBtn = document.getElementById('tab-login-btn');
+			const tabRegisterBtn = document.getElementById('tab-register-btn');
+			const title = document.getElementById('auth-title');
+			const subtitle = document.getElementById('auth-subtitle');
+
+			if (tab === 'register') {
+				loginSection.classList.add('d-none');
+				registerSection.classList.remove('d-none');
+				tabLoginBtn.className = 'btn btn-sm btn-block font-weight-bold py-2 rounded-10 btn-light text-muted';
+				tabRegisterBtn.className = 'btn btn-sm btn-block font-weight-bold py-2 rounded-10 btn-primary';
+				if (title) title.textContent = 'Đăng ký tài khoản HeritageLink';
+				if (subtitle) subtitle.textContent = 'Trở thành thành viên cộng đồng gìn giữ & lan tỏa di sản Việt';
+			} else {
+				registerSection.classList.add('d-none');
+				loginSection.classList.remove('d-none');
+				tabLoginBtn.className = 'btn btn-sm btn-block font-weight-bold py-2 rounded-10 btn-primary';
+				tabRegisterBtn.className = 'btn btn-sm btn-block font-weight-bold py-2 rounded-10 btn-light text-muted';
+				if (title) title.textContent = 'Đăng nhập HeritageLink';
+				if (subtitle) subtitle.textContent = 'Cổng kết nối đa vai trò: Du khách • Đại sứ • Nghệ nhân • Quản trị';
+			}
+		}
+
 		const roleDescriptions = {
 			admin: {
 				html: '<strong>Super Admin:</strong> Kiểm duyệt hồ sơ 3 tiêu chí, đối soát tài chính 85/5/2/8 và quản trị toàn hệ thống.'
@@ -239,6 +329,85 @@
 				alertBox.classList.remove('d-none');
 				submitBtn.disabled = false;
 				submitBtn.innerHTML = 'Đăng nhập hệ thống';
+			}
+		});
+
+		// Register Form Submission Handler
+		document.getElementById('standalone-register-form').addEventListener('submit', async function(e) {
+			e.preventDefault();
+			const name = document.getElementById('reg-name').value.trim();
+			const email = document.getElementById('reg-email').value.trim();
+			const phone = document.getElementById('reg-phone').value.trim();
+			const role = document.getElementById('reg-role').value;
+			const password = document.getElementById('reg-password').value;
+			const confirmPassword = document.getElementById('reg-password-confirm').value;
+			const alertBox = document.getElementById('reg-alert');
+			const submitBtn = document.getElementById('reg-submit-btn');
+
+			if (password.length < 6) {
+				alertBox.className = 'alert alert-danger small font-weight-bold text-center';
+				alertBox.textContent = 'Mật khẩu phải có độ dài ít nhất 6 ký tự.';
+				alertBox.classList.remove('d-none');
+				return;
+			}
+
+			if (password !== confirmPassword) {
+				alertBox.className = 'alert alert-danger small font-weight-bold text-center';
+				alertBox.textContent = 'Mật khẩu xác nhận không khớp. Vui lòng nhập lại.';
+				alertBox.classList.remove('d-none');
+				return;
+			}
+
+			submitBtn.disabled = true;
+			submitBtn.innerHTML = 'Đang khởi tạo tài khoản...';
+
+			try {
+				const regApiUrl = window.location.protocol === 'file:' ? 'http://localhost:3000/api/register' : '/api/register';
+				let data;
+				try {
+					const response = await fetch(regApiUrl, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ name, email, phone, role, password })
+					});
+					data = await response.json();
+					if (!response.ok) {
+						throw new Error(data.message || 'Đăng ký không thành công.');
+					}
+				} catch (fetchErr) {
+					// Local fallback
+					const fallbackUser = {
+						id: Date.now(),
+						name,
+						email,
+						phone,
+						role,
+						createdAt: new Date().toISOString()
+					};
+					data = { user: fallbackUser, message: 'Đăng ký thành công (Chế độ cục bộ).' };
+				}
+
+				localStorage.setItem('hl_user', JSON.stringify(data.user));
+
+				alertBox.className = 'alert alert-success small font-weight-bold text-center';
+				alertBox.textContent = `Tạo tài khoản thành công! Xin chào ${data.user.name}. Đang chuyển hướng...`;
+				alertBox.classList.remove('d-none');
+
+				setTimeout(() => {
+					if (data.user.role === 'ambassador') {
+						window.location.href = 'ambassador.html';
+					} else if (data.user.role === 'host') {
+						window.location.href = 'host.html';
+					} else {
+						window.location.href = 'explore.html';
+					}
+				}, 800);
+			} catch (err) {
+				alertBox.className = 'alert alert-danger small font-weight-bold text-center';
+				alertBox.textContent = err.message || 'Lỗi kết nối máy chủ.';
+				alertBox.classList.remove('d-none');
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = 'Tạo tài khoản & Đăng nhập ngay';
 			}
 		});
 	</script>

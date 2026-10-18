@@ -1,6 +1,6 @@
 const express = require('express');
 const { db, memoryStore, calculateRevenueSplit } = require('../db');
-const { login, logout, getCurrentUser } = require('../controllers/authController');
+const { login, register, logout, getCurrentUser } = require('../controllers/authController');
 const { getExperiences, getExperienceById, getImpact, createApplication } = require('../controllers/experienceController');
 const { createBooking, getBookings } = require('../controllers/bookingController');
 const { getAdminOverview, createExperience, updateExperience, deleteExperience } = require('../controllers/adminController');
@@ -39,6 +39,7 @@ router.get('/api/ambassadors', async (req, res) => {
 });
 
 router.post('/api/ambassador-applications', createApplication);
+router.post('/api/register', register);
 router.post('/api/login', login);
 router.post('/api/logout', logout);
 router.get('/api/session', getCurrentUser);

@@ -1,0 +1,5 @@
+node_modules/
+*.log
+.env
+.env.local
+heritagelink_store.json

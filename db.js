@@ -1,16 +1,68 @@
 const dns = require('node:dns');
+const fs = require('fs');
+const path = require('path');
 const bcrypt = require('bcryptjs');
 const { Pool } = require('pg');
 
 dns.setDefaultResultOrder('ipv4first');
+
+const LOCAL_STORE_PATH = path.join(__dirname, 'heritagelink_store.json');
 
 let useFallback = !process.env.DATABASE_URL;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/heritagelink',
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
-  connectionTimeoutMillis: 2000
+  connectionTimeoutMillis: 5000
 });
+
+function saveLocalFallback() {
+  try {
+    if (typeof memoryStore !== 'undefined') {
+      const dataToSave = {
+        users: memoryStore.users,
+        bookings: memoryStore.bookings,
+        ambassador_applications: memoryStore.ambassador_applications,
+        passport_stamps: memoryStore.passport_stamps
+      };
+      fs.writeFileSync(LOCAL_STORE_PATH, JSON.stringify(dataToSave, null, 2), 'utf8');
+    }
+  } catch (e) {
+    // ignore write errors in restricted envs
+  }
+}
+
+function loadLocalFallback() {
+  try {
+    if (fs.existsSync(LOCAL_STORE_PATH) && typeof memoryStore !== 'undefined') {
+      const content = fs.readFileSync(LOCAL_STORE_PATH, 'utf8');
+      const loaded = JSON.parse(content);
+      if (Array.isArray(loaded.users)) {
+        for (const u of loaded.users) {
+          if (!memoryStore.users.some(x => x.email.toLowerCase() === u.email.toLowerCase())) {
+            memoryStore.users.push(u);
+          }
+        }
+      }
+      if (Array.isArray(loaded.bookings)) {
+        for (const b of loaded.bookings) {
+          if (!memoryStore.bookings.some(x => x.id === b.id)) {
+            memoryStore.bookings.push(b);
+          }
+        }
+      }
+      if (Array.isArray(loaded.ambassador_applications)) {
+        for (const a of loaded.ambassador_applications) {
+          if (!memoryStore.ambassador_applications.some(x => x.id === a.id)) {
+            memoryStore.ambassador_applications.push(a);
+          }
+        }
+      }
+    }
+  } catch (e) {
+    // ignore read errors
+  }
+}
 
 // Calculate revenue split exactly matching Docx Section 5.1.1:
 // 85% Host/Artisan | 5% Ambassador | 2% Payment Gateway | 8% HeritageLink Net Revenue (Total Platform Fee: 15%)
@@ -504,6 +556,26 @@ function queryMemory(text, params = []) {
     const user = memoryStore.users.find((u) => u.email.toLowerCase() === String(params[0]).toLowerCase());
     return user ? [user] : [];
   }
+  if (sql.includes('INSERT INTO users')) {
+    const cleanEmail = String(params[0]).toLowerCase().trim();
+    const cleanName = String(params[1] || 'Du khách').trim();
+    const cleanPhone = String(params[2] || '').trim();
+    const hash = String(params[3] || '');
+    const validRole = String(params[5] || 'client');
+    const newUser = {
+      id: memoryStore.users.length + 1,
+      email: cleanEmail,
+      name: cleanName,
+      phone: cleanPhone,
+      passwordhash: hash,
+      passwordHash: hash,
+      role: validRole,
+      createdAt: new Date().toISOString()
+    };
+    memoryStore.users.push(newUser);
+    saveLocalFallback();
+    return [newUser];
+  }
   if (sql.includes("SELECT COUNT(*)::int AS count FROM users WHERE role = $1")) {
     const count = memoryStore.users.filter((u) => u.role === params[0]).length;
     return [{ count }];
@@ -545,6 +617,7 @@ function queryMemory(text, params = []) {
       createdAt: new Date().toISOString()
     };
     memoryStore.ambassador_applications.push(app);
+    saveLocalFallback();
     return [app];
   }
 
@@ -580,6 +653,7 @@ function queryMemory(text, params = []) {
       createdAt: new Date().toISOString()
     };
     memoryStore.bookings.push(b);
+    saveLocalFallback();
     return [b];
   }
 
@@ -827,18 +901,110 @@ let initialized = false;
 const initializeDb = async () => {
   if (initialized) return;
 
+  loadLocalFallback();
+
   if (useFallback) {
-    console.log('HeritageLink: Using in-memory data store with 4 Roles & Revenue Split (85/5/2/8).');
+    console.log('HeritageLink: Using persistent memory store with 4 Roles & Revenue Split (85/5/2/8).');
     initialized = true;
     return;
   }
 
   try {
     const client = await pool.connect();
+
+    // Ensure all tables exist on PostgreSQL (Neon)
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        email TEXT UNIQUE NOT NULL,
+        name TEXT NOT NULL,
+        phone TEXT,
+        passwordhash TEXT NOT NULL,
+        passwordHash TEXT,
+        role TEXT NOT NULL DEFAULT 'client',
+        createdAt TIMESTAMPTZ DEFAULT NOW()
+      );
+
+      CREATE TABLE IF NOT EXISTS experiences (
+        id INTEGER PRIMARY KEY,
+        category TEXT NOT NULL,
+        segmentName TEXT,
+        title TEXT NOT NULL,
+        ambassador TEXT,
+        rating REAL DEFAULT 5.0,
+        reviewCount INTEGER DEFAULT 0,
+        duration TEXT,
+        location TEXT,
+        price INTEGER DEFAULT 850000,
+        imageClass TEXT,
+        badge TEXT,
+        hasStay BOOLEAN DEFAULT FALSE,
+        verifiedDate TEXT,
+        story TEXT
+      );
+
+      CREATE TABLE IF NOT EXISTS ambassador_applications (
+        id SERIAL PRIMARY KEY,
+        name TEXT NOT NULL,
+        phone TEXT,
+        email TEXT,
+        school TEXT,
+        youthUnion TEXT,
+        region TEXT,
+        introLink TEXT,
+        ethicsAgreed BOOLEAN DEFAULT TRUE,
+        status TEXT DEFAULT 'pending',
+        createdAt TIMESTAMPTZ DEFAULT NOW()
+      );
+
+      CREATE TABLE IF NOT EXISTS bookings (
+        id SERIAL PRIMARY KEY,
+        bookingCode TEXT,
+        experienceId INTEGER,
+        userId INTEGER,
+        bookingDate TEXT,
+        guests INTEGER DEFAULT 1,
+        pricePerGuest INTEGER,
+        totalPrice INTEGER,
+        gmv INTEGER,
+        hostRevenue INTEGER,
+        ambassadorCommission INTEGER,
+        paymentFee INTEGER,
+        netPlatformRevenue INTEGER,
+        status TEXT DEFAULT 'confirmed',
+        paymentStatus TEXT DEFAULT 'paid',
+        qrCode TEXT,
+        checkedInAt TIMESTAMPTZ,
+        hasReviewed BOOLEAN DEFAULT FALSE,
+        createdAt TIMESTAMPTZ DEFAULT NOW()
+      );
+
+      CREATE TABLE IF NOT EXISTS passport_stamps (
+        id SERIAL PRIMARY KEY,
+        userId INTEGER,
+        bookingId INTEGER,
+        stampId TEXT,
+        title TEXT,
+        theme TEXT,
+        location TEXT,
+        icon TEXT,
+        earnedAt TIMESTAMPTZ DEFAULT NOW()
+      );
+    `);
+
+    // Ensure default demo users exist in Neon
+    for (const u of memoryStore.users) {
+      await client.query(`
+        INSERT INTO users (email, name, phone, passwordhash, passwordHash, role)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        ON CONFLICT (email) DO NOTHING
+      `, [u.email, u.name, u.phone || '', u.passwordhash, u.passwordHash, u.role]);
+    }
+
     client.release();
-    console.log('HeritageLink: Connected to PostgreSQL.');
+    console.log('HeritageLink: Connected and synchronized with PostgreSQL (Neon).');
   } catch (error) {
-    console.warn('PostgreSQL connection failed, activating fallback in-memory store:', error.message);
+    console.warn('PostgreSQL connection failed, activating fallback persistent store:', error.message);
     useFallback = true;
   }
 
