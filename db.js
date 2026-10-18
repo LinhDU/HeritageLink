@@ -23,7 +23,8 @@ function saveLocalFallback() {
         users: memoryStore.users,
         bookings: memoryStore.bookings,
         ambassador_applications: memoryStore.ambassador_applications,
-        passport_stamps: memoryStore.passport_stamps
+        passport_stamps: memoryStore.passport_stamps,
+        experiences: memoryStore.experiences
       };
       fs.writeFileSync(LOCAL_STORE_PATH, JSON.stringify(dataToSave, null, 2), 'utf8');
     }
@@ -55,6 +56,16 @@ function loadLocalFallback() {
         for (const a of loaded.ambassador_applications) {
           if (!memoryStore.ambassador_applications.some(x => x.id === a.id)) {
             memoryStore.ambassador_applications.push(a);
+          }
+        }
+      }
+      if (Array.isArray(loaded.experiences)) {
+        for (const e of loaded.experiences) {
+          const idx = memoryStore.experiences.findIndex(x => x.id === e.id);
+          if (idx !== -1) {
+            memoryStore.experiences[idx] = { ...memoryStore.experiences[idx], ...e };
+          } else {
+            memoryStore.experiences.push(e);
           }
         }
       }
@@ -539,6 +550,7 @@ function queryMemory(text, params = []) {
       exp.price = Number(params[6]);
       exp.imageClass = params[7];
       exp.badge = params[8];
+      saveLocalFallback();
     }
     return [exp];
   }

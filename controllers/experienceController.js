@@ -28,6 +28,8 @@ async function getExperiences(req, res) {
 
   res.json(rows.map((experience) => ({
     ...experience,
+    imageClass: experience.imageclass || experience.imageClass,
+    segmentName: experience.segmentname || experience.segmentName,
     priceDisplay: formatPrice ? formatPrice(experience.price) : `${Number(experience.price).toLocaleString('vi-VN')}đ`
   })));
 }
@@ -47,6 +49,8 @@ async function getExperienceById(req, res) {
 
   return res.json({
     ...experience,
+    imageClass: experience.imageclass || experience.imageClass,
+    segmentName: experience.segmentname || experience.segmentName,
     priceDisplay: formatPrice(experience.price)
   });
 }
