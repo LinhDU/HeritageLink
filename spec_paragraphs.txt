@@ -1,0 +1,258 @@
+﻿HeritageLink – Đặc tả hoàn thiện website
+Oct 13, 2026 · @Chí
+1. Tổng quan và nguyên tắc
+Web hiện tại đẹp và đủ khung giao diện, nhưng còn là trang giới thiệu tĩnh. Mục tiêu là biến nó thành bản demo chạy được chu trình cốt lõi mà hồ sơ cam kết: Đại sứ tạo nội dung → kiểm duyệt → đăng tải → khách đặt → check-in → đánh giá → chia hoa hồng tự động.
+Ba nguyên tắc khi hoàn thiện:
+Khớp hồ sơ từng con số. Giám khảo đọc hồ sơ rồi mở web. Mọi tỷ lệ (15% / 5% / 2% / 8%), giá trung bình, phân khúc, mục tiêu năm 1 trên web phải trùng với mục 3.3.8, 3.3.9 và 5.1.1.
+Trung thực về giai đoạn. Dự án chưa vận hành, nên mọi số liệu trên web là mục tiêu hoặc dữ liệu minh họa và phải được ghi nhãn rõ.
+Chạy thật hơn trông đẹp. Một chu trình booking – hoa hồng chạy thật thuyết phục hơn mười màn hình AI giả lập.
+Đánh giá nhanh hiện trạng:
+Hạng mục
+Hiện trạng
+Mức độ
+Giao diện, nhận diện thương hiệu
+Tốt, nhất quán tông nâu đất
+Giữ nguyên
+Số liệu hiển thị
+Số ảo, mâu thuẫn hồ sơ
+Sửa ngay
+Hình ảnh, bản đồ
+Ảnh stock nước ngoài, bản đồ thế giới
+Sửa ngay
+Chu trình Đại sứ → kiểm duyệt → booking → hoa hồng
+Mới là giao diện tĩnh
+Bổ sung chính
+Minh bạch chia doanh thu
+Chưa có
+Bổ sung chính
+Hồ sơ Di sản sống, Hộ chiếu Di sản
+Chưa thể hiện
+Bổ sung
+Chính sách, tiếng Anh, mobile
+Thiếu hoặc chưa kiểm tra
+Nâng cấp
+2. Lỗi cần sửa ngay
+Các lỗi dưới đây ảnh hưởng trực tiếp đến uy tín trước giám khảo; nên xử lý trước khi thêm bất kỳ tính năng nào.
+Vị trí trên web
+Hiện tại
+Sửa thành
+Hero – chỉ số
+240+ điểm di sản, 68 đại sứ, 12,500+ du khách
+&quot;Mục tiêu năm 1&quot;: 100 Đại sứ · 10 địa phương · 4.350 lượt trải nghiệm
+Impact &amp; cộng đồng
+1,450+, 320M, 92%, 24 trường
+&quot;Mục tiêu năm 1&quot;: GMV 3,48 tỷ · doanh thu cộng đồng ≈ 2,96 tỷ (85% GMV) · 10 địa phương; hoặc gắn nhãn &quot;Dữ liệu minh họa&quot;
+Footer – Impact metrics
+68 Đại sứ, 240+, 320M
+Đồng bộ với số mục tiêu ở trên
+Dashboard Đại sứ
+246 booking, hoa hồng 18,5M
+Ví dụ 43 booking × 800.000đ × 5% = 1,72 triệu (bình quân năm 1); công thức hiện rõ
+Dashboard hộ dân
+12 booking, 4,3M doanh thu
+Hiện bảng tách: khách trả → phí nền tảng 15% → hộ dân nhận 85%
+&quot;Đồng hành bởi&quot;
+Đoàn TN, Hội SV, Hộ dân, UNESCO Youth Network
+Đổi tiêu đề thành &quot;Định hướng hợp tác&quot;; bỏ UNESCO
+Thẻ Gốm Bắc Ninh
+📍 Ninh Bình
+📍 Bắc Ninh
+AI Itinerary mẫu
+&quot;Hà Giang – Làng gốm&quot;, sáng đi làng gốm Bắc Ninh
+Mỗi ngày một vùng hợp lý, ví dụ &quot;Ngày 1: Bắc Ninh – Làng gốm Phù Lãng&quot;
+Hero – trải nghiệm nổi bật
+&quot;Bánh cốm làng Vân Đồn&quot;
+Kiểm chứng lại; cốm nổi tiếng gắn với làng Vòng (Hà Nội)
+Tên tỉnh
+Hà Giang, Hưng Yên, Bắc Ninh theo địa giới cũ
+Theo địa giới sau sáp nhập 7/2025, ví dụ &quot;Hà Giang (Tuyên Quang)&quot;, như hồ sơ đã viết cho Lô Lô Chải
+Ảnh minh họa
+Hồ châu Âu, chân dung người nước ngoài, phố Cinque Terre
+Ảnh thật tự chụp tại địa phương; nếu dùng ảnh mạng phải là ảnh Việt Nam có ghi nguồn
+Bản đồ
+Ảnh bản đồ thế giới
+Bản đồ Việt Nam thật (Leaflet + OpenStreetMap), ghim đúng tọa độ
+Modal đăng nhập
+Lộ admin@heritagelink.vn / admin123
+Bỏ khỏi web; tạo tài khoản demo theo vai trò, chỉ ghi trong slide hoặc phụ lục hồ sơ
+Header
+Hiện cùng lúc Đăng nhập, Đăng ký, Đăng xuất
+Chưa đăng nhập: 2 nút đầu; đã đăng nhập: avatar + Đăng xuất
+Chính tả
+&quot;Lua chọn&quot;, &quot;đổi mới nội dung di sản&quot;, &quot;Góp mặt với nghệ nhân&quot;
+&quot;Lựa chọn&quot;, &quot;hồ sơ di sản được số hóa&quot;, &quot;Gặp gỡ nghệ nhân&quot;
+Từ tiếng Anh lẫn
+Pending, Approved, Need edit, Experience, preview, training, approval, Impact metrics
+Chờ duyệt, Đã duyệt, Cần chỉnh sửa, Trải nghiệm, xem nhanh, đào tạo, phê duyệt, Chỉ số tác động
+Thông báo hộ dân
+Trải nghiệm &quot;Sống cùng làng quê&quot;
+Dùng đúng tên một trải nghiệm có trong danh mục
+Lưu ý thêm: bìa hồ sơ ghi &quot;NTT K441&quot;, phần sau ghi &quot;NTT K44&quot;; link demo trong hồ sơ mất dấu gạch nối và kèm tham số fbclid. Nên thống nhất cả hai.
+3. Sơ đồ trang và vai trò
+Web cần tách thành 4 khu vực theo vai trò đăng nhập, đều đọc và ghi vào cùng một sổ booking; đó là điều giúp hoa hồng và doanh thu tự cập nhật.
+sơ đồ trang · 4 vai trò, 1 sổ booking chung
+Hiện web gộp tất cả vào một trang dài; nên giữ trang chủ dạng giới thiệu, còn mỗi khu vực vai trò là trang riêng sau đăng nhập.
+4. Đặc tả từng trang
+Mỗi trang dưới đây ghi rõ phải có gì, gắn với mục nào của hồ sơ, và dữ liệu mẫu nên dùng.
+4.1 Trang chủ
+Hero: giữ thông điệp hiện tại; thêm câu giá trị cốt lõi &quot;Không chỉ đến để nhìn di sản, mà đến để sống cùng di sản&quot;. Ảnh hero là ảnh thật của một trải nghiệm trong danh mục.
+Ba lối vào theo vai trò: &quot;Tôi là du khách&quot; → Khám phá · &quot;Tôi là sinh viên&quot; → Trở thành Đại sứ · &quot;Tôi là nghệ nhân/hộ dân&quot; → Đăng ký hợp tác. Thể hiện mô hình 3 bên ngay màn hình đầu.
+Chỉ số: nhãn &quot;Mục tiêu năm 1&quot; (xem mục 2).
+Cách HeritageLink hoạt động: 5 bước ngắn: Đại sứ ghi hình → Kiểm duyệt → Khách đặt → Trải nghiệm &amp; check-in → Chia doanh thu.
+Bảng so sánh rút gọn với Airbnb Experiences (phí 20%) và mô hình tự đăng: HeritageLink phí 15%, Đại sứ làm hộ phần số hóa.
+4.2 Khám phá trải nghiệm
+Bộ lọc theo 4 phân khúc đúng hồ sơ: Làng nghề thủ công · Ẩm thực địa phương · Tour văn hóa/di tích · Sản phẩm thủ công mang về. Homestay chuyển thành thuộc tính &quot;có lưu trú&quot; thay vì phân khúc riêng.
+Lọc thêm: tỉnh/thành, khoảng giá, thời lượng, số người, ngày còn chỗ.
+Ô tìm kiếm trên header phải chạy thật (tìm theo tên, địa phương, nghệ nhân).
+Giá mẫu khớp mục 3.3.9: làng nghề ≈ 850.000đ, ẩm thực ≈ 750.000đ, tour văn hóa ≈ 1.000.000đ, sản phẩm mang về ≈ 350.000đ. Nếu muốn giữ giá thấp hơn, ghi chú giá trên là &quot;giá/người&quot; và giá trung bình đơn là cho nhóm.
+Mỗi thẻ: ảnh thật, tên, địa phương, Đại sứ phụ trách, điểm đánh giá, thời lượng, giá, huy hiệu &quot;Đã kiểm duyệt&quot;.
+Cần 6–8 trải nghiệm mẫu trải đủ 4 phân khúc, ít nhất 1 trải nghiệm có dữ liệu thật từ địa phương nhóm đã khảo sát (mục 3.4.4).
+4.3 Hồ sơ Di sản sống (trang chi tiết)
+Đây là trang thể hiện khác biệt rõ nhất (mục 3.3.5, 4.1.1). Bố cục đề xuất:
+Đầu trang: ảnh/video thật, tên, địa phương, Đại sứ, đánh giá, huy hiệu kiểm duyệt.
+Câu chuyện: lịch sử nghề/món ăn/lễ hội, ý nghĩa văn hóa, câu chuyện người thực hành.
+Nghệ nhân: ảnh, tên, số năm giữ nghề, lời kể ngắn (có sự đồng ý).
+Trải nghiệm 4 lớp, mỗi lớp một khối: Quan sát · Chạm · Tự làm · Nghe kể. Ghi rõ công đoạn nào khách được làm, công đoạn nào chỉ quan sát vì tính thiêng liêng hoặc tay nghề cao.
+Lưu ý văn hóa: trang phục, quy tắc chụp ảnh, điều kiêng kỵ.
+Thông tin đặt chỗ: thời lượng, số người, giá, lịch trống, chính sách hủy, nút &quot;Đặt ngay&quot;.
+Minh bạch giá trị: &quot;85% số tiền bạn trả đến trực tiếp với nghệ nhân&quot; (gắn với số liệu Booking.com 73% khách muốn tiền về cộng đồng, hồ sơ mục II).
+Xác thực: &quot;Ghi hình bởi Đại sứ [tên] ngày [ngày]&quot;, &quot;Đã có đồng ý của nghệ nhân&quot;, &quot;Thẩm định bởi cố vấn văn hóa&quot; (nếu có).
+Đánh giá của khách và trải nghiệm liên quan gần đó.
+4.4 Bản đồ
+Bản đồ Việt Nam thật, ghim theo phân khúc (màu khác nhau), bấm ghim hiện thẻ xem nhanh.
+Lọc khoảng cách chỉ hoạt động khi người dùng cho phép định vị; nếu không, lọc theo tỉnh.
+Bỏ dòng &quot;2 km từ bạn&quot; cố định.
+4.5 Đặt chỗ và thanh toán
+Luồng 4 bước như web đã mô tả: chọn ngày giờ → số người + chính sách hủy → thanh toán → QR check-in.
+Thanh toán ở bản demo: mô phỏng VietQR (tạo mã QR tĩnh + nút &quot;Tôi đã thanh toán&quot;) là đủ; ghi rõ &quot;Môi trường thử nghiệm&quot;.
+Màn hình xác nhận: mã booking, QR check-in, bảng phân chia doanh thu (mục 5).
+&quot;Booking của tôi&quot;: danh sách, trạng thái (Chờ xác nhận / Đã xác nhận / Đã hoàn thành / Đã hủy), nút đánh giá sau khi hoàn thành.
+4.6 Đại sứ Di sản
+Trang tuyển: quyền lợi (hoa hồng 5% GMV, đào tạo, Chứng nhận Đại sứ), yêu cầu, quy trình 3 bước, FAQ.
+Form đăng ký: thêm trường số điện thoại, email, ngành/năm học, đơn vị Đoàn/Hội, ô cam kết &quot;Bộ quy tắc đạo đức tiếp cận cộng đồng&quot;.
+Đào tạo: 4 học phần đúng mục 3.3.5: Phỏng vấn · Quay dựng bằng điện thoại · Kể chuyện · Đạo đức tiếp cận cộng đồng; mỗi học phần một video/tài liệu và câu hỏi kiểm tra ngắn.
+Dashboard: 3 chỉ số đánh giá đúng hồ sơ: số nội dung tạo ra · chất lượng (điểm kiểm duyệt + đánh giá khách) · booking phát sinh; hoa hồng tính tự động.
+Form tạo Hồ sơ Di sản: theo template 4 lớp ở mục 4.3, tải ảnh/video, ô xác nhận &quot;Đã có đồng ý của nghệ nhân&quot; + số điện thoại/Zalo của hộ dân, nút &quot;Gửi kiểm duyệt&quot;.
+4.7 Cộng đồng bản địa
+Form đăng ký siêu ngắn đúng hồ sơ: họ tên, số điện thoại/Zalo, đồng ý ghi hình. Không bắt tạo mật khẩu; Đại sứ có thể đăng ký thay.
+Màn hình hộ dân to chữ, ít nút: lịch đón khách sắp tới, nút Xác nhận/Từ chối, doanh thu tháng có bảng tách, lịch sử thanh toán.
+Mô phỏng tin nhắn Zalo/SMS khi có booking mới (hiển thị mẫu tin nhắn).
+4.8 Trang quản trị (Admin)
+Hàng chờ kiểm duyệt với 3 tiêu chí chấm đúng mục 3.3.5: Tính xác thực · Chất lượng storytelling · Mức độ tương tác thực chất. Nút Duyệt / Yêu cầu sửa (kèm ghi chú) / Từ chối.
+Quản lý Đại sứ, hộ dân, booking.
+Báo cáo đối soát: mỗi booking ghi rõ nguồn nội dung, Đại sứ, hộ dân, số tiền từng bên.
+Báo cáo tác động (mục 3.3.5): số Đại sứ, số hồ sơ di sản đã số hóa, số cộng đồng kết nối, doanh thu về cộng đồng. Số liệu tính từ dữ liệu thật trong hệ thống, kể cả khi còn nhỏ.
+4.9 Hộ chiếu Di sản (bản xem trước)
+Đánh dấu &quot;Sắp ra mắt&quot; nhưng có màn hình mẫu: các tem đã thu thập theo chủ đề (Làng nghề, Nghi lễ &amp; tín ngưỡng, Ẩm thực, Không gian sống, Di tích), thanh tiến độ cấp độ Explorer → Connector → Guardian → Community Ambassador.
+Nếu đủ thời gian: tự động cộng tem khi booking chuyển sang &quot;Đã hoàn thành&quot; sau QR check-in. Đây là tính năng làm giám khảo nhớ dự án.
+4.10 AI Itinerary và Hướng dẫn viên ảo
+Gắn nhãn &quot;Bản thử nghiệm&quot;, vì hồ sơ mục 3.4.3 xác định chưa ưu tiên trong demo.
+Cách làm rẻ: lọc từ chính danh mục trải nghiệm theo sở thích, số ngày, ngân sách, rồi ghép thành lịch theo tỉnh. Kết quả chỉ chứa trải nghiệm có thật trên nền tảng, kèm nút đặt.
+Hộp chat hướng dẫn viên ảo: nếu chưa làm được thì bỏ khỏi hero để tránh hứa quá.
+4.11 Về chúng tôi, Chính sách, Tiếng Anh
+Về chúng tôi: tầm nhìn, 5 thành viên với vai trò (bảng mục 6.1.1), giảng viên hướng dẫn, liên hệ.
+Chính sách: Điều khoản sử dụng, Chính sách hủy/hoàn tiền, Quyền riêng tư, Quyền hình ảnh và sở hữu nội dung của nghệ nhân, Bộ quy tắc đạo đức Đại sứ.
+Song ngữ VI/EN cho Trang chủ, Khám phá, Hồ sơ Di sản, Đặt chỗ, vì khách quốc tế là một phân khúc mục tiêu.
+5. Cơ chế chia doanh thu trên web
+Mỗi booking phải tự tách thành 4 phần theo đúng hồ sơ mục 5.1.1, và con số này xuất hiện ở 4 màn hình: xác nhận booking của khách, dashboard Đại sứ, màn hình hộ dân, báo cáo đối soát của admin.
+Bên nhận
+Tỷ lệ trên GMV
+Ví dụ đơn 800.000đ
+Ví dụ đơn 850.000đ (làng nghề)
+Hộ dân / nghệ nhân
+85%
+680.000đ
+722.500đ
+Đại sứ Di sản
+5%
+40.000đ
+42.500đ
+Cổng thanh toán
+2%
+16.000đ
+17.000đ
+HeritageLink (doanh thu ròng)
+8%
+64.000đ
+68.000đ
+Công thức cài đặt (lưu tỷ lệ trong cấu hình, không viết cứng trong giao diện):
+gmv              = gia_moi_nguoi * so_khachphi_nen_tang     = gmv * 0.15hoa_hong_dai_su  = gmv * 0.05phi_thanh_toan   = gmv * 0.02doanh_thu_rong   = gmv * 0.08ho_dan_nhan      = gmv - phi_nen_tang   // = 85%
+Quy tắc ghi nhận: hoa hồng Đại sứ và doanh thu hộ dân chỉ chuyển sang &quot;Đã ghi nhận&quot; khi booking ở trạng thái &quot;Đã hoàn thành&quot; (sau QR check-in); booking hủy thì không tính. Dashboard nên tách &quot;Tạm tính&quot; và &quot;Đã ghi nhận&quot;.
+Câu chữ hiển thị cho khách: &quot;Trong 800.000đ bạn trả, 680.000đ đến trực tiếp với nghệ nhân, 40.000đ hỗ trợ Đại sứ sinh viên.&quot; Câu này biến tỷ lệ phí thành lợi thế truyền thông.
+6. Mô hình dữ liệu tối thiểu
+Sáu bảng dữ liệu là đủ để chu trình demo chạy thật; mọi chỉ số trên dashboard được tính từ các bảng này, không gõ tay.
+Bảng
+Trường chính
+Phục vụ
+users
+id, họ tên, email, điện thoại, vai trò (du khách / đại sứ / hộ dân / admin), trạng thái
+Đăng nhập, phân quyền
+ambassadors
+user_id, trường, đơn vị Đoàn/Hội, địa bàn, trạng thái duyệt, học phần đã hoàn thành, điểm chất lượng
+Tuyển và quản lý Đại sứ
+hosts
+id, tên hộ/nghệ nhân, điện thoại/Zalo, tỉnh, đã đồng ý ghi hình (có/không, ngày), Đại sứ phụ trách
+Cộng đồng bản địa
+experiences
+id, tên, phân khúc, tỉnh, tọa độ, giá/người, thời lượng, số khách tối đa, câu chuyện, 4 lớp trải nghiệm, lưu ý văn hóa, ảnh/video, host_id, ambassador_id, trạng thái kiểm duyệt, điểm 3 tiêu chí, ghi chú kiểm duyệt
+Hồ sơ Di sản sống, kiểm duyệt
+bookings
+id, experience_id, user_id, ngày giờ, số khách, gmv, 4 khoản chia, trạng thái, mã QR, thời điểm check-in
+Đặt chỗ, đối soát, hoa hồng
+reviews
+booking_id, số sao, nhận xét, ngày
+Đánh giá, điểm chất lượng
+Bảng stamps cho Hộ chiếu Di sản (user_id, experience_id, chủ đề, ngày) có thể thêm sau khi chu trình chính chạy ổn.
+7. Kịch bản demo 3 phút
+Một chu trình liền mạch qua 4 vai trò, mỗi bước khoảng 20–30 giây. Mở sẵn 4 tab trình duyệt, mỗi tab đăng nhập một tài khoản demo.
+Đại sứ (0:00): đăng nhập, mở form tạo Hồ sơ Di sản, điền sẵn một trải nghiệm thật (ví dụ làng gốm), tick &quot;Đã có đồng ý của nghệ nhân&quot;, bấm Gửi kiểm duyệt. Trạng thái: Chờ duyệt.
+Admin (0:30): mở hàng chờ, chấm 3 tiêu chí (xác thực, storytelling, tương tác), bấm Duyệt.
+Du khách (0:55): trang Khám phá hiện trải nghiệm mới; mở Hồ sơ Di sản sống, chỉ vào 4 lớp trải nghiệm; đặt 2 khách; màn hình xác nhận hiện QR và bảng chia doanh thu.
+Hộ dân (1:40): màn hình đơn giản hiện booking mới và tin nhắn Zalo mẫu; bấm Xác nhận.
+Check-in (2:00): quét hoặc nhập mã QR → booking &quot;Đã hoàn thành&quot;; du khách nhận tem Hộ chiếu Di sản và để lại đánh giá.
+Kết quả (2:30): quay lại dashboard Đại sứ: hoa hồng tăng đúng 5%; dashboard hộ dân: doanh thu tăng đúng 85%; báo cáo tác động của admin tăng 1 hồ sơ, 1 cộng đồng, 1 lượt.
+Chuẩn bị dự phòng: quay sẵn video màn hình toàn bộ kịch bản, phòng khi mạng hoặc máy chủ Render chậm.
+8. Lộ trình thực hiện và checklist
+Làm theo 3 đợt; đợt 1 và 2 là bắt buộc trước ngày thi, đợt 3 làm nếu còn thời gian.
+Đợt 1 – Sửa uy tín
+☐ Thay toàn bộ số liệu ảo bằng &quot;Mục tiêu năm 1&quot; hoặc nhãn &quot;Dữ liệu minh họa&quot;
+☐ Sửa số hoa hồng và doanh thu trên 2 dashboard theo công thức mục 5
+☐ Thay ảnh stock bằng ảnh thật hoặc ảnh Việt Nam có nguồn
+☐ Sửa địa danh, tên tỉnh sau sáp nhập, lịch trình mẫu AI
+☐ Đổi &quot;Đồng hành bởi&quot; thành &quot;Định hướng hợp tác&quot;, bỏ UNESCO
+☐ Gỡ tài khoản admin khỏi modal đăng nhập
+☐ Sửa chính tả, Việt hóa nhãn tiếng Anh, sửa header đăng nhập
+Đợt 2 – Chu trình chạy thật
+☐ Đổi bộ lọc sang 4 phân khúc hồ sơ, nhập 6–8 trải nghiệm mẫu với giá khớp mục 3.3.9
+☐ Trang Hồ sơ Di sản sống theo bố cục mục 4.3
+☐ Form Đại sứ tạo hồ sơ + trạng thái Chờ duyệt / Đã duyệt / Cần sửa
+☐ Trang admin kiểm duyệt với 3 tiêu chí
+☐ Booking có QR, check-in, đánh giá
+☐ Tự tính chia doanh thu 85/5/2/8 và hiển thị ở 4 màn hình
+☐ Màn hình hộ dân đơn giản + tin nhắn Zalo mẫu
+☐ Bản đồ Việt Nam thật với tọa độ đúng
+☐ Tạo 4 tài khoản demo theo vai trò, chạy thử kịch bản mục 7 ít nhất 3 lần
+Đợt 2b – Luồng thanh toán
+☐ Màn hình tóm tắt đơn: trải nghiệm, ngày giờ, số khách × giá/người = tổng tiền, chính sách hủy, dòng &quot;…đ đến trực tiếp với nghệ nhân&quot;
+☐ Tạo mã VietQR theo từng booking (số tiền + nội dung chuyển khoản = mã booking), dùng tài khoản ngân hàng của nhóm
+☐ Nút &quot;Tôi đã thanh toán&quot; và nhãn &quot;Môi trường thử nghiệm – không trừ tiền thật&quot;
+☐ Admin xác nhận đã nhận tiền → booking chuyển trạng thái
+☐ Trạng thái booking: Chờ thanh toán → Đã thanh toán → Đã xác nhận → Đã hoàn thành; nhánh Đã hủy / Hoàn tiền
+☐ Tự hủy booking quá hạn thanh toán (ví dụ sau 30 phút) để giải phóng chỗ
+☐ Sau thanh toán: hiện QR check-in và hóa đơn có bảng chia 85% / 5% / 2% / 8%
+☐ Ghi khoản chia vào bảng bookings; hoa hồng và doanh thu hộ dân chỉ &quot;Đã ghi nhận&quot; khi Đã hoàn thành
+☐ Xử lý hủy: áp chính sách hoàn tiền, trừ ngược hoa hồng &quot;Tạm tính&quot;
+☐ Trang Chính sách hủy/hoàn tiền liên kết từ màn hình thanh toán
+☐ (Sau cuộc thi) Tích hợp cổng VNPay hoặc MoMo qua môi trường sandbox, rồi chạy thật khi đã đăng ký doanh nghiệp
+Đợt 3 – Điểm cộng
+☐ Hộ chiếu Di sản: màn hình xem trước + tự cộng tem sau check-in
+☐ AI Itinerary lọc từ danh mục thật, gắn nhãn &quot;Bản thử nghiệm&quot;
+☐ Trang Về chúng tôi, Chính sách, Bộ quy tắc đạo đức Đại sứ
+☐ Phiên bản tiếng Anh cho 4 trang chính
+☐ Báo cáo tác động tính từ dữ liệu thật
+Trước ngày thi
+☐ Kiểm tra trên điện thoại (form đăng ký, đặt chỗ, bản đồ)
+☐ Gắn tên miền riêng hoặc dùng link gọn không fbclid; tạo mã QR dẫn tới web
+☐ Mở web 5 phút trước khi thuyết trình để Render &quot;thức dậy&quot;
+☐ Quay video dự phòng toàn bộ kịch bản demo
+☐ Đối chiếu lần cuối mọi con số trên web với hồ sơ

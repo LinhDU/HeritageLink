@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="HeritageLink">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<title id="heritage-page-title">Hồ sơ Di sản sống | HeritageLink</title>
+	<meta name="description" content="Khám phá các Hồ sơ Di sản sống – Nguồn tư liệu số hóa văn hóa bản địa được khảo sát thực địa bởi Đại sứ Sinh viên và ủy quyền bởi nghệ nhân." />
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap & Icons -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+	<!-- Core Styles -->
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-warm-ivory">
+
+	<!-- Top Navigation Bar -->
+	<nav class="site-nav scrolled" id="main-site-nav">
+		<div class="container">
+			<div class="site-navigation d-flex align-items-center justify-content-between">
+				<a href="index.html" class="brand-logo">
+					<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-img">
+					<div class="logo-text-block">
+						<span class="logo-main-text">HeritageLink</span>
+						<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN</span>
+					</div>
+				</a>
+
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu">
+					<li><a href="index.html">Trang chủ</a></li>
+					<li><a href="explore.html">Khám phá</a></li>
+					<li class="active"><a href="heritage.html">Câu chuyện Di sản</a></li>
+					<li><a href="ambassadors.html">Đại sứ Di sản</a></li>
+					<li><a href="ai-itinerary.html">AI Lộ trình</a></li>
+					<li><a href="passport.html">Hộ chiếu số</a></li>
+					<li><a href="bookings.html">Đặt chỗ của tôi</a></li>
+				</ul>
+
+				<div class="header-auth-actions d-none d-lg-inline-flex align-items-center">
+					<a href="login.html" class="btn btn-outline-primary btn-sm px-3 py-1" id="nav-login-btn">Đăng nhập</a>
+					<a href="ambassador-apply.html" class="btn btn-accent btn-sm px-3 py-1 font-weight-bold">Trở thành Đại sứ</a>
+					<button class="btn btn-outline-primary btn-sm px-3 py-1 hidden" id="nav-logout-btn">Đăng xuất</button>
+					<span id="nav-user-badge" class="user-badge hidden"></span>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Scrollytelling Profile Container -->
+	<main class="py-5 mt-5">
+		<div class="container mt-4">
+			<!-- Header Navigation Bar between Heritage Profiles -->
+			<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+				<div>
+					<span class="eyebrow mb-1">Hồ sơ Di sản sống</span>
+					<h1 class="h3 font-weight-bold text-forest-green mb-0">Tư liệu Di sản & Câu chuyện Bản địa</h1>
+				</div>
+				<!-- Dropdown quick switcher -->
+				<div class="d-flex align-items-center">
+					<span class="small text-muted mr-2">Chọn hồ sơ:</span>
+					<select id="heritage-slug-switcher" class="form-control form-control-sm rounded-10 custom-select" style="width: 250px;">
+						<option value="gom-phu-lang">Gốm Phù Lãng (Bắc Ninh)</option>
+						<option value="lo-lo-chai">Lô Lô Chải & H'Mông (Hà Giang)</option>
+						<option value="theu-khoai-chau">Thêu tay cung đình (Hưng Yên)</option>
+						<option value="am-thuc-hoa-vang">Ẩm thực mâm cơm (Đà Nẵng)</option>
+						<option value="co-do-hoa-lu">Cố đô Hoa Lư (Ninh Bình)</option>
+						<option value="den-long-hoi-an">Đèn lồng lụa (Hội An)</option>
+					</select>
+				</div>
+			</div>
+
+			<!-- Dynamic Heritage Profile Hero View -->
+			<article class="bg-white rounded-20 border shadow-sm p-4 p-md-5 mb-5" id="heritage-article-box">
+				<!-- Cover Image Banner -->
+				<div class="rounded-15 overflow-hidden mb-4 position-relative" style="height: 380px;">
+					<img id="profile-cover-img" src="images/gom-bacninh.jpg" alt="Di sản sống" class="w-100 h-100" style="object-fit: cover;">
+					<div class="position-absolute" style="bottom: 20px; left: 20px; right: 20px;">
+						<div class="p-3 rounded-15 bg-white text-dark d-inline-block shadow-sm" style="max-width: 600px;">
+							<span class="badge badge-accent px-2 py-1 text-white small mr-2" id="profile-category-tag">Làng nghề thủ công</span>
+							<span class="small text-muted font-weight-bold" id="profile-location-tag">Quế Võ, Bắc Ninh</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Title & Ambassador Byline -->
+				<h2 class="h2 font-weight-bold text-forest-green mb-3" id="profile-title">
+					Gốm Phù Lãng – Nghệ thuật men da lươn 700 năm bên bờ sông Cầu
+				</h2>
+
+				<!-- Consent & Verification Strip -->
+				<div class="p-3 bg-light rounded-15 border-left border-gold mb-4 small" style="border-left-width: 4px !important;">
+					<div class="d-flex align-items-center justify-content-between flex-wrap">
+						<div>
+							<strong class="text-forest-green">Biên bản ủy quyền & đồng thuận cộng đồng:</strong>
+							<span class="text-muted d-block" id="profile-consent-text">
+								Đã có biên bản thỏa thuận & ủy quyền truyền thông văn hóa từ Hội đồng Nghệ nhân Phù Lãng.
+							</span>
+						</div>
+						<span class="badge badge-success px-3 py-1 font-weight-bold mt-2 mt-md-0" id="profile-verified-date">
+							Đã kiểm duyệt: 10/10/2026
+						</span>
+					</div>
+					<div class="mt-2 text-muted" style="font-size: 11px;">
+						Khảo sát và số hóa bởi: <strong class="text-dark" id="profile-ambassador-info">Lê Minh Anh • ĐH Khoa học Xã hội & Nhân văn</strong>
+					</div>
+				</div>
+
+				<!-- Section: Lịch sử & Nguồn gốc -->
+				<section class="mb-5">
+					<h3 class="h4 font-weight-bold text-forest-green mb-3">1. Nguồn gốc & Lịch sử ngàn đời</h3>
+					<p class="lead text-muted" id="profile-history-content">
+						Khởi nguồn từ thế kỷ 13 thời nhà Trần do quan Trạng Hứa Vĩnh Kiều truyền dạy, làng gốm Phù Lãng nằm nép mình bên dòng sông Cầu êm ả. Trải qua hơn 700 năm thăng trầm, đây là một trong ba dòng gốm cổ xưa bậc nhất miền Bắc còn giữ lửa nghề thủ công không pha lẫn.
+					</p>
+				</section>
+
+				<!-- Section: Quy trình nghề cổ truyền -->
+				<section class="mb-5">
+					<h3 class="h4 font-weight-bold text-forest-green mb-3">2. Quy trình chế tác kỳ công</h3>
+					<div class="row" id="profile-steps-container">
+						<!-- Steps injected dynamically -->
+					</div>
+				</section>
+
+				<!-- Section: Tiếng nói Nghệ nhân -->
+				<section class="mb-5">
+					<h3 class="h4 font-weight-bold text-forest-green mb-3">3. Tiếng nói người trong cuộc</h3>
+					<div class="p-4 bg-warm-ivory rounded-20 border">
+						<div class="row align-items-center">
+							<div class="col-md-3 text-center mb-3 mb-md-0">
+								<img id="profile-artisan-img" src="images/person_2.jpg" alt="Nghệ nhân" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid var(--color-accent);">
+							</div>
+							<div class="col-md-9">
+								<h4 class="h5 font-weight-bold text-forest-green mb-1" id="profile-artisan-name">Bác Phạm Văn Nam</h4>
+								<span class="d-block small text-muted font-weight-bold mb-2" id="profile-artisan-role">Chủ cơ sở gốm Nam Phù Lãng • 42 năm giữ nghề</span>
+								<blockquote class="font-italic text-dark mb-0 pl-3 border-left" id="profile-artisan-quote" style="border-left: 3px solid var(--color-accent) !important;">
+									“Gốm Phù Lãng không bóng bẩy tráng lệ, nó mang màu đất nâu ấm và khói rơm của làng quê Việt Nam.”
+								</blockquote>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Section: Trải nghiệm liên kết có thể đặt chỗ -->
+				<section class="p-4 rounded-20 bg-forest-green text-white" id="profile-related-exp-box">
+					<div class="row align-items-center">
+						<div class="col-md-8 mb-3 mb-md-0">
+							<span class="badge badge-warning text-dark font-weight-bold mb-2">Trải nghiệm thực tế</span>
+							<h4 class="h5 font-weight-bold text-white mb-1" id="profile-linked-title">
+								Gốm truyền thống Phù Lãng – Nghệ thuật men da lươn 700 năm
+							</h4>
+							<p class="small text-white-opacity mb-0">
+								Trực tiếp ngồi cùng bác Nam trên bàn xoay thủ công và tự tay mang về chiếc bình gốm nung củi rơm độc bản.
+							</p>
+						</div>
+						<div class="col-md-4 text-md-right">
+							<a href="detail.html?id=1" id="profile-linked-btn" class="btn btn-accent px-4 py-2 font-weight-bold shadow-lg">
+								Đặt trải nghiệm ngay →
+							</a>
+						</div>
+					</div>
+				</section>
+			</article>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="container text-center">
+			<p class="mb-0 text-white-opacity small">
+				HeritageLink &copy; 2026. Hồ sơ Di sản sống được bảo vệ quyền tác giả và sự đồng thuận của cộng đồng bản địa.
+			</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

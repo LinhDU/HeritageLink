@@ -1,0 +1,129 @@
+=== admin.html ===
+  Icon class tags: 2
+    <span class="icon-refresh mr-1">
+  Emoji count: 13
+    Emoji: ⚠
+    Emoji: ✓
+    Emoji: 🎓
+    Emoji: 👐
+    Emoji: 📅
+    Emoji: 📍
+    Emoji: 📖
+    Emoji: 🛡
+=== ai-itinerary.html ===
+  Icon class tags: 4
+    <span class="icon-refresh ml-1">
+    <span class="icon-bookmark mr-1">
+    <span class="icon-print mr-1">
+  Emoji count: 1
+    Emoji: ⚡
+=== ambassador-apply.html ===
+  Icon class tags: 1
+  Emoji count: 0
+=== ambassador.html ===
+  Icon class tags: 1
+  Emoji count: 15
+    Emoji: ✓
+    Emoji: ⭐
+    Emoji: 🌟
+    Emoji: 💡
+    Emoji: 📅
+    Emoji: 📍
+    Emoji: 📚
+    Emoji: 📝
+=== ambassadors.html ===
+  Icon class tags: 1
+  Emoji count: 3
+    Emoji: 🎥
+    Emoji: 💰
+    Emoji: 📜
+=== bookings.html ===
+  Icon class tags: 1
+  Emoji count: 1
+    Emoji: 🔍
+=== community.html ===
+  Icon class tags: 1
+  Emoji count: 5
+    Emoji: 🎓
+    Emoji: 🏡
+    Emoji: 💰
+    Emoji: 📱
+    Emoji: 🛡
+=== detail.html ===
+  Icon class tags: 3
+    <span class="icon-share mr-1">
+    <span class="icon-heart-o mr-1">
+  Emoji count: 16
+    Emoji: ⏱
+    Emoji: ★
+    Emoji: ⚠
+    Emoji: 🌟
+    Emoji: 👕
+    Emoji: 👥
+    Emoji: 📍
+    Emoji: 📦
+    Emoji: 🔄
+=== explore.html ===
+  Icon class tags: 3
+    <span class="icon-th-large mr-1">
+    <span class="icon-map mr-1">
+  Emoji count: 0
+=== heritage.html ===
+  Icon class tags: 1
+  Emoji count: 0
+=== host.html ===
+  Icon class tags: 1
+  Emoji count: 11
+    Emoji: ★
+    Emoji: ✓
+    Emoji: 🏁
+    Emoji: 🏡
+    Emoji: 💬
+    Emoji: 📅
+    Emoji: 📍
+    Emoji: 📞
+    Emoji: 📱
+=== index.html ===
+  Icon class tags: 13
+    <span class="icofont-close js-menu-toggle">
+    <span class="icon-arrow-right ml-1">
+    <span class="icon-search mr-1">
+    <span class="icon-room mr-1">
+    <span class="stamp-icon">
+    <span class="stamp-icon">
+    <span class="stamp-icon">
+    <span class="stamp-icon">
+    <span class="stamp-icon">
+    <span class="stamp-icon">
+    <span class="icon-refresh mr-1">
+  Emoji count: 24
+    Emoji: ⛩
+    Emoji: 🌟
+    Emoji: 🌿
+    Emoji: 🍲
+    Emoji: 🎒
+    Emoji: 🏡
+    Emoji: 🏮
+    Emoji: 🏺
+    Emoji: 📍
+    Emoji: 📧
+    Emoji: 🛡
+    Emoji: 🪡
+=== login.html ===
+  Icon class tags: 2
+    <span class="icon-lock" style="font-size: 24px;">
+  Emoji count: 9
+    Emoji: 🌟
+    Emoji: 🎒
+    Emoji: 🏡
+    Emoji: 👑
+=== passport.html ===
+  Icon class tags: 2
+    <span class="icon-share mr-1">
+  Emoji count: 8
+    Emoji: ⛩
+    Emoji: 🍲
+    Emoji: 🏡
+    Emoji: 🏮
+    Emoji: 🏺
+    Emoji: 🪡

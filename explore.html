@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="HeritageLink">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<title>Khám phá Trải nghiệm Di sản Việt | HeritageLink</title>
+	<meta name="description" content="Tìm kiếm và đặt chỗ các trải nghiệm văn hóa bản địa, làng nghề truyền thống, tour homestay di sản cùng nghệ nhân và Đại sứ Sinh viên." />
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap & Icons -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+	<!-- Leaflet Map CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+	<!-- Core Styles -->
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-warm-ivory">
+
+	<!-- Top Navigation Bar -->
+	<nav class="site-nav scrolled" id="main-site-nav">
+		<div class="container">
+			<div class="site-navigation d-flex align-items-center justify-content-between">
+				<a href="index.html" class="brand-logo">
+					<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-img">
+					<div class="logo-text-block">
+						<span class="logo-main-text">HeritageLink</span>
+						<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN</span>
+					</div>
+				</a>
+
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu">
+					<li><a href="index.html">Trang chủ</a></li>
+					<li class="active"><a href="explore.html">Khám phá</a></li>
+					<li><a href="heritage.html">Câu chuyện Di sản</a></li>
+					<li><a href="ambassadors.html">Đại sứ Di sản</a></li>
+					<li><a href="ai-itinerary.html">AI Lộ trình</a></li>
+					<li><a href="passport.html">Hộ chiếu số</a></li>
+					<li><a href="bookings.html">Đặt chỗ của tôi</a></li>
+				</ul>
+
+				<div class="header-auth-actions d-none d-lg-inline-flex align-items-center">
+					<a href="login.html" class="btn btn-outline-primary btn-sm px-3 py-1" id="nav-login-btn">Đăng nhập</a>
+					<a href="ambassador-apply.html" class="btn btn-accent btn-sm px-3 py-1 font-weight-bold">Trở thành Đại sứ</a>
+					<button class="btn btn-outline-primary btn-sm px-3 py-1 hidden" id="nav-logout-btn">Đăng xuất</button>
+					<span id="nav-user-badge" class="user-badge hidden"></span>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Page Header & Breadcrumbs -->
+	<header class="py-5 bg-soft-stone mt-5 pt-5">
+		<div class="container mt-4">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-transparent p-0 small mb-2">
+					<li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Khám phá trải nghiệm</li>
+				</ol>
+			</nav>
+			<div class="row align-items-end">
+				<div class="col-lg-8">
+					<h1 class="h2 font-weight-bold text-forest-green mb-2">Khám phá Trải nghiệm Di sản Việt</h1>
+					<p class="text-muted mb-0">Tìm kiếm các hoạt động văn hóa có sự tham gia trực tiếp của nghệ nhân và đồng bào bản địa.</p>
+				</div>
+				<div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<button class="btn btn-sm btn-primary active" id="view-mode-grid">
+							Lưới thẻ
+						</button>
+						<button class="btn btn-sm btn-outline-primary" id="view-mode-map">
+							Bản đồ
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Explore Content & Filters -->
+	<main class="py-5">
+		<div class="container">
+			<div class="row">
+				<!-- Left Filters Sidebar -->
+				<aside class="col-lg-3 mb-4 mb-lg-0">
+					<div class="bg-white p-4 rounded-20 border shadow-sm sticky-top" style="top: 90px; z-index: 10;">
+						<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+							<h3 class="h6 font-weight-bold text-forest-green mb-0">Bộ lọc tìm kiếm</h3>
+							<button class="btn btn-link btn-sm p-0 text-muted" id="btn-reset-filters">Đặt lại</button>
+						</div>
+
+						<!-- Keyword Search -->
+						<div class="form-group mb-3">
+							<label class="small font-weight-bold text-dark">Từ khóa</label>
+							<input type="text" id="filter-search-input" class="form-control form-control-sm rounded-10" placeholder="Tên làng, nghề, nghệ nhân...">
+						</div>
+
+						<!-- Location Filter -->
+						<div class="form-group mb-3">
+							<label class="small font-weight-bold text-dark">Địa phương</label>
+							<select id="filter-location-select" class="form-control form-control-sm rounded-10 custom-select">
+								<option value="all">Tất cả địa phương</option>
+								<option value="Bắc Ninh">Bắc Ninh (Phù Lãng, Đông Hồ)</option>
+								<option value="Hà Giang">Hà Giang (Đồng Văn, Lũng Cú)</option>
+								<option value="Hưng Yên">Hưng Yên (Khoái Châu)</option>
+								<option value="Đà Nẵng">Đà Nẵng (Hòa Vang)</option>
+								<option value="Ninh Bình">Ninh Bình (Hoa Lư, Tràng An)</option>
+								<option value="Quảng Nam">Quảng Nam (Hội An)</option>
+							</select>
+						</div>
+
+						<!-- Category Filter -->
+						<div class="form-group mb-3">
+							<label class="small font-weight-bold text-dark">Loại hình văn hóa</label>
+							<select id="filter-category-select" class="form-control form-control-sm rounded-10 custom-select">
+								<option value="all">Tất cả loại hình</option>
+								<option value="craft">Làng nghề thủ công</option>
+								<option value="food">Ẩm thực địa phương</option>
+								<option value="culture">Tour văn hóa & Di tích</option>
+								<option value="product">Sản phẩm mang về</option>
+							</select>
+						</div>
+
+						<!-- Price Filter -->
+						<div class="form-group mb-3">
+							<label class="small font-weight-bold text-dark d-flex justify-content-between">
+								<span>Khoảng giá tối đa</span>
+								<span id="price-range-label" class="text-accent font-weight-bold">1.500.000đ</span>
+							</label>
+							<input type="range" class="custom-range" id="filter-price-range" min="300000" max="2000000" step="50000" value="2000000">
+						</div>
+
+						<!-- Attributes Checkboxes -->
+						<div class="form-group mb-2">
+							<label class="small font-weight-bold text-dark mb-2">Đặc tính trải nghiệm</label>
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="check-hands-on" checked>
+								<label class="custom-control-label small text-muted" for="check-hands-on">Có thực hành cùng nghệ nhân</label>
+							</div>
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="check-has-stay">
+								<label class="custom-control-label small text-muted" for="check-has-stay">Có lưu trú (Homestay)</label>
+							</div>
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="check-verified" checked>
+								<label class="custom-control-label small text-muted" for="check-verified">Đã kiểm duyệt 3 tiêu chí</label>
+							</div>
+						</div>
+
+						<button class="btn btn-primary btn-sm btn-block font-weight-bold mt-3" id="btn-apply-filters">
+							Áp dụng bộ lọc
+						</button>
+					</div>
+				</aside>
+
+				<!-- Right Results Area -->
+				<section class="col-lg-9">
+					<!-- Results Bar -->
+					<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+						<span class="text-muted small">
+							Tìm thấy <strong id="results-count" class="text-primary font-weight-bold">7</strong> trải nghiệm di sản
+						</span>
+
+						<div class="d-flex align-items-center">
+							<span class="small text-muted mr-2">Sắp xếp theo:</span>
+							<select id="sort-select" class="form-control form-control-sm rounded-10 custom-select" style="width: auto;">
+								<option value="featured">Nổi bật nhất</option>
+								<option value="price-asc">Giá: Thấp đến Cao</option>
+								<option value="price-desc">Giá: Cao đến Thấp</option>
+								<option value="rating">Đánh giá cao nhất</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- Interactive Map View (Hidden by default, shown when toggled) -->
+					<div id="explore-map-container" class="mb-4 rounded-20 overflow-hidden border shadow-sm hidden">
+						<div id="explore-leaflet-map" style="height: 480px; width: 100%;"></div>
+					</div>
+
+					<!-- Experiences Grid -->
+					<div class="row" id="explore-grid-container">
+						<!-- Injected dynamically by explore.js -->
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="container text-center">
+			<p class="mb-0 text-white-opacity small">
+				HeritageLink &copy; 2026. Nền tảng kết nối trải nghiệm di sản Việt qua Đại sứ Sinh viên.
+			</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="HeritageLink">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<title>Hộ chiếu Di sản Số | HeritageLink Passport</title>
+	<meta name="description" content="Hộ chiếu Di sản số HeritageLink - Thu thập các tem kỹ thuật số văn hóa độc bản sau mỗi chuyến đi hoàn thành cùng nghệ nhân." />
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap & Icons -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+	<!-- Core Styles -->
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-warm-ivory">
+
+	<!-- Top Navigation -->
+	<nav class="site-nav scrolled" id="main-site-nav">
+		<div class="container">
+			<div class="site-navigation d-flex align-items-center justify-content-between">
+				<a href="index.html" class="brand-logo">
+					<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-img">
+					<div class="logo-text-block">
+						<span class="logo-main-text">HeritageLink</span>
+						<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN</span>
+					</div>
+				</a>
+
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu">
+					<li><a href="index.html">Trang chủ</a></li>
+					<li><a href="explore.html">Khám phá</a></li>
+					<li><a href="heritage.html">Câu chuyện Di sản</a></li>
+					<li><a href="ambassadors.html">Đại sứ Di sản</a></li>
+					<li><a href="ai-itinerary.html">AI Lộ trình</a></li>
+					<li class="active"><a href="passport.html">Hộ chiếu số</a></li>
+					<li><a href="bookings.html">Đặt chỗ của tôi</a></li>
+				</ul>
+
+				<div class="header-auth-actions d-none d-lg-inline-flex align-items-center">
+					<a href="bookings.html" class="btn btn-outline-primary btn-sm px-3 py-1">Quản lý booking</a>
+					<button class="btn btn-outline-primary btn-sm px-3 py-1 hidden" id="nav-logout-btn">Đăng xuất</button>
+					<span id="nav-user-badge" class="user-badge hidden"></span>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Passport Page Container -->
+	<main class="py-5 mt-5">
+		<div class="container mt-4" style="max-width: 960px;">
+			<!-- Passport Header -->
+			<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+				<div>
+					<span class="eyebrow mb-1">Gamification & Nhật ký số</span>
+					<h1 class="h2 font-weight-bold text-forest-green mb-0">Hộ chiếu Di sản Số của bạn</h1>
+				</div>
+				<div class="d-flex gap-2">
+					<button class="btn btn-sm btn-outline-primary font-weight-bold" onclick="alert('Đã tạo liên kết chia sẻ Hộ chiếu Di sản của bạn!');">
+						Chia sẻ Hộ chiếu
+					</button>
+					<a href="explore.html" class="btn btn-sm btn-accent font-weight-bold">
+						Khám phá để nhận tem mới +
+					</a>
+				</div>
+			</div>
+
+			<!-- Passport Book Visual Card -->
+			<div class="passport-cover-preview mb-5">
+				<div class="row align-items-center">
+					<div class="col-md-3 text-center mb-4 mb-md-0">
+						<div class="passport-emblem mx-auto">
+							<img src="images/logo-icon.png" alt="HeritageLink Huy hiệu Di sản" class="passport-emblem-img">
+						</div>
+						<strong class="d-block text-white" id="passport-holder-name">Trần Văn Khách</strong>
+						<span class="small text-accent-gold" id="passport-code">HL-PASSPORT-VN2026</span>
+					</div>
+
+					<div class="col-md-9 border-left pl-md-4" style="border-left: 1px solid rgba(184, 155, 112, 0.3) !important;">
+						<div class="d-flex justify-content-between align-items-center mb-2">
+							<div>
+								<span class="small text-white-opacity text-uppercase letter-spacing-1">Cấp bậc nhà gìn giữ:</span>
+								<h3 class="h4 font-weight-bold text-accent-gold mb-0" id="passport-level-title">Người khám phá (Explorer)</h3>
+							</div>
+							<span class="badge badge-accent px-3 py-1 font-weight-bold" id="passport-stamp-counter">1 / 6 Tem</span>
+						</div>
+
+						<!-- Rank Progress Bar -->
+						<div class="passport-rank-bar">
+							<div class="passport-rank-fill" id="passport-level-progress-bar" style="width: 25%;"></div>
+						</div>
+
+						<div class="d-flex justify-content-between text-white-opacity small">
+							<span>Khám phá (Explorer)</span>
+							<span>Kết nối (Connector)</span>
+							<span>Gìn giữ (Guardian)</span>
+							<span>Đại sứ Cộng đồng</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Stamps Collection Grid -->
+			<div class="bg-white rounded-20 border shadow-sm p-4 p-md-5 mb-5">
+				<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+					<div>
+						<h2 class="h5 font-weight-bold text-forest-green mb-1">Bộ sưu tập Tem Di sản Độc bản</h2>
+						<p class="small text-muted mb-0">Mỗi tem biểu trưng cho một giá trị văn hóa bạn đã trực tiếp trải nghiệm và bảo tồn.</p>
+					</div>
+					<span class="badge badge-light px-3 py-1 font-weight-bold text-primary">Tất cả danh mục</span>
+				</div>
+
+				<div class="row" id="passport-stamps-grid">
+					<!-- Active Earned Stamp 1 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="p-3 rounded-15 border border-gold bg-warm-ivory h-100 shadow-sm text-center position-relative">
+							<span class="badge badge-success small position-absolute" style="top: 10px; right: 10px;">Đã đóng dấu</span>
+							<div class="heritage-stamp-mark active mb-2 mt-2"><span class="mark-code">PHÙ LÃNG</span></div>
+							<h3 class="h6 font-weight-bold text-forest-green mb-1">Tem Gốm Phù Lãng</h3>
+							<span class="small text-accent font-weight-bold d-block mb-2">Bắc Ninh • Men da lươn 700 năm</span>
+							<p class="small text-muted mb-2">Hoàn thành cùng Bác Phạm Văn Nam & Đại sứ Lê Minh Anh.</p>
+							<div class="small text-muted font-italic border-top pt-2">
+								Đóng dấu: 20/10/2026 • Check-in QR
+							</div>
+						</div>
+					</div>
+
+					<!-- Locked Stamp 2 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="p-3 rounded-15 border bg-light h-100 text-center opacity-75" style="opacity: 0.85;">
+							<span class="badge badge-secondary small">Chưa mở khóa</span>
+							<div class="heritage-stamp-mark locked mb-2 mt-2"><span class="mark-code">LÔ LÔ</span></div>
+							<h3 class="h6 font-weight-bold text-muted mb-1">Tem Nhà Trình Tường H'Mông</h3>
+							<span class="small text-muted d-block mb-2">Lô Lô Chải, Lũng Cú, Hà Giang</span>
+							<p class="small text-muted mb-3">Tham gia trải nghiệm dệt lanh và ngủ nhà trình tường để mở khóa.</p>
+							<a href="detail.html?id=2" class="btn btn-sm btn-outline-primary font-weight-bold">Đặt trải nghiệm ngay</a>
+						</div>
+					</div>
+
+					<!-- Locked Stamp 3 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="p-3 rounded-15 border bg-light h-100 text-center" style="opacity: 0.85;">
+							<span class="badge badge-secondary small">Chưa mở khóa</span>
+							<div class="heritage-stamp-mark locked mb-2 mt-2"><span class="mark-code">KHOÁI CHÂU</span></div>
+							<h3 class="h6 font-weight-bold text-muted mb-1">Tem Thêu Tay Cung Đình</h3>
+							<span class="small text-muted d-block mb-2">Khoái Châu, Hưng Yên</span>
+							<p class="small text-muted mb-3">Tự tay xâu chỉ tơ tằm và thêu khăn lưu niệm cùng Nghệ nhân Lan.</p>
+							<a href="detail.html?id=3" class="btn btn-sm btn-outline-primary font-weight-bold">Đặt trải nghiệm ngay</a>
+						</div>
+					</div>
+
+					<!-- Locked Stamp 4 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="p-3 rounded-15 border bg-light h-100 text-center" style="opacity: 0.85;">
+							<span class="badge badge-secondary small">Chưa mở khóa</span>
+							<div class="heritage-stamp-mark locked mb-2 mt-2"><span class="mark-code">HÒA VANG</span></div>
+							<h3 class="h6 font-weight-bold text-muted mb-1">Tem Mâm Cơm Xứ Quảng</h3>
+							<span class="small text-muted d-block mb-2">Hòa Vang, Đà Nẵng</span>
+							<p class="small text-muted mb-3">Hái rau vườn nhà và đổ bánh xèo cùng Mẹ Bảy Hòa Vang.</p>
+							<a href="detail.html?id=4" class="btn btn-sm btn-outline-primary font-weight-bold">Đặt trải nghiệm ngay</a>
+						</div>
+					</div>
+
+					<!-- Locked Stamp 5 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="p-3 rounded-15 border bg-light h-100 text-center" style="opacity: 0.85;">
+							<span class="badge badge-secondary small">Chưa mở khóa</span>
+							<div class="heritage-stamp-mark locked mb-2 mt-2"><span class="mark-code">HOA LƯ</span></div>
+							<h3 class="h6 font-weight-bold text-muted mb-1">Tem Huyền Sử Hoa Lư</h3>
+							<span class="small text-muted d-block mb-2">Hoa Lư & Tràng An, Ninh Bình</span>
+							<p class="small text-muted mb-3">Chèo thuyền vượt hang động và dâng hương Đền Vua Đinh Lê.</p>
+							<a href="detail.html?id=5" class="btn btn-sm btn-outline-primary font-weight-bold">Đặt trải nghiệm ngay</a>
+						</div>
+					</div>
+
+					<!-- Locked Stamp 6 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="p-3 rounded-15 border bg-light h-100 text-center" style="opacity: 0.85;">
+							<span class="badge badge-secondary small">Chưa mở khóa</span>
+							<div class="heritage-stamp-mark locked mb-2 mt-2"><span class="mark-code">HỘI AN</span></div>
+							<h3 class="h6 font-weight-bold text-muted mb-1">Tem Đèn Lồng Sông Hoài</h3>
+							<span class="small text-muted d-block mb-2">Minh An, Phố Cổ Hội An</span>
+							<p class="small text-muted mb-3">Vót nan tre già và căng dán lụa gấm cùng Nghệ nhân Huỳnh Văn Ba.</p>
+							<a href="detail.html?id=6" class="btn btn-sm btn-outline-primary font-weight-bold">Đặt trải nghiệm ngay</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Cultural Themes Overview -->
+			<div class="row">
+				<div class="col-md-6 mb-3">
+					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
+						<h3 class="h6 font-weight-bold text-forest-green mb-2">Chủ đề: Làng nghề & Thủ công</h3>
+						<p class="small text-muted mb-2">Bộ sưu tập tôn vinh đôi bàn tay tài hoa của nghệ nhân các làng nghề nghìn năm.</p>
+						<span class="badge badge-accent px-2 py-1 small">1/3 Tem đã thu thập</span>
+					</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
+						<h3 class="h6 font-weight-bold text-forest-green mb-2">Chủ đề: Đời sống & Không gian bản địa</h3>
+						<p class="small text-muted mb-2">Khám phá nếp ăn, nếp ở, những phong tục tập quán mộc mạc lưu truyền.</p>
+						<span class="badge badge-light px-2 py-1 small text-muted">0/3 Tem đã thu thập</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="container text-center">
+			<p class="mb-0 text-white-opacity small">
+				HeritageLink &copy; 2026. Hộ chiếu Di sản số chứng nhận đóng góp cho bảo tồn văn hóa Việt.
+			</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

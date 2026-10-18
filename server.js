@@ -20,6 +20,14 @@ const PORT = process.env.PORT || 3000;
   }
 })();
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  if (req.method === 'OPTIONS') return res.sendStatus(200);
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -37,8 +45,68 @@ app.use(
 app.use(express.static(path.join(__dirname)));
 app.use(routes);
 
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'login.html'));
+});
+
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin.html'));
+});
+
+app.get('/ambassador', (req, res) => {
+  res.sendFile(path.join(__dirname, 'ambassador.html'));
+});
+
+app.get('/dashboard/ambassador', (req, res) => {
+  res.sendFile(path.join(__dirname, 'ambassador.html'));
+});
+
+app.get('/ambassadors', (req, res) => {
+  res.sendFile(path.join(__dirname, 'ambassadors.html'));
+});
+
+app.get('/ambassadors/apply', (req, res) => {
+  res.sendFile(path.join(__dirname, 'ambassador-apply.html'));
+});
+
+app.get('/community', (req, res) => {
+  res.sendFile(path.join(__dirname, 'community.html'));
+});
+
+app.get('/passport', (req, res) => {
+  res.sendFile(path.join(__dirname, 'passport.html'));
+});
+
+app.get('/ai-itinerary', (req, res) => {
+  res.sendFile(path.join(__dirname, 'ai-itinerary.html'));
+});
+
+app.get('/explore', (req, res) => {
+  res.sendFile(path.join(__dirname, 'explore.html'));
+});
+
+app.get('/heritage', (req, res) => {
+  res.sendFile(path.join(__dirname, 'heritage.html'));
+});
+
+app.get('/heritage/:slug', (req, res) => {
+  res.sendFile(path.join(__dirname, 'heritage.html'));
+});
+
+app.get('/host', (req, res) => {
+  res.sendFile(path.join(__dirname, 'host.html'));
+});
+
+app.get('/bookings', (req, res) => {
+  res.sendFile(path.join(__dirname, 'bookings.html'));
+});
+
+app.get('/detail', (req, res) => {
+  res.sendFile(path.join(__dirname, 'detail.html'));
+});
+
 app.get('/experience/:id', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'detail.html'));
 });
 
 app.get('*', (req, res) => {

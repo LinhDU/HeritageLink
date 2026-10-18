@@ -1,11 +1,34 @@
 const { db, formatPrice } = require('../db');
 
 async function getExperiences(req, res) {
-  const rows = await db.query('SELECT * FROM experiences ORDER BY id ASC');
+  const { category, location, minPrice, maxPrice, search } = req.query || {};
+  let rows = await db.query('SELECT * FROM experiences ORDER BY id ASC');
+
+  if (category && category !== 'all') {
+    rows = rows.filter((e) => e.category === category || e.segmentName?.toLowerCase().includes(category.toLowerCase()));
+  }
+  if (location && location !== 'all') {
+    rows = rows.filter((e) => e.location.toLowerCase().includes(location.toLowerCase()));
+  }
+  if (search) {
+    const s = search.toLowerCase().trim();
+    rows = rows.filter((e) => 
+      e.title.toLowerCase().includes(s) || 
+      e.location.toLowerCase().includes(s) || 
+      (e.story && e.story.toLowerCase().includes(s)) ||
+      (e.ambassador && e.ambassador.toLowerCase().includes(s))
+    );
+  }
+  if (minPrice) {
+    rows = rows.filter((e) => Number(e.price) >= Number(minPrice));
+  }
+  if (maxPrice) {
+    rows = rows.filter((e) => Number(e.price) <= Number(maxPrice));
+  }
 
   res.json(rows.map((experience) => ({
     ...experience,
-    priceDisplay: formatPrice(experience.price)
+    priceDisplay: formatPrice ? formatPrice(experience.price) : `${Number(experience.price).toLocaleString('vi-VN')}đ`
   })));
 }
 

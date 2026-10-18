@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="HeritageLink">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<title>Quản lý Đặt chỗ & QR Check-in | HeritageLink</title>
+	<meta name="description" content="Tra cứu lịch đặt chỗ, thanh toán an toàn và quét mã QR check-in để nhận Tem Di sản số tại HeritageLink." />
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap & Icons -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+	<!-- Core Styles -->
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-warm-ivory">
+
+	<!-- Top Navigation -->
+	<nav class="site-nav scrolled" id="main-site-nav">
+		<div class="container">
+			<div class="site-navigation d-flex align-items-center justify-content-between">
+				<a href="index.html" class="brand-logo">
+					<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-img">
+					<div class="logo-text-block">
+						<span class="logo-main-text">HeritageLink</span>
+						<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN</span>
+					</div>
+				</a>
+
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu">
+					<li><a href="index.html">Trang chủ</a></li>
+					<li><a href="explore.html">Khám phá</a></li>
+					<li><a href="heritage.html">Câu chuyện Di sản</a></li>
+					<li><a href="ambassadors.html">Đại sứ Di sản</a></li>
+					<li><a href="ai-itinerary.html">AI Lộ trình</a></li>
+					<li><a href="passport.html">Hộ chiếu số</a></li>
+					<li class="active"><a href="bookings.html">Đặt chỗ của tôi</a></li>
+				</ul>
+
+				<div class="header-auth-actions d-none d-lg-inline-flex align-items-center">
+					<a href="login.html" class="btn btn-outline-primary btn-sm px-3 py-1" id="nav-login-btn">Đăng nhập</a>
+					<button class="btn btn-outline-primary btn-sm px-3 py-1 hidden" id="nav-logout-btn">Đăng xuất</button>
+					<span id="nav-user-badge" class="user-badge hidden"></span>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Bookings & Lookup Container -->
+	<main class="py-5 mt-5">
+		<div class="container mt-4" style="max-width: 960px;">
+			<!-- Header -->
+			<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+				<div>
+					<span class="eyebrow mb-1">Dịch vụ & Check-in</span>
+					<h1 class="h2 font-weight-bold text-forest-green mb-0">Quản lý Đặt chỗ & Tra cứu QR</h1>
+				</div>
+				<a href="explore.html" class="btn btn-accent btn-sm font-weight-bold">
+					Đặt thêm trải nghiệm mới +
+				</a>
+			</div>
+
+			<!-- Lookup Bar (Tra cứu nhanh theo mã hoặc SĐT) -->
+			<div class="bg-white p-4 rounded-20 border shadow-sm mb-5">
+				<h2 class="h6 font-weight-bold text-forest-green mb-3">Tra cứu nhanh đặt chỗ (Không cần đăng nhập)</h2>
+				<form id="booking-lookup-form" class="row align-items-end">
+					<div class="col-md-5 form-group mb-2 mb-md-0">
+						<label class="small text-muted font-weight-bold">Mã đặt chỗ</label>
+						<input type="text" id="lookup-code" class="form-control form-control-sm rounded-10" placeholder="Ví dụ: HL-BK01">
+					</div>
+					<div class="col-md-4 form-group mb-2 mb-md-0">
+						<label class="small text-muted font-weight-bold">Hoặc Số điện thoại</label>
+						<input type="tel" id="lookup-phone" class="form-control form-control-sm rounded-10" placeholder="0909988776">
+					</div>
+					<div class="col-md-3">
+						<button type="submit" class="btn btn-primary btn-sm btn-block font-weight-bold py-2">
+							Tra cứu ngay
+						</button>
+					</div>
+				</form>
+
+				<!-- Lookup Result Preview Box -->
+				<div id="lookup-result-box" class="mt-4 pt-3 border-top hidden">
+					<!-- Injected dynamically -->
+				</div>
+			</div>
+
+			<!-- 4-Step Booking Process Timeline -->
+			<div class="row text-center mb-5">
+				<div class="col-3">
+					<div class="p-3 bg-white rounded-15 border">
+						<span class="badge badge-primary px-2 py-1 mb-1">1</span>
+						<strong class="d-block small text-dark">Chọn lịch</strong>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="p-3 bg-white rounded-15 border">
+						<span class="badge badge-primary px-2 py-1 mb-1">2</span>
+						<strong class="d-block small text-dark">Xác nhận</strong>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="p-3 bg-white rounded-15 border">
+						<span class="badge badge-accent px-2 py-1 mb-1">3</span>
+						<strong class="d-block small text-dark">Thanh toán</strong>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="p-3 bg-white rounded-15 border border-gold">
+						<span class="badge badge-success px-2 py-1 mb-1">4</span>
+						<strong class="d-block small text-dark">QR Check-in</strong>
+					</div>
+				</div>
+			</div>
+
+			<!-- User's Live Booking List -->
+			<div class="bg-white rounded-20 border shadow-sm p-4 p-md-5">
+				<h2 class="h5 font-weight-bold text-forest-green mb-3">Lịch sử Đặt chỗ của bạn</h2>
+				<div id="user-bookings-container">
+					<!-- Injected dynamically by script.js -->
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="container text-center">
+			<p class="mb-0 text-white-opacity small">
+				HeritageLink &copy; 2026. Mọi giao dịch được bảo mật và đối soát minh bạch 85% cho nghệ nhân.
+			</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

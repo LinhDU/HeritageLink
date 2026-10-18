@@ -1,798 +1,1080 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HeritageLink | Di sản sống, kết nối cộng đồng</title>
-    <meta
-      name="description"
-      content="HeritageLink kết nối du khách, đại sứ di sản và cộng đồng bản địa qua trải nghiệm văn hóa, booking, AI itinerary và nền tảng kiểm duyệt." 
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <div class="brand-wrap">
-          <div class="logo-mark">H</div>
-          <div class="brand-text">
-            <strong>HeritageLink</strong>
-            <span>Di sản sống</span>
-          </div>
-        </div>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="HeritageLink">
+	<link rel="shortcut icon" href="favicon.png">
 
-        <nav class="main-nav" aria-label="Main navigation">
-          <a href="#discover">Khám phá</a>
-          <a href="#map">Bản đồ</a>
-          <a href="#itinerary">AI Itinerary</a>
-          <a href="#ambassador">Đại sứ</a>
-          <a href="#community">Cộng đồng</a>
-          <a href="#about">Về chúng tôi</a>
-        </nav>
+	<title>HeritageLink | Sống cùng Di sản Việt qua Mạng lưới Đại sứ Sinh viên</title>
+	<meta name="description" content="HeritageLink - Nền tảng kết nối trải nghiệm di sản Việt chân thực qua Mạng lưới Đại sứ Sinh viên và Cộng đồng Nghệ nhân bản địa. Không chỉ đến để nhìn di sản, mà đến để sống cùng di sản." />
+	<meta name="keywords" content="HeritageLink, di sản việt nam, du lịch di sản, làng nghề truyền thống, đại sứ sinh viên, gốm phù lãng, thêu khoái châu, lũng cú hà giang, nghệ nhân bản địa" />
 
-        <div class="header-actions">
-          <div class="search-box">
-            <span>⌕</span>
-            <input type="text" aria-label="Search" placeholder="Tìm trải nghiệm, địa điểm, từ khóa..." />
-          </div>
-          <button class="ghost-btn" id="login-button">Đăng nhập</button>
-          <button class="primary-btn" id="signup-button">Đăng ký</button>
-          <button class="ghost-btn hidden" id="logout-button">Đăng xuất</button>
-          <span id="user-badge" class="user-badge"></span>
-        </div>
-      </div>
-    </header>
+	<!-- Google Fonts: Lora (Headings) & Be Vietnam Pro (Body) -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
-    <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <div class="pill">
-              <span class="dot"></span>
-              Mạng lưới di sản sống cho Việt Nam
-            </div>
-            <h1>Kết nối du khách, địa phương và đại sứ di sản trong một nền tảng.</h1>
-            <p>
-              HeritageLink giúp bạn khám phá trải nghiệm bản địa, đặt chỗ dễ dàng,
-              hỗ trợ cộng đồng địa phương và số hóa di sản theo hướng bền vững.
-            </p>
-            <div class="hero-actions">
-              <button class="primary-btn large">Khám phá trải nghiệm</button>
-              <button class="secondary-btn large">Trở thành Đại sứ</button>
-            </div>
-            <ul class="mini-stats">
-              <li><strong>240+</strong><span>điểm di sản</span></li>
-              <li><strong>68</strong><span>đại sứ hoạt động</span></li>
-              <li><strong>12,500+</strong><span>du khách tin tưởng</span></li>
-            </ul>
-          </div>
+	<!-- Bootstrap & Plugin Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="css/aos.css">
 
-          <div class="hero-visual">
-            <div class="video-card">
-              <div class="video-overlay">
-                <button class="play-btn">▶</button>
-              </div>
-              <div class="video-meta">
-                <div>
-                  <span class="label">Experience</span>
-                  <strong>Hướng dẫn làm bánh cốm làng Vân Đồn</strong>
-                </div>
-                <div class="chip">4.9 ★</div>
-              </div>
-            </div>
-            <div class="floating-panel">
-              <div class="panel-head">
-                <span class="status online"></span>
-                Hướng dẫn viên ảo đang hỗ trợ
-              </div>
-              <p>“Tôi có thể gợi ý itinerary 2 ngày ở Hà Giang với homestay và làng nghề.”</p>
-            </div>
-          </div>
-        </div>
-      </section>
+	<!-- Leaflet Map CSS for Real Interactive Heritage Map -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
-      <section class="brand-strip">
-        <div class="container strip-grid">
-          <span>Đồng hành bởi</span>
-          <div class="logos">
-            <span>Đoàn thanh niên</span>
-            <span>Hội sinh viên</span>
-            <span>Hộ dân cộng đồng</span>
-            <span>UNESCO Youth Network</span>
-          </div>
-        </div>
-      </section>
+	<!-- Core HeritageLink Design System -->
+	<link rel="stylesheet" href="styles.css">
+</head>
 
-      <section class="section" id="discover">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Dành cho du khách</p>
-              <h2>Khám phá trải nghiệm bản địa phù hợp bạn</h2>
-            </div>
-            <a href="#map">Xem bản đồ →</a>
-          </div>
+<body>
 
-          <div class="filter-row" aria-label="Experience filters">
-            <button class="filter-btn active" data-filter="all">Tất cả</button>
-            <button class="filter-btn" data-filter="workshop">Workshop</button>
-            <button class="filter-btn" data-filter="homestay">Homestay</button>
-            <button class="filter-btn" data-filter="craft">Làng nghề</button>
-            <button class="filter-btn" data-filter="food">Ẩm thực</button>
-          </div>
+	<!-- Mobile Navigation Drawer -->
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
 
-          <div class="experience-grid">
-            <article class="experience-card" data-category="workshop">
-              <div class="thumb thumb-one">
-                <span class="badge">Workshop</span>
-              </div>
-              <div class="card-content">
-                <div class="card-topline">
-                  <span>Đại sứ: Minh Anh</span>
-                  <span class="rating">4.9 ★</span>
-                </div>
-                <h3>Gốm truyền thống Bắc Ninh</h3>
-                <p>Khám phá nghề gốm, làm sản phẩm cá nhân và nghe câu chuyện gia đình truyền lại.</p>
-                <div class="meta-row">
-                  <span>⏱ 2 giờ</span>
-                  <span>📍 Ninh Bình</span>
-                  <span>💰 350.000đ</span>
-                </div>
-              </div>
-            </article>
+	<!-- SECTION 1: NAVIGATION HEADER -->
+	<nav class="site-nav" id="main-site-nav">
+		<div class="container">
+			<div class="site-navigation d-flex align-items-center justify-content-between">
+				<!-- Brand Logo -->
+				<a href="index.html" class="brand-logo">
+					<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-img">
+					<div class="logo-text-block">
+						<span class="logo-main-text">HeritageLink</span>
+						<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN</span>
+					</div>
+				</a>
 
-            <article class="experience-card" data-category="homestay">
-              <div class="thumb thumb-two">
-                <span class="badge">Homestay</span>
-              </div>
-              <div class="card-content">
-                <div class="card-topline">
-                  <span>Đại sứ: Huyền Trâm</span>
-                  <span class="rating">4.8 ★</span>
-                </div>
-                <h3>Ở cùng gia đình vùng cao Hà Giang</h3>
-                <p>Chạm tay vào văn hóa dân tộc, thưởng thức bữa tối bản địa và đi bộ sáng sớm.</p>
-                <div class="meta-row">
-                  <span>⏱ 1 đêm</span>
-                  <span>📍 Hà Giang</span>
-                  <span>💰 700.000đ</span>
-                </div>
-              </div>
-            </article>
+				<!-- Desktop Menu -->
+				<ul class="js-clone-nav d-none d-lg-flex align-items-center text-left site-menu mb-0">
+					<li class="active"><a href="index.html">Trang chủ</a></li>
+					<li><a href="explore.html">Khám phá</a></li>
+					<li><a href="#heritage-map-section">Bản đồ Di sản</a></li>
+					<li><a href="heritage.html">Câu chuyện</a></li>
+					<li><a href="ambassadors.html">Đại sứ</a></li>
+					<li><a href="ai-itinerary.html">AI Lộ trình</a></li>
+					<li><a href="passport.html">Hộ chiếu số</a></li>
+					<li><a href="bookings.html">Đặt chỗ</a></li>
+				</ul>
 
-            <article class="experience-card" data-category="craft">
-              <div class="thumb thumb-three">
-                <span class="badge">Làng nghề</span>
-              </div>
-              <div class="card-content">
-                <div class="card-topline">
-                  <span>Đại sứ: Quốc Bình</span>
-                  <span class="rating">5.0 ★</span>
-                </div>
-                <h3>Thăm làng thêu truyền thống Hưng Yên</h3>
-                <p>Ngắm nghệ nhân làm việc và chọn mua sản phẩm thủ công độc đáo từ chính làng.</p>
-                <div class="meta-row">
-                  <span>⏱ 3 giờ</span>
-                  <span>📍 Hưng Yên</span>
-                  <span>💰 280.000đ</span>
-                </div>
-              </div>
-            </article>
+				<!-- Header Action Buttons & Multi-Role Badges -->
+				<div class="header-auth-actions d-none d-lg-inline-flex align-items-center">
+					<!-- Role Specific Quick Portals (Populated when logged in) -->
+					<a href="admin.html" class="btn btn-warning btn-sm px-3 py-1 text-dark font-weight-bold hidden" id="nav-admin-link">Quản trị</a>
+					<a href="ambassador.html" class="btn btn-accent btn-sm hidden" id="nav-ambassador-link">Cổng Đại sứ</a>
+					<a href="host.html" class="btn btn-outline-white btn-sm hidden" id="nav-host-link">Cổng Hộ dân</a>
 
-            <article class="experience-card" data-category="food">
-              <div class="thumb thumb-four">
-                <span class="badge">Ẩm thực</span>
-              </div>
-              <div class="card-content">
-                <div class="card-topline">
-                  <span>Đại sứ: Lan Anh</span>
-                  <span class="rating">4.7 ★</span>
-                </div>
-                <h3>Ẩm thực mâm cơm cộng đồng Đà Nẵng</h3>
-                <p>Học cách nấu món truyền thống và nghe về ký ức cùng gia đình bản địa.</p>
-                <div class="meta-row">
-                  <span>⏱ 90 phút</span>
-                  <span>📍 Đà Nẵng</span>
-                  <span>💰 240.000đ</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+					<!-- Public Actions -->
+					<div class="lang-switch mr-2">
+						<span class="active">VN</span>
+						<span>EN</span>
+					</div>
+					<a href="login.html" class="btn btn-outline-white btn-sm" id="nav-login-btn">Đăng nhập</a>
+					<a href="ambassador-apply.html" class="btn btn-accent btn-sm" id="nav-ambassador-cta">Trở thành Đại sứ</a>
+					<button class="btn btn-outline-white btn-sm hidden" id="nav-logout-btn">Đăng xuất</button>
+					<span id="nav-user-badge" class="user-badge hidden"></span>
+				</div>
 
-      <section class="section alt" id="map">
-        <div class="container map-layout">
-          <div class="map-copy">
-            <p class="eyebrow">Bản đồ tương tác</p>
-            <h2>Khám phá theo vị trí, loại trải nghiệm và khoảng cách</h2>
-            <p>
-              Chọn địa điểm, lọc theo loại hình, từ đó xem nhanh các trải nghiệm gần bạn và preview thông tin chi tiết.
-            </p>
-            <div class="filter-tags">
-              <span class="tag active">Mọi khoảng cách</span>
-              <span class="tag">Trong 5 km</span>
-              <span class="tag">Trong 20 km</span>
-              <span class="tag">Giá dưới 500k</span>
-            </div>
-          </div>
+				<!-- Mobile menu toggle button -->
+				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+					<span></span>
+				</a>
+			</div>
+		</div>
+	</nav>
 
-          <div class="map-panel">
-            <div class="map-surface">
-              <button class="map-pin pin-1">1</button>
-              <button class="map-pin pin-2">2</button>
-              <button class="map-pin pin-3">3</button>
-              <button class="map-pin pin-4">4</button>
-            </div>
-            <div class="map-list">
-              <div class="map-item active">
-                <div>
-                  <strong>Gốm truyền thống Bắc Ninh</strong>
-                  <small>2 km từ bạn</small>
-                </div>
-                <span>4.9</span>
-              </div>
-              <div class="map-item">
-                <div>
-                  <strong>Ở cùng gia đình Hà Giang</strong>
-                  <small>18 km từ bạn</small>
-                </div>
-                <span>4.8</span>
-              </div>
-              <div class="map-item">
-                <div>
-                  <strong>Làng thêu Hưng Yên</strong>
-                  <small>11 km từ bạn</small>
-                </div>
-                <span>5.0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+	<!-- SECTION 2: HERO SECTION — EDITORIAL TRAVEL MAGAZINE -->
+	<section class="hero" id="hero">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-7">
+					<div class="hero-content pr-lg-4">
+						<div class="hero-pill-badge">
+							<span class="dot-pulse"></span>
+							Nền tảng kết nối trải nghiệm di sản Việt qua Đại sứ Sinh viên
+						</div>
 
-      <section class="section detail-section" id="detail-section">
-        <div class="container detail-grid">
-          <div class="gallery-panel">
-            <div class="gallery-main" id="detail-gallery-main"></div>
-            <div class="gallery-strip">
-              <div class="mini-photo photo-1"></div>
-              <div class="mini-photo photo-2"></div>
-              <div class="mini-photo photo-3"></div>
-            </div>
-          </div>
+						<h1 class="mb-3">
+							Chạm vào di sản.<br>
+							<span class="text-accent-gold">Sống cùng văn hóa Việt.</span>
+						</h1>
 
-          <div class="detail-copy">
-            <p class="eyebrow">Trang chi tiết trải nghiệm</p>
-            <h2 id="detail-title">Gốm truyền thống Bắc Ninh</h2>
-            <div class="detail-summary" id="detail-summary">
-              <span>Đại sứ: Minh Anh</span>
-              <span>★ 4.9 (120 đánh giá)</span>
-            </div>
-            <p id="detail-description">
-              Gốm truyền thống Bắc Ninh không chỉ là trải nghiệm làm sản phẩm mà còn là hành trình nghe câu chuyện về gia đình, làng nghề và sự khéo léo được gìn giữ qua nhiều thế hệ.
-            </p>
+						<p class="lead">
+							Khám phá những câu chuyện, con người và trải nghiệm bản địa chân thực. Từ làng nghề truyền thống nghìn năm đến những nét văn hóa ít người biết, HeritageLink đưa bạn đến gần hơn với linh hồn đất Việt.
+						</p>
 
-            <div class="story-box">
-              <h3>Câu chuyện kể</h3>
-              <p id="detail-story">
-                “Tôi muốn bạn cảm nhận không gian làng gốm như một buổi gặp gỡ nơi người cũ truyền tay người mới, với từng đường vân, từng cốc nước và một câu chuyện ngầm được giữ lại.”
-              </p>
-            </div>
+						<div class="hero-quote-strip">
+							“Không chỉ đến để nhìn di sản, mà đến để sống cùng di sản.”
+						</div>
 
-            <div class="detail-meta-grid" id="detail-meta-grid">
-              <div>
-                <span class="meta-label">Thời lượng</span>
-                <strong>2 giờ</strong>
-              </div>
-              <div>
-                <span class="meta-label">Đối tượng</span>
-                <strong>2 - 8 người</strong>
-              </div>
-              <div>
-                <span class="meta-label">Giá</span>
-                <strong>350.000đ</strong>
-              </div>
-              <div>
-                <span class="meta-label">Lịch trống</span>
-                <strong>Hôm nay, 15:00</strong>
-              </div>
-            </div>
+						<div class="hero-cta-group mb-3">
+							<a href="#discover" class="btn btn-accent btn-lg">
+								<span>Khám phá trải nghiệm</span>
+								
+							</a>
+							<a href="ambassador-apply.html" class="btn btn-outline-white btn-lg">
+								<span>Trở thành Đại sứ Di sản</span>
+							</a>
+						</div>
 
-            <div class="detail-actions">
-              <button type="button" class="primary-btn" id="detail-book-button">Đặt ngay</button>
-              <button type="button" class="secondary-btn" id="detail-itinerary-button">Thêm vào itinerary</button>
-            </div>
-          </div>
-        </div>
-      </section>
+						<!-- 3 Role Entrances (Docx Section 4.1) -->
+						<div class="hero-role-entrances mb-3 d-flex align-items-center flex-wrap" style="gap: 8px;">
+							<span class="text-accent-gold text-uppercase letter-spacing-1 font-weight-bold mr-1" style="font-size: 0.74rem;">Lối vào theo vai trò:</span>
+							<a href="explore.html" class="hero-role-chip">Tôi là du khách</a>
+							<a href="ambassador-apply.html" class="hero-role-chip">Tôi là sinh viên</a>
+							<a href="host.html" class="hero-role-chip">Tôi là nghệ nhân / hộ dân</a>
+						</div>
 
-      <section class="section alt" id="itinerary">
-        <div class="container itinerary-layout">
-          <div class="itinerary-copy">
-            <p class="eyebrow">AI Itinerary cá nhân hóa</p>
-            <h2>Tạo lộ trình theo sở thích, thời gian và ngân sách của bạn</h2>
-            <div class="preference-form">
-              <label>
-                Mục tiêu
-                <select>
-                  <option>Thích trải nghiệm văn hóa</option>
-                  <option>Ưu tiên homestay</option>
-                  <option>Khám phá làng nghề</option>
-                </select>
-              </label>
-              <label>
-                Thời gian
-                <select>
-                  <option>2 ngày 1 đêm</option>
-                  <option>3 ngày 2 đêm</option>
-                  <option>1 tuần</option>
-                </select>
-              </label>
-              <label>
-                Ngân sách
-                <select>
-                  <option>Dưới 1 triệu</option>
-                  <option>1 - 3 triệu</option>
-                  <option>Trên 3 triệu</option>
-                </select>
-              </label>
-            </div>
-            <button class="primary-btn">Tạo itinerary</button>
-          </div>
+						<!-- Official Year 1 Targets & Revenue Model (Docx Section 2 & 5.1.1) -->
+						<div class="hero-stat-pills d-flex align-items-center flex-wrap text-white-opacity small">
+							<span class="mr-3 mb-1"><strong class="text-white font-weight-bold">Mục tiêu năm 1:</strong> 100 Đại sứ • 10 địa phương • 4.350 trải nghiệm</span>
+							<span class="mb-1"><strong class="text-accent-gold font-weight-bold">15% Phí nền tảng</strong> (85% về cộng đồng nghệ nhân)</span>
+						</div>
+					</div>
+				</div>
 
-          <div class="itinerary-result">
-            <div class="day-card">
-              <span class="day-tag">Ngày 1</span>
-              <h3>Hà Giang - Làng gốm</h3>
-              <ul>
-                <li>Sáng: Chuyến đi đến làng gốm Bắc Ninh</li>
-                <li>Trưa: Thưởng thức món ăn bản địa</li>
-                <li>Chiều: Workshop làm gốm</li>
-                <li>Tối: Homestay và nghỉ ngơi</li>
-              </ul>
-            </div>
-            <div class="day-card highlighted">
-              <span class="day-tag">Ngày 2</span>
-              <h3>Phố cổ & chợ địa phương</h3>
-              <ul>
-                <li>Khám phá chợ truyền thống</li>
-                <li>Mua sản phẩm thủ công</li>
-                <li>Góp mặt với nghệ nhân</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+				<!-- Hero Visual Collage Frame -->
+				<div class="col-lg-5 mt-5 mt-lg-0">
+					<div class="hero-visual-frame">
+						<div class="slides">
+							<img src="images/gom-bacninh.jpg" alt="Gốm Phù Lãng Bắc Ninh" class="active" data-id="1">
+							<img src="images/hagiang.jpg" alt="Lô Lô Chải Đồng Văn Hà Giang" data-id="2">
+							<img src="images/theu-hungyen.jpg" alt="Thêu cung đình Khoái Châu Hưng Yên" data-id="3">
+							<img src="images/amthuc-danang.jpg" alt="Mâm cơm đồng quê Hòa Vang Đà Nẵng" data-id="4">
+							<img src="images/ninhbinh.jpg" alt="Cố đô Hoa Lư Ninh Bình" data-id="5">
+							<img src="images/hoian.jpg" alt="Đèn lồng Hội An Quảng Nam" data-id="6">
+						</div>
 
-      <section class="section" id="ambassador">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Dành cho đại sứ di sản</p>
-              <h2>Dashboard và công cụ tạo nội dung dành cho CTV sinh viên</h2>
-            </div>
-            <a href="#onboarding">Đăng ký ngay →</a>
-          </div>
+						<!-- Floating Authentic Artisan Card -->
+						<div class="hero-floating-card">
+							<div class="artisan-mini">
+								<img src="images/person_2.jpg" alt="Nghệ nhân Phạm Văn Nam">
+								<div>
+									<strong class="d-block text-dark small font-weight-bold">Bác Phạm Văn Nam</strong>
+									<span class="text-muted" style="font-size: 11px;">42 năm giữ lửa gốm men da lươn</span>
+								</div>
+							</div>
+							<span class="heritage-seal-badge">
+								Nghệ nhân bản địa
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-          <div class="dashboard-grid">
-            <div class="dashboard-stat">
-              <span class="stat-label">Lượt xem</span>
-              <strong>18.4K</strong>
-              <small>+24% so với tháng trước</small>
-            </div>
-            <div class="dashboard-stat">
-              <span class="stat-label">Booking</span>
-              <strong>246</strong>
-              <small>Hoa hồng ước tính 18.5M</small>
-            </div>
-            <div class="dashboard-stat">
-              <span class="stat-label">Điểm số</span>
-              <strong>92/100</strong>
-              <small>Badge: Đại sứ xuất sắc</small>
-            </div>
-            <div class="dashboard-stat">
-              <span class="stat-label">Đối tác</span>
-              <strong>14</strong>
-              <small>Hộ dân và làng nghề phụ trách</small>
-            </div>
-          </div>
+	<!-- SECTION 3: SMART SEARCH & QUICK SUGGESTIONS -->
+	<section class="smart-search-wrap">
+		<div class="container">
+			<div class="smart-search-box" data-aos="fade-up" data-aos-delay="200">
+				<form id="home-smart-search-form">
+					<div class="row align-items-end">
+						<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+							<label class="small font-weight-bold text-dark text-uppercase letter-spacing-1 mb-1">Bạn muốn đến đâu?</label>
+							<div class="input-group">
+								<select id="search-location" class="custom-select">
+									<option value="all">Tất cả địa phương</option>
+									<option value="Bắc Ninh">Bắc Ninh (Gốm & Tranh)</option>
+									<option value="Hà Giang">Hà Giang (Đồng bào H'Mông & Lô Lô)</option>
+									<option value="Hưng Yên">Hưng Yên (Thêu tay cung đình)</option>
+									<option value="Đà Nẵng">Đà Nẵng (Ẩm thực đồng quê)</option>
+									<option value="Ninh Bình">Ninh Bình (Cố đô Hoa Lư & Tràng An)</option>
+									<option value="Quảng Nam">Quảng Nam (Đèn lồng phố cổ)</option>
+								</select>
+							</div>
+						</div>
 
-          <div class="dashboard-panels">
-            <div class="panel-box">
-              <h3>Danh sách điểm di sản đang phụ trách</h3>
-              <div class="list-item">
-                <div>
-                  <strong>Làng gốm Bắc Ninh</strong>
-                  <small>Đang chờ duyệt nội dung mới</small>
-                </div>
-                <span class="status pending">Pending</span>
-              </div>
-              <div class="list-item">
-                <div>
-                  <strong>Homestay Hà Giang</strong>
-                  <small>Đã được phê duyệt</small>
-                </div>
-                <span class="status approved">Approved</span>
-              </div>
-              <div class="list-item">
-                <div>
-                  <strong>Thêu truyền thống Hưng Yên</strong>
-                  <small>Cần cập nhật mô tả</small>
-                </div>
-                <span class="status edit">Need edit</span>
-              </div>
-            </div>
+						<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+							<label class="small font-weight-bold text-dark text-uppercase letter-spacing-1 mb-1">Loại trải nghiệm</label>
+							<select id="search-category" class="custom-select">
+								<option value="all">Tất cả loại hình</option>
+								<option value="craft">Làng nghề & thủ công</option>
+								<option value="food">Ẩm thực bản địa</option>
+								<option value="culture">Nghệ thuật & Di tích</option>
+								<option value="product">Sản phẩm thủ công mang về</option>
+							</select>
+						</div>
 
-            <div class="panel-box">
-              <h3>Template tạo nội dung</h3>
-              <div class="template-card">
-                <div class="template-head">
-                  <span class="mini-badge">Storytelling</span>
-                  <button class="small-btn">Mở mẫu</button>
-                </div>
-                <p>Video giới thiệu 60 giây, mô tả trải nghiệm, giá đề xuất, lịch đặt chỗ và thông tin về nghệ nhân.</p>
-              </div>
-              <div class="template-card">
-                <div class="template-head">
-                  <span class="mini-badge">Marketing</span>
-                  <button class="small-btn">Mở mẫu</button>
-                </div>
-                <p>Ảnh cover, chuỗi video ngắn, mô tả đích đến, gợi ý lộ trình 1 ngày và kênh chia sẻ cộng đồng.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+						<div class="col-md-6 col-lg-2 mb-3 mb-lg-0">
+							<label class="small font-weight-bold text-dark text-uppercase letter-spacing-1 mb-1">Ngày dự kiến</label>
+							<input type="date" id="search-date" class="form-control">
+						</div>
 
-      <section class="section alt" id="community">
-        <div class="container community-grid">
-          <div class="community-copy">
-            <p class="eyebrow">Dành cho cộng đồng bản địa</p>
-            <h2>Giao diện cực đơn giản, minh bạch và dễ dùng</h2>
-            <p>
-              Hộ dân, nghệ nhân và homestay không cần quản lý phức tạp. Họ chỉ cần xác nhận thông tin, xem booking và nhận doanh thu rõ ràng.
-            </p>
-            <ul class="check-list">
-              <li>Đăng ký/ủy quyền bằng form siêu ngắn</li>
-              <li>Xem booking và lịch đón khách</li>
-              <li>Nhận thông báo qua Zalo/SMS</li>
-              <li>Kiểm tra doanh thu chia sẻ theo thời gian thực</li>
-            </ul>
-          </div>
+						<div class="col-md-6 col-lg-2 mb-3 mb-lg-0">
+							<label class="small font-weight-bold text-dark text-uppercase letter-spacing-1 mb-1">Số khách</label>
+							<input type="number" id="search-guests" class="form-control" min="1" max="20" value="2">
+						</div>
 
-          <div class="community-card">
-            <div class="community-header">
-              <div>
-                <span class="meta-label">Hộ dân</span>
-                <h3>Nguyễn Thị Hồng</h3>
-              </div>
-              <span class="status approved">Đang hoạt động</span>
-            </div>
-            <div class="community-stats">
-              <div>
-                <strong>12</strong>
-                <span>booking</span>
-              </div>
-              <div>
-                <strong>4.3M</strong>
-                <span>doanh thu</span>
-              </div>
-            </div>
-            <div class="notification-box">
-              <span>Thông báo mới</span>
-              <p>Khách đặt trải nghiệm “Sống cùng làng quê” vào ngày 22/10, 17:30.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+						<div class="col-lg-2">
+							<button type="submit" class="btn btn-primary btn-block font-weight-bold py-2" style="height: 50px;">
+								Tìm kiếm
+							</button>
+						</div>
+					</div>
 
-      <section class="section booking-section">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Booking & thanh toán</p>
-              <h2>Luồng đặt chỗ mượt mà và tin cậy</h2>
-            </div>
-          </div>
+					<!-- Quick Chips Suggestions -->
+					<div class="quick-search-chips mt-3 pt-2 border-top">
+						<span class="text-muted font-weight-bold" style="font-size: 12px;">Gợi ý tìm nhanh:</span>
+						<span class="quick-search-chip" data-query="gốm">Làm gốm men da lươn</span>
+						<span class="quick-search-chip" data-query="thêu">Thêu tay Khoái Châu</span>
+						<span class="quick-search-chip" data-query="ẩm thực">Ẩm thực Hòa Vang</span>
+						<span class="quick-search-chip" data-query="hà giang">Nhà trình tường H'Mông</span>
+						<span class="quick-search-chip" data-query="đèn lồng">Đèn lồng Hội An</span>
+						<a href="#heritage-map-section" class="ml-auto text-accent-gold font-weight-bold small">
+							Xem toàn bộ trên bản đồ →
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
 
-          <div class="booking-flow">
-            <div class="flow-step">
-              <span class="step-number">1</span>
-              <h3>Chọn ngày & giờ</h3>
-              <p>Lua chọn lịch trống của địa điểm hoặc Đại sứ.</p>
-            </div>
-            <div class="flow-step">
-              <span class="step-number">2</span>
-              <h3>Xác nhận số người</h3>
-              <p>Điều chỉnh số lượng và chính sách hủy/hoàn tiền.</p>
-            </div>
-            <div class="flow-step">
-              <span class="step-number">3</span>
-              <h3>Thanh toán</h3>
-              <p>Hỗ trợ VietQR, thẻ, ví điện tử và thanh toán an toàn.</p>
-            </div>
-            <div class="flow-step">
-              <span class="step-number">4</span>
-              <h3>Nhận QR check-in</h3>
-              <p>Khách mang QR tại điểm đến để check-in nhanh.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+	<!-- SECTION 4: EXPLORE BY CATEGORY -->
+	<section class="py-5 my-4" id="categories">
+		<div class="container py-4">
+			<div class="row justify-content-center text-center mb-5">
+				<div class="col-lg-8" data-aos="fade-up">
+					<p class="eyebrow"><span style="color:var(--color-seal); font-weight:bold; margin-right:4px;">印</span> Khám phá theo loại hình</p>
+					<h2 class="section-title mb-2">Bạn muốn chạm vào di sản theo cách nào?</h2>
+					<div class="heritage-divider"><span class="heritage-seal">Bản Sắc Việt</span></div>
+					<p class="text-muted">Mỗi vùng đất đều có những câu chuyện riêng. Hãy bắt đầu từ trải nghiệm khiến bạn tò mò nhất.</p>
+				</div>
+			</div>
 
-      <section class="section alt" id="onboarding">
-        <div class="container onboarding-grid">
-          <div class="signup-copy">
-            <p class="eyebrow">Đăng ký & onboarding</p>
-            <h2>Trở thành Đại sứ Di sản với quy trình rõ ràng</h2>
-            <div class="feature-points">
-              <div>
-                <strong>1</strong>
-                <span>Điền thông tin cá nhân, trường, địa bàn và video giới thiệu</span>
-              </div>
-              <div>
-                <strong>2</strong>
-                <span>Hoàn thiện hồ sơ, cam kết bảo tồn văn hóa và đạo đức kể chuyện</span>
-              </div>
-              <div>
-                <strong>3</strong>
-                <span>Tham gia training, nhận approval và bắt đầu phát triển nội dung</span>
-              </div>
-            </div>
-          </div>
+			<div class="row">
+				<!-- Category 1 -->
+				<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+					<a href="explore.html?category=craft" class="category-card">
+						<img src="images/gom-bacninh.jpg" alt="Làng nghề và thủ công truyền thống">
+						<div class="overlay">
+							<span class="cat-badge">Làng nghề</span>
+							<h3>Làng nghề & Thủ công</h3>
+							<p>Tự tay xoay bàn chuốt gốm, thêu chỉ tơ tằm, căng lụa làm đèn lồng cùng nghệ nhân cao niên.</p>
+						</div>
+					</a>
+				</div>
 
-          <div class="onboarding-form">
-            <h3>Đăng ký trở thành Đại sứ Di sản</h3>
-            <form id="ambassador-form">
-              <label>
-                Họ và tên
-                <input type="text" name="name" placeholder="Nhập họ tên của bạn" required />
-              </label>
-              <label>
-                Trường / tổ chức
-                <input type="text" name="school" placeholder="Ví dụ: ĐH Kinh tế Quốc dân" required />
-              </label>
-              <label>
-                Địa bàn phụ trách
-                <input type="text" name="region" placeholder="Ví dụ: Hà Giang, Hưng Yên" required />
-              </label>
-              <label>
-                Video ngắn giới thiệu
-                <input type="text" name="introLink" placeholder="Link YouTube / Drive" />
-              </label>
-              <button type="submit" class="primary-btn full">Gửi đơn đăng ký</button>
-              <div id="form-message" aria-live="polite"></div>
-            </form>
-          </div>
-        </div>
-      </section>
+				<!-- Category 2 -->
+				<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+					<a href="explore.html?category=food" class="category-card">
+						<img src="images/amthuc-danang.jpg" alt="Ẩm thực bản địa">
+						<div class="overlay">
+							<span class="cat-badge">Ẩm thực</span>
+							<h3>Ẩm thực Bản địa</h3>
+							<p>Hái rau sạch vườn nhà, quây quần bên bếp củi om cá lóc và thưởng thức mâm cơm đượm tình làng.</p>
+						</div>
+					</a>
+				</div>
 
-      <section class="section alt" id="bookings-section">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Booking thật</p>
-              <h2>Đặt chỗ và theo dõi lịch trình của bạn</h2>
-            </div>
-          </div>
+				<!-- Category 3 -->
+				<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+					<a href="explore.html?category=culture" class="category-card">
+						<img src="images/theu-hungyen.jpg" alt="Nghệ thuật & Văn hóa dân gian">
+						<div class="overlay">
+							<span class="cat-badge">Nghệ thuật</span>
+							<h3>Nghệ thuật & Dân gian</h3>
+							<p>Hòa mình vào làn điệu Quan họ bên giếng làng, nghe tiếng khèn Mông du dương vắt ngang sườn núi.</p>
+						</div>
+					</a>
+				</div>
 
-          <div class="booking-panel">
-            <form id="booking-form">
-              <label>
-                Chọn trải nghiệm
-                <select id="booking-experience" name="experienceId" required></select>
-              </label>
-              <label>
-                Chọn ngày
-                <input type="date" name="bookingDate" required />
-              </label>
-              <label>
-                Số lượng khách
-                <input type="number" name="guests" min="1" max="10" value="1" required />
-              </label>
-              <button type="submit" class="primary-btn full">Lưu booking</button>
-            </form>
+				<!-- Category 4 -->
+				<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+					<a href="explore.html?category=culture" class="category-card">
+						<img src="images/ninhbinh.jpg" alt="Di tích và lịch sử">
+						<div class="overlay">
+							<span class="cat-badge">Di tích</span>
+							<h3>Di tích & Lịch sử</h3>
+							<p>Ngược dòng lịch sử ngàn năm dựng nước tại Cố đô Hoa Lư, chèo thuyền luồn lách hang động Tràng An.</p>
+						</div>
+					</a>
+				</div>
 
-            <div class="booking-results">
-              <h3>Booking của tôi</h3>
-              <div id="booking-list">
-                <p>Vui lòng đăng nhập để xem lịch đặt chỗ.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+				<!-- Category 5 -->
+				<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+					<a href="explore.html?category=culture" class="category-card">
+						<img src="images/hagiang.jpg" alt="Đời sống & Du lịch cộng đồng">
+						<div class="overlay">
+							<span class="cat-badge">Cộng đồng</span>
+							<h3>Đời sống & Cộng đồng</h3>
+							<p>Sống trong nhà trình tường cổ kính, ngồi sưởi bên bếp lửa và lắng nghe già bản kể sử thi truyền đời.</p>
+						</div>
+					</a>
+				</div>
 
-      <section class="section" id="admin-section" hidden>
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Admin dashboard</p>
-              <h2>Quản trị HeritageLink</h2>
-            </div>
-          </div>
+				<!-- Category 6 -->
+				<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+					<a href="explore.html?category=craft" class="category-card">
+						<img src="images/hoian.jpg" alt="Không gian văn hóa và sinh kế địa phương">
+						<div class="overlay">
+							<span class="cat-badge">Sinh kế</span>
+							<h3>Không gian & Sinh kế</h3>
+							<p>Hỗ trợ trực tiếp nghệ nhân duy trì ngọn lửa nghề, nhận sản phẩm thủ công độc bản mang về nhà.</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 
-          <div class="dashboard-grid" id="admin-stats"></div>
+	<!-- SECTION 5: FEATURED EXPERIENCES -->
+	<section class="py-5 bg-warm-ivory" id="discover">
+		<div class="container py-4">
+			<div class="row align-items-end mb-4">
+				<div class="col-md-8">
+					<p class="eyebrow"><span style="color:var(--color-seal); font-weight:bold; margin-right:4px;">印</span> Trải nghiệm tuyển chọn</p>
+					<h2 class="section-title mb-2">Những trải nghiệm đang chờ bạn khám phá</h2>
+					<div class="heritage-divider" style="justify-content:flex-start;"><span class="heritage-seal">Di Sản Sống</span></div>
+					<p class="text-muted mb-0">Hồ sơ Di sản sống được khảo sát thực địa bởi Đại sứ Sinh viên và trực tiếp tổ chức bởi nghệ nhân bản địa.</p>
+				</div>
+				<div class="col-md-4 text-md-right mt-3 mt-md-0">
+					<a href="explore.html" class="btn btn-outline-primary btn-sm px-4">Xem tất cả trải nghiệm →</a>
+				</div>
+			</div>
 
-          <div class="dashboard-panels">
-            <div class="panel-box">
-              <h3>Booking gần đây</h3>
-              <div id="recent-bookings"></div>
-            </div>
+			<!-- Dynamic Filter Row -->
+			<div class="filter-row mb-4">
+				<button class="filter-btn active" data-filter="all">Tất cả</button>
+				<button class="filter-btn" data-filter="craft">Làng nghề thủ công</button>
+				<button class="filter-btn" data-filter="food">Ẩm thực địa phương</button>
+				<button class="filter-btn" data-filter="culture">Tour văn hóa & Di tích</button>
+				<button class="filter-btn" data-filter="product">Sản phẩm mang về</button>
+			</div>
 
-            <div class="panel-box">
-              <h3>Đơn đăng ký Đại sứ</h3>
-              <div id="applications-list"></div>
-            </div>
-          </div>
+			<!-- Dynamic Experience Grid Container (Populated by script.js) -->
+			<div class="experience-grid row" id="home-experience-grid">
+				<!-- Injected by script.js -->
+			</div>
+		</div>
+	</section>
 
-          <div class="panel-box admin-crud-panel">
-            <div class="panel-head">
-              <h3>Quản lý trải nghiệm</h3>
-              <button type="button" id="reset-experience-form" class="ghost-btn small-btn">Reset form</button>
-            </div>
+	<!-- SECTION 6: INTERACTIVE HERITAGE MAP -->
+	<section class="heritage-map-section" id="heritage-map-section">
+		<div class="container">
+			<div class="row align-items-end mb-4">
+				<div class="col-lg-8" data-aos="fade-up">
+					<p class="eyebrow">Không gian địa lý văn hóa</p>
+					<h2 class="section-title mb-2">Việt Nam rộng lớn. Mỗi vùng đất là một câu chuyện.</h2>
+					<p class="text-muted mb-0">Bản đồ số hóa tọa độ các điểm di sản sống, kết nối du khách trực tiếp với nghệ nhân và cộng đồng người giữ nghề.</p>
+				</div>
+				<div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-sm btn-outline-primary active" id="btn-map-filter-all">
+							<input type="radio" name="options" checked> Tất cả điểm
+						</label>
+						<label class="btn btn-sm btn-outline-primary" id="btn-map-filter-north">
+							<input type="radio" name="options"> Miền Bắc
+						</label>
+						<label class="btn btn-sm btn-outline-primary" id="btn-map-filter-central">
+							<input type="radio" name="options"> Miền Trung
+						</label>
+					</div>
+				</div>
+			</div>
 
-            <form id="experience-form" class="admin-experience-form">
-              <input type="hidden" id="experience-id" name="id" />
+			<div class="map-container-box">
+				<div class="row no-gutters">
+					<!-- Interactive Map Left -->
+					<div class="col-lg-8">
+						<div id="heritage-leaflet-map"></div>
+					</div>
 
-              <div class="admin-form-grid">
-                <label>
-                  Danh mục
-                  <select name="category">
-                    <option value="workshop">Workshop</option>
-                    <option value="homestay">Homestay</option>
-                    <option value="craft">Craft</option>
-                    <option value="food">Food</option>
-                  </select>
-                </label>
+					<!-- Synchronized Sidebar List Right -->
+					<div class="col-lg-4">
+						<div class="map-sidebar-list" id="map-sidebar-list">
+							<!-- Populated by script.js -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-                <label>
-                  Tiêu đề
-                  <input type="text" name="title" placeholder="Nhập tiêu đề trải nghiệm" required />
-                </label>
+	<!-- SECTION 7: LIVING HERITAGE STORIES -->
+	<section class="py-5 bg-warm-ivory" id="stories">
+		<div class="container py-5">
+			<div class="row align-items-center mb-5">
+				<div class="col-lg-8">
+					<p class="eyebrow"><span style="color:var(--color-seal); font-weight:bold; margin-right:4px;">印</span> Hồ sơ Di sản sống</p>
+					<h2 class="section-title mb-2">Đằng sau mỗi di sản là một câu chuyện chưa kể.</h2>
+					<div class="heritage-divider" style="justify-content:flex-start;"><span class="heritage-seal">Tri Thức Dân Gian</span></div>
+					<p class="text-muted mb-0">Nơi những người thợ gìn giữ ngọn lửa nghề, truyền tải những tri thức dân gian qua nhiều thế kỷ.</p>
+				</div>
+				<div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+					<a href="heritage.html" class="btn btn-outline-primary px-4">Đọc toàn bộ hồ sơ di sản →</a>
+				</div>
+			</div>
 
-                <label>
-                  Đại sứ
-                  <input type="text" name="ambassador" placeholder="Tên đại sứ" required />
-                </label>
+			<div class="row">
+				<!-- Main Featured Editorial Story -->
+				<div class="col-lg-7 mb-4 mb-lg-0" data-aos="fade-up">
+					<div class="story-featured-card h-100 p-4">
+						<img src="images/gom-bacninh.jpg" alt="Nghệ nhân Phạm Văn Nam" class="rounded-15 w-100 mb-4" style="height: 320px; object-fit: cover;">
+						<div class="d-flex align-items-center mb-2">
+							<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2" style="background-color: var(--color-primary);">Làng nghề 700 năm</span>
+							<span class="text-muted small">Khảo sát bởi Đại sứ Lê Minh Anh • ĐH KHXH&NV</span>
+						</div>
+						<h3 class="h4 font-weight-bold mb-3">Gốm Phù Lãng – Men da lươn tự nhiên và ngọn lửa nung củi rơm ba ngày ba đêm</h3>
+						<div class="story-quote-block">
+							“Gốm Phù Lãng không bóng bẩy tráng lệ, nó mang màu đất nâu ấm và khói rơm của làng quê Việt Nam.”
+							<div class="small text-muted font-weight-bold mt-1 text-right">— Bác Phạm Văn Nam (42 năm giữ nghề)</div>
+						</div>
+						<p class="text-muted mb-4">
+							Khác với men ngọc hay men rạn Bát Tràng, men Phù Lãng được chế từ tro củi rừng, tro trấu và bùn phù sa sông Cầu. Nung hoàn toàn bằng củi rơm truyền thống, mỗi chiếc chum vò ra lò là một độc bản bất tận của đất mẹ.
+						</p>
+						<div class="d-flex align-items-center justify-content-between">
+							<a href="heritage.html?slug=gom-phu-lang" class="btn btn-primary font-weight-bold px-4">Lắng nghe câu chuyện</a>
+							<a href="detail.html?id=1" class="text-accent-gold font-weight-bold">Đặt trải nghiệm cùng bác Nam →</a>
+						</div>
+					</div>
+				</div>
 
-                <label>
-                  Đánh giá
-                  <input type="number" name="rating" step="0.1" min="0" max="5" value="4.8" required />
-                </label>
+				<!-- Side Stories -->
+				<div class="col-lg-5" data-aos="fade-up" data-aos-delay="200">
+					<div class="d-flex flex-column gap-3 h-100 justify-content-between">
+						<!-- Story 2 -->
+						<div class="p-3 bg-white rounded-15 border shadow-sm mb-3">
+							<div class="d-flex gap-3 align-items-center">
+								<img src="images/hagiang.jpg" alt="Lô Lô Chải" class="rounded-10" style="width: 100px; height: 90px; object-fit: cover;">
+								<div>
+									<span class="badge badge-light text-primary font-weight-bold mb-1">Không gian sống</span>
+									<h4 class="h6 font-weight-bold mb-1">
+										<a href="heritage.html?slug=lo-lo-chai" class="text-dark">Sống cùng đồng bào Lô Lô Chải dưới chân cột cờ Lũng Cú</a>
+									</h4>
+									<p class="small text-muted mb-0">Kiến trúc tường đất trình dày 50cm mát rượi và tiếng khèn Mông bên bếp lửa.</p>
+								</div>
+							</div>
+						</div>
 
-                <label>
-                  Thời lượng
-                  <input type="text" name="duration" placeholder="2 giờ" required />
-                </label>
+						<!-- Story 3 -->
+						<div class="p-3 bg-white rounded-15 border shadow-sm mb-3">
+							<div class="d-flex gap-3 align-items-center">
+								<img src="images/theu-hungyen.jpg" alt="Thêu Khoái Châu" class="rounded-10" style="width: 100px; height: 90px; object-fit: cover;">
+								<div>
+									<span class="badge badge-light text-primary font-weight-bold mb-1">Thêu cung đình</span>
+									<h4 class="h6 font-weight-bold mb-1">
+										<a href="heritage.html?slug=theu-khoai-chau" class="text-dark">Nghệ nhân Lan và bí quyết xé sợi tơ mỏng bằng 1/4 sợi tóc</a>
+									</h4>
+									<p class="small text-muted mb-0">Từng đường kim mũi chỉ phục dựng áo lễ hoàng cung và tranh phong cảnh.</p>
+								</div>
+							</div>
+						</div>
 
-                <label>
-                  Địa điểm
-                  <input type="text" name="location" placeholder="Địa điểm" required />
-                </label>
+						<!-- Story 4 -->
+						<div class="p-3 bg-white rounded-15 border shadow-sm">
+							<div class="d-flex gap-3 align-items-center">
+								<img src="images/amthuc-danang.jpg" alt="Ẩm thực Hòa Vang" class="rounded-10" style="width: 100px; height: 90px; object-fit: cover;">
+								<div>
+									<span class="badge badge-light text-primary font-weight-bold mb-1">Ẩm thực xứ Quảng</span>
+									<h4 class="h6 font-weight-bold mb-1">
+										<a href="heritage.html?slug=am-thuc-hoa-vang" class="text-dark">Mâm cơm nhà vườn mẹ Bảy – Triết lý ngũ hành ẩm thực dân gian</a>
+									</h4>
+									<p class="small text-muted mb-0">Cá bống kho tiêu, canh rau tập tàng vườn nhà và mắm nêm đậm vị biển.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-                <label>
-                  Giá
-                  <input type="number" name="price" min="0" placeholder="350000" required />
-                </label>
+	<!-- SECTION 8: HOW HERITAGELINK WORKS -->
+	<section class="py-5 bg-soft-stone" id="how-it-works">
+		<div class="container py-4">
+			<div class="row justify-content-center text-center mb-5">
+				<div class="col-lg-8" data-aos="fade-up">
+					<p class="eyebrow">Mô hình tuần hoàn di sản</p>
+					<h2 class="section-title mb-3">Từ câu chuyện bản địa đến hành trình của bạn</h2>
+					<p class="text-muted">Một cơ chế bền vững trao quyền cho sinh viên số hóa, bảo đảm quyền lợi minh bạch 85% cho nghệ nhân và trao trải nghiệm chân thực nhất cho du khách.</p>
+				</div>
+			</div>
 
-                <label>
-                  Badge
-                  <input type="text" name="badge" placeholder="Workshop" required />
-                </label>
+			<div class="row">
+				<!-- Step 1 -->
+				<div class="col-md-6 col-lg-2-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+					<div class="how-it-works-step">
+						<div class="how-step-num">1</div>
+						<h4 class="h6 font-weight-bold mb-2">Đại sứ khảo sát</h4>
+						<p class="small text-muted mb-0">Sinh viên tiếp cận nghệ nhân, phỏng vấn, ghi hình và ký biên bản đồng thuận văn hóa.</p>
+					</div>
+				</div>
 
-                <label class="field-wide">
-                  Link ảnh
-                  <input type="url" name="imageUrl" placeholder="https://images.unsplash.com/..." value="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" required />
-                </label>
-              </div>
+				<!-- Step 2 -->
+				<div class="col-md-6 col-lg-2-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+					<div class="how-it-works-step">
+						<div class="how-step-num">2</div>
+						<h4 class="h6 font-weight-bold mb-2">Kiểm duyệt 3 tiêu chí</h4>
+						<p class="small text-muted mb-0">Hội đồng thẩm định tính xác thực văn hóa, câu chuyện di sản và tương tác thực tế.</p>
+					</div>
+				</div>
 
-              <div class="admin-form-actions">
-                <button type="submit" class="primary-btn">Lưu trải nghiệm</button>
-                <button type="button" id="cancel-edit-experience" class="secondary-btn">Hủy</button>
-              </div>
-            </form>
+				<!-- Step 3 -->
+				<div class="col-md-6 col-lg-2-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
+					<div class="how-it-works-step">
+						<div class="how-step-num">3</div>
+						<h4 class="h6 font-weight-bold mb-2">Du khách đặt chỗ</h4>
+						<p class="small text-muted mb-0">Xem lịch đón khách thực, minh bạch giá, thanh toán an toàn và nhận mã QR check-in.</p>
+					</div>
+				</div>
 
-            <div id="experience-form-message" class="form-message" aria-live="polite"></div>
-            <div id="experience-list" class="admin-experience-list"></div>
-          </div>
-        </div>
-      </section>
+				<!-- Step 4 -->
+				<div class="col-md-6 col-lg-2-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="400">
+					<div class="how-it-works-step">
+						<div class="how-step-num">4</div>
+						<h4 class="h6 font-weight-bold mb-2">Cộng đồng đón tiếp</h4>
+						<p class="small text-muted mb-0">Nghệ nhân trực tiếp tổ chức workshop, nhận 85% doanh thu minh bạch để giữ nghề.</p>
+					</div>
+				</div>
 
-      <section class="section impact-section" id="about">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Impact & cộng đồng</p>
-              <h2>Báo cáo tác động rõ ràng, minh bạch</h2>
-            </div>
-          </div>
+				<!-- Step 5 -->
+				<div class="col-md-6 col-lg-2-4" data-aos="fade-up" data-aos-delay="500">
+					<div class="how-it-works-step">
+						<div class="how-step-num">5</div>
+						<h4 class="h6 font-weight-bold mb-2">Đóng dấu Hộ chiếu</h4>
+						<p class="small text-muted mb-0">Du khách nhận tem kỹ thuật số độc bản, tích lũy điểm Đại sứ và lan tỏa câu chuyện.</p>
+					</div>
+				</div>
+			</div>
 
-          <div class="impact-grid">
-            <div class="impact-card">
-              <strong>1,450+</strong>
-              <span>đổi mới nội dung di sản được số hóa</span>
-            </div>
-            <div class="impact-card">
-              <strong>320M</strong>
-              <span>doanh thu chia sẻ cộng đồng</span>
-            </div>
-            <div class="impact-card">
-              <strong>92%</strong>
-              <span>khách hài lòng với trải nghiệm bản địa</span>
-            </div>
-            <div class="impact-card">
-              <strong>24</strong>
-              <span>trường và tỉnh tham gia mạng lưới</span>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+			<!-- Comparison Table: HeritageLink vs Airbnb vs Traditional Tour (Docx Section 1 & 4.1) -->
+			<div class="row justify-content-center mt-5 pt-3">
+				<div class="col-lg-10" data-aos="fade-up">
+					<div class="p-4 bg-white rounded-20 border shadow-sm">
+						<div class="text-center mb-4">
+							<span class="badge badge-accent px-3 py-1 font-weight-bold text-dark text-uppercase small">Mô hình tạo tác động bền vững</span>
+							<h3 class="h4 font-weight-bold text-forest-green mt-2 mb-1">Vì sao HeritageLink ưu việt hơn mô hình tự đăng & du lịch đại trà?</h3>
+							<p class="small text-muted mb-0">So sánh trực tiếp cơ chế phân bổ giá trị và sự đồng hành thực chất với nghệ nhân bản địa</p>
+						</div>
 
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <div class="brand-wrap footer-brand">
-            <div class="logo-mark">H</div>
-            <div class="brand-text">
-              <strong>HeritageLink</strong>
-              <span>Di sản sống</span>
-            </div>
-          </div>
-          <p>Kết nối du khách, đại sứ di sản và cộng đồng bản địa để bảo tồn văn hóa và tạo thu nhập bền vững.</p>
-        </div>
+						<div class="table-responsive">
+							<table class="table table-bordered mb-0 text-center" style="font-size: 0.88rem;">
+								<thead class="bg-light">
+									<tr>
+										<th class="text-left font-weight-bold text-dark" style="width: 25%;">Tiêu chí so sánh</th>
+										<th class="font-weight-bold text-forest-green" style="width: 30%; background: rgba(23, 56, 49, 0.08); border-top: 2px solid var(--color-primary);">
+											HeritageLink (Đại sứ SV)
+										</th>
+										<th class="font-weight-bold text-muted" style="width: 22%;">Airbnb Experiences</th>
+										<th class="font-weight-bold text-muted" style="width: 23%;">Tour du lịch thương mại</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="text-left font-weight-bold">Thu nhập về Nghệ nhân</td>
+										<td class="font-weight-bold text-success" style="background: rgba(30, 107, 71, 0.05);">
+											85% doanh thu vé (Minh bạch)
+										</td>
+										<td>80% (Khấu trừ thêm nhiều phí)</td>
+										<td class="text-danger font-weight-bold">10% – 20% (Thù lao tượng trưng)</td>
+									</tr>
+									<tr>
+										<td class="text-left font-weight-bold">Phí nền tảng</td>
+										<td class="font-weight-bold text-forest-green" style="background: rgba(23, 56, 49, 0.05);">
+											15% (5% Đại sứ + 2% Cổng + 8% Vận hành)
+										</td>
+										<td>20% (Thu về nền tảng ngoại)</td>
+										<td>50% – 70% (Công ty lữ hành trung gian)</td>
+									</tr>
+									<tr>
+										<td class="text-left font-weight-bold">Hỗ trợ số hóa & Quay chụp</td>
+										<td class="font-weight-bold text-forest-green" style="background: rgba(23, 56, 49, 0.05);">
+											Đại sứ sinh viên hỗ trợ 100% tận nơi
+										</td>
+										<td>Nghệ nhân phải tự làm công nghệ</td>
+										<td>Không số hóa, chỉ khai thác bề nổi</td>
+									</tr>
+									<tr>
+										<td class="text-left font-weight-bold">Rào cản ngôn ngữ & Văn hóa</td>
+										<td class="font-weight-bold text-forest-green" style="background: rgba(23, 56, 49, 0.05);">
+											Sinh viên ngoại ngữ đồng hành làm cầu nối
+										</td>
+										<td>Bắt buộc nghệ nhân biết ngoại ngữ</td>
+										<td>HDV chạy theo lịch trình gấp gáp</td>
+									</tr>
+									<tr>
+										<td class="text-left font-weight-bold">Bảo tồn & Trao quyền thế hệ trẻ</td>
+										<td class="font-weight-bold text-forest-green" style="background: rgba(23, 56, 49, 0.05);">
+											Đào tạo 4 học phần, cấp chứng chỉ Đại sứ
+										</td>
+										<td>Không có</td>
+										<td>Không có</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-        <div>
-          <h4>Impact metrics</h4>
-          <ul>
-            <li>68 Đại sứ đang hoạt động</li>
-            <li>240+ điểm di sản</li>
-            <li>320M doanh thu chia sẻ cộng đồng</li>
-          </ul>
-        </div>
+	<!-- SECTION 9: MEET THE HERITAGE AMBASSADORS -->
+	<section class="py-5 bg-warm-ivory" id="ambassadors">
+		<div class="container py-4">
+			<div class="row align-items-end mb-5">
+				<div class="col-lg-8" data-aos="fade-up">
+					<p class="eyebrow">Mạng lưới Đại sứ Sinh viên</p>
+					<h2 class="section-title mb-2">Những người trẻ đang kết nối di sản với thế giới</h2>
+					<p class="text-muted mb-0">Sinh viên các trường đại học sử dụng năng lực số, truyền thông và tình yêu quê hương để làm cầu nối đưa du khách về với cội nguồn.</p>
+				</div>
+				<div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+					<a href="ambassador-apply.html" class="btn btn-accent px-4 py-2 font-weight-bold shadow-sm">Đăng ký trở thành Đại sứ →</a>
+				</div>
+			</div>
 
-        <div>
-          <h4>Liên kết</h4>
-          <ul>
-            <li>Đoàn/Hội Sinh viên</li>
-            <li>Chính sách</li>
-            <li>Hỗ trợ</li>
-          </ul>
-        </div>
-      </div>
-    </footer>
+			<div class="row">
+				<!-- Ambassador 1 -->
+				<div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+					<div class="p-4 bg-white rounded-20 border shadow-sm text-center h-100">
+						<img src="images/person_1.jpg" alt="Lê Minh Anh" class="rounded-circle mx-auto mb-3" style="width: 84px; height: 84px; object-fit: cover; border: 2px solid var(--color-accent);">
+						<h4 class="h6 font-weight-bold mb-1">Lê Minh Anh</h4>
+						<span class="d-block small text-accent font-weight-bold mb-2">ĐH Khoa học Xã hội & Nhân văn</span>
+						<p class="small text-muted mb-3">Phụ trách: <strong>Bắc Ninh & Hà Giang</strong>. Đã hỗ trợ số hóa gốm Phù Lãng và nếp sống nhà trình tường Lô Lô Chải.</p>
+						<span class="badge badge-light px-3 py-1 text-primary font-weight-bold small">14 Booking • Đóng góp 4 hồ sơ</span>
+					</div>
+				</div>
 
-    <div id="login-modal" class="modal hidden" aria-hidden="true">
-      <div class="modal-backdrop" id="modal-backdrop"></div>
-      <div class="modal-content">
-        <button class="close-modal" id="close-login" aria-label="Đóng đăng nhập">×</button>
-        <h3>Đăng nhập HeritageLink</h3>
-        <form id="login-form">
-          <label>
-            Email
-            <input type="email" name="email" placeholder="admin@heritagelink.vn" required />
-          </label>
-          <label>
-            Mật khẩu
-            <input type="password" name="password" placeholder="Nhập mật khẩu" required />
-          </label>
-          <button type="submit" class="primary-btn full">Đăng nhập</button>
-        </form>
-        <div id="login-message" class="form-message" aria-live="polite"></div>
-        <p class="demo-credentials">
-          Demo: admin@heritagelink.vn / admin123
-        </p>
-      </div>
-    </div>
+				<!-- Ambassador 2 -->
+				<div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+					<div class="p-4 bg-white rounded-20 border shadow-sm text-center h-100">
+						<img src="images/person_2.jpg" alt="Trần Văn Hoàng" class="rounded-circle mx-auto mb-3" style="width: 84px; height: 84px; object-fit: cover; border: 2px solid var(--color-accent);">
+						<h4 class="h6 font-weight-bold mb-1">Trần Văn Hoàng</h4>
+						<span class="d-block small text-accent font-weight-bold mb-2">Đại học Văn Hóa Hà Nội</span>
+						<p class="small text-muted mb-3">Phụ trách: <strong>Vạn Phúc & Bắc Ninh</strong>. Xây dựng video tài liệu về nghệ thuật dệt lụa tơ tằm và in tranh dân gian Đông Hồ.</p>
+						<span class="badge badge-light px-3 py-1 text-primary font-weight-bold small">19 Booking • Đóng góp 3 hồ sơ</span>
+					</div>
+				</div>
 
-    <script src="script.js"></script>
-  </body>
+				<!-- Ambassador 3 -->
+				<div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+					<div class="p-4 bg-white rounded-20 border shadow-sm text-center h-100">
+						<img src="images/person_3.jpg" alt="Quốc Bình" class="rounded-circle mx-auto mb-3" style="width: 84px; height: 84px; object-fit: cover; border: 2px solid var(--color-accent);">
+						<h4 class="h6 font-weight-bold mb-1">Quốc Bình</h4>
+						<span class="d-block small text-accent font-weight-bold mb-2">ĐH Mỹ thuật Công nghiệp</span>
+						<p class="small text-muted mb-3">Phụ trách: <strong>Khoái Châu & Hội An</strong>. Chuyên gia thiết kế câu chuyện thị giác về thêu tay cung đình và làm đèn lồng lụa.</p>
+						<span class="badge badge-light px-3 py-1 text-primary font-weight-bold small">22 Booking • Đóng góp 5 hồ sơ</span>
+					</div>
+				</div>
+
+				<!-- Ambassador 4 -->
+				<div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+					<div class="p-4 bg-white rounded-20 border shadow-sm text-center h-100">
+						<img src="images/person_4.jpg" alt="Lan Anh" class="rounded-circle mx-auto mb-3" style="width: 84px; height: 84px; object-fit: cover; border: 2px solid var(--color-accent);">
+						<h4 class="h6 font-weight-bold mb-1">Lan Anh</h4>
+						<span class="d-block small text-accent font-weight-bold mb-2">Đại học Sư phạm Đà Nẵng</span>
+						<p class="small text-muted mb-3">Phụ trách: <strong>Hòa Vang Đà Nẵng</strong>. Kết nối các gia đình làm vườn sinh thái và gìn giữ văn hóa ẩm thực mâm cơm xứ Quảng.</p>
+						<span class="badge badge-light px-3 py-1 text-primary font-weight-bold small">18 Booking • Đóng góp 2 hồ sơ</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION 10: 5-LAYER EXPERIENCE JOURNEY -->
+	<section class="py-5 bg-forest-green" id="experience-journey">
+		<div class="container py-4 text-white">
+			<div class="row justify-content-center text-center mb-5">
+				<div class="col-lg-8" data-aos="fade-up">
+					<p class="eyebrow" style="color: var(--color-accent);">Lời hứa thương hiệu</p>
+					<h2 class="section-title text-white mb-3">Đừng chỉ mang về những bức ảnh.<br>Hãy mang về một câu chuyện.</h2>
+					<p class="text-white-opacity">Tại HeritageLink, mỗi trải nghiệm được cấu trúc qua 5 tầng tương tác sâu sắc, bảo đảm du khách không chỉ ngắm nhìn thụ động mà thực sự sống cùng văn hóa.</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<!-- Layer 1 -->
+				<div class="col-md-6 col-lg mb-3" data-aos="fade-up" data-aos-delay="100">
+					<div class="p-4 rounded-20 h-100" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);">
+						<span class="badge badge-warning text-dark font-weight-bold mb-2">Tầng 1</span>
+						<h3 class="h5 font-weight-bold text-white mb-2">Nhìn thấy</h3>
+						<p class="small text-white-opacity mb-0">Trực tiếp quan sát nghệ nhân thực hành, ngắm nhìn không gian cổ xưa và nhịp sống bình yên của làng quê.</p>
+					</div>
+				</div>
+
+				<!-- Layer 2 -->
+				<div class="col-md-6 col-lg mb-3" data-aos="fade-up" data-aos-delay="200">
+					<div class="p-4 rounded-20 h-100" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);">
+						<span class="badge badge-warning text-dark font-weight-bold mb-2">Tầng 2</span>
+						<h3 class="h5 font-weight-bold text-white mb-2">Chạm vào</h3>
+						<p class="small text-white-opacity mb-0">Cảm nhận độ quánh dẻo của đất phù sa, sự mịn mát của dải tơ tằm thô hay bề mặt sần rêu phong của đá tai mèo.</p>
+					</div>
+				</div>
+
+				<!-- Layer 3 -->
+				<div class="col-md-6 col-lg mb-3" data-aos="fade-up" data-aos-delay="300">
+					<div class="p-4 rounded-20 h-100" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);">
+						<span class="badge badge-warning text-dark font-weight-bold mb-2">Tầng 3</span>
+						<h3 class="h5 font-weight-bold text-white mb-2">Tự làm</h3>
+						<p class="small text-white-opacity mb-0">Tự tay chuốt chiếc cốc gốm, xâu kim thêu nhành hoa sen hay hoàn thiện chiếc đèn lồng mang thương hiệu cá nhân.</p>
+					</div>
+				</div>
+
+				<!-- Layer 4 -->
+				<div class="col-md-6 col-lg mb-3" data-aos="fade-up" data-aos-delay="400">
+					<div class="p-4 rounded-20 h-100" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);">
+						<span class="badge badge-warning text-dark font-weight-bold mb-2">Tầng 4</span>
+						<h3 class="h5 font-weight-bold text-white mb-2">Nghe kể</h3>
+						<p class="small text-white-opacity mb-0">Ngồi bên chén trà ấm, lắng nghe nghệ nhân kể chuyện tổ nghề, huyền tích dân gian và những khó khăn giữ lửa nghề.</p>
+					</div>
+				</div>
+
+				<!-- Layer 5 -->
+				<div class="col-md-6 col-lg mb-3" data-aos="fade-up" data-aos-delay="500">
+					<div class="p-4 rounded-20 h-100" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(184, 155, 112, 0.4);">
+						<span class="badge badge-warning text-dark font-weight-bold mb-2">Tầng 5</span>
+						<h3 class="h5 font-weight-bold text-accent-gold mb-2">Thấu hiểu</h3>
+						<p class="small text-white-opacity mb-0">Thấm thía giá trị văn hóa sau mỗi sản phẩm, nhận ra trách nhiệm đồng hành bảo tồn di sản của thế hệ trẻ.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION 11: DIGITAL HERITAGE PASSPORT (GAMIFICATION) -->
+	<section class="py-5 bg-warm-ivory" id="passport-section">
+		<div class="container py-4">
+			<div class="row align-items-center">
+				<div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+					<p class="eyebrow">Hành trình số hóa</p>
+					<h2 class="section-title mb-3">Mỗi trải nghiệm.<br>Một dấu ấn di sản.</h2>
+					<p class="text-muted mb-4">
+						Khi hoàn thành mỗi trải nghiệm và check-in qua mã QR, du khách sẽ nhận được một tem di sản kỹ thuật số độc bản được chạm khắc từ hoa văn truyền thống, ghi nhận ngày tham gia và danh tính nghệ nhân.
+					</p>
+
+					<div class="p-3 bg-white rounded-15 border mb-3">
+						<div class="d-flex justify-content-between align-items-center mb-1">
+							<strong class="text-primary">Cấp bậc nhà khám phá:</strong>
+							<span class="badge badge-accent font-weight-bold" id="home-passport-rank">Người khám phá (Explorer)</span>
+						</div>
+						<div class="passport-rank-bar">
+							<div class="passport-rank-fill" id="home-passport-progress" style="width: 35%;"></div>
+						</div>
+						<small class="text-muted">Hoàn thành thêm 2 trải nghiệm để đạt cấp bậc <strong>Người kết nối (Connector)</strong>.</small>
+					</div>
+
+					<div class="d-flex gap-3 mt-4">
+						<a href="passport.html" class="btn btn-primary px-4 py-2 font-weight-bold">Mở Hộ chiếu số của tôi</a>
+						<a href="#discover" class="btn btn-outline-primary px-4 py-2 font-weight-bold">Thu thập tem mới</a>
+					</div>
+				</div>
+
+				<div class="col-lg-6" data-aos="fade-left">
+					<div class="passport-cover-preview">
+						<div class="passport-emblem">
+							<img src="images/logo-icon.png" alt="HeritageLink Huy hiệu Di sản" class="passport-emblem-img">
+						</div>
+						<h3 class="h4 text-center font-weight-bold text-white mb-1">HỘ CHIẾU DI SẢN VIỆT NAM</h3>
+						<p class="small text-center text-accent-gold mb-4 text-uppercase letter-spacing-1">SỐNG CÙNG DI SẢN VIỆT • HERITAGELINK</p>
+
+						<div class="row no-gutters">
+							<div class="col-4 p-2">
+								<div class="passport-stamp-badge">
+									<div class="heritage-stamp-mark"><span class="mark-code">PHÙ LÃNG</span></div>
+									<strong class="d-block text-dark small">Gốm Phù Lãng</strong>
+									<span class="badge badge-success small py-0 px-1">Đã đóng dấu</span>
+								</div>
+							</div>
+							<div class="col-4 p-2">
+								<div class="passport-stamp-badge">
+									<div class="heritage-stamp-mark locked"><span class="mark-code">LÔ LÔ</span></div>
+									<strong class="d-block text-dark small">Lô Lô Chải</strong>
+									<span class="badge badge-light text-muted small py-0 px-1">Chưa mở</span>
+								</div>
+							</div>
+							<div class="col-4 p-2">
+								<div class="passport-stamp-badge">
+									<div class="heritage-stamp-mark locked"><span class="mark-code">KHOÁI CHÂU</span></div>
+									<strong class="d-block text-dark small">Thêu Khoái Châu</strong>
+									<span class="badge badge-light text-muted small py-0 px-1">Chưa mở</span>
+								</div>
+							</div>
+							<div class="col-4 p-2">
+								<div class="passport-stamp-badge">
+									<div class="heritage-stamp-mark locked"><span class="mark-code">HÒA VANG</span></div>
+									<strong class="d-block text-dark small">Cơm Hòa Vang</strong>
+									<span class="badge badge-light text-muted small py-0 px-1">Chưa mở</span>
+								</div>
+							</div>
+							<div class="col-4 p-2">
+								<div class="passport-stamp-badge">
+									<div class="heritage-stamp-mark locked"><span class="mark-code">HOA LƯ</span></div>
+									<strong class="d-block text-dark small">Cố Đô Hoa Lư</strong>
+									<span class="badge badge-light text-muted small py-0 px-1">Chưa mở</span>
+								</div>
+							</div>
+							<div class="col-4 p-2">
+								<div class="passport-stamp-badge">
+									<div class="heritage-stamp-mark locked"><span class="mark-code">HỘI AN</span></div>
+									<strong class="d-block text-dark small">Đèn Hội An</strong>
+									<span class="badge badge-light text-muted small py-0 px-1">Chưa mở</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION 12: AI HERITAGE ITINERARY -->
+	<section class="py-5 bg-soft-stone" id="ai-itinerary-section">
+		<div class="container py-4">
+			<div class="row align-items-center">
+				<div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right">
+					<p class="eyebrow">
+						Trợ lý du lịch thông minh
+						<span class="badge badge-warning text-dark font-weight-bold ml-2 py-1 px-2" style="font-size: 11px; vertical-align: middle;">Bản thử nghiệm (Beta)</span>
+					</p>
+					<h2 class="section-title mb-3">Bạn có sở thích riêng.<br>Hành trình di sản cũng vậy.</h2>
+					<p class="text-muted mb-4">
+						Hệ thống AI Itinerary tự động gợi ý thứ tự trải nghiệm, tuyến đường di chuyển và phân bổ thời gian hợp lý dựa trên sở thích văn hóa của bạn.
+					</p>
+
+					<div class="itinerary-tool-card">
+						<form id="home-ai-itinerary-form">
+							<div class="form-group mb-3">
+								<label class="small font-weight-bold text-dark">Điểm đến mong muốn</label>
+								<select id="itin-dest" class="form-control custom-select">
+									<option value="Bắc Ninh">Bắc Ninh (Làng gốm & Tranh dân gian)</option>
+									<option value="Hà Giang">Hà Giang (Cao nguyên đá Lũng Cú)</option>
+									<option value="Hưng Yên">Hưng Yên (Làng thêu Khoái Châu)</option>
+									<option value="Đà Nẵng">Đà Nẵng (Ẩm thực đồng quê Hòa Vang)</option>
+									<option value="Ninh Bình">Ninh Bình (Cố Đô Hoa Lư & Tràng An)</option>
+								</select>
+							</div>
+
+							<div class="form-group mb-3">
+								<label class="small font-weight-bold text-dark">Thời lượng chuyến đi</label>
+								<select id="itin-duration" class="form-control custom-select">
+									<option value="1_day">1 ngày (Trong ngày)</option>
+									<option value="2d1n" selected>2 ngày 1 đêm</option>
+									<option value="3d2n">3 ngày 2 đêm</option>
+								</select>
+							</div>
+
+							<div class="form-group mb-3">
+								<label class="small font-weight-bold text-dark">Phong cách trải nghiệm</label>
+								<select id="itin-style" class="form-control custom-select">
+									<option value="craft">Trực tiếp thực hành làm thủ công cùng nghệ nhân</option>
+									<option value="family">Nghỉ dưỡng mộc mạc, thưởng thức ẩm thực bản địa</option>
+									<option value="culture">Tìm hiểu lịch sử, huyền tích và cổ vật</option>
+								</select>
+							</div>
+
+							<div class="row mb-4">
+								<div class="col-6">
+									<label class="small font-weight-bold text-dark">Số người</label>
+									<input type="number" id="itin-guests" class="form-control" value="2" min="1" max="15">
+								</div>
+								<div class="col-6">
+									<label class="small font-weight-bold text-dark">Ngân sách dự kiến</label>
+									<input type="text" class="form-control" value="1.500.000đ/người" readonly>
+								</div>
+							</div>
+
+							<button type="submit" class="btn btn-primary btn-block font-weight-bold py-2" id="home-itin-btn">
+								Tạo hành trình thông minh
+							</button>
+						</form>
+					</div>
+				</div>
+
+				<!-- AI Output Result Preview -->
+				<div class="col-lg-7 pl-lg-4" data-aos="fade-left">
+					<div id="home-itinerary-output">
+						<div class="p-3 bg-white rounded-15 border mb-3 shadow-sm d-flex justify-content-between align-items-center">
+							<div>
+								<span class="badge badge-success px-2 py-1 small">Đề xuất tối ưu</span>
+								<h3 class="h5 font-weight-bold text-primary mb-0 mt-1" id="itin-output-title">Lộ trình 2N1Đ: Chạm ngõ Gốm Phù Lãng & Thêu Khoái Châu</h3>
+							</div>
+							<div class="text-right">
+								<span class="small text-muted d-block">Tổng chi phí dự kiến</span>
+								<strong class="text-primary font-weight-bold h5 mb-0" id="itin-output-cost">3.400.000đ</strong>
+							</div>
+						</div>
+
+						<div class="itinerary-day-node">
+							<div class="d-flex justify-content-between align-items-center mb-2">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold" style="background-color: var(--color-primary);">Ngày 1</span>
+								<span class="small text-muted font-weight-bold">Bắc Ninh • Làng gốm Phù Lãng</span>
+							</div>
+							<h4 class="h6 font-weight-bold mb-2">Hành trình men da lươn & Ký ức bên sông Cầu</h4>
+							<ul class="small text-muted pl-3 mb-0">
+								<li>08:30: Khởi hành đón tiếp tại xưởng gốm Bác Nam cùng Đại sứ Lê Minh Anh.</li>
+								<li>10:00: Quan sát nghệ nhân luyện đất và kỹ thuật canh lò củi 3 ngày 3 đêm.</li>
+								<li>11:45: Mâm cơm trưa nhà vườn cùng gia đình bác Nam.</li>
+								<li>14:00: Trực tiếp chuốt bình hoa và nung thành phẩm kỷ niệm.</li>
+							</ul>
+						</div>
+
+						<div class="itinerary-day-node">
+							<div class="d-flex justify-content-between align-items-center mb-2">
+								<span class="badge badge-accent px-3 py-1 font-weight-bold" style="background-color: var(--color-accent); color: #fff;">Ngày 2</span>
+								<span class="small text-muted font-weight-bold">Hưng Yên • Thêu tay cung đình</span>
+							</div>
+							<h4 class="h6 font-weight-bold mb-2">Sợi chỉ tơ tằm và đường kim lưu giữ hồn cốt</h4>
+							<ul class="small text-muted pl-3 mb-0">
+								<li>09:00: Dạo chợ làng quê, thưởng thức bánh đúc nóng.</li>
+								<li>10:30: Ghé thăm nghệ nhân Nguyễn Thị Lan, thử tài xâu chỉ tơ tằm.</li>
+								<li>14:30: Tự tay thêu chiếc khăn sen lưu niệm và nhận tem Hộ chiếu số.</li>
+							</ul>
+						</div>
+
+						<div class="d-flex justify-content-between align-items-center mt-3">
+							<a href="ai-itinerary.html" class="text-accent font-weight-bold small">Mở công cụ AI Itinerary đầy đủ →</a>
+							<button type="button" class="btn btn-outline-primary btn-sm px-4" onclick="alert('Đã lưu hành trình vào tài khoản của bạn!');">Lưu hành trình này</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION 13: JOIN THE HERITAGE MOVEMENT -->
+	<section class="cta-movement-section" id="movement">
+		<div class="container text-center">
+			<div class="row justify-content-center">
+				<div class="col-lg-8" data-aos="fade-up">
+					<p class="eyebrow" style="color: var(--color-accent);">Cùng chung tay gìn giữ</p>
+					<h2 class="display-4 text-white font-weight-bold mb-3" style="font-size: 2.4rem;">Di sản sẽ sống mãi<br>khi câu chuyện được tiếp nối.</h2>
+					<p class="lead text-white-opacity mb-5">
+						HeritageLink không chỉ là một ứng dụng đặt chỗ. Đây là một phong trào đánh thức các giá trị văn hóa bản địa bằng sức trẻ, công nghệ và sự sẻ chia kinh tế minh bạch.
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<!-- Path 1: Traveler -->
+				<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+					<div class="cta-action-pill h-100 d-flex flex-column justify-content-between">
+						<div>
+							<div class="step-num text-accent mb-2 font-weight-bold" style="font-size: 1.4rem;">01</div>
+							<h3 class="h5 font-weight-bold text-white mb-2">Dành cho Du khách</h3>
+							<p class="small text-white-opacity mb-4">Trải nghiệm những nét văn hóa nguyên bản, tự tay làm đồ thủ công và mang về một câu chuyện đẹp.</p>
+						</div>
+						<a href="#discover" class="btn btn-outline-white btn-block font-weight-bold">Khám phá trải nghiệm</a>
+					</div>
+				</div>
+
+				<!-- Path 2: Student Ambassador -->
+				<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+					<div class="cta-action-pill h-100 d-flex flex-column justify-content-between" style="border-color: var(--color-accent);">
+						<div>
+							<div class="step-num text-accent mb-2 font-weight-bold" style="font-size: 1.4rem;">02</div>
+							<h3 class="h5 font-weight-bold text-accent-gold mb-2">Dành cho Sinh viên</h3>
+							<p class="small text-white-opacity mb-4">Trở thành Đại sứ Di sản, xây dựng portfolio thực tế, rèn luyện kỹ năng truyền thông và nhận hoa hồng bảo trợ.</p>
+						</div>
+						<a href="ambassador-apply.html" class="btn btn-accent btn-block font-weight-bold">Trở thành Đại sứ</a>
+					</div>
+				</div>
+
+				<!-- Path 3: Community & Artisans -->
+				<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+					<div class="cta-action-pill h-100 d-flex flex-column justify-content-between">
+						<div>
+							<div class="step-num text-accent mb-2 font-weight-bold" style="font-size: 1.4rem;">03</div>
+							<h3 class="h5 font-weight-bold text-white mb-2">Dành cho Cộng đồng</h3>
+							<p class="small text-white-opacity mb-4">Giới thiệu làng nghề, homestay hoặc nghệ nhân quê bạn để chúng tôi cùng đại sứ sinh viên đến hỗ trợ số hóa.</p>
+						</div>
+						<a href="community.html" class="btn btn-outline-white btn-block font-weight-bold">Giới thiệu di sản địa phương</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION 14: FOOTER -->
+	<footer class="site-footer">
+		<div class="container">
+			<div class="row">
+				<!-- Brand Col -->
+				<div class="col-lg-4 mb-4 mb-lg-0">
+					<a href="index.html" class="brand-logo-footer mb-3">
+						<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-footer">
+						<div class="logo-text-block">
+							<span class="logo-main-text">HeritageLink</span>
+							<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN • KẾT NỐI NHỊP SỐNG NGÀN NĂM</span>
+						</div>
+					</a>
+					<p class="text-white-opacity mb-3">
+						HeritageLink – Nền tảng kết nối trải nghiệm di sản Việt qua Mạng lưới Đại sứ Sinh viên.
+					</p>
+					<div class="revenue-split-badge mb-3">
+						<strong class="d-block text-accent mb-1">Mô hình chia sẻ doanh thu 85/5/2/8:</strong>
+						<span class="d-block small text-white-opacity">85% Nghệ nhân • 5% Đại sứ • 2% Cổng thanh toán • 8% Vận hành</span>
+					</div>
+					<p class="small text-white-opacity">&ldquo;Không chỉ đến để nhìn di sản, mà đến để sống cùng di sản.&rdquo;</p>
+				</div>
+
+				<!-- Nav Links -->
+				<div class="col-6 col-lg-2 mb-4 mb-lg-0">
+					<h4 class="footer-heading font-weight-bold text-white h6 mb-3">Khám phá</h4>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-2"><a href="explore.html">Tất cả trải nghiệm</a></li>
+						<li class="mb-2"><a href="#heritage-map-section">Bản đồ Di sản sống</a></li>
+						<li class="mb-2"><a href="heritage.html">Hồ sơ Di sản sống</a></li>
+						<li class="mb-2"><a href="ai-itinerary.html">AI Lộ trình du lịch</a></li>
+						<li class="mb-2"><a href="passport.html">Hộ chiếu Di sản số</a></li>
+					</ul>
+				</div>
+
+				<!-- Actors Portals -->
+				<div class="col-6 col-lg-3 mb-4 mb-lg-0">
+					<h4 class="footer-heading font-weight-bold text-white h6 mb-3">Mạng lưới & Cổng</h4>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-2"><a href="ambassadors.html">Mạng lưới Đại sứ Sinh viên</a></li>
+						<li class="mb-2"><a href="ambassador-apply.html">Đăng ký làm Đại sứ</a></li>
+						<li class="mb-2"><a href="community.html">Dành cho Nghệ nhân & Làng nghề</a></li>
+						<li class="mb-2"><a href="bookings.html">Tra cứu đặt chỗ & QR Check-in</a></li>
+						<li class="mb-2"><a href="admin.html">Cổng quản trị Super Admin</a></li>
+					</ul>
+				</div>
+
+				<!-- Ethics & Contact -->
+				<div class="col-lg-3">
+					<h4 class="footer-heading font-weight-bold text-white h6 mb-3">Cam kết & Liên hệ</h4>
+					<p class="small text-white-opacity mb-2">100% nội dung trải nghiệm có sự đồng thuận và ủy quyền của cộng đồng bản địa.</p>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-1">Email: <a href="mailto:contact@heritagelink.vn">contact@heritagelink.vn</a></li>
+						<li class="mb-1">Địa bàn: Hà Nội • Bắc Ninh • Đà Nẵng • Hà Giang</li>
+						<li class="mb-1">Chính sách bảo tồn & đạo đức kể chuyện</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="footer-bottom text-center">
+				<p class="mb-0">
+					Bản quyền &copy; <script>document.write(new Date().getFullYear());</script> <strong>HeritageLink</strong>. Bảo lưu mọi quyền. Thiết kế theo tiêu chuẩn Modern Vietnamese Heritage × Immersive Travel.
+				</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<script src="js/aos.js"></script>
+
+	<!-- Leaflet Map JS -->
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+	<!-- Main HeritageLink Logic Script -->
+	<script src="script.js"></script>
+</body>
 </html>

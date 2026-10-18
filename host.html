@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="HeritageLink">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<title>Cổng Nghệ nhân & Hộ dân Bản địa | HeritageLink</title>
+	<meta name="description" content="Giao diện thân thiện dành riêng cho Nghệ nhân và Hộ dân bản địa trên nền tảng HeritageLink - Xem lịch đón khách và nhận 85% doanh thu." />
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap & Icons -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+	<!-- Core Styles -->
+	<link rel="stylesheet" href="styles.css">
+
+	<style>
+		body {
+			font-size: 18px;
+		}
+		.stat-number-large {
+			font-size: 2.4rem;
+			font-weight: 800;
+			color: var(--color-primary);
+		}
+		.sms-mock-box {
+			background: var(--color-bg-secondary);
+			border-left: 6px solid var(--color-accent);
+			border-radius: 14px;
+			padding: 20px 24px;
+		}
+	</style>
+</head>
+
+<body class="bg-warm-ivory">
+
+	<!-- Top Navigation Bar -->
+	<nav class="site-nav scrolled" id="main-site-nav">
+		<div class="container">
+			<div class="site-navigation d-flex align-items-center justify-content-between">
+				<a href="index.html" class="brand-logo">
+					<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-img">
+					<div class="logo-text-block">
+						<span class="logo-main-text">HeritageLink</span>
+						<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN</span>
+					</div>
+				</a>
+
+				<div class="d-flex align-items-center">
+					<span class="badge badge-accent font-weight-bold px-3 py-2 mr-3 text-white">
+						Hộ dân / Nghệ nhân Bản địa
+					</span>
+					<a href="index.html" class="btn btn-outline-primary btn-sm px-3 py-2 mr-2 font-weight-bold">Về trang chủ</a>
+					<button class="btn btn-outline-danger btn-sm px-3 py-2 font-weight-bold" id="host-logout-btn">Đăng xuất</button>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Host Header Banner -->
+	<header class="py-5 bg-forest-green text-white mt-5 pt-5">
+		<div class="container mt-3">
+			<div class="row align-items-center">
+				<div class="col-md-8">
+					<span class="badge badge-light text-forest-green font-weight-bold mb-2 px-3 py-1">Giao diện Đơn giản & Thân thiện cho Người cao tuổi</span>
+					<h1 class="h2 font-weight-bold text-white mb-1" id="host-welcome-name">Chào Bác Phạm Văn Nam</h1>
+					<p class="mb-0 text-white-opacity" style="font-size: 1.15rem;">
+						Xưởng Gốm Phù Lãng (Quế Võ, Bắc Ninh) &bull; Thu nhập minh bạch: Bạn nhận trọn <strong>85% doanh thu vé</strong> trực tiếp.
+					</p>
+				</div>
+				<div class="col-md-4 text-md-right mt-3 mt-md-0">
+					<div class="p-3 bg-white text-dark rounded-15 shadow-sm text-left d-inline-block">
+						<small class="text-muted d-block font-weight-bold text-uppercase">Đại sứ sinh viên hỗ trợ bác:</small>
+						<strong class="text-forest-green" style="font-size: 1.15rem;">Lê Minh Anh (ĐH KHXH&NV)</strong>
+						<div class="mt-2">
+							<a href="tel:0977345678" class="btn btn-primary btn-sm font-weight-bold py-1 px-3">
+								Gọi Đại sứ: 0977.345.678
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Main Content Area -->
+	<main class="container py-5">
+		<!-- Simulation: SMS / Zalo Alert Notification -->
+		<div class="sms-mock-box mb-4 shadow-sm">
+			<div class="d-flex align-items-start">
+				
+				<div>
+					<div class="d-flex align-items-center mb-1">
+						<strong class="text-forest-green font-weight-bold" style="font-size: 1.15rem;">[Mô phỏng Tin nhắn SMS / Zalo gửi về điện thoại cô/chú]</strong>
+						<span class="badge badge-success ml-2 px-2 py-1">Tự động gửi</span>
+					</div>
+					<p class="mb-0 text-dark" style="font-size: 1.1rem;" id="host-latest-sms">
+						<em>"HeritageLink thông báo: Có khách Trần Hoài Nam đặt tour Gốm Phù Lãng lúc 13:30 chiều mai (2 khách). Thu nhập bác nhận về: <strong>1.445.000đ (85%)</strong>. Bác bấm Xác nhận đón khách dưới đây nhé!"</em>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Financial & Booking Overview Stats -->
+		<div class="row mb-5">
+			<div class="col-md-4 mb-4 mb-md-0">
+				<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
+					<div class="d-flex justify-content-between align-items-center mb-2">
+						<span class="text-muted font-weight-bold text-uppercase small">Doanh thu Đã nhận (85%)</span>
+						<span class="badge badge-success px-2 py-1 small">Đã chuyển khoản</span>
+					</div>
+					<div class="stat-number-large text-success mb-1" id="host-revenue-received">1.445.000 ₫</div>
+					<small class="text-muted">Đã đối soát và chuyển vào tài khoản ngân hàng của gia đình.</small>
+				</div>
+			</div>
+
+			<div class="col-md-4 mb-4 mb-md-0">
+				<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
+					<div class="d-flex justify-content-between align-items-center mb-2">
+						<span class="text-muted font-weight-bold text-uppercase small">Doanh thu Tạm tính (85%)</span>
+						<span class="badge badge-warning text-dark px-2 py-1 small">Chờ đón khách</span>
+					</div>
+					<div class="stat-number-large text-accent mb-1" id="host-revenue-pending">2.040.000 ₫</div>
+					<small class="text-muted">Sẽ chuyển vào tài khoản ngay sau khi khách quét mã Check-in hoàn thành trải nghiệm.</small>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
+					<div class="d-flex justify-content-between align-items-center mb-2">
+						<span class="text-muted font-weight-bold text-uppercase small">Tổng khách đã đón</span>
+						<span class="badge badge-primary px-2 py-1 small" style="background-color: var(--color-primary);">Năm 2026</span>
+					</div>
+					<div class="stat-number-large text-primary mb-1" id="host-guest-count">14 lượt</div>
+					<small class="text-muted">Đánh giá trung bình từ du khách: <strong class="text-warning">4.9/5.0</strong> (Rất hài lòng)</small>
+				</div>
+			</div>
+		</div>
+
+		<!-- QR Check-in Quick Scanner Simulation -->
+		<div class="p-4 bg-white rounded-20 border border-gold shadow-sm mb-5">
+			<div class="row align-items-center">
+				<div class="col-lg-7">
+					<h2 class="h5 font-weight-bold text-forest-green mb-2">Quét mã QR Check-in khi khách tới xưởng</h2>
+					<p class="text-muted mb-3" style="font-size: 1.05rem;">
+						Khi du khách đến, bác chỉ cần xem mã đặt chỗ trên điện thoại khách (ví dụ: <code>HL-BK01</code>) rồi bấm nút xác nhận. Ngay khi quét thành công, hệ thống sẽ xác nhận hoàn thành và cộng trọn 85% doanh thu cho bác!
+					</p>
+					<div class="input-group mb-2" style="max-width: 480px;">
+						<input type="text" id="host-checkin-input" class="form-control form-control-lg font-weight-bold" placeholder="Nhập mã vé (VD: HL-BK01)" value="HL-BK01">
+						<div class="input-group-append">
+							<button class="btn btn-primary btn-lg font-weight-bold px-4" id="host-do-checkin-btn">
+								Xác nhận Check-in
+							</button>
+						</div>
+					</div>
+					<div id="host-checkin-feedback" class="small mt-2 font-weight-bold"></div>
+				</div>
+				<div class="col-lg-5 text-center mt-4 mt-lg-0">
+					<div class="p-3 bg-light rounded-15 border d-inline-block">
+						<div class="text-success font-weight-bold mb-2" style="font-size: 2.2rem;">HOÀN TẤT</div>
+						<strong class="d-block text-forest-green">Check-in tự động cấp Tem Hộ chiếu</strong>
+						<small class="text-muted">Du khách sẽ nhận ngay con tem di sản để lan tỏa câu chuyện xưởng gốm.</small>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Upcoming Guests List -->
+		<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
+			<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+				<h2 class="h5 font-weight-bold text-forest-green mb-0">Danh sách khách đặt tour đón tiếp</h2>
+				<span class="small text-muted font-weight-bold">Tự động cập nhật</span>
+			</div>
+			<div id="host-bookings-table-container">
+				<!-- Injected dynamically -->
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="container text-center">
+			<p class="mb-0 text-white-opacity small">
+				HeritageLink &copy; 2026. Tôn vinh và hỗ trợ nghệ nhân, hộ dân gìn giữ di sản dân tộc.
+			</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		async function loadHostData() {
+			try {
+				const res = await fetch('/api/host/overview');
+				const data = await res.json();
+				if (!res.ok) return;
+
+				document.getElementById('host-welcome-name').textContent = `Chào ${data.host.name}`;
+				document.getElementById('host-revenue-received').textContent = `${(data.stats.totalRevenue).toLocaleString('vi-VN')} ₫`;
+
+				// Render bookings table
+				const container = document.getElementById('host-bookings-table-container');
+				if (data.bookings && data.bookings.length) {
+					container.innerHTML = `
+						<div class="table-responsive">
+							<table class="table table-hover align-middle mb-0">
+								<thead>
+									<tr class="table-light">
+										<th>Mã vé</th>
+										<th>Tên khách</th>
+										<th>Số điện thoại</th>
+										<th>Ngày đón</th>
+										<th>Số khách</th>
+										<th>Thu nhập nhận về (85%)</th>
+										<th>Thao tác</th>
+									</tr>
+								</thead>
+								<tbody>
+									${data.bookings.map(b => `
+										<tr>
+											<td><code>${b.bookingCode || 'HL-BK01'}</code></td>
+											<td><strong>${b.guestName || 'Du khách'}</strong></td>
+											<td>${b.guestPhone || '0909988776'}</td>
+											<td>${b.bookingDate}</td>
+											<td>${b.guests} người</td>
+											<td><strong class="text-success">${(b.hostRevenue || Math.round(b.totalPrice * 0.85)).toLocaleString('vi-VN')}đ</strong></td>
+											<td>
+												${b.status !== 'completed' ? `
+													<button class="btn btn-sm btn-primary font-weight-bold py-1 px-3" onclick="confirmHostBooking(${b.id})">
+														Đón khách
+													</button>
+												` : `
+													<span class="badge badge-success px-3 py-2">Đã đón xong</span>
+												`}
+											</td>
+										</tr>
+									`).join('')}
+								</tbody>
+							</table>
+						</div>
+					`;
+				}
+			} catch (err) {
+				console.error(err);
+			}
+		}
+
+		window.confirmHostBooking = async function(id) {
+			try {
+				const res = await fetch(`/api/host/bookings/${id}/confirm`, { method: 'POST' });
+				const data = await res.json();
+				alert(data.message || 'Đã xác nhận sẵn sàng đón tiếp du khách!');
+				loadHostData();
+			} catch (e) {
+				alert('Lỗi xác nhận.');
+			}
+		};
+
+		// Check-in QR handler
+		document.getElementById('host-do-checkin-btn')?.addEventListener('click', async () => {
+			const code = document.getElementById('host-checkin-input').value.trim();
+			const feedback = document.getElementById('host-checkin-feedback');
+			if (!code) return;
+
+			try {
+				feedback.className = 'small text-primary font-weight-bold';
+				feedback.textContent = 'Đang kiểm tra mã vé...';
+
+				// First look up booking by code
+				const lookup = await fetch(`/api/bookings/lookup?code=${encodeURIComponent(code)}`);
+				const b = await lookup.json();
+				if (!lookup.ok) throw new Error(b.message || 'Mã vé không tồn tại.');
+
+				// Execute check-in
+				const checkinRes = await fetch(`/api/bookings/${b.id}/checkin`, { method: 'POST' });
+				const checkinData = await checkinRes.json();
+
+				feedback.className = 'small text-success font-weight-bold';
+				feedback.textContent = `${checkinData.message} Đã ghi nhận 85% doanh thu cho bác!`;
+				setTimeout(loadHostData, 1000);
+			} catch (err) {
+				feedback.className = 'small text-danger font-weight-bold';
+				feedback.textContent = err.message || 'Lỗi khi check-in.';
+			}
+		});
+
+		document.getElementById('host-logout-btn')?.addEventListener('click', async () => {
+			await fetch('/api/logout', { method: 'POST' });
+			window.location.href = '/login';
+		});
+
+		loadHostData();
+	</script>
+</body>
+</html>

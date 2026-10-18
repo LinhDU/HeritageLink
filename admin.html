@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="HeritageLink">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<title>Trung tâm Quản trị Toàn diện | HeritageLink Super Admin</title>
+	<meta name="description" content="Admin Dashboard HeritageLink - Kiểm duyệt 3 tiêu chí, phê duyệt đại sứ sinh viên, quản trị trải nghiệm và theo dõi đối soát 85/5/2/8." />
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap & Icons -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+	<!-- Core Styles -->
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-warm-ivory">
+
+	<!-- Top Navigation Bar -->
+	<nav class="site-nav scrolled" id="main-site-nav">
+		<div class="container">
+			<div class="site-navigation d-flex align-items-center justify-content-between">
+				<a href="index.html" class="brand-logo">
+					<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-img">
+					<div class="logo-text-block">
+						<span class="logo-main-text">HeritageLink</span>
+						<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN</span>
+					</div>
+				</a>
+
+				<div class="d-flex align-items-center">
+					<span class="badge badge-warning text-dark font-weight-bold px-3 py-2 mr-2 shadow-sm">
+						Super Admin HeritageLink
+					</span>
+					<a href="ambassador.html" class="btn btn-outline-primary btn-sm px-3 py-1 mr-2">Cổng Đại sứ</a>
+					<a href="host.html" class="btn btn-outline-primary btn-sm px-3 py-1 mr-2">Cổng Hộ dân</a>
+					<a href="index.html" class="btn btn-outline-primary btn-sm px-3 py-1 mr-2">Trang chủ</a>
+					<button class="btn btn-primary btn-sm px-3 py-1" id="admin-logout-btn">Đăng xuất</button>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Subpage Hero Banner -->
+	<header class="py-5 bg-forest-green text-white mt-5 pt-5">
+		<div class="container mt-3 text-center">
+			<span class="eyebrow" style="color: var(--color-accent) !important;">Trung tâm điều hành nền tảng</span>
+			<h1 class="h2 font-weight-bold text-white mb-2">HeritageLink Admin Dashboard</h1>
+			<p class="text-white-opacity lead mb-0" style="font-size: 1.05rem;">
+				Kiểm duyệt 3 tiêu chí di sản, phê duyệt đại sứ sinh viên, quản lý trải nghiệm và theo dõi dòng tiền 85/5/2/8
+			</p>
+		</div>
+	</header>
+
+	<!-- Unauthorized Barrier -->
+	<div id="unauthorized-barrier" class="py-5 d-none">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center">
+					<div class="bg-white p-5 rounded-20 shadow-lg border">
+						<div class="text-danger font-weight-bold mb-3" style="font-size: 2.5rem;">CẢNH BÁO</div>
+						<h2 class="h4 font-weight-bold mb-2 text-forest-green">Yêu cầu quyền Super Admin</h2>
+						<p class="text-muted mb-4">Bạn chưa đăng nhập hoặc tài khoản không có quyền truy cập trang quản trị này.</p>
+						<a href="login.html" class="btn btn-primary px-4 py-2 font-weight-bold">Đăng nhập tài khoản Admin</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Main Admin Control Panel -->
+	<main id="admin-main-content" class="py-5">
+		<div class="container">
+			<!-- Statistics Cards Row -->
+			<div class="row mb-4" id="admin-stats-row">
+				<div class="col-6 col-lg-3 mb-3">
+					<div class="p-4 bg-white rounded-20 border shadow-sm text-center">
+						<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Tổng số Booking</span>
+						<strong class="h3 font-weight-bold text-forest-green mb-0" id="stat-total-bookings">0</strong>
+						<small class="d-block text-muted mt-1">Lịch đã xác nhận</small>
+					</div>
+				</div>
+
+				<div class="col-6 col-lg-3 mb-3">
+					<div class="p-4 bg-white rounded-20 border shadow-sm text-center">
+						<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Tổng GMV</span>
+						<strong class="h3 font-weight-bold text-forest-green mb-0" id="stat-total-revenue">0đ</strong>
+						<small class="d-block text-success mt-1">85% về tay nghệ nhân</small>
+					</div>
+				</div>
+
+				<div class="col-6 col-lg-3 mb-3">
+					<div class="p-4 bg-white rounded-20 border shadow-sm text-center">
+						<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Đơn Đại sứ chờ duyệt</span>
+						<strong class="h3 font-weight-bold text-accent mb-0" id="stat-pending-apps">0</strong>
+						<small class="d-block text-muted mt-1">Sinh viên ứng tuyển</small>
+					</div>
+				</div>
+
+				<div class="col-6 col-lg-3 mb-3">
+					<div class="p-4 bg-white rounded-20 border shadow-sm text-center">
+						<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Thành viên hệ thống</span>
+						<strong class="h3 font-weight-bold text-forest-green mb-0" id="stat-total-users">0</strong>
+						<small class="d-block text-muted mt-1">4 vai trò chuẩn hóa</small>
+					</div>
+				</div>
+			</div>
+
+			<!-- 3-Criteria Moderation Workflow Section (Docx Section 4.8) -->
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-5">
+				<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom flex-wrap gap-2">
+					<div>
+						<h2 class="h5 font-weight-bold text-forest-green mb-1">Thẩm định Hồ sơ Di sản 3 Tiêu chí</h2>
+						<p class="small text-muted mb-0">Quy trình: Tính xác thực văn hóa (40%) • Khả năng kể chuyện (30%) • Mức độ tương tác thực tế (30%)</p>
+					</div>
+					<span class="badge badge-accent px-3 py-1 font-weight-bold text-white">Chuẩn văn hóa bản địa</span>
+				</div>
+
+				<div id="admin-moderation-queue">
+					<p class="text-muted small">Đang tải hàng chờ kiểm duyệt...</p>
+				</div>
+			</div>
+
+			<!-- Recent Bookings and Ambassador Applications -->
+			<div class="row mb-5">
+				<!-- Bookings -->
+				<div class="col-lg-6 mb-4 mb-lg-0">
+					<div class="bg-white p-4 rounded-20 border shadow-sm h-100">
+						<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+							<h3 class="h6 font-weight-bold text-forest-green mb-0">Đặt chỗ gần đây & Phân chia doanh thu</h3>
+							<span class="small text-muted">Tự động đối soát 85/5/2/8</span>
+						</div>
+						<div id="admin-recent-bookings" style="max-height: 380px; overflow-y: auto;">
+							<p class="text-muted small">Đang tải lịch đặt chỗ...</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Ambassador Applications -->
+				<div class="col-lg-6">
+					<div class="bg-white p-4 rounded-20 border shadow-sm h-100">
+						<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+							<h3 class="h6 font-weight-bold text-forest-green mb-0">Đơn đăng ký Đại sứ Sinh viên mới</h3>
+							<span class="small text-muted">Hồ sơ ứng tuyển</span>
+						</div>
+						<div id="admin-applications" style="max-height: 380px; overflow-y: auto;">
+							<p class="text-muted small">Đang tải danh sách đơn...</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Experience Management CRUD Form -->
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-5">
+				<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+					<div>
+						<h2 class="h5 font-weight-bold text-forest-green mb-1">Quản lý Trải nghiệm Di sản</h2>
+						<p class="small text-muted mb-0">Thêm mới, sửa đổi thông tin hoặc quản lý hiển thị các trải nghiệm văn hóa</p>
+					</div>
+					<button type="button" id="reset-form-btn" class="btn btn-outline-primary btn-sm px-3 font-weight-bold">
+						Làm mới form
+					</button>
+				</div>
+
+				<form id="admin-crud-form" class="mb-4">
+					<input type="hidden" id="crud-exp-id" name="id" />
+
+					<div class="row">
+						<div class="col-md-4 mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Danh mục trải nghiệm</label>
+							<select id="crud-category" name="category" class="form-control custom-select" required>
+								<option value="craft">Làng nghề thủ công (craft)</option>
+								<option value="food">Ẩm thực địa phương (food)</option>
+								<option value="culture">Tour văn hóa & Lưu trú (culture)</option>
+								<option value="product">Sản phẩm mang về (product)</option>
+							</select>
+						</div>
+
+						<div class="col-md-5 mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Tiêu đề trải nghiệm</label>
+							<input type="text" id="crud-title" name="title" class="form-control" placeholder="Ví dụ: Gốm truyền thống Bắc Ninh" required />
+						</div>
+
+						<div class="col-md-3 mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Đại sứ phụ trách</label>
+							<input type="text" id="crud-ambassador" name="ambassador" class="form-control" placeholder="Tên đại sứ" required />
+						</div>
+
+						<div class="col-md-3 mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Đánh giá (0 - 5)</label>
+							<input type="number" id="crud-rating" name="rating" step="0.1" min="0" max="5" value="4.9" class="form-control" required />
+						</div>
+
+						<div class="col-md-3 mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Thời lượng</label>
+							<input type="text" id="crud-duration" name="duration" class="form-control" placeholder="1 buổi (4 giờ)" required />
+						</div>
+
+						<div class="col-md-3 mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Địa phương</label>
+							<input type="text" id="crud-location" name="location" class="form-control" placeholder="Bắc Ninh / Hà Giang..." required />
+						</div>
+
+						<div class="col-md-3 mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Giá vé (VNĐ)</label>
+							<input type="number" id="crud-price" name="price" min="0" placeholder="850000" class="form-control" required />
+						</div>
+
+						<div class="col-md-4 mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Huy hiệu</label>
+							<input type="text" id="crud-badge" name="badge" class="form-control" value="Đã kiểm duyệt" required />
+						</div>
+
+						<div class="col-md-8 mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Ảnh đại diện (Đường dẫn hoặc file)</label>
+							<input type="text" id="crud-image" name="imageUrl" class="form-control" value="images/gom-bacninh.jpg" required />
+						</div>
+					</div>
+
+					<div class="d-flex align-items-center">
+						<button type="submit" id="save-exp-btn" class="btn btn-primary px-4 py-2 mr-2 font-weight-bold">
+							Lưu trải nghiệm
+						</button>
+						<button type="button" id="cancel-edit-btn" class="btn btn-outline-secondary px-4 py-2 font-weight-bold d-none">
+							Hủy bỏ chỉnh sửa
+						</button>
+						<div id="crud-message" class="ml-3 small font-weight-bold"></div>
+					</div>
+				</form>
+
+				<!-- Current Experiences Table -->
+				<h3 class="h6 font-weight-bold text-forest-green mb-3">Danh sách trải nghiệm hiện có trên hệ thống</h3>
+				<div id="crud-experience-list" class="admin-experience-list">
+					<p class="text-muted small">Đang tải danh sách trải nghiệm...</p>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="container text-center">
+			<p class="mb-0 text-white-opacity small">
+				HeritageLink &copy; 2026. Trung tâm quản trị nền tảng di sản số.
+			</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		let allExperiences = [];
+
+		async function checkAdminAuth() {
+			try {
+				const res = await fetch('/api/session');
+				const data = await res.json();
+				if (!data.user || data.user.role !== 'admin') {
+					document.getElementById('unauthorized-barrier').classList.remove('d-none');
+					document.getElementById('admin-main-content').classList.add('d-none');
+					return false;
+				}
+				return true;
+			} catch (e) {
+				return false;
+			}
+		}
+
+		async function loadAdminOverview() {
+			try {
+				const [overviewRes, expsRes] = await Promise.all([
+					fetch('/api/admin/overview'),
+					fetch('/api/experiences')
+				]);
+
+				const overview = await overviewRes.json();
+				allExperiences = await expsRes.json();
+
+				// Stats
+				document.getElementById('stat-total-bookings').textContent = overview.stats.totalBookings;
+				document.getElementById('stat-total-revenue').textContent = `${Number(overview.stats.totalRevenue).toLocaleString('vi-VN')}đ`;
+				document.getElementById('stat-pending-apps').textContent = overview.stats.pendingApplications;
+				document.getElementById('stat-total-users').textContent = overview.stats.totalUsers;
+
+				// Recent Bookings
+				const bookingsContainer = document.getElementById('admin-recent-bookings');
+				bookingsContainer.innerHTML = overview.recentBookings.length ? overview.recentBookings.map(b => `
+					<div class="p-3 bg-light rounded-15 mb-2 border">
+						<div class="d-flex justify-content-between align-items-center mb-1">
+							<strong class="text-forest-green small">${b.experienceTitle}</strong>
+							<span class="badge badge-${b.status === 'completed' ? 'success' : 'warning'} small">${b.status}</span>
+						</div>
+						<div class="small text-muted">Khách: <strong>${b.userName || 'Du khách'}</strong> • Ngày: ${b.bookingDate} • ${b.guests} khách</div>
+						<div class="d-flex justify-content-between align-items-center mt-1 pt-1 border-top" style="font-size:11px;">
+							<span>Nghệ nhân (85%): <strong class="text-success">${Math.round(b.totalPrice * 0.85).toLocaleString('vi-VN')}đ</strong></span>
+							<span>Đại sứ (5%): <strong class="text-accent">${Math.round(b.totalPrice * 0.05).toLocaleString('vi-VN')}đ</strong></span>
+							<strong class="text-primary">${Number(b.totalPrice).toLocaleString('vi-VN')}đ</strong>
+						</div>
+					</div>
+				`).join('') : '<p class="text-muted small">Chưa có booking nào.</p>';
+
+				// Applications
+				const appsContainer = document.getElementById('admin-applications');
+				appsContainer.innerHTML = overview.applications.length ? overview.applications.map(a => `
+					<div class="p-3 bg-light rounded-15 mb-2 border">
+						<div class="d-flex justify-content-between align-items-center mb-1">
+							<strong class="text-forest-green small">${a.name}</strong>
+							<span class="badge badge-accent small">${a.status}</span>
+						</div>
+						<div class="small text-muted mb-1">Đơn vị: ${a.school} • Địa bàn: <strong>${a.region}</strong></div>
+						${a.introLink ? `<a href="${a.introLink}" target="_blank" class="small text-accent font-weight-bold">▶ Xem video giới thiệu</a>` : ''}
+						<div class="mt-2 text-right">
+							<button class="btn btn-sm btn-success py-0 px-2 small font-weight-bold" onclick="alert('Đã phê duyệt tài khoản Đại sứ!')">Duyệt</button>
+						</div>
+					</div>
+				`).join('') : '<p class="text-muted small">Không có đơn ứng tuyển nào.</p>';
+
+				renderCrudExperienceList();
+				renderModerationQueue();
+			} catch (err) {
+				console.error(err);
+			}
+		}
+
+		function renderModerationQueue() {
+			const container = document.getElementById('admin-moderation-queue');
+			if (!container) return;
+
+			const pendingList = allExperiences.filter(e => e.badge === 'Chờ duyệt' || e.badge === 'Cần chỉnh sửa');
+
+			if (!pendingList.length) {
+				container.innerHTML = `
+					<div class="p-4 bg-light rounded-15 border text-center">
+						<span class="d-block mb-2 font-weight-bold text-success" style="font-size: 1.4rem;">Đã gửi thành công</span>
+						<strong class="d-block text-forest-green mb-1">Hiện không có hồ sơ nào đang chờ thẩm định</strong>
+						<p class="small text-muted mb-3">Tất cả hồ sơ di sản chính thức đã đạt chuẩn 3 tiêu chí và đang hoạt động công khai.</p>
+						<button type="button" class="btn btn-outline-primary btn-sm font-weight-bold px-3" onclick="createSampleDraft()">
+							+ Tạo 1 hồ sơ mẫu chờ duyệt để thử nghiệm kịch bản Live Demo
+						</button>
+					</div>
+				`;
+				return;
+			}
+
+			container.innerHTML = pendingList.map(exp => `
+				<div class="p-3 bg-warm-ivory rounded-15 border mb-3 shadow-sm">
+					<div class="row align-items-center">
+						<div class="col-md-5 mb-2 mb-md-0">
+							<div class="d-flex align-items-center gap-2 mb-1">
+								<span class="badge badge-warning text-dark font-weight-bold small">${exp.badge}</span>
+								<span class="badge badge-light border text-muted small">Phân khúc: ${exp.segmentName || exp.category}</span>
+							</div>
+							<strong class="d-block text-forest-green font-weight-bold" style="font-size: 1.05rem;">${exp.title}</strong>
+							<span class="small text-muted">${exp.location} • Đại sứ phụ trách: <strong>${exp.ambassador}</strong> • Giá: <strong>${Number(exp.price).toLocaleString('vi-VN')}đ</strong></span>
+						</div>
+						<div class="col-md-4 mb-2 mb-md-0">
+							<div class="d-flex flex-wrap gap-2">
+								<span class="badge badge-light border text-dark p-2">Xác thực: <strong class="text-success">9.5/10</strong></span>
+								<span class="badge badge-light border text-dark p-2">Câu chuyện: <strong class="text-success">9.0/10</strong></span>
+								<span class="badge badge-light border text-dark p-2">Thực hành: <strong class="text-success">10/10</strong></span>
+							</div>
+						</div>
+						<div class="col-md-3 text-md-right">
+							<button class="btn btn-sm btn-success px-3 py-1 font-weight-bold mr-1" onclick="moderateExperience(${exp.id}, 'approve')">
+								Duyệt
+							</button>
+							<button class="btn btn-sm btn-outline-warning text-dark px-2 py-1 font-weight-bold mr-1" onclick="moderateExperience(${exp.id}, 'need_edit')">
+								Sửa
+							</button>
+							<button class="btn btn-sm btn-outline-danger px-2 py-1 font-weight-bold" onclick="moderateExperience(${exp.id}, 'reject')">
+								Từ chối
+							</button>
+						</div>
+					</div>
+				</div>
+			`).join('');
+		}
+
+		window.moderateExperience = async function(id, decision) {
+			try {
+				const res = await fetch(`/api/admin/experiences/${id}/review`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						decision,
+						authenticityScore: 9.5,
+						storytellingScore: 9.0,
+						interactionScore: 10,
+						note: decision === 'approve' ? 'Hồ sơ đạt chuẩn 3 tiêu chí di sản sống' : 'Cần bổ sung video phỏng vấn nghệ nhân'
+					})
+				});
+				const data = await res.json();
+				if (!res.ok) throw new Error(data.message);
+				alert(data.message || 'Cập nhật trạng thái thành công!');
+				loadAdminOverview();
+			} catch (err) {
+				alert(err.message || 'Lỗi kiểm duyệt.');
+			}
+		};
+
+		window.createSampleDraft = async function() {
+			try {
+				const res = await fetch('/api/admin/experiences', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						category: 'craft',
+						title: 'Gốm thủ công mộc nung rơm Phù Lãng (Bản đề xuất Đại sứ)',
+						ambassador: 'Lê Minh Anh',
+						rating: 5.0,
+						duration: '1 buổi (3 giờ)',
+						location: 'Bắc Ninh',
+						price: 850000,
+						badge: 'Chờ duyệt',
+						imageUrl: 'images/gom-bacninh.jpg'
+					})
+				});
+				const data = await res.json();
+				alert('Đã tạo hồ sơ mẫu chờ duyệt! Bạn có thể thực hiện thẩm định 3 tiêu chí ngay.');
+				loadAdminOverview();
+			} catch (e) {
+				alert('Lỗi tạo mẫu.');
+			}
+		};
+
+		function renderCrudExperienceList() {
+			const container = document.getElementById('crud-experience-list');
+			container.innerHTML = allExperiences.map(e => `
+				<div class="p-3 bg-light rounded-15 mb-2 border d-flex justify-content-between align-items-center">
+					<div class="d-flex align-items-center gap-3">
+						<img src="${e.imageClass}" style="width:65px; height:45px; object-fit:cover; border-radius:6px;">
+						<div>
+							<strong class="d-block text-dark small">${e.title}</strong>
+							<span class="small text-muted">${e.location} • Đại sứ: ${e.ambassador} • <strong>${Number(e.price).toLocaleString('vi-VN')}đ</strong></span>
+						</div>
+					</div>
+					<div>
+						<button class="btn btn-sm btn-outline-primary py-1 px-3 mr-1" onclick="onEditExperience(${e.id})">Sửa</button>
+						<button class="btn btn-sm btn-outline-danger py-1 px-3" onclick="onDeleteExperience(${e.id})">Xóa</button>
+					</div>
+				</div>
+			`).join('');
+		}
+
+		window.onEditExperience = function(id) {
+			const exp = allExperiences.find(e => e.id === id);
+			if (!exp) return;
+			document.getElementById('crud-exp-id').value = exp.id;
+			document.getElementById('crud-category').value = exp.category;
+			document.getElementById('crud-title').value = exp.title;
+			document.getElementById('crud-ambassador').value = exp.ambassador;
+			document.getElementById('crud-rating').value = exp.rating;
+			document.getElementById('crud-duration').value = exp.duration;
+			document.getElementById('crud-location').value = exp.location;
+			document.getElementById('crud-price').value = exp.price;
+			document.getElementById('crud-badge').value = exp.badge;
+			document.getElementById('crud-image').value = exp.imageClass;
+
+			document.getElementById('save-exp-btn').textContent = 'Cập nhật thay đổi';
+			document.getElementById('cancel-edit-btn').classList.remove('d-none');
+			window.scrollTo({ top: document.getElementById('admin-crud-form').offsetTop - 100, behavior: 'smooth' });
+		};
+
+		window.onDeleteExperience = async function(id) {
+			if (!confirm('Bạn có chắc chắn muốn xóa trải nghiệm này?')) return;
+			try {
+				const res = await fetch(`/api/admin/experiences/${id}`, { method: 'DELETE' });
+				const data = await res.json();
+				alert(data.message);
+				loadAdminOverview();
+			} catch (err) {
+				alert('Lỗi xóa.');
+			}
+		};
+
+		document.getElementById('admin-crud-form')?.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			const id = document.getElementById('crud-exp-id').value;
+			const payload = {
+				category: document.getElementById('crud-category').value,
+				title: document.getElementById('crud-title').value.trim(),
+				ambassador: document.getElementById('crud-ambassador').value.trim(),
+				rating: Number(document.getElementById('crud-rating').value),
+				duration: document.getElementById('crud-duration').value.trim(),
+				location: document.getElementById('crud-location').value.trim(),
+				price: Number(document.getElementById('crud-price').value),
+				badge: document.getElementById('crud-badge').value.trim(),
+				imageUrl: document.getElementById('crud-image').value.trim()
+			};
+
+			const msg = document.getElementById('crud-message');
+			msg.textContent = 'Đang lưu...';
+
+			try {
+				const method = id ? 'PUT' : 'POST';
+				const url = id ? `/api/admin/experiences/${id}` : '/api/admin/experiences';
+				const res = await fetch(url, {
+					method,
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(payload)
+				});
+				const data = await res.json();
+				if (!res.ok) throw new Error(data.message);
+
+				msg.className = 'ml-3 small font-weight-bold text-success';
+				msg.textContent = `${data.message}`;
+				document.getElementById('admin-crud-form').reset();
+				document.getElementById('crud-exp-id').value = '';
+				document.getElementById('save-exp-btn').textContent = 'Lưu trải nghiệm';
+				document.getElementById('cancel-edit-btn').classList.add('d-none');
+				loadAdminOverview();
+			} catch (err) {
+				msg.className = 'ml-3 small font-weight-bold text-danger';
+				msg.textContent = err.message || 'Lỗi lưu.';
+			}
+		});
+
+		document.getElementById('cancel-edit-btn')?.addEventListener('click', () => {
+			document.getElementById('admin-crud-form').reset();
+			document.getElementById('crud-exp-id').value = '';
+			document.getElementById('save-exp-btn').textContent = 'Lưu trải nghiệm';
+			document.getElementById('cancel-edit-btn').classList.add('d-none');
+		});
+
+		document.getElementById('reset-form-btn')?.addEventListener('click', () => {
+			document.getElementById('admin-crud-form').reset();
+			document.getElementById('crud-exp-id').value = '';
+			document.getElementById('save-exp-btn').textContent = 'Lưu trải nghiệm';
+			document.getElementById('cancel-edit-btn').classList.add('d-none');
+		});
+
+		document.getElementById('admin-logout-btn')?.addEventListener('click', async () => {
+			await fetch('/api/logout', { method: 'POST' });
+			window.location.href = '/login';
+		});
+
+		(async () => {
+			const authed = await checkAdminAuth();
+			if (authed) await loadAdminOverview();
+		})();
+	</script>
+</body>
+</html>

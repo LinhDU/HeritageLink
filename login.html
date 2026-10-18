@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="HeritageLink">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<title>Đăng nhập Hệ thống | HeritageLink</title>
+	<meta name="description" content="Đăng nhập tài khoản HeritageLink để quản lý booking, xem thông tin di sản hoặc truy cập Admin Dashboard." />
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap & Icons -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+	<!-- Core Styles -->
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-warm-ivory">
+
+	<!-- Top Navigation -->
+	<nav class="site-nav scrolled" id="main-site-nav">
+		<div class="container">
+			<div class="site-navigation d-flex align-items-center justify-content-between">
+				<a href="index.html" class="brand-logo">
+					<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-img">
+					<div class="logo-text-block">
+						<span class="logo-main-text">HeritageLink</span>
+						<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN</span>
+					</div>
+				</a>
+
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu">
+					<li><a href="index.html">Trang chủ</a></li>
+					<li><a href="explore.html">Khám phá</a></li>
+					<li><a href="heritage.html">Câu chuyện Di sản</a></li>
+					<li><a href="ambassadors.html">Đại sứ Di sản</a></li>
+					<li><a href="ai-itinerary.html">AI Lộ trình</a></li>
+					<li><a href="passport.html">Hộ chiếu số</a></li>
+				</ul>
+
+				<div class="header-auth-actions d-none d-lg-inline-flex align-items-center">
+					<a href="ambassador-apply.html" class="btn btn-accent btn-sm px-3 py-1 font-weight-bold">Đăng ký Đại sứ</a>
+					<a href="index.html" class="btn btn-outline-primary btn-sm px-3 py-1">Về trang chủ</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Login Container -->
+	<main class="py-5 mt-5">
+		<div class="container mt-4">
+			<div class="row justify-content-center">
+				<div class="col-md-8 col-lg-6">
+					<div class="bg-white p-4 p-md-5 rounded-20 shadow-lg border">
+						<div class="text-center mb-4">
+							<div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3 shadow-sm" style="width: 56px; height: 56px; background-color: var(--color-primary); overflow: hidden;">
+								<img src="images/logo-icon.png" alt="HeritageLink Logo" style="width: 100%; height: 100%; object-fit: cover;">
+							</div>
+							<h1 class="h3 font-weight-bold text-forest-green mb-1">Đăng nhập HeritageLink</h1>
+							<p class="text-muted small">Cổng kết nối đa vai trò: Du khách • Đại sứ • Nghệ nhân • Quản trị</p>
+						</div>
+
+						<form id="standalone-login-form">
+							<!-- 1-Click Role Switcher for instant Demo testing -->
+							<div class="mb-4">
+								<label class="small font-weight-bold text-muted text-uppercase d-block mb-2 letter-spacing-1">
+									Tài khoản kiểm thử thẩm định (Dành cho Ban Giám khảo):
+								</label>
+								<div class="row g-2 mb-2 no-gutters">
+									<div class="col-3 p-1">
+										<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn active" onclick="selectRole('admin', 'admin@heritagelink.vn', 'admin123')" id="btn-role-admin">
+											<span class="d-block font-weight-bold" style="font-size: 11px;">Admin</span>
+											<small style="font-size: 10px;">Quản trị viên</small>
+										</button>
+									</div>
+									<div class="col-3 p-1">
+										<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn" onclick="selectRole('ambassador', 'daisu@heritagelink.vn', 'daisu123')" id="btn-role-ambassador">
+											<span class="d-block font-weight-bold" style="font-size: 11px;">Đại sứ</span>
+											<small style="font-size: 10px;">Sinh viên</small>
+										</button>
+									</div>
+									<div class="col-3 p-1">
+										<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn" onclick="selectRole('host', 'hodan@heritagelink.vn', 'hodan123')" id="btn-role-host">
+											<span class="d-block font-weight-bold" style="font-size: 11px;">Hộ dân</span>
+											<small style="font-size: 10px;">Nghệ nhân (85%)</small>
+										</button>
+									</div>
+									<div class="col-3 p-1">
+										<button type="button" class="btn btn-outline-primary btn-sm btn-block py-2 role-quick-btn" onclick="selectRole('client', 'client@heritagelink.vn', 'client123')" id="btn-role-client">
+											<span class="d-block font-weight-bold" style="font-size: 11px;">Du khách</span>
+											<small style="font-size: 10px;">Khách đặt vé</small>
+										</button>
+									</div>
+								</div>
+
+								<div id="role-description-badge" class="p-3 small rounded-10 text-center bg-soft-stone text-forest-green border">
+									<strong>Super Admin:</strong> Kiểm duyệt hồ sơ 3 tiêu chí, đối soát 4 bên (85/5/2/8) và quản trị toàn hệ thống.
+								</div>
+							</div>
+
+							<div class="form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Địa chỉ Email</label>
+								<input type="email" id="login-email" name="email" class="form-control rounded-10" placeholder="admin@heritagelink.vn" value="admin@heritagelink.vn" required />
+							</div>
+
+							<div class="form-group mb-3">
+								<div class="d-flex justify-content-between align-items-center mb-1">
+									<label class="small font-weight-bold text-dark mb-0">Mật khẩu</label>
+									<span class="small text-muted font-italic">Được tự động điền theo vai trò trên</span>
+								</div>
+								<input type="password" id="login-password" name="password" class="form-control rounded-10" placeholder="••••••••" value="admin123" required />
+							</div>
+
+							<button type="submit" id="login-submit-btn" class="btn btn-primary btn-block font-weight-bold py-3 mb-3 shadow-lg">
+								Đăng nhập hệ thống
+							</button>
+
+							<div id="login-alert" class="alert d-none small font-weight-bold text-center" role="alert"></div>
+
+							<div class="text-center mt-3 pt-3 border-top">
+								<span class="small text-muted">Bạn là sinh viên muốn tham gia mạng lưới? </span>
+								<a href="ambassador-apply.html" class="small font-weight-bold text-accent">Đăng ký làm Đại sứ Di sản →</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="container text-center">
+			<p class="mb-0 text-white-opacity small">
+				HeritageLink &copy; 2026. Nền tảng kết nối trải nghiệm di sản Việt.
+			</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		const roleDescriptions = {
+			admin: {
+				html: '<strong>Super Admin:</strong> Kiểm duyệt hồ sơ 3 tiêu chí, đối soát tài chính 85/5/2/8 và quản trị toàn hệ thống.'
+			},
+			ambassador: {
+				html: '<strong>Đại sứ Di sản:</strong> 4 học phần đào tạo, tạo hồ sơ 4 lớp gửi duyệt, theo dõi hoa hồng 5% và hỗ trợ nghệ nhân.'
+			},
+			host: {
+				html: '<strong>Hộ dân / Nghệ nhân:</strong> Giao diện chữ to, nhận trực tiếp 85% doanh thu, mô phỏng tin nhắn SMS/Zalo và quét QR Check-in.'
+			},
+			client: {
+				html: '<strong>Du khách:</strong> Khám phá trải nghiệm, thanh toán VietQR, nhận vé QR Check-in và sưu tầm tem Hộ chiếu Di sản.'
+			}
+		};
+
+		function selectRole(role, email, password) {
+			document.getElementById('login-email').value = email;
+			document.getElementById('login-password').value = password;
+
+			document.querySelectorAll('.role-quick-btn').forEach(btn => btn.classList.remove('active'));
+			const activeBtn = document.getElementById(`btn-role-${role}`);
+			if (activeBtn) activeBtn.classList.add('active');
+
+			const descEl = document.getElementById('role-description-badge');
+			if (descEl && roleDescriptions[role]) {
+				descEl.innerHTML = roleDescriptions[role].html;
+			}
+		}
+
+		// Login Form Submission Handler
+		document.getElementById('standalone-login-form').addEventListener('submit', async function(e) {
+			e.preventDefault();
+			const email = document.getElementById('login-email').value.trim();
+			const password = document.getElementById('login-password').value;
+			const alertBox = document.getElementById('login-alert');
+			const submitBtn = document.getElementById('login-submit-btn');
+
+			submitBtn.disabled = true;
+			submitBtn.innerHTML = 'Đang xác thực...';
+
+			try {
+				const loginApiUrl = window.location.protocol === 'file:' ? 'http://localhost:3000/api/login' : '/api/login';
+				let data;
+				try {
+					const response = await fetch(loginApiUrl, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ email, password })
+					});
+					data = await response.json();
+					if (!response.ok) {
+						throw new Error(data.message || 'Đăng nhập thất bại.');
+					}
+				} catch (fetchErr) {
+					// Fallback for offline / direct file:// opening
+					const demoUsers = {
+						'admin@heritagelink.vn': { id: 1, role: 'admin', name: 'Ban Quản Trị Super Admin', email: 'admin@heritagelink.vn' },
+						'daisu@heritagelink.vn': { id: 2, role: 'ambassador', name: 'Lê Minh Anh (Đại sứ Sinh viên)', email: 'daisu@heritagelink.vn' },
+						'hodan@heritagelink.vn': { id: 3, role: 'host', name: 'Bác Phạm Văn Nam (Nghệ nhân Gốm)', email: 'hodan@heritagelink.vn' },
+						'client@heritagelink.vn': { id: 4, role: 'client', name: 'Nguyễn Văn Du Khách', email: 'client@heritagelink.vn' }
+					};
+					if (demoUsers[email]) {
+						data = { user: demoUsers[email] };
+					} else {
+						throw new Error(fetchErr.message || 'Lỗi kết nối máy chủ.');
+					}
+				}
+
+				localStorage.setItem('hl_user', JSON.stringify(data.user));
+
+				alertBox.className = 'alert alert-success small font-weight-bold text-center';
+				alertBox.textContent = `Đăng nhập thành công với vai trò: ${data.user.role.toUpperCase()}! Đang chuyển hướng...`;
+				alertBox.classList.remove('d-none');
+
+				setTimeout(() => {
+					if (data.user.role === 'admin') {
+						window.location.href = 'admin.html';
+					} else if (data.user.role === 'ambassador') {
+						window.location.href = 'ambassador.html';
+					} else if (data.user.role === 'host') {
+						window.location.href = 'host.html';
+					} else {
+						window.location.href = 'bookings.html';
+					}
+				}, 600);
+			} catch (err) {
+				alertBox.className = 'alert alert-danger small font-weight-bold text-center';
+				alertBox.textContent = err.message || 'Lỗi kết nối máy chủ.';
+				alertBox.classList.remove('d-none');
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = 'Đăng nhập hệ thống';
+			}
+		});
+	</script>
+</body>
+</html>
