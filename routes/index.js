@@ -3,7 +3,15 @@ const { db, memoryStore, calculateRevenueSplit } = require('../db');
 const { login, register, logout, getCurrentUser } = require('../controllers/authController');
 const { getExperiences, getExperienceById, getImpact, createApplication } = require('../controllers/experienceController');
 const { createBooking, getBookings } = require('../controllers/bookingController');
-const { getAdminOverview, createExperience, updateExperience, deleteExperience } = require('../controllers/adminController');
+const {
+  getAdminOverview,
+  createExperience,
+  updateExperience,
+  deleteExperience,
+  approveAmbassadorApplication,
+  rejectAmbassadorApplication,
+  createAmbassadorDirectly
+} = require('../controllers/adminController');
 
 const router = express.Router();
 
@@ -49,6 +57,9 @@ router.get('/api/admin/overview', getAdminOverview);
 router.post('/api/admin/experiences', createExperience);
 router.put('/api/admin/experiences/:id', updateExperience);
 router.delete('/api/admin/experiences/:id', deleteExperience);
+router.post('/api/admin/ambassadors/:id/approve', approveAmbassadorApplication);
+router.post('/api/admin/ambassadors/:id/reject', rejectAmbassadorApplication);
+router.post('/api/admin/ambassadors/create', createAmbassadorDirectly);
 
 // Booking Lookup API (Referencing LocalLife.asia "Tra cứu đặt chỗ")
 router.get('/api/bookings/lookup', (req, res) => {

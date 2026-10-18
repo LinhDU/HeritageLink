@@ -147,11 +147,16 @@
 				<!-- Ambassador Applications -->
 				<div class="col-lg-6">
 					<div class="bg-white p-4 rounded-20 border shadow-sm h-100">
-						<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-							<h3 class="h6 font-weight-bold text-forest-green mb-0">Đơn đăng ký Đại sứ Sinh viên mới</h3>
-							<span class="small text-muted">Hồ sơ ứng tuyển</span>
+						<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom flex-wrap gap-2">
+							<div>
+								<h3 class="h6 font-weight-bold text-forest-green mb-0">Đơn ứng tuyển Đại sứ & Cấp tài khoản</h3>
+								<span class="small text-muted">Duyệt 3 tiêu chí • Cấp tài khoản qua Email</span>
+							</div>
+							<button type="button" class="btn btn-outline-primary btn-sm font-weight-bold px-3 shadow-sm" data-toggle="modal" data-target="#modalDirectAmbassador">
+								+ Thêm Đại sứ trực tiếp
+							</button>
 						</div>
-						<div id="admin-applications" style="max-height: 380px; overflow-y: auto;">
+						<div id="admin-applications" style="max-height: 420px; overflow-y: auto;">
 							<p class="text-muted small">Đang tải danh sách đơn...</p>
 						</div>
 					</div>
@@ -245,6 +250,200 @@
 		</div>
 	</main>
 
+	<!-- MODAL 1: Direct Ambassador Creation -->
+	<div class="modal fade" id="modalDirectAmbassador" tabindex="-1" role="dialog" aria-labelledby="modalDirectAmbassadorLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content rounded-20 border shadow-lg">
+				<div class="modal-header bg-forest-green text-white rounded-top-20">
+					<h5 class="modal-title font-weight-bold" id="modalDirectAmbassadorLabel">
+						🎓 Khởi tạo Tài khoản Đại sứ Di sản mới
+					</h5>
+					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form id="form-direct-ambassador">
+					<div class="modal-body p-4">
+						<p class="small text-muted mb-3">
+							Thêm nhanh tài khoản Đại sứ sinh viên được Ban Quản Trị thẩm định và chỉ định phụ trách địa bàn di sản mà không cần chờ nộp đơn ứng tuyển.
+						</p>
+
+						<div class="form-group mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Họ và tên Đại sứ <span class="text-danger">*</span></label>
+							<input type="text" id="direct-amb-name" class="form-control rounded-10" placeholder="Ví dụ: Hoàng Thị Mai" required>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Địa chỉ Email <span class="text-danger">*</span></label>
+								<input type="email" id="direct-amb-email" class="form-control rounded-10" placeholder="mai.hoang@gmail.com" required>
+							</div>
+							<div class="col-md-6 form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Số điện thoại</label>
+								<input type="tel" id="direct-amb-phone" class="form-control rounded-10" placeholder="0988 123 456">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Trường ĐH / Đơn vị</label>
+								<input type="text" id="direct-amb-school" class="form-control rounded-10" placeholder="ĐH KHXH & Nhân văn" value="ĐH Văn Hóa Hà Nội">
+							</div>
+							<div class="col-md-6 form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Địa bàn di sản phụ trách <span class="text-danger">*</span></label>
+								<input type="text" id="direct-amb-region" class="form-control rounded-10" placeholder="Bắc Ninh / Hưng Yên" value="Bắc Ninh & Hà Giang" required>
+							</div>
+						</div>
+
+						<div class="form-group mb-3">
+							<div class="d-flex justify-content-between align-items-center mb-1">
+								<label class="small font-weight-bold text-dark mb-0">Mật khẩu khởi tạo</label>
+								<span class="small text-muted font-italic">Mặc định: daisu123</span>
+							</div>
+							<input type="text" id="direct-amb-password" class="form-control rounded-10" value="daisu123" required>
+						</div>
+
+						<div id="direct-amb-msg" class="alert d-none small font-weight-bold text-center mb-0"></div>
+					</div>
+					<div class="modal-footer bg-light rounded-bottom-20">
+						<button type="button" class="btn btn-outline-secondary px-3 font-weight-bold" data-dismiss="modal">Hủy bỏ</button>
+						<button type="submit" class="btn btn-primary px-4 font-weight-bold" id="btn-submit-direct-amb">
+							✓ Khởi tạo & Xuất Email cấp tài khoản
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL 2: Simulated Email Credentials Preview -->
+	<div class="modal fade" id="modalAmbassadorEmailPreview" tabindex="-1" role="dialog" aria-labelledby="modalAmbassadorEmailPreviewLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+			<div class="modal-content rounded-20 border shadow-lg">
+				<div class="modal-header bg-forest-green text-white rounded-top-20">
+					<div class="d-flex align-items-center">
+						<span class="mr-2" style="font-size: 1.3rem;">✉</span>
+						<h5 class="modal-title font-weight-bold mb-0" id="modalAmbassadorEmailPreviewLabel">
+							Thư Điện Tử Thông Báo Cấp Tài Khoản Đại Sứ Di Sản
+						</h5>
+					</div>
+					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body p-4 bg-light">
+					<!-- Email Header Meta Block -->
+					<div class="bg-white p-3 rounded-15 border mb-3 shadow-sm">
+						<div class="row small mb-1">
+							<div class="col-sm-2 text-muted font-weight-bold">Người gửi:</div>
+							<div class="col-sm-10 text-dark">HeritageLink Ban Quản Trị &lt;admin@heritagelink.vn&gt;</div>
+						</div>
+						<div class="row small mb-1">
+							<div class="col-sm-2 text-muted font-weight-bold">Người nhận:</div>
+							<div class="col-sm-10 font-weight-bold text-forest-green" id="email-preview-to">...</div>
+						</div>
+						<div class="row small mb-1">
+							<div class="col-sm-2 text-muted font-weight-bold">Tiêu đề:</div>
+							<div class="col-sm-10 font-weight-bold text-dark" id="email-preview-subject">
+								[HeritageLink] Chúc mừng bạn đã được phê duyệt làm Đại sứ Di sản!
+							</div>
+						</div>
+						<div class="row small">
+							<div class="col-sm-2 text-muted font-weight-bold">Thời gian:</div>
+							<div class="col-sm-10 text-muted" id="email-preview-time">Vừa gửi xong</div>
+						</div>
+					</div>
+
+					<!-- Email Body Styled Content -->
+					<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm" id="email-preview-content-box">
+						<div class="text-center pb-4 mb-4 border-bottom">
+							<img src="images/logo-icon.png" alt="HeritageLink Logo" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 6px;">
+							<h4 class="font-weight-bold text-forest-green mb-0" style="letter-spacing: 0.5px;">HeritageLink</h4>
+							<small class="text-accent text-uppercase font-weight-bold" style="letter-spacing: 1px;">Lưu giữ hồn cốt di sản Việt</small>
+						</div>
+
+						<h5 class="font-weight-bold text-forest-green mb-2">
+							Xin chào <span id="email-preview-name" class="text-accent">Bạn</span>,
+						</h5>
+						<p class="text-dark small leading-relaxed mb-3">
+							Ban Quản Trị HeritageLink trân trọng chúc mừng bạn đã chính thức vượt qua quy trình thẩm định 3 tiêu chí di sản và được công nhận là <strong>Đại sứ Di sản Sinh viên</strong> chính thức thuộc Mạng lưới Văn hóa HeritageLink.
+						</p>
+
+						<!-- Official Credentials Card -->
+						<div class="p-3 p-md-4 rounded-15 border mb-4" style="background-color: #fbf9f4; border-color: #e5dcc7 !important;">
+							<div class="d-flex align-items-center mb-3 pb-2 border-bottom">
+								<span class="badge badge-accent px-3 py-1 text-white font-weight-bold mr-2">THÔNG TIN TÀI KHOẢN HỆ THỐNG</span>
+								<span class="small text-muted font-italic">Được cấp bởi Ban Quản Trị</span>
+							</div>
+
+							<div class="row small g-2 mb-2">
+								<div class="col-sm-4 text-muted">Tên đăng nhập (Email):</div>
+								<div class="col-sm-8 font-weight-bold text-forest-green" id="email-preview-username">...</div>
+							</div>
+							<div class="row small g-2 mb-2">
+								<div class="col-sm-4 text-muted">Mật khẩu khởi tạo:</div>
+								<div class="col-sm-8 font-weight-bold text-danger font-monospace" id="email-preview-password" style="font-size: 1.05rem;">daisu123</div>
+							</div>
+							<div class="row small g-2 mb-2">
+								<div class="col-sm-4 text-muted">Vai trò hệ thống:</div>
+								<div class="col-sm-8 font-weight-bold text-dark">Đại sứ Di sản (Ambassador)</div>
+							</div>
+							<div class="row small g-2 mb-2">
+								<div class="col-sm-4 text-muted">Đơn vị / Trường học:</div>
+								<div class="col-sm-8 text-dark" id="email-preview-school">...</div>
+							</div>
+							<div class="row small g-2 mb-3">
+								<div class="col-sm-4 text-muted">Địa bàn di sản phụ trách:</div>
+								<div class="col-sm-8 font-weight-bold text-forest-green" id="email-preview-region">...</div>
+							</div>
+
+							<div class="p-2 bg-white rounded-10 border small text-muted">
+								💡 <strong>Chính sách đối soát:</strong> Bạn được tự động ghi nhận <strong>5% hoa hồng</strong> trên tổng GMV mỗi lượt booking hoàn thành tại các điểm di sản bạn phụ trách hoặc kết nối.
+							</div>
+						</div>
+
+						<h6 class="font-weight-bold text-forest-green mb-2 small text-uppercase letter-spacing-1">
+							Các bước bắt đầu ngay:
+						</h6>
+						<ol class="small text-dark pl-3 mb-4 leading-relaxed">
+							<li class="mb-1">
+								<strong>Đăng nhập vào hệ thống:</strong> Truy cập <a href="login.html" target="_blank" class="font-weight-bold text-accent">Cổng Đăng nhập</a> bằng Email và mật khẩu trên, sau đó tiến hành đổi mật khẩu mới.
+							</li>
+							<li class="mb-1">
+								<strong>Hoàn thành 4 Học phần Đào tạo:</strong> Truy cập <a href="ambassador-handbook.html" target="_blank" class="font-weight-bold text-accent">Cẩm nang Đại sứ Di sản</a> để học kỹ năng phỏng vấn văn hóa, quay dựng video smartphone, nghệ thuật Storytelling và quy tắc đạo đức.
+							</li>
+							<li class="mb-1">
+								<strong>Làm bài kiểm tra & Nhận Chứng chỉ số:</strong> Hoàn thành bài trắc nghiệm 8 câu hỏi để nhận Chứng chỉ số vinh danh Đại sứ chính thức.
+							</li>
+							<li class="mb-1">
+								<strong>Đề xuất & Đồng hành số hóa:</strong> Sử dụng <a href="ambassador.html" target="_blank" class="font-weight-bold text-accent">Cổng làm việc Đại sứ</a> để tạo hồ sơ trải nghiệm 4 lớp gửi Super Admin duyệt, theo dõi hoa hồng và hỗ trợ các hộ dân nghệ nhân.
+							</li>
+						</ol>
+
+						<div class="pt-3 border-top text-right text-muted small">
+							<div>Trân trọng,</div>
+							<strong class="text-forest-green d-block">Ban Quản Trị Hệ Thống HeritageLink</strong>
+							<span style="font-size: 11px;">Hotline hỗ trợ: 1900 6868 • Email: support@heritagelink.vn</span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer bg-light rounded-bottom-20 d-flex justify-content-between">
+					<span class="small text-success font-weight-bold" id="copy-status-msg">
+						✓ Tài khoản đã sẵn sàng kích hoạt
+					</span>
+					<div>
+						<button type="button" class="btn btn-outline-primary px-3 font-weight-bold mr-2" id="btn-copy-credentials" onclick="copyEmailCredentials()">
+							📋 Sao chép thông tin tài khoản
+						</button>
+						<button type="button" class="btn btn-primary px-4 font-weight-bold" data-dismiss="modal">
+							Đóng
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Footer -->
 	<footer class="site-footer">
 		<div class="container text-center">
@@ -284,6 +483,7 @@
 
 				const overview = await overviewRes.json();
 				allExperiences = await expsRes.json();
+				lastLoadedApplications = overview.applications || [];
 
 				// Stats
 				document.getElementById('stat-total-bookings').textContent = overview.stats.totalBookings;
@@ -310,19 +510,51 @@
 
 				// Applications
 				const appsContainer = document.getElementById('admin-applications');
-				appsContainer.innerHTML = overview.applications.length ? overview.applications.map(a => `
-					<div class="p-3 bg-light rounded-15 mb-2 border">
-						<div class="d-flex justify-content-between align-items-center mb-1">
-							<strong class="text-forest-green small">${a.name}</strong>
-							<span class="badge badge-accent small">${a.status}</span>
+				appsContainer.innerHTML = overview.applications.length ? overview.applications.map(a => {
+					const isApproved = a.status === 'approved';
+					const isRejected = a.status === 'rejected';
+					const statusBadge = isApproved 
+						? '<span class="badge badge-success small py-1 px-2">✓ Đã cấp tài khoản</span>'
+						: isRejected 
+							? '<span class="badge badge-secondary small py-1 px-2">Từ chối</span>'
+							: '<span class="badge badge-warning text-dark small py-1 px-2">Chờ duyệt</span>';
+
+					return `
+						<div class="p-3 bg-light rounded-15 mb-2 border shadow-xs" id="app-card-${a.id}">
+							<div class="d-flex justify-content-between align-items-center mb-1">
+								<div>
+									<strong class="text-forest-green small" style="font-size: 0.95rem;">${a.name}</strong>
+									${a.email ? `<small class="text-muted d-block" style="font-size: 11px;">📧 ${a.email} ${a.phone ? `• 📞 ${a.phone}` : ''}</small>` : ''}
+								</div>
+								<div>${statusBadge}</div>
+							</div>
+							<div class="small text-muted mb-1 mt-1">
+								Trường: <strong>${a.school || 'Đại học'}</strong> • Địa bàn: <strong class="text-forest-green">${a.region}</strong>
+							</div>
+							${a.introLink ? `<div class="mb-2"><a href="${a.introLink}" target="_blank" class="small text-accent font-weight-bold">▶ Xem portfolio / video giới thiệu</a></div>` : ''}
+							
+							<div class="mt-2 pt-2 border-top d-flex justify-content-between align-items-center flex-wrap gap-2">
+								<span class="small text-muted font-italic" style="font-size: 10px;">ID: #${a.id}</span>
+								<div>
+									${!isApproved ? `
+										<button class="btn btn-sm btn-success py-1 px-3 small font-weight-bold mr-1 shadow-sm" onclick="approveAmbassador(${a.id})">
+											✓ Duyệt & Cấp TK
+										</button>
+										${!isRejected ? `
+											<button class="btn btn-sm btn-outline-danger py-1 px-2 small font-weight-bold" onclick="rejectAmbassador(${a.id})">
+												✗ Từ chối
+											</button>
+										` : ''}
+									` : `
+										<button class="btn btn-sm btn-outline-info py-1 px-3 small font-weight-bold shadow-sm" onclick="showEmailPreviewFromApp(${a.id})">
+											✉ Xem thư cấp tài khoản
+										</button>
+									`}
+								</div>
+							</div>
 						</div>
-						<div class="small text-muted mb-1">Đơn vị: ${a.school} • Địa bàn: <strong>${a.region}</strong></div>
-						${a.introLink ? `<a href="${a.introLink}" target="_blank" class="small text-accent font-weight-bold">▶ Xem video giới thiệu</a>` : ''}
-						<div class="mt-2 text-right">
-							<button class="btn btn-sm btn-success py-0 px-2 small font-weight-bold" onclick="alert('Đã phê duyệt tài khoản Đại sứ!')">Duyệt</button>
-						</div>
-					</div>
-				`).join('') : '<p class="text-muted small">Không có đơn ứng tuyển nào.</p>';
+					`;
+				}).join('') : '<p class="text-muted small">Không có đơn ứng tuyển nào.</p>';
 
 				renderCrudExperienceList();
 				renderModerationQueue();
@@ -541,6 +773,152 @@
 		document.getElementById('admin-logout-btn')?.addEventListener('click', async () => {
 			await fetch('/api/logout', { method: 'POST' });
 			window.location.href = '/login';
+		});
+
+		let lastLoadedApplications = [];
+
+		window.approveAmbassador = async function(id) {
+			if (!confirm('Xác nhận phê duyệt đơn và cấp tài khoản Đại sứ Di sản? Hệ thống sẽ tạo tài khoản và gửi email thông tin đăng nhập.')) return;
+			try {
+				const res = await fetch(`/api/admin/ambassadors/${id}/approve`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' }
+				});
+				const data = await res.json();
+				if (!res.ok) throw new Error(data.message || 'Lỗi phê duyệt đơn.');
+
+				await loadAdminOverview();
+
+				if (data.emailPreview) {
+					openEmailModalWithData(data.emailPreview);
+				} else {
+					alert(data.message);
+				}
+			} catch (err) {
+				alert(err.message || 'Lỗi kết nối máy chủ.');
+			}
+		};
+
+		window.rejectAmbassador = async function(id) {
+			if (!confirm('Bạn có chắc chắn muốn từ chối đơn ứng tuyển này?')) return;
+			try {
+				const res = await fetch(`/api/admin/ambassadors/${id}/reject`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' }
+				});
+				const data = await res.json();
+				if (!res.ok) throw new Error(data.message || 'Lỗi từ chối đơn.');
+
+				alert(data.message);
+				await loadAdminOverview();
+			} catch (err) {
+				alert(err.message || 'Lỗi kết nối máy chủ.');
+			}
+		};
+
+		window.showEmailPreviewFromApp = function(id) {
+			const app = lastLoadedApplications.find(a => a.id === id);
+			if (!app) return;
+			const cleanEmail = (app.email || `ambassador${id}@heritagelink.vn`).toLowerCase().trim();
+			openEmailModalWithData({
+				to: cleanEmail,
+				subject: '[HeritageLink] Chúc mừng bạn đã được phê duyệt làm Đại sứ Di sản!',
+				applicantName: app.name,
+				school: app.school,
+				region: app.region,
+				username: cleanEmail,
+				initialPassword: 'daisu123',
+				portalUrl: '/ambassador.html',
+				loginUrl: '/login.html',
+				handbookUrl: '/ambassador-handbook.html',
+				sentAt: app.createdAt ? new Date(app.createdAt).toLocaleString('vi-VN') : new Date().toLocaleString('vi-VN')
+			});
+		};
+
+		function openEmailModalWithData(preview) {
+			document.getElementById('email-preview-to').textContent = preview.to;
+			document.getElementById('email-preview-name').textContent = preview.applicantName;
+			document.getElementById('email-preview-username').textContent = preview.username;
+			document.getElementById('email-preview-password').textContent = preview.initialPassword || 'daisu123';
+			document.getElementById('email-preview-school').textContent = preview.school || 'Đại học';
+			document.getElementById('email-preview-region').textContent = preview.region || 'Bắc Ninh & Hà Giang';
+			document.getElementById('email-preview-time').textContent = preview.sentAt || new Date().toLocaleString('vi-VN');
+			document.getElementById('copy-status-msg').textContent = '✓ Tài khoản đã sẵn sàng kích hoạt';
+
+			$('#modalAmbassadorEmailPreview').modal('show');
+		}
+
+		window.copyEmailCredentials = function() {
+			const username = document.getElementById('email-preview-username').textContent;
+			const password = document.getElementById('email-preview-password').textContent;
+			const name = document.getElementById('email-preview-name').textContent;
+			const region = document.getElementById('email-preview-region').textContent;
+
+			const text = `[HERITAGELINK - TÀI KHOẢN ĐẠI SỨ DI SẢN]\n` +
+				`Kính gửi: ${name}\n` +
+				`Vai trò: Đại sứ Di sản Sinh viên (Phụ trách: ${region})\n` +
+				`Cổng đăng nhập: ${window.location.origin}/login.html\n` +
+				`Tài khoản (Email): ${username}\n` +
+				`Mật khẩu khởi tạo: ${password}\n` +
+				`Cẩm nang đào tạo 4 học phần: ${window.location.origin}/ambassador-handbook.html\n` +
+				`Cổng làm việc Đại sứ: ${window.location.origin}/ambassador.html\n` +
+				`Chính sách hoa hồng: 5% GMV mỗi booking hoàn thành.`;
+
+			navigator.clipboard.writeText(text).then(() => {
+				const statusMsg = document.getElementById('copy-status-msg');
+				statusMsg.textContent = '🎉 Đã sao chép toàn bộ thông tin tài khoản vào Clipboard!';
+				setTimeout(() => {
+					statusMsg.textContent = '✓ Tài khoản đã sẵn sàng kích hoạt';
+				}, 3500);
+			}).catch(() => {
+				alert('Đã sao chép tài khoản: ' + username + ' / Mật khẩu: ' + password);
+			});
+		};
+
+		// Direct Ambassador form submission handler
+		document.getElementById('form-direct-ambassador')?.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			const name = document.getElementById('direct-amb-name').value.trim();
+			const email = document.getElementById('direct-amb-email').value.trim();
+			const phone = document.getElementById('direct-amb-phone').value.trim();
+			const school = document.getElementById('direct-amb-school').value.trim();
+			const region = document.getElementById('direct-amb-region').value.trim();
+			const password = document.getElementById('direct-amb-password').value.trim();
+			const msg = document.getElementById('direct-amb-msg');
+			const submitBtn = document.getElementById('btn-submit-direct-amb');
+
+			submitBtn.disabled = true;
+			submitBtn.innerHTML = 'Đang khởi tạo...';
+			msg.classList.add('d-none');
+
+			try {
+				const res = await fetch('/api/admin/ambassadors/create', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ name, email, phone, school, region, password })
+				});
+				const data = await res.json();
+				if (!res.ok) throw new Error(data.message || 'Lỗi khởi tạo Đại sứ.');
+
+				$('#modalDirectAmbassador').modal('hide');
+				document.getElementById('form-direct-ambassador').reset();
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = '✓ Khởi tạo & Xuất Email cấp tài khoản';
+
+				await loadAdminOverview();
+
+				if (data.emailPreview) {
+					openEmailModalWithData(data.emailPreview);
+				} else {
+					alert(data.message);
+				}
+			} catch (err) {
+				msg.className = 'alert alert-danger small font-weight-bold text-center mb-0';
+				msg.textContent = err.message || 'Lỗi kết nối máy chủ.';
+				msg.classList.remove('d-none');
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = '✓ Khởi tạo & Xuất Email cấp tài khoản';
+			}
 		});
 
 		(async () => {

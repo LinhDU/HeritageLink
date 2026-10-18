@@ -71,19 +71,22 @@ async function getImpact(req, res) {
 }
 
 async function createApplication(req, res) {
-  const { name, school, region, introLink } = req.body || {};
+  const { name, email, phone, school, region, introLink } = req.body || {};
 
   if (!name || !school || !region) {
     return res.status(400).json({ message: 'Thiếu thông tin bắt buộc.' });
   }
 
+  const cleanEmail = email ? email.toLowerCase().trim() : '';
+  const cleanPhone = phone ? phone.trim() : '';
+
   const result = await db.queryOne(
     `
-      INSERT INTO ambassador_applications (name, school, region, introLink, status)
-      VALUES ($1, $2, $3, $4, 'pending')
+      INSERT INTO ambassador_applications (name, email, phone, school, region, introLink, status)
+      VALUES ($1, $2, $3, $4, $5, $6, 'pending')
       RETURNING *
     `,
-    [name, school, region, introLink || '']
+    [name, cleanEmail, cleanPhone, school, region, introLink || '']
   );
 
   return res.status(201).json({

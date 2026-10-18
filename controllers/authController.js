@@ -52,10 +52,16 @@ async function register(req, res) {
     return res.status(400).json({ message: 'Email này đã tồn tại trong hệ thống. Vui lòng đăng nhập hoặc dùng email khác.' });
   }
 
+  if (role === 'ambassador') {
+    return res.status(400).json({
+      message: 'Vai trò Đại sứ Di sản yêu cầu nộp hồ sơ xét duyệt văn hóa hoặc được Admin cấp tài khoản. Vui lòng nộp hồ sơ tại trang Đăng ký Đại sứ.'
+    });
+  }
+
   const hash = bcrypt.hashSync(password, 10);
   const cleanPhone = phone ? phone.trim() : '';
   const cleanName = name.trim();
-  const validRole = ['client', 'ambassador', 'host'].includes(role) ? role : 'client';
+  const validRole = ['client', 'host'].includes(role) ? role : 'client';
 
   const rows = await db.query(
     'INSERT INTO users (email, name, phone, passwordhash, passwordHash, role) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',

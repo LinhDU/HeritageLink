@@ -1,8 +1,10 @@
-const { db } = require('../db');
+const bcrypt = require('bcryptjs');
+const { db, memoryStore } = require('../db');
 
 function ensureAdmin(req, res) {
   if (!req.session.user || req.session.user.role !== 'admin') {
-    return res.status(403).json({ message: 'Bạn không có quyền truy cập admin dashboard.' });
+    res.status(403).json({ message: 'Bạn không có quyền truy cập admin dashboard.' });
+    return false;
   }
 
   return true;
@@ -131,4 +133,204 @@ async function deleteExperience(req, res) {
   return res.json({ message: 'Xóa trải nghiệm thành công.', deletedId: id });
 }
 
-module.exports = { getAdminOverview, createExperience, updateExperience, deleteExperience };
+async function approveAmbassadorApplication(req, res) {
+  if (!ensureAdmin(req, res)) return;
+
+  const id = Number(req.params.id);
+  let app = await db.queryOne('SELECT * FROM ambassador_applications WHERE id = $1', [id]);
+  if (!app) {
+    app = memoryStore.ambassador_applications.find((a) => a.id === id);
+  }
+
+  if (!app) {
+    return res.status(404).json({ message: 'Không tìm thấy đơn đăng ký.' });
+  }
+
+  app.status = 'approved';
+  const memApp = memoryStore.ambassador_applications.find((a) => a.id === id);
+  if (memApp) memApp.status = 'approved';
+
+  const cleanEmail = (app.email || `ambassador${id}@heritagelink.vn`).toLowerCase().trim();
+  let user = memoryStore.users.find((u) => u.email.toLowerCase() === cleanEmail);
+
+  const initialPassword = 'daisu123';
+  const hash = bcrypt.hashSync(initialPassword, 10);
+
+  if (user) {
+    user.role = 'ambassador';
+    user.school = app.school || user.school;
+    user.region = app.region || user.region;
+  } else {
+    user = {
+      id: memoryStore.users.length + 1,
+      email: cleanEmail,
+      name: app.name,
+      phone: app.phone || '',
+      school: app.school,
+      region: app.region,
+      role: 'ambassador',
+      passwordhash: hash,
+      passwordHash: hash,
+      createdAt: new Date().toISOString()
+    };
+    memoryStore.users.push(user);
+  }
+
+  try {
+    await db.query(`UPDATE ambassador_applications SET status = 'approved' WHERE id = $1`, [id]);
+    await db.query(
+      `INSERT INTO users (email, name, phone, passwordhash, passwordHash, role)
+       VALUES ($1, $2, $3, $4, $5, 'ambassador')
+       ON CONFLICT (email) DO UPDATE SET role = 'ambassador', name = EXCLUDED.name`,
+      [cleanEmail, app.name, app.phone || '', hash, hash]
+    );
+  } catch (e) {}
+
+  const emailPreview = {
+    to: cleanEmail,
+    subject: '[HeritageLink] Chúc mừng bạn đã được phê duyệt làm Đại sứ Di sản!',
+    applicantName: app.name,
+    school: app.school,
+    region: app.region,
+    username: cleanEmail,
+    initialPassword: initialPassword,
+    portalUrl: '/ambassador.html',
+    loginUrl: '/login.html',
+    handbookUrl: '/ambassador-handbook.html',
+    sentAt: new Date().toLocaleString('vi-VN')
+  };
+
+  return res.json({
+    message: `Đã duyệt đơn và cấp tài khoản Đại sứ cho ${app.name}!`,
+    application: app,
+    user: { id: user.id, email: user.email, name: user.name, role: user.role },
+    emailPreview
+  });
+}
+
+async function rejectAmbassadorApplication(req, res) {
+  if (!ensureAdmin(req, res)) return;
+
+  const id = Number(req.params.id);
+  let app = await db.queryOne('SELECT * FROM ambassador_applications WHERE id = $1', [id]);
+  if (!app) {
+    app = memoryStore.ambassador_applications.find((a) => a.id === id);
+  }
+
+  if (!app) {
+    return res.status(404).json({ message: 'Không tìm thấy đơn đăng ký.' });
+  }
+
+  app.status = 'rejected';
+  const memApp = memoryStore.ambassador_applications.find((a) => a.id === id);
+  if (memApp) memApp.status = 'rejected';
+
+  try {
+    await db.query(`UPDATE ambassador_applications SET status = 'rejected' WHERE id = $1`, [id]);
+  } catch (e) {}
+
+  return res.json({ message: 'Đã cập nhật từ chối đơn ứng tuyển.', application: app });
+}
+
+async function createAmbassadorDirectly(req, res) {
+  if (!ensureAdmin(req, res)) return;
+
+  const { name, email, phone, school, region, password } = req.body || {};
+
+  if (!name || !email) {
+    return res.status(400).json({ message: 'Họ tên và Email là bắt buộc.' });
+  }
+
+  const cleanEmail = email.toLowerCase().trim();
+  const existingUser = memoryStore.users.find((u) => u.email.toLowerCase() === cleanEmail);
+
+  if (existingUser && existingUser.role === 'ambassador') {
+    return res.status(400).json({ message: 'Email này đã là tài khoản Đại sứ trong hệ thống.' });
+  }
+
+  const initialPassword = password || 'daisu123';
+  const hash = bcrypt.hashSync(initialPassword, 10);
+
+  let user;
+  if (existingUser) {
+    existingUser.role = 'ambassador';
+    existingUser.name = name.trim();
+    existingUser.phone = phone ? phone.trim() : existingUser.phone;
+    existingUser.school = school ? school.trim() : existingUser.school;
+    existingUser.region = region ? region.trim() : existingUser.region;
+    user = existingUser;
+  } else {
+    user = {
+      id: memoryStore.users.length + 1,
+      email: cleanEmail,
+      name: name.trim(),
+      phone: phone ? phone.trim() : '',
+      school: school ? school.trim() : 'Đại học',
+      region: region ? region.trim() : 'Bắc Ninh & Hà Giang',
+      role: 'ambassador',
+      passwordhash: hash,
+      passwordHash: hash,
+      createdAt: new Date().toISOString()
+    };
+    memoryStore.users.push(user);
+  }
+
+  const newApp = {
+    id: memoryStore.nextAppId++,
+    name: user.name,
+    email: cleanEmail,
+    phone: user.phone,
+    school: user.school,
+    region: user.region,
+    introLink: '',
+    ethicsAgreed: true,
+    status: 'approved',
+    createdAt: new Date().toISOString()
+  };
+  memoryStore.ambassador_applications.push(newApp);
+
+  try {
+    await db.query(
+      `INSERT INTO users (email, name, phone, passwordhash, passwordHash, role)
+       VALUES ($1, $2, $3, $4, $5, 'ambassador')
+       ON CONFLICT (email) DO UPDATE SET role = 'ambassador', name = EXCLUDED.name`,
+      [cleanEmail, user.name, user.phone, hash, hash]
+    );
+    await db.query(
+      `INSERT INTO ambassador_applications (name, email, phone, school, region, status)
+       VALUES ($1, $2, $3, $4, $5, 'approved')`,
+      [user.name, cleanEmail, user.phone, user.school, user.region]
+    );
+  } catch (e) {}
+
+  const emailPreview = {
+    to: cleanEmail,
+    subject: '[HeritageLink] Thông tin cấp tài khoản Đại sứ Di sản chính thức',
+    applicantName: user.name,
+    school: user.school,
+    region: user.region,
+    username: cleanEmail,
+    initialPassword: initialPassword,
+    portalUrl: '/ambassador.html',
+    loginUrl: '/login.html',
+    handbookUrl: '/ambassador-handbook.html',
+    sentAt: new Date().toLocaleString('vi-VN')
+  };
+
+  return res.status(201).json({
+    message: `Đã khởi tạo tài khoản Đại sứ thành công cho ${user.name}!`,
+    user,
+    emailPreview
+  });
+}
+
+module.exports = {
+  getAdminOverview,
+  createExperience,
+  updateExperience,
+  deleteExperience,
+  approveAmbassadorApplication,
+  rejectAmbassadorApplication,
+  createAmbassadorDirectly
+};
+

@@ -921,8 +921,14 @@ function initFormSubmissions() {
         });
 
         feedback.innerHTML = `
-          <div class="alert alert-success p-3 rounded-10 text-center font-weight-bold">
-            ${res.message} Chào mừng bạn gia nhập mạng lưới gìn giữ di sản!
+          <div class="alert alert-success p-3 rounded-10 text-left font-weight-bold shadow-sm border border-success">
+            <span class="d-block mb-1 text-success font-weight-bold" style="font-size: 1.1rem;">🎉 ${res.message}</span>
+            <p class="mb-1 text-dark small font-weight-normal">
+              Hồ sơ của bạn đã được chuyển tới <strong>Ban Quản Trị Super Admin</strong> để thẩm định 3 tiêu chí di sản.
+            </p>
+            <p class="mb-0 text-muted small font-weight-normal">
+              📧 Sau khi được phê duyệt, <strong>thông tin tài khoản hệ thống (Email & Mật khẩu khởi tạo)</strong> kèm liên kết Cẩm nang đào tạo sẽ được gửi trực tiếp qua hòm thư điện tử của bạn!
+            </p>
           </div>
         `;
         applyForm.reset();

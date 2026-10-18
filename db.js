@@ -609,23 +609,54 @@ function queryMemory(text, params = []) {
   }
 
   // Applications
-  if (sql.includes('SELECT * FROM ambassador_applications ORDER BY createdAt DESC')) {
+  if (sql.includes('SELECT * FROM ambassador_applications ORDER BY createdAt DESC') || sql.includes('SELECT * FROM ambassador_applications\n    ORDER BY createdAt DESC')) {
     return [...memoryStore.ambassador_applications].reverse();
   }
   if (sql.includes("SELECT COUNT(*)::int AS count FROM ambassador_applications WHERE status = 'pending'")) {
     const count = memoryStore.ambassador_applications.filter((a) => a.status === 'pending').length;
     return [{ count }];
   }
+  if (sql.includes('SELECT * FROM ambassador_applications WHERE id = $1')) {
+    const id = Number(params[0]);
+    const app = memoryStore.ambassador_applications.find((a) => a.id === id);
+    return app ? [app] : [];
+  }
+  if (sql.includes('UPDATE ambassador_applications SET status = $1 WHERE id = $2')) {
+    const status = params[0];
+    const id = Number(params[1]);
+    const app = memoryStore.ambassador_applications.find((a) => a.id === id);
+    if (app) app.status = status;
+    saveLocalFallback();
+    return app ? [app] : [];
+  }
+  if (sql.includes("UPDATE ambassador_applications SET status = 'approved' WHERE id = $1")) {
+    const id = Number(params[0]);
+    const app = memoryStore.ambassador_applications.find((a) => a.id === id);
+    if (app) app.status = 'approved';
+    saveLocalFallback();
+    return app ? [app] : [];
+  }
+  if (sql.includes("UPDATE ambassador_applications SET status = 'rejected' WHERE id = $1")) {
+    const id = Number(params[0]);
+    const app = memoryStore.ambassador_applications.find((a) => a.id === id);
+    if (app) app.status = 'rejected';
+    saveLocalFallback();
+    return app ? [app] : [];
+  }
   if (sql.includes('INSERT INTO ambassador_applications')) {
+    // Parameters can be:
+    // [name, email, phone, school, region, introLink] from experienceController.createApplication
+    // [name, email, phone, school, region] from adminController.createAmbassadorDirectly
     const app = {
       id: memoryStore.nextAppId++,
-      name: params[0],
-      phone: params[1] || '0988000111',
-      school: params[2],
-      region: params[3],
-      introLink: params[4] || '',
+      name: params[0] || 'Ứng viên Đại sứ',
+      email: params[1] || `ambassador${memoryStore.nextAppId}@heritagelink.vn`,
+      phone: params[2] || '',
+      school: params[3] || 'Đại học',
+      region: params[4] || 'Bắc Ninh & Hà Giang',
+      introLink: params[5] || '',
       ethicsAgreed: true,
-      status: 'pending',
+      status: sql.includes("'approved'") ? 'approved' : 'pending',
       createdAt: new Date().toISOString()
     };
     memoryStore.ambassador_applications.push(app);
