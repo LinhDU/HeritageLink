@@ -134,14 +134,16 @@
 		.sidebar-nav-item .nav-left {
 			display: flex;
 			align-items: center;
-			gap: 14px;
+			gap: 12px;
 		}
 
-		.sidebar-nav-item .nav-icon {
-			font-size: 1.15rem;
-			width: 24px;
-			text-align: center;
-			display: inline-block;
+		.sidebar-nav-item .nav-icon-svg {
+			width: 18px;
+			height: 18px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			opacity: 0.85;
 		}
 
 		.sidebar-nav-item:hover {
@@ -150,11 +152,19 @@
 			transform: translateX(4px);
 		}
 
+		.sidebar-nav-item:hover .nav-icon-svg {
+			opacity: 1;
+		}
+
 		.sidebar-nav-item.active {
 			background: linear-gradient(60deg, #2d6a4f, #1b4332);
 			color: #fff;
 			box-shadow: 0 4px 18px rgba(45, 106, 79, 0.5);
 			border-left: 4px solid var(--color-gold);
+		}
+
+		.sidebar-nav-item.active .nav-icon-svg {
+			opacity: 1;
 		}
 
 		.admin-sidebar-footer {
@@ -179,7 +189,7 @@
 			align-items: center;
 			justify-content: center;
 			font-weight: 800;
-			font-size: 14px;
+			font-size: 13px;
 		}
 
 		/* MAIN CONTENT WRAPPER */
@@ -211,9 +221,6 @@
 			font-weight: 800;
 			color: var(--color-forest);
 			margin: 0;
-			display: flex;
-			align-items: center;
-			gap: 8px;
 		}
 
 		.navbar-breadcrumb-sub {
@@ -225,13 +232,14 @@
 		}
 
 		.admin-top-search {
-			max-width: 320px;
+			max-width: 300px;
 			position: relative;
 		}
 
 		.admin-top-search input {
 			border-radius: 20px;
-			padding-left: 36px;
+			padding-left: 16px;
+			padding-right: 16px;
 			font-size: 13px;
 			border: 1px solid #d2d6dc;
 			background-color: #f9fafb;
@@ -244,16 +252,7 @@
 			box-shadow: 0 0 0 3px rgba(27, 67, 50, 0.15);
 		}
 
-		.admin-top-search .search-icon {
-			position: absolute;
-			left: 12px;
-			top: 50%;
-			transform: translateY(-50%);
-			color: #9ca3af;
-			font-size: 14px;
-		}
-
-		/* MATERIAL DASHBOARD FLOATING STAT CARDS (Creative Tim Style) */
+		/* MATERIAL DASHBOARD FLOATING STAT CARDS */
 		.material-stat-card {
 			background: #fff;
 			border-radius: 16px;
@@ -275,39 +274,33 @@
 			position: absolute;
 			top: -24px;
 			left: 20px;
-			width: 64px;
-			height: 64px;
-			border-radius: 14px;
+			width: 60px;
+			height: 60px;
+			border-radius: 12px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			color: #fff;
-			font-size: 1.8rem;
 		}
 
 		.stat-header-orange {
 			background: linear-gradient(60deg, #ffa726, #fb8c00);
-			box-shadow: 0 6px 20px rgba(255, 152, 0, 0.45);
+			box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
 		}
 
 		.stat-header-green {
 			background: linear-gradient(60deg, #66bb6a, #43a047);
-			box-shadow: 0 6px 20px rgba(76, 175, 80, 0.45);
+			box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
 		}
 
 		.stat-header-red {
 			background: linear-gradient(60deg, #ef5350, #e53935);
-			box-shadow: 0 6px 20px rgba(244, 67, 54, 0.45);
+			box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
 		}
 
 		.stat-header-blue {
 			background: linear-gradient(60deg, #26c6da, #00acc1);
-			box-shadow: 0 6px 20px rgba(0, 188, 212, 0.45);
-		}
-
-		.stat-header-purple {
-			background: linear-gradient(60deg, #ab47bc, #8e24aa);
-			box-shadow: 0 6px 20px rgba(156, 39, 176, 0.45);
+			box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
 		}
 
 		.material-stat-body {
@@ -404,7 +397,7 @@
 		/* TAB PANES */
 		.admin-tab-pane {
 			display: none;
-			animation: fadeInTab 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			animation: fadeInTab 0.25s ease-out;
 		}
 
 		.admin-tab-pane.active {
@@ -412,7 +405,7 @@
 		}
 
 		@keyframes fadeInTab {
-			from { opacity: 0; transform: translateY(6px); }
+			from { opacity: 0; transform: translateY(5px); }
 			to { opacity: 1; transform: translateY(0); }
 		}
 
@@ -428,7 +421,6 @@
 			z-index: 1035;
 		}
 
-		/* RESPONSIVENESS */
 		@media (max-width: 991px) {
 			.admin-sidebar {
 				transform: translateX(-100%);
@@ -451,7 +443,7 @@
 	<!-- Mobile Sidebar Backdrop Overlay -->
 	<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar(false)"></div>
 
-	<!-- LEFT SIDEBAR NAVBAR (Material Dashboard Navigation) -->
+	<!-- LEFT SIDEBAR NAVBAR -->
 	<aside class="admin-sidebar" id="adminSidebar">
 		<!-- Brand Logo Header -->
 		<a href="index.html" class="admin-sidebar-brand">
@@ -468,14 +460,18 @@
 
 			<button type="button" class="sidebar-nav-item active" onclick="switchTab('overview')">
 				<div class="nav-left">
-					<span class="nav-icon">📊</span>
+					<span class="nav-icon-svg">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+					</span>
 					<span>Tổng quan & Thống kê</span>
 				</div>
 			</button>
 
 			<button type="button" class="sidebar-nav-item" onclick="switchTab('analytics')">
 				<div class="nav-left">
-					<span class="nav-icon">📈</span>
+					<span class="nav-icon-svg">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+					</span>
 					<span>Bảng Thống kê & KPI</span>
 				</div>
 				<span class="badge badge-success px-2 py-1 small">Live</span>
@@ -485,7 +481,9 @@
 
 			<button type="button" class="sidebar-nav-item" onclick="switchTab('ambassadors')">
 				<div class="nav-left">
-					<span class="nav-icon">🎓</span>
+					<span class="nav-icon-svg">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+					</span>
 					<span>Đại sứ & Cấp tài khoản</span>
 				</div>
 				<span class="badge badge-accent text-white px-2 py-1 small" id="badge-pending-ambassadors">0</span>
@@ -493,7 +491,9 @@
 
 			<button type="button" class="sidebar-nav-item" onclick="switchTab('moderation')">
 				<div class="nav-left">
-					<span class="nav-icon">⚖️</span>
+					<span class="nav-icon-svg">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+					</span>
 					<span>Thẩm định 3 tiêu chí</span>
 				</div>
 				<span class="badge badge-warning text-dark px-2 py-1 small" id="badge-pending-moderation">0</span>
@@ -503,14 +503,18 @@
 
 			<button type="button" class="sidebar-nav-item" onclick="switchTab('experiences')">
 				<div class="nav-left">
-					<span class="nav-icon">🏺</span>
+					<span class="nav-icon-svg">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+					</span>
 					<span>Quản lý Trải nghiệm</span>
 				</div>
 			</button>
 
 			<button type="button" class="sidebar-nav-item" onclick="switchTab('bookings')">
 				<div class="nav-left">
-					<span class="nav-icon">💰</span>
+					<span class="nav-icon-svg">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+					</span>
 					<span>Lịch Đặt & Dòng tiền 85%</span>
 				</div>
 			</button>
@@ -522,10 +526,10 @@
 				<div class="admin-avatar">SA</div>
 				<div style="flex:1; overflow:hidden;">
 					<strong class="d-block text-white text-truncate small" style="font-size:12px;">Super Admin</strong>
-					<small class="text-white-opacity d-block" style="font-size:11px;">● Trực tuyến hệ thống</small>
+					<small class="text-white-opacity d-block" style="font-size:11px;">Trực tuyến</small>
 				</div>
-				<button class="btn btn-outline-light btn-sm p-1 rounded-circle" id="admin-logout-sidebar-btn" title="Đăng xuất" style="width:30px; height:30px;">
-					⏻
+				<button class="btn btn-outline-light btn-sm px-2 py-1 small font-weight-bold" id="admin-logout-sidebar-btn" title="Đăng xuất">
+					Thoát
 				</button>
 			</div>
 		</div>
@@ -536,15 +540,14 @@
 		<!-- TOP NAVBAR -->
 		<header class="admin-top-navbar">
 			<div class="d-flex align-items-center gap-3">
-				<!-- Hamburger Button for Mobile -->
-				<button type="button" class="btn btn-outline-secondary btn-sm d-lg-none mr-2" onclick="toggleSidebar(true)" aria-label="Toggle Navigation">
-					☰
+				<button type="button" class="btn btn-outline-secondary btn-sm d-lg-none mr-2 font-weight-bold" onclick="toggleSidebar(true)" aria-label="Toggle Navigation">
+					Menu
 				</button>
 
 				<div>
 					<span class="navbar-breadcrumb-sub">Trung tâm Quản trị Nền tảng</span>
 					<h2 class="navbar-breadcrumb-title" id="admin-current-tab-title">
-						<span>📊</span> Tổng quan & Bảng Thống kê
+						Tổng quan & Bảng Thống kê
 					</h2>
 				</div>
 			</div>
@@ -552,7 +555,6 @@
 			<!-- Search Bar & Actions -->
 			<div class="d-flex align-items-center gap-2">
 				<div class="admin-top-search d-none d-md-block mr-2">
-					<span class="search-icon">🔍</span>
 					<input type="text" class="form-control" id="global-admin-search" placeholder="Tìm booking, đại sứ, di sản..." oninput="handleGlobalSearch(this.value)">
 				</div>
 
@@ -569,7 +571,7 @@
 				<div class="row justify-content-center">
 					<div class="col-md-6 text-center">
 						<div class="bg-white p-5 rounded-20 shadow-lg border">
-							<div class="text-danger font-weight-bold mb-3" style="font-size: 2.5rem;">CẢNH BÁO</div>
+							<div class="text-danger font-weight-bold mb-3" style="font-size: 2rem;">CẢNH BÁO</div>
 							<h3 class="h4 font-weight-bold mb-2 text-forest-green">Yêu cầu quyền Super Admin</h3>
 							<p class="text-muted mb-4">Bạn chưa đăng nhập hoặc tài khoản không có quyền truy cập trang quản trị này.</p>
 							<a href="login.html" class="btn btn-primary px-4 py-2 font-weight-bold">Đăng nhập tài khoản Admin</a>
@@ -583,7 +585,7 @@
 		<main id="admin-main-content" class="p-4 p-md-5" style="flex:1;">
 			
 			<!-- ========================================== -->
-			<!-- TAB 1: OVERVIEW & STATISTICS (MẪU DASHBOARD) -->
+			<!-- TAB 1: OVERVIEW & STATISTICS              -->
 			<!-- ========================================== -->
 			<section id="tab-overview" class="admin-tab-pane active">
 				<!-- ROW 1: 4 MATERIAL FLOATING STAT CARDS -->
@@ -592,14 +594,14 @@
 					<div class="col-sm-6 col-xl-3">
 						<div class="material-stat-card">
 							<div class="material-stat-header stat-header-orange">
-								📅
+								<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
 							</div>
 							<div class="material-stat-body">
 								<span class="material-stat-category">Tổng số Booking</span>
 								<h3 class="material-stat-value text-forest-green" id="stat-total-bookings">0</h3>
 							</div>
 							<div class="material-stat-footer">
-								<span><strong class="text-success">✓ 100%</strong> đã xác nhận</span>
+								<span><strong class="text-success">100%</strong> đã xác nhận</span>
 								<a href="javascript:void(0)" onclick="switchTab('bookings')" class="text-accent font-weight-bold">Chi tiết →</a>
 							</div>
 						</div>
@@ -609,7 +611,7 @@
 					<div class="col-sm-6 col-xl-3">
 						<div class="material-stat-card">
 							<div class="material-stat-header stat-header-green">
-								💵
+								<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
 							</div>
 							<div class="material-stat-body">
 								<span class="material-stat-category">Tổng GMV Nền tảng</span>
@@ -626,7 +628,7 @@
 					<div class="col-sm-6 col-xl-3">
 						<div class="material-stat-card">
 							<div class="material-stat-header stat-header-red">
-								🎓
+								<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
 							</div>
 							<div class="material-stat-body">
 								<span class="material-stat-category">Đơn Đại sứ chờ duyệt</span>
@@ -643,7 +645,7 @@
 					<div class="col-sm-6 col-xl-3">
 						<div class="material-stat-card">
 							<div class="material-stat-header stat-header-blue">
-								👥
+								<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
 							</div>
 							<div class="material-stat-body">
 								<span class="material-stat-category">Thành viên hệ thống</span>
@@ -667,10 +669,10 @@
 							</div>
 							<h4 class="material-chart-title">Tăng trưởng Doanh thu GMV</h4>
 							<p class="material-chart-desc">
-								<span class="text-success font-weight-bold">↑ 55%</span> so với cùng kỳ tháng trước.
+								<span class="text-success font-weight-bold">55% tăng trưởng</span> so với cùng kỳ tháng trước.
 							</p>
 							<div class="pt-2 border-top text-muted small d-flex justify-content-between">
-								<span>🕒 Cập nhật theo thời gian thực</span>
+								<span>Cập nhật theo thời gian thực</span>
 								<strong class="text-forest-green">85/5/2/8</strong>
 							</div>
 						</div>
@@ -687,7 +689,7 @@
 								85% Hộ dân • 5% Đại sứ • 2% Cổng TT • 8% Nền tảng.
 							</p>
 							<div class="pt-2 border-top text-muted small d-flex justify-content-between">
-								<span>🛡 Minh bạch tài chính</span>
+								<span>Minh bạch tài chính</span>
 								<strong class="text-success">85% Nghệ nhân</strong>
 							</div>
 						</div>
@@ -704,7 +706,7 @@
 								Làng nghề thủ công chiếm tỷ trọng chủ lực 45%.
 							</p>
 							<div class="pt-2 border-top text-muted small d-flex justify-content-between">
-								<span>🧭 4 phân khúc chuẩn hóa</span>
+								<span>4 phân khúc chuẩn hóa</span>
 								<strong class="text-accent">100% Bản địa</strong>
 							</div>
 						</div>
@@ -765,7 +767,7 @@
 					<div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom flex-wrap gap-2">
 						<div>
 							<h3 class="h5 font-weight-bold text-forest-green mb-1">
-								🎓 Quản lý Mạng lưới Đại sứ Di sản Sinh viên
+								Quản lý Mạng lưới Đại sứ Di sản Sinh viên
 							</h3>
 							<p class="small text-muted mb-0">
 								Xét duyệt hồ sơ 3 tiêu chí • Cung cấp tài khoản hệ thống qua Email • Khởi tạo Đại sứ trực tiếp
@@ -804,7 +806,7 @@
 					<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom flex-wrap gap-2">
 						<div>
 							<h3 class="h5 font-weight-bold text-forest-green mb-1">
-								⚖️ Thẩm định Hồ sơ Di sản Sống theo 3 Tiêu chí
+								Thẩm định Hồ sơ Di sản Sống theo 3 Tiêu chí
 							</h3>
 							<p class="small text-muted mb-0">
 								Quy chuẩn đề án: Tính xác thực văn hóa (40%) • Khả năng kể chuyện (30%) • Mức độ tương tác thực tế (30%)
@@ -849,7 +851,7 @@
 					<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom flex-wrap gap-2">
 						<div>
 							<h3 class="h5 font-weight-bold text-forest-green mb-1">
-								🏺 Quản lý Danh mục Trải nghiệm Di sản
+								Quản lý Danh mục Trải nghiệm Di sản
 							</h3>
 							<p class="small text-muted mb-0">Thêm mới, sửa đổi thông tin hoặc cập nhật trạng thái hiển thị</p>
 						</div>
@@ -940,7 +942,7 @@
 					<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom flex-wrap gap-2">
 						<div>
 							<h3 class="h5 font-weight-bold text-forest-green mb-1">
-								💰 Bảng Đối Soát Doanh Thu 4 Bên (85% / 5% / 2% / 8%)
+								Bảng Đối Soát Doanh Thu 4 Bên (85% / 5% / 2% / 8%)
 							</h3>
 							<p class="small text-muted mb-0">Minh bạch tài chính từng giao dịch đặt chỗ & tự động ghi nhận hoa hồng</p>
 						</div>
@@ -984,7 +986,7 @@
 					<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
 						<div>
 							<h3 class="h5 font-weight-bold text-forest-green mb-1">
-								📈 Bảng Thống Kê Chỉ Số Hiệu Suất & Tác Động Xã Hội
+								Bảng Thống Kê Chỉ Số Hiệu Suất & Tác Động Xã Hội
 							</h3>
 							<p class="small text-muted mb-0">Chỉ số đo lường mục tiêu Năm 1 theo Đề án HeritageLink</p>
 						</div>
@@ -1081,7 +1083,7 @@
 			<div class="modal-content rounded-20 border shadow-lg">
 				<div class="modal-header bg-forest-green text-white rounded-top-20">
 					<h5 class="modal-title font-weight-bold" id="modalDirectAmbassadorLabel">
-						🎓 Khởi tạo Tài khoản Đại sứ Di sản mới
+						Khởi tạo Tài khoản Đại sứ Di sản mới
 					</h5>
 					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -1133,7 +1135,7 @@
 					<div class="modal-footer bg-light rounded-bottom-20">
 						<button type="button" class="btn btn-outline-secondary px-3 font-weight-bold" data-dismiss="modal">Hủy bỏ</button>
 						<button type="submit" class="btn btn-primary px-4 font-weight-bold" id="btn-submit-direct-amb">
-							✓ Khởi tạo & Xuất Email cấp tài khoản
+							Khởi tạo & Xuất Email cấp tài khoản
 						</button>
 					</div>
 				</form>
@@ -1148,12 +1150,9 @@
 		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 			<div class="modal-content rounded-20 border shadow-lg">
 				<div class="modal-header bg-forest-green text-white rounded-top-20">
-					<div class="d-flex align-items-center">
-						<span class="mr-2" style="font-size: 1.3rem;">✉</span>
-						<h5 class="modal-title font-weight-bold mb-0" id="modalAmbassadorEmailPreviewLabel">
-							Thư Điện Tử Thông Báo Cấp Tài Khoản Đại Sứ Di Sản
-						</h5>
-					</div>
+					<h5 class="modal-title font-weight-bold mb-0" id="modalAmbassadorEmailPreviewLabel">
+						Thư Điện Tử Thông Báo Cấp Tài Khoản Đại Sứ Di Sản
+					</h5>
 					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -1225,12 +1224,12 @@
 							</div>
 
 							<div class="p-2 bg-white rounded-10 border small text-muted">
-								💡 <strong>Chính sách đối soát:</strong> Bạn được tự động ghi nhận <strong>5% hoa hồng</strong> trên tổng GMV mỗi lượt booking hoàn thành tại các điểm di sản bạn phụ trách hoặc kết nối.
+								<strong>Chính sách đối soát:</strong> Bạn được tự động ghi nhận <strong>5% hoa hồng</strong> trên tổng GMV mỗi lượt booking hoàn thành tại các điểm di sản bạn phụ trách hoặc kết nối.
 							</div>
 						</div>
 
 						<h6 class="font-weight-bold text-forest-green mb-2 small text-uppercase letter-spacing-1">
-							Các bước bắt đầu ngay:
+							Các bước bắt đầu:
 						</h6>
 						<ol class="small text-dark pl-3 mb-4 leading-relaxed">
 							<li class="mb-1">
@@ -1256,11 +1255,11 @@
 				</div>
 				<div class="modal-footer bg-light rounded-bottom-20 d-flex justify-content-between">
 					<span class="small text-success font-weight-bold" id="copy-status-msg">
-						✓ Tài khoản đã sẵn sàng kích hoạt
+						Tài khoản đã sẵn sàng kích hoạt
 					</span>
 					<div>
 						<button type="button" class="btn btn-outline-primary px-3 font-weight-bold mr-2" id="btn-copy-credentials" onclick="copyEmailCredentials()">
-							📋 Sao chép thông tin tài khoản
+							Sao chép thông tin tài khoản
 						</button>
 						<button type="button" class="btn btn-primary px-4 font-weight-bold" data-dismiss="modal">
 							Đóng
@@ -1282,39 +1281,34 @@
 		let chartInstances = {};
 
 		const tabTitles = {
-			'overview': { icon: '📊', title: 'Tổng quan & Bảng Thống kê' },
-			'analytics': { icon: '📈', title: 'Bảng Thống kê & Phân tích KPI' },
-			'ambassadors': { icon: '🎓', title: 'Quản lý Đại sứ & Cấp tài khoản' },
-			'moderation': { icon: '⚖️', title: 'Thẩm định Hồ sơ Di sản 3 Tiêu chí' },
-			'experiences': { icon: '🏺', title: 'Quản lý Trải nghiệm Di sản' },
-			'bookings': { icon: '💰', title: 'Lịch Đặt Chỗ & Đối Soát 85/5/2/8' }
+			'overview': { title: 'Tổng quan & Thống kê' },
+			'analytics': { title: 'Bảng Thống kê & Phân tích KPI' },
+			'ambassadors': { title: 'Quản lý Đại sứ & Cấp tài khoản' },
+			'moderation': { title: 'Thẩm định Hồ sơ Di sản 3 Tiêu chí' },
+			'experiences': { title: 'Quản lý Trải nghiệm Di sản' },
+			'bookings': { title: 'Lịch Đặt Chỗ & Đối Soát 85/5/2/8' }
 		};
 
 		// Tab switching function
 		window.switchTab = function(tabId) {
-			// Update active tab pane
 			document.querySelectorAll('.admin-tab-pane').forEach(el => el.classList.remove('active'));
 			const targetPane = document.getElementById(`tab-${tabId}`);
 			if (targetPane) targetPane.classList.add('active');
 
-			// Update sidebar active item
 			document.querySelectorAll('.sidebar-nav-item').forEach(el => el.classList.remove('active'));
 			const activeBtn = Array.from(document.querySelectorAll('.sidebar-nav-item')).find(btn => 
 				btn.getAttribute('onclick')?.includes(`'${tabId}'`)
 			);
 			if (activeBtn) activeBtn.classList.add('active');
 
-			// Update top navbar breadcrumb
-			const meta = tabTitles[tabId] || { icon: '📁', title: 'Quản trị' };
+			const meta = tabTitles[tabId] || { title: 'Quản trị' };
 			const titleEl = document.getElementById('admin-current-tab-title');
 			if (titleEl) {
-				titleEl.innerHTML = `<span>${meta.icon}</span> ${meta.title}`;
+				titleEl.textContent = meta.title;
 			}
 
-			// Close mobile drawer if open
 			toggleSidebar(false);
 
-			// Trigger Chart resize if returning to overview
 			if (tabId === 'overview') {
 				setTimeout(() => {
 					window.dispatchEvent(new Event('resize'));
@@ -1467,7 +1461,7 @@
 				const isApproved = a.status === 'approved';
 				const isRejected = a.status === 'rejected';
 				const statusBadge = isApproved 
-					? '<span class="badge badge-success small py-1 px-2">✓ Đã cấp tài khoản</span>'
+					? '<span class="badge badge-success small py-1 px-2">Đã cấp tài khoản</span>'
 					: isRejected 
 						? '<span class="badge badge-secondary small py-1 px-2">Từ chối</span>'
 						: '<span class="badge badge-warning text-dark small py-1 px-2">Chờ duyệt</span>';
@@ -1481,12 +1475,12 @@
 									<div>${statusBadge}</div>
 								</div>
 								<div class="text-muted small mb-2" style="font-size: 11px;">
-									📧 <strong>${a.email || 'Chưa cập nhật'}</strong> ${a.phone ? `• 📞 ${a.phone}` : ''}
+									Email: <strong>${a.email || 'Chưa cập nhật'}</strong> ${a.phone ? `• SĐT: ${a.phone}` : ''}
 								</div>
 								<div class="small text-muted mb-1">
 									Trường: <strong>${a.school || 'Đại học'}</strong> • Địa bàn: <strong class="text-forest-green">${a.region}</strong>
 								</div>
-								${a.introLink ? `<div class="mb-2"><a href="${a.introLink}" target="_blank" class="small text-accent font-weight-bold">▶ Xem portfolio / video giới thiệu</a></div>` : ''}
+								${a.introLink ? `<div class="mb-2"><a href="${a.introLink}" target="_blank" class="small text-accent font-weight-bold">Xem portfolio / video giới thiệu</a></div>` : ''}
 							</div>
 
 							<div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center flex-wrap gap-2">
@@ -1494,16 +1488,16 @@
 								<div>
 									${!isApproved ? `
 										<button class="btn btn-sm btn-success py-1 px-3 small font-weight-bold mr-1 shadow-sm" onclick="approveAmbassador(${a.id})">
-											✓ Duyệt & Cấp TK
+											Duyệt & Cấp TK
 										</button>
 										${!isRejected ? `
 											<button class="btn btn-sm btn-outline-danger py-1 px-2 small font-weight-bold" onclick="rejectAmbassador(${a.id})">
-												✗ Từ chối
+												Từ chối
 											</button>
 										` : ''}
 									` : `
 										<button class="btn btn-sm btn-outline-info py-1 px-3 small font-weight-bold shadow-sm" onclick="showEmailPreviewFromApp(${a.id})">
-											✉ Xem thư cấp tài khoản
+											Xem thư cấp tài khoản
 										</button>
 									`}
 								</div>
@@ -1809,7 +1803,7 @@
 			document.getElementById('email-preview-school').textContent = preview.school || 'Đại học';
 			document.getElementById('email-preview-region').textContent = preview.region || 'Bắc Ninh & Hà Giang';
 			document.getElementById('email-preview-time').textContent = preview.sentAt || new Date().toLocaleString('vi-VN');
-			document.getElementById('copy-status-msg').textContent = '✓ Tài khoản đã sẵn sàng kích hoạt';
+			document.getElementById('copy-status-msg').textContent = 'Tài khoản đã sẵn sàng kích hoạt';
 
 			$('#modalAmbassadorEmailPreview').modal('show');
 		}
@@ -1832,9 +1826,9 @@
 
 			navigator.clipboard.writeText(text).then(() => {
 				const statusMsg = document.getElementById('copy-status-msg');
-				statusMsg.textContent = '🎉 Đã sao chép toàn bộ thông tin tài khoản vào Clipboard!';
+				statusMsg.textContent = 'Đã sao chép toàn bộ thông tin tài khoản vào Clipboard!';
 				setTimeout(() => {
-					statusMsg.textContent = '✓ Tài khoản đã sẵn sàng kích hoạt';
+					statusMsg.textContent = 'Tài khoản đã sẵn sàng kích hoạt';
 				}, 3500);
 			}).catch(() => {
 				alert('Đã sao chép tài khoản: ' + username + ' / Mật khẩu: ' + password);
@@ -1869,7 +1863,7 @@
 				$('#modalDirectAmbassador').modal('hide');
 				document.getElementById('form-direct-ambassador').reset();
 				submitBtn.disabled = false;
-				submitBtn.innerHTML = '✓ Khởi tạo & Xuất Email cấp tài khoản';
+				submitBtn.innerHTML = 'Khởi tạo & Xuất Email cấp tài khoản';
 
 				await loadAdminOverview();
 
@@ -1883,7 +1877,7 @@
 				msg.textContent = err.message || 'Lỗi kết nối máy chủ.';
 				msg.classList.remove('d-none');
 				submitBtn.disabled = false;
-				submitBtn.innerHTML = '✓ Khởi tạo & Xuất Email cấp tài khoản';
+				submitBtn.innerHTML = 'Khởi tạo & Xuất Email cấp tài khoản';
 			}
 		});
 
