@@ -69,6 +69,18 @@ app.get('/ambassadors/apply', (req, res) => {
   res.sendFile(path.join(__dirname, 'ambassador-apply.html'));
 });
 
+app.get('/ambassador-handbook', (req, res) => {
+  res.sendFile(path.join(__dirname, 'ambassador-handbook.html'));
+});
+
+app.get('/ambassadors/handbook', (req, res) => {
+  res.sendFile(path.join(__dirname, 'ambassador-handbook.html'));
+});
+
+app.get('/ambassador/handbook', (req, res) => {
+  res.sendFile(path.join(__dirname, 'ambassador-handbook.html'));
+});
+
 app.get('/community', (req, res) => {
   res.sendFile(path.join(__dirname, 'community.html'));
 });
