@@ -225,17 +225,39 @@ function initHomeHeritageMap() {
   const mapEl = document.getElementById('heritage-leaflet-map');
   if (!mapEl || typeof L === 'undefined') return;
 
-  // Center on Vietnam
+  // Center on Vietnam with natural zoom
   homeMap = L.map('heritage-leaflet-map', {
     scrollWheelZoom: false
   }).setView([18.2, 106.5], 6);
 
-  // CartoDB Positron / OSM tiles for elegant, clean aesthetic
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-    subdomains: 'abcd',
-    maxZoom: 18
-  }).addTo(homeMap);
+  // 1. OpenStreetMap Standard - Real geography, street, river, province names in Vietnamese
+  const osmStandard = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+  });
+
+  // 2. Esri World Imagery (Satellite) - Real high-res satellite photos
+  const esriSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 18,
+    attribution: 'Tiles &copy; Esri &mdash; DigitalGlobe, Earthstar Geographics'
+  });
+
+  // 3. Esri World Topo Map (Terrain & Natural Elevation)
+  const esriTopo = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 18,
+    attribution: 'Tiles &copy; Esri &mdash; USGS, FAO, NPS, NRCAN'
+  });
+
+  // Default to real OpenStreetMap tiles
+  osmStandard.addTo(homeMap);
+
+  // Interactive Layer Switcher so user can choose Standard, Satellite, or Topo
+  const baseMaps = {
+    "🗺️ Bản đồ Địa lý (OSM)": osmStandard,
+    "🛰️ Ảnh Vệ tinh thật": esriSatellite,
+    "⛰️ Bản đồ Địa hình": esriTopo
+  };
+  L.control.layers(baseMaps, null, { position: 'topright' }).addTo(homeMap);
 
   renderHomeMapMarkers('all');
   renderMapSidebarList('all');
@@ -438,7 +460,10 @@ function renderStandaloneAiResult(data) {
   if (mapEl && typeof L !== 'undefined') {
     if (!itinMap) {
       itinMap = L.map('ai-itinerary-map', { scrollWheelZoom: false }).setView([21.0, 106.0], 8);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(itinMap);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+      }).addTo(itinMap);
     }
 
     const routeCoords = [];
@@ -1128,7 +1153,21 @@ function initExplorePage() {
 
     if (!exploreMap && typeof L !== 'undefined') {
       exploreMap = L.map('explore-leaflet-map').setView([18.5, 106.5], 6);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(exploreMap);
+      
+      const exploreOsm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(exploreMap);
+
+      const exploreSat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18,
+        attribution: 'Tiles &copy; Esri'
+      });
+
+      L.control.layers({
+        "🗺️ Bản đồ Địa lý": exploreOsm,
+        "🛰️ Vệ tinh thực tế": exploreSat
+      }, null, { position: 'topright' }).addTo(exploreMap);
 
       allExperiences.forEach((exp, idx) => {
         const coords = HERITAGE_COORDINATES[exp.id];
