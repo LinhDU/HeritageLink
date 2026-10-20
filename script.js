@@ -557,34 +557,121 @@ async function initDetailPage() {
       }
     }
 
-    // Pricing & Live Calculator Setup
+    // Setup Interactive Tab Navigation
+    const tabBtns = document.querySelectorAll('.detail-tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetTab = btn.getAttribute('data-tab');
+        tabBtns.forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.detail-tab-pane').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const pane = document.getElementById(targetTab);
+        if (pane) pane.classList.add('active');
+      });
+    });
+
+    // Pricing & Live Dynamic Tour Customizer Setup
     const cardPrice = document.getElementById('detail-card-price');
-    if (cardPrice) cardPrice.textContent = `${Number(exp.price).toLocaleString('vi-VN')}đ`;
+    const basePrice = Number(exp.price || 850000);
+    if (cardPrice) cardPrice.textContent = `${basePrice.toLocaleString('vi-VN')}đ`;
+
+    const pkgStandard = document.getElementById('pkg-card-standard');
+    const pkgPremium = document.getElementById('pkg-card-premium');
+    const pkgPriceStandard = document.getElementById('pkg-price-standard');
+    if (pkgPriceStandard) pkgPriceStandard.textContent = `${basePrice.toLocaleString('vi-VN')}đ`;
 
     const guestsInput = document.getElementById('booking-input-guests');
-    const updateCalculator = () => {
+    const btnMinus = document.getElementById('btn-guest-minus');
+    const btnPlus = document.getElementById('btn-guest-plus');
+    const dateInput = document.getElementById('booking-input-date');
+
+    // Default to tomorrow
+    if (dateInput && !dateInput.value) {
+      const tomorrow = new Date(Date.now() + 86400000);
+      dateInput.value = tomorrow.toISOString().split('T')[0];
+      dateInput.min = new Date().toISOString().split('T')[0];
+    }
+
+    // Dynamic calculation function
+    function updateCalculator() {
       const guests = Number(guestsInput?.value || 2);
-      const unit = Number(exp.price || 850000);
-      const total = guests * unit;
+      const isPremium = document.querySelector('input[name="tourPackage"]:checked')?.value === 'premium';
+      const unit = isPremium ? basePrice + 300000 : basePrice;
+
+      const subtotal = guests * unit;
+      let addonsTotal = 0;
+      if (addonGiftbox?.checked) addonsTotal += 120000;
+      if (addonPhoto?.checked) addonsTotal += 150000;
+
+      const total = subtotal + addonsTotal;
       const hostRev = Math.round(total * 0.85);
 
-      if (document.getElementById('calc-unit-price')) document.getElementById('calc-unit-price').textContent = `${unit.toLocaleString('vi-VN')}đ × ${guests}`;
-      if (document.getElementById('calc-artisan-share')) document.getElementById('calc-artisan-share').textContent = `${hostRev.toLocaleString('vi-VN')}đ`;
-      if (document.getElementById('calc-total-price')) document.getElementById('calc-total-price').textContent = `${total.toLocaleString('vi-VN')}đ`;
-    };
-
-    if (guestsInput) {
-      guestsInput.addEventListener('input', updateCalculator);
-      updateCalculator();
+      if (cardPrice) cardPrice.textContent = `${unit.toLocaleString('vi-VN')}đ`;
+      const breakdownText = document.getElementById('calc-breakdown-text');
+      if (breakdownText) {
+        let text = `${unit.toLocaleString('vi-VN')}đ × ${guests} khách`;
+        if (addonsTotal > 0) text += ` + ${addonsTotal.toLocaleString('vi-VN')}đ dịch vụ thêm`;
+        breakdownText.textContent = text;
+      }
+      if (document.getElementById('calc-artisan-share')) {
+        document.getElementById('calc-artisan-share').textContent = `${hostRev.toLocaleString('vi-VN')}đ`;
+      }
+      if (document.getElementById('calc-total-price')) {
+        document.getElementById('calc-total-price').textContent = `${total.toLocaleString('vi-VN')}đ`;
+      }
     }
+
+    // Guest stepper
+    const maxGuests = exp.maxGuests || 8;
+    if (btnMinus && guestsInput) {
+      btnMinus.addEventListener('click', () => {
+        let val = Number(guestsInput.value || 1);
+        if (val > 1) {
+          guestsInput.value = val - 1;
+          updateCalculator();
+        }
+      });
+    }
+    if (btnPlus && guestsInput) {
+      btnPlus.addEventListener('click', () => {
+        let val = Number(guestsInput.value || 1);
+        if (val < maxGuests) {
+          guestsInput.value = val + 1;
+          updateCalculator();
+        }
+      });
+    }
+
+    // Package radio change
+    const pkgRadios = document.querySelectorAll('input[name="tourPackage"]');
+    pkgRadios.forEach(r => {
+      r.addEventListener('change', () => {
+        if (pkgStandard && pkgPremium) {
+          pkgStandard.classList.toggle('selected', r.value === 'standard');
+          pkgPremium.classList.toggle('selected', r.value === 'premium');
+        }
+        updateCalculator();
+      });
+    });
+
+    // Addons change
+    const addonGiftbox = document.getElementById('addon-giftbox');
+    const addonPhoto = document.getElementById('addon-photo');
+    [addonGiftbox, addonPhoto].forEach(el => {
+      el?.addEventListener('change', updateCalculator);
+    });
+
+    updateCalculator();
 
     // Booking Submission Handler
     const bookingForm = document.getElementById('detail-booking-form');
     if (bookingForm) {
       bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const date = document.getElementById('booking-input-date').value;
-        const guests = Number(guestsInput.value || 2);
+        const date = dateInput?.value;
+        const slot = document.getElementById('booking-input-slot')?.value || 'afternoon';
+        const guests = Number(guestsInput?.value || 2);
+        const pkg = document.querySelector('input[name="tourPackage"]:checked')?.value || 'standard';
         const feedback = document.getElementById('booking-status-feedback');
 
         if (!date) {
@@ -593,19 +680,27 @@ async function initDetailPage() {
         }
 
         try {
-          feedback.innerHTML = '<span class="text-primary">Đang tạo đặt chỗ...</span>';
+          feedback.innerHTML = '<span class="text-primary font-weight-bold">Đang xác nhận đặt chỗ...</span>';
           const res = await fetchJson('/api/bookings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ experienceId: exp.id, bookingDate: date, guests })
+            body: JSON.stringify({
+              experienceId: exp.id,
+              bookingDate: date,
+              timeSlot: slot,
+              package: pkg,
+              guests,
+              giftbox: addonGiftbox?.checked || false,
+              photo: addonPhoto?.checked || false
+            })
           });
 
           feedback.innerHTML = `<div class="alert alert-success p-2 small mt-2">${res.message} Chuyển sang xem thông tin vé...</div>`;
           setTimeout(() => {
-            window.location.href = 'bookings.html';
+            window.location.href = '/bookings.html';
           }, 1200);
         } catch (err) {
-          feedback.innerHTML = `<div class="alert alert-danger p-2 small mt-2">${err.message || 'Cần đăng nhập để đặt chỗ.'} <a href="login.html" class="font-weight-bold">Đăng nhập ngay</a></div>`;
+          feedback.innerHTML = `<div class="alert alert-danger p-2 small mt-2">${err.message || 'Cần đăng nhập để đặt chỗ.'} <a href="/login.html" class="font-weight-bold">Đăng nhập ngay</a></div>`;
         }
       });
     }

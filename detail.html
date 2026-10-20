@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
 	<!-- Core Styles -->
-	<link rel="stylesheet" href="/styles.css">
+	<link rel="stylesheet" href="/styles.css?v=2.4">
 </head>
 
 <body class="bg-warm-ivory">
@@ -118,18 +118,30 @@
 				</div>
 			</div>
 
-			<!-- Main 2-Column Layout: Content Left, Booking Widget Right -->
+			<!-- Main 2-Column Layout: Content Left (Modular Tabs), Dynamic Tour Customizer Right -->
 			<div class="row">
-				<!-- Left Body Content (Sections 2 - 8) -->
-				<div class="col-lg-8 pr-lg-5">
+				<!-- Left Column: Interactive Modular Tabs -->
+				<div class="col-lg-8 pr-lg-5 mb-5 mb-lg-0">
+					<!-- Interactive Tab Navigation Header -->
+					<div class="detail-tabs-nav" role="tablist">
+						<button class="detail-tab-btn active" data-tab="tab-overview" type="button">
+							<span>🌿</span> Tổng quan & Câu chuyện
+						</button>
+						<button class="detail-tab-btn" data-tab="tab-journey" type="button">
+							<span>🏺</span> Hành trình 4 Lớp
+						</button>
+						<button class="detail-tab-btn" data-tab="tab-artisan" type="button">
+							<span>🤝</span> Nghệ nhân & Ba bên
+						</button>
+						<button class="detail-tab-btn" data-tab="tab-reviews" type="button">
+							<span>⭐</span> Đánh giá (<span id="tab-review-count-badge">38</span>)
+						</button>
+					</div>
 
-					<!-- KHU VỰC 2: ĐIỀU GÌ KHIẾN TRẢI NGHIỆM NÀY ĐẶC BIỆT -->
-					<section class="mb-5">
-						<h2 class="h4 font-weight-bold text-forest-green mb-3">Điều gì khiến trải nghiệm này đặc biệt?</h2>
-						<p class="lead text-muted" id="detail-special-intro">
-							Khác biệt hoàn toàn với những tour ngắm cảnh thông thường, tại đây bạn sẽ trực tiếp ngồi bên bàn xoay gốm cổ, được một nghệ nhân có hơn 40 năm kinh nghiệm cầm tay chỉ dẫn từng nhịp xoay và kỹ nghệ nhào nặn đất sét phù sa sông Cầu.
-						</p>
-						<div class="p-3 rounded-15 bg-white border shadow-sm">
+					<!-- TAB 1: TỔNG QUAN & CÂU CHUYỆN -->
+					<div class="detail-tab-pane active" id="tab-overview">
+						<!-- Highlights Grid -->
+						<div class="p-3 rounded-15 bg-white border shadow-sm mb-4">
 							<div class="row text-center">
 								<div class="col-4 border-right">
 									<strong class="d-block text-primary h5 mb-0">1:1</strong>
@@ -137,82 +149,113 @@
 								</div>
 								<div class="col-4 border-right">
 									<strong class="d-block text-accent h5 mb-0">100%</strong>
-									<span class="small text-muted">Vật liệu tự nhiên</span>
+									<span class="small text-muted">Đất phù sa sông Cầu</span>
 								</div>
 								<div class="col-4">
 									<strong class="d-block text-success h5 mb-0">Tự mang về</strong>
-									<span class="small text-muted">Sản phẩm kỷ niệm</span>
+									<span class="small text-muted">Sản phẩm gốm mộc</span>
 								</div>
 							</div>
 						</div>
-					</section>
 
-					<!-- KHU VỰC 3: CÂU CHUYỆN PHÍA SAU TRẢI NGHIỆM -->
-					<section class="mb-5">
-						<h2 class="h4 font-weight-bold text-forest-green mb-3">Câu chuyện phía sau trải nghiệm</h2>
-						<p class="text-muted" id="detail-story-content">
-							Làng gốm Phù Lãng bên bờ sông Cầu có lịch sử hơn 700 năm. Khác với men ngọc hay men rạn Bát Tràng, gốm Phù Lãng nổi tiếng với men da lươn tự nhiên thô mộc, tạo hình từ đất sét vàng đỏ và nung hoàn toàn bằng củi rơm truyền thống.
-						</p>
-						<div class="p-3 bg-white rounded-15 border-left border-gold shadow-sm mb-3" style="border-left-width: 4px !important;">
-							<div class="d-flex justify-content-between align-items-center">
-								<div>
-									<strong class="d-block text-forest-green small">Hồ sơ Di sản sống liên kết:</strong>
-									<span class="small text-muted">Tìm hiểu sâu về huyền tích tổ nghề Hứa Vĩnh Kiều và kỹ nghệ nung củi rơm.</span>
+						<!-- Special Intro -->
+						<div class="p-4 bg-white rounded-20 border shadow-sm mb-4">
+							<h3 class="h5 font-weight-bold text-forest-green mb-3">Điều gì khiến trải nghiệm này đặc biệt?</h3>
+							<p class="lead text-muted" id="detail-special-intro" style="font-size: 1.05rem; line-height: 1.6;">
+								Khác biệt hoàn toàn với những tour ngắm cảnh thông thường, tại đây bạn sẽ trực tiếp ngồi bên bàn xoay gốm cổ, được một nghệ nhân có hơn 40 năm kinh nghiệm cầm tay chỉ dẫn từng nhịp xoay và kỹ nghệ nhào nặn đất sét phù sa sông Cầu.
+							</p>
+						</div>
+
+						<!-- Story Content -->
+						<div class="p-4 bg-white rounded-20 border shadow-sm mb-4">
+							<h3 class="h5 font-weight-bold text-forest-green mb-3">Câu chuyện di sản 700 năm</h3>
+							<p class="text-muted" id="detail-story-content" style="line-height: 1.65;">
+								Làng gốm Phù Lãng bên bờ sông Cầu có lịch sử hơn 700 năm. Khác với men ngọc hay men rạn Bát Tràng, gốm Phù Lãng nổi tiếng với men da lươn tự nhiên thô mộc, tạo hình từ đất sét vàng đỏ và nung hoàn toàn bằng củi rơm truyền thống.
+							</p>
+							<div class="p-3 bg-warm-ivory rounded-15 border-left border-gold shadow-sm mt-3" style="border-left-width: 4px !important;">
+								<div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+									<div>
+										<strong class="d-block text-forest-green small font-weight-bold">Hồ sơ Di sản sống liên kết:</strong>
+										<span class="small text-muted">Tìm hiểu sâu về huyền tích tổ nghề Hứa Vĩnh Kiều và kỹ nghệ nung củi rơm.</span>
+									</div>
+									<a href="heritage.html" id="link-living-heritage" class="btn btn-sm btn-outline-primary font-weight-bold">
+										Xem hồ sơ gốc →
+									</a>
 								</div>
-								<a href="heritage.html" id="link-living-heritage" class="btn btn-sm btn-outline-primary font-weight-bold">
-									Khám phá toàn bộ câu chuyện →
-								</a>
 							</div>
 						</div>
-					</section>
+					</div>
 
-					<!-- KHU VỰC 4: BẠN SẼ ĐƯỢC TRẢI NGHIỆM NHỮNG GÌ (4-LAYER JOURNEY) -->
-					<section class="mb-5">
-						<h2 class="h4 font-weight-bold text-forest-green mb-3">Bạn sẽ được trải nghiệm những gì?</h2>
-						<p class="text-muted small mb-4">Lộ trình được thiết kế theo 4 lớp trải nghiệm di sản: Quan sát – Chạm – Tự làm – Nghe chuyện:</p>
+					<!-- TAB 2: HÀNH TRÌNH 4 LỚP DI SẢN -->
+					<div class="detail-tab-pane" id="tab-journey">
+						<div class="p-4 bg-white rounded-20 border shadow-sm mb-4">
+							<h3 class="h5 font-weight-bold text-forest-green mb-2">Hành trình 4 lớp trải nghiệm</h3>
+							<p class="text-muted small mb-4">Lộ trình được thiết kế chuẩn mực theo 4 tầng cảm xúc di sản: Quan sát – Cảm nhận – Tự tay làm – Lắng nghe chuyện nghề:</p>
 
-						<div class="d-flex flex-column gap-3">
-							<!-- Layer 1 -->
-							<div class="p-3 bg-white rounded-15 border shadow-sm">
-								<span class="badge badge-light text-primary font-weight-bold mb-1">1. Quan sát (Nhìn thấy)</span>
-								<p class="small text-muted mb-0" id="detail-layer1">
-									Quan sát nghệ nhân chuốt gốm trên bàn xoay thủ công và kỹ thuật canh lửa lò nung củi rơm 3 ngày 3 đêm liên tục.
-								</p>
-							</div>
-
-							<!-- Layer 2 -->
-							<div class="p-3 bg-white rounded-15 border shadow-sm">
-								<span class="badge badge-light text-primary font-weight-bold mb-1">2. Cảm nhận (Chạm vào)</span>
-								<p class="small text-muted mb-0" id="detail-layer2">
-									Chạm tay vào khối đất sét phù sa ủ dẻo, cảm nhận bề mặt thô mộc ấm nóng của men da lươn vừa ra lò.
-								</p>
-							</div>
-
-							<!-- Layer 3 (Hands on) -->
-							<div class="p-3 bg-white rounded-15 border shadow-sm border-gold">
-								<div class="d-flex justify-content-between align-items-center mb-1">
-									<span class="badge badge-accent font-weight-bold text-white">3. Thực hành (Tự làm) — Trọng tâm</span>
-									<span class="badge badge-success small">Có sản phẩm mang về</span>
+							<div class="layer-timeline">
+								<!-- Bước 1 -->
+								<div class="layer-timeline-step">
+									<div class="layer-step-badge">1</div>
+									<div class="p-3 bg-warm-ivory rounded-15 border shadow-sm">
+										<div class="d-flex justify-content-between align-items-center mb-1">
+											<h4 class="h6 font-weight-bold text-forest-green mb-0">Quan sát (Nhìn thấy)</h4>
+											<span class="badge badge-light border small text-muted font-weight-bold">45 phút</span>
+										</div>
+										<p class="small text-muted mb-0" id="detail-layer1">
+											Quan sát nghệ nhân chuốt gốm trên bàn xoay thủ công và kỹ thuật canh lửa lò nung củi rơm 3 ngày 3 đêm liên tục.
+										</p>
+									</div>
 								</div>
-								<p class="small text-muted mb-0" id="detail-layer3">
-									Trực tiếp nhào đất, tự tay chuốt chiếc cốc mộc hoặc bình hoa kỷ niệm dưới sự hướng dẫn 1:1 của nghệ nhân.
-								</p>
-							</div>
 
-							<!-- Layer 4 -->
-							<div class="p-3 bg-white rounded-15 border shadow-sm">
-								<span class="badge badge-light text-primary font-weight-bold mb-1">4. Lắng nghe (Nghe kể chuyện)</span>
-								<p class="small text-muted mb-0" id="detail-layer4">
-									Lắng nghe bác Nam kể huyền tích tổ nghề Hứa Vĩnh Kiều, chuyện làng gốm sơ tán thời chiến và triết lý sống hòa với đất.
-								</p>
+								<!-- Bước 2 -->
+								<div class="layer-timeline-step">
+									<div class="layer-step-badge">2</div>
+									<div class="p-3 bg-warm-ivory rounded-15 border shadow-sm">
+										<div class="d-flex justify-content-between align-items-center mb-1">
+											<h4 class="h6 font-weight-bold text-forest-green mb-0">Cảm nhận (Chạm vào)</h4>
+											<span class="badge badge-light border small text-muted font-weight-bold">30 phút</span>
+										</div>
+										<p class="small text-muted mb-0" id="detail-layer2">
+											Chạm tay vào khối đất sét phù sa ủ dẻo, cảm nhận bề mặt thô mộc ấm nóng của men da lươn vừa ra lò.
+										</p>
+									</div>
+								</div>
+
+								<!-- Bước 3: Trọng tâm -->
+								<div class="layer-timeline-step highlight">
+									<div class="layer-step-badge">3</div>
+									<div class="p-3 bg-warm-ivory rounded-15 border shadow-sm border-gold">
+										<div class="d-flex justify-content-between align-items-center mb-1">
+											<h4 class="h6 font-weight-bold text-forest-green mb-0">Thực hành (Tự làm) — Trọng tâm</h4>
+											<span class="badge badge-accent text-white font-weight-bold small">Có sản phẩm mang về</span>
+										</div>
+										<p class="small text-muted mb-0" id="detail-layer3">
+											Trực tiếp nhào đất, tự tay chuốt chiếc cốc mộc hoặc bình hoa kỷ niệm dưới sự hướng dẫn 1:1 của nghệ nhân.
+										</p>
+									</div>
+								</div>
+
+								<!-- Bước 4 -->
+								<div class="layer-timeline-step">
+									<div class="layer-step-badge">4</div>
+									<div class="p-3 bg-warm-ivory rounded-15 border shadow-sm">
+										<div class="d-flex justify-content-between align-items-center mb-1">
+											<h4 class="h6 font-weight-bold text-forest-green mb-0">Lắng nghe (Nghe chuyện)</h4>
+											<span class="badge badge-light border small text-muted font-weight-bold">45 phút</span>
+										</div>
+										<p class="small text-muted mb-0" id="detail-layer4">
+											Lắng nghe bác Nam kể huyền tích tổ nghề Hứa Vĩnh Kiều, chuyện làng gốm sơ tán thời chiến và triết lý sống hòa với đất.
+										</p>
+									</div>
+								</div>
 							</div>
 						</div>
-					</section>
+					</div>
 
-					<!-- KHU VỰC 5: NGƯỜI GÌN GIỮ DI SẢN (ARTISAN CARD) -->
-					<section class="mb-5">
-						<h2 class="h4 font-weight-bold text-forest-green mb-3">Người gìn giữ di sản</h2>
-						<div class="p-4 bg-white rounded-20 border shadow-sm">
+					<!-- TAB 3: NGHỆ NHÂN & BA BÊN -->
+					<div class="detail-tab-pane" id="tab-artisan">
+						<!-- Artisan Card -->
+						<div class="p-4 bg-white rounded-20 border shadow-sm mb-4">
 							<div class="row align-items-center">
 								<div class="col-md-3 text-center mb-3 mb-md-0">
 									<img id="detail-artisan-img" src="images/person_2.jpg" alt="Nghệ nhân" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid var(--color-accent);">
@@ -226,80 +269,74 @@
 								</div>
 							</div>
 						</div>
-					</section>
 
-					<!-- KHU VỰC 5.5: AI LÀM GÌ TRONG TRẢI NGHIỆM NÀY (Docx & Prompt 3.4) -->
-					<section class="mb-5" id="detail-who-does-what-section">
-						<div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-							<h2 class="h4 font-weight-bold text-forest-green mb-0">Ai làm gì trong trải nghiệm này?</h2>
-							<div class="d-flex flex-wrap gap-2">
-								<span class="badge badge-light border text-success small font-weight-bold">
-									✓ Đã có sự đồng ý ghi hình của nghệ nhân
-								</span>
-								<span class="badge badge-light border text-primary small font-weight-bold">
-									✓ Đã kiểm duyệt: xác thực · storytelling · tương tác
-								</span>
+						<!-- Who does what section -->
+						<div class="mb-4">
+							<div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+								<h3 class="h5 font-weight-bold text-forest-green mb-0">Ai làm gì trong trải nghiệm này?</h3>
+								<div class="d-flex flex-wrap gap-2">
+									<span class="badge badge-light border text-success small font-weight-bold">
+										✓ Đồng thuận cộng đồng
+									</span>
+									<span class="badge badge-light border text-primary small font-weight-bold">
+										✓ Kiểm duyệt 3 tiêu chí
+									</span>
+								</div>
+							</div>
+
+							<div class="p-4 bg-white rounded-20 border shadow-sm">
+								<div class="row">
+									<!-- Đại sứ -->
+									<div class="col-md-4 mb-3 mb-md-0 border-right">
+										<div class="d-flex align-items-center mb-2">
+											<span class="badge badge-accent px-2 py-1 font-weight-bold text-white mr-2">Đại sứ</span>
+											<strong class="text-forest-green" id="role-ambassador-name">Lê Minh Anh</strong>
+										</div>
+										<p class="small text-muted mb-2" id="role-ambassador-desc">
+											Khảo sát thực địa, ghi hình và xây dựng hồ sơ; là đầu mối xác nhận lịch và hỗ trợ bạn tại chỗ.
+										</p>
+									</div>
+
+									<!-- Nghệ nhân -->
+									<div class="col-md-4 mb-3 mb-md-0 border-right">
+										<div class="d-flex align-items-center mb-2">
+											<span class="badge badge-success px-2 py-1 font-weight-bold text-white mr-2">Nghệ nhân</span>
+											<strong class="text-forest-green" id="role-artisan-name">Phạm Văn Nam</strong>
+										</div>
+										<p class="small text-muted mb-0" id="role-artisan-desc">
+											Trực tiếp hướng dẫn trải nghiệm và chịu trách nhiệm về kỹ nghệ, an toàn của buổi trải nghiệm.
+										</p>
+									</div>
+
+									<!-- HeritageLink -->
+									<div class="col-md-4">
+										<div class="d-flex align-items-center mb-2">
+											<span class="badge badge-primary px-2 py-1 font-weight-bold mr-2">HeritageLink</span>
+											<strong class="text-forest-green">Nền tảng</strong>
+										</div>
+										<p class="small text-muted mb-0" id="role-platform-desc">
+											Kiểm duyệt nội dung, hạ tầng công nghệ và chia doanh thu tự động minh bạch (85/5/2/8).
+										</p>
+									</div>
+								</div>
 							</div>
 						</div>
 
+						<!-- Rules & Need to Know -->
 						<div class="p-4 bg-white rounded-20 border shadow-sm">
-							<div class="row">
-								<!-- Đại sứ -->
-								<div class="col-md-4 mb-3 mb-md-0 border-right">
-									<div class="d-flex align-items-center mb-2">
-										<span class="badge badge-accent px-2 py-1 font-weight-bold text-white mr-2">Đại sứ</span>
-										<strong class="text-forest-green" id="role-ambassador-name">Lê Minh Anh</strong>
-									</div>
-									<p class="small text-muted mb-3" id="role-ambassador-desc">
-										đã khảo sát, ghi hình và xây dựng hồ sơ; là đầu mối xác nhận lịch và hỗ trợ bạn tại chỗ.
-									</p>
-									<button type="button" class="btn btn-outline-primary btn-sm font-weight-bold" id="btn-contact-ambassador" style="display: none;">
-										📞 Liên hệ Đại sứ
-									</button>
-								</div>
-
-								<!-- Nghệ nhân -->
-								<div class="col-md-4 mb-3 mb-md-0 border-right">
-									<div class="d-flex align-items-center mb-2">
-										<span class="badge badge-success px-2 py-1 font-weight-bold text-white mr-2">Nghệ nhân</span>
-										<strong class="text-forest-green" id="role-artisan-name">Phạm Văn Nam</strong>
-									</div>
-									<p class="small text-muted mb-0" id="role-artisan-desc">
-										trực tiếp hướng dẫn trải nghiệm và chịu trách nhiệm về chất lượng, an toàn của buổi trải nghiệm.
-									</p>
-								</div>
-
-								<!-- HeritageLink -->
-								<div class="col-md-4">
-									<div class="d-flex align-items-center mb-2">
-										<span class="badge badge-primary px-2 py-1 font-weight-bold mr-2">HeritageLink</span>
-										<strong class="text-forest-green">Nền tảng</strong>
-									</div>
-									<p class="small text-muted mb-0" id="role-platform-desc">
-										kiểm duyệt nội dung theo 3 tiêu chí, xử lý thanh toán và chia doanh thu minh bạch (85/5/2/8).
-									</p>
-								</div>
-							</div>
-						</div>
-					</section>
-
-					<!-- KHU VỰC 6: NHỮNG ĐIỀU CẦN BIẾT & QUY TẮC VĂN HÓA -->
-					<section class="mb-5">
-						<h2 class="h4 font-weight-bold text-forest-green mb-3">Những điều cần biết</h2>
-						<div class="p-4 bg-white rounded-20 border shadow-sm">
+							<h4 class="h6 font-weight-bold text-forest-green mb-3">Những điều cần biết</h4>
 							<ul class="list-unstyled mb-0 small text-muted">
-								<li class="mb-2"><strong>Địa điểm tập trung:</strong> Xưởng gốm Bác Nam, Thôn Phấn Trung, Xã Phù Lãng, Quế Võ, Bắc Ninh.</li>
-								<li class="mb-2"><strong>Trang phục:</strong> Quần áo thoải mái, dễ giặt sạch sau khi thực hành nhào nặn đất.</li>
-								<li class="mb-2"><strong>Bao gồm:</strong> Nguyên liệu đất sét, men trấu, công cụ chuốt, trà xanh làng quê, nung và đóng gói sản phẩm mang về.</li>
-								<li class="mb-2"><strong>Quy tắc văn hóa:</strong> Giữ trật tự, tôn trọng không gian thờ tổ nghề gốm của gia đình nghệ nhân.</li>
-								<li><strong>Chính sách đổi lịch:</strong> Hỗ trợ báo trước 24 giờ không mất phí để nghệ nhân chuẩn bị đất chuốt.</li>
+								<li class="mb-2"><strong>📍 Điểm đón tiếp:</strong> Xưởng gốm Bác Nam, Thôn Phấn Trung, Xã Phù Lãng, Quế Võ, Bắc Ninh.</li>
+								<li class="mb-2"><strong>👕 Trang phục:</strong> Quần áo thoải mái, dễ giặt sạch sau khi thực hành nhào nặn đất.</li>
+								<li class="mb-2"><strong>🎁 Bao gồm:</strong> Nguyên liệu đất sét, men trấu, công cụ chuốt, trà xanh làng quê, nung và đóng gói sản phẩm.</li>
+								<li class="mb-2"><strong>🏮 Quy tắc ứng xử:</strong> Tôn trọng không gian thờ tổ nghề gốm của gia đình nghệ nhân.</li>
+								<li><strong>🔄 Chính sách đổi lịch:</strong> Báo trước 24 giờ không mất phí để nghệ nhân chuẩn bị đất chuốt.</li>
 							</ul>
 						</div>
-					</section>
+					</div>
 
-					<!-- KHU VỰC 8: ĐÁNH GIÁ THỰC TẾ -->
-					<section class="mb-5">
-						<h2 class="h4 font-weight-bold text-forest-green mb-3">Đánh giá từ du khách đã hoàn thành</h2>
+					<!-- TAB 4: ĐÁNH GIÁ THỰC TẾ -->
+					<div class="detail-tab-pane" id="tab-reviews">
 						<div class="p-4 bg-white rounded-20 border shadow-sm">
 							<div class="d-flex align-items-center mb-3">
 								<strong class="display-4 font-weight-bold text-primary mr-3" style="font-size: 2.2rem;">4.9</strong>
@@ -313,7 +350,7 @@
 								<div class="mb-3 pb-3 border-bottom">
 									<div class="d-flex justify-content-between align-items-center mb-1">
 										<strong class="small text-dark font-weight-bold">Trần Hoài Nam (TP. Hồ Chí Minh)</strong>
-										<span class="small text-muted">14/10/2026 • Đã check-in</span>
+										<span class="small text-muted">14/10/2026 • Đã check-in QR</span>
 									</div>
 									<p class="small text-muted mb-0">
 										Bác Nam chỉ bảo rất tận tình. Lần đầu tiên mình hiểu vì sao gốm men da lươn lại có màu nâu cánh gián ấm áp đến vậy. Điểm cộng lớn cho bạn Minh Anh đại sứ sinh viên đã hỗ trợ dẫn đường!
@@ -322,7 +359,7 @@
 								<div>
 									<div class="d-flex justify-content-between align-items-center mb-1">
 										<strong class="small text-dark font-weight-bold">Nguyễn Phương Thảo (Hà Nội)</strong>
-										<span class="small text-muted">11/10/2026 • Đã check-in</span>
+										<span class="small text-muted">11/10/2026 • Đã check-in QR</span>
 									</div>
 									<p class="small text-muted mb-0">
 										Một buổi chiều bình yên bên bờ sông Cầu. Cốc gốm mình tự làm được nung và gửi về tận nhà rất cẩn thận. Rất đáng trải nghiệm!
@@ -330,70 +367,136 @@
 								</div>
 							</div>
 						</div>
-					</section>
+					</div>
 				</div>
 
-				<!-- Right Sticky Column: KHU VỰC 9: BOOKING CARD WIDGET -->
+				<!-- Right Column: Interactive Dynamic Tour Customizer Widget -->
 				<div class="col-lg-4">
 					<div class="sticky-booking-card">
 						<div class="d-flex justify-content-between align-items-center mb-3">
 							<div>
-								<span class="small text-muted">Giá trải nghiệm:</span>
+								<span class="small text-muted text-uppercase letter-spacing-1 font-weight-bold" style="font-size: 11px;">Thiết kế & Tùy biến Tour</span>
 								<h3 class="h4 font-weight-bold text-forest-green mb-0" id="detail-card-price">850.000đ</h3>
 							</div>
 							<span class="badge badge-success px-2 py-1 small">Còn 6 chỗ hôm nay</span>
 						</div>
 
-						<!-- Revenue Split Transparency Notice -->
-						<div class="revenue-split-badge mb-3">
-							<strong class="d-block text-accent font-weight-bold mb-1">Minh bạch dòng tiền 85/5/2/8:</strong>
-							<span class="small text-muted d-block">85% chi phí của bạn chuyển trực tiếp đến nghệ nhân bản địa để bảo tồn nghề.</span>
-						</div>
-
-						<!-- Booking Form -->
+						<!-- Dynamic Form Customizer -->
 						<form id="detail-booking-form">
-							<div class="form-group mb-3">
-								<label class="small font-weight-bold text-dark">Chọn ngày trải nghiệm</label>
-								<input type="date" id="booking-input-date" class="form-control" required>
+							<!-- Bước 1: Chọn gói trải nghiệm -->
+							<div class="mb-3">
+								<label class="small font-weight-bold text-dark text-uppercase letter-spacing-1 mb-2 d-block">
+									1. Chọn gói trải nghiệm
+								</label>
+								
+								<label class="package-option-card selected" id="pkg-card-standard">
+									<input type="radio" name="tourPackage" value="standard" checked>
+									<div style="flex:1;">
+										<div class="d-flex justify-content-between">
+											<strong class="small font-weight-bold text-forest-green">Gói Tiêu Chuẩn</strong>
+											<span class="small font-weight-bold text-accent" id="pkg-price-standard">850.000đ</span>
+										</div>
+										<p class="small text-muted mb-0" style="font-size: 11px; line-height: 1.35;">
+											Chuốt gốm 1:1 + Tự tay làm 1 sản phẩm mộc mang về + Thưởng trà sen.
+										</p>
+									</div>
+								</label>
+
+								<label class="package-option-card" id="pkg-card-premium">
+									<input type="radio" name="tourPackage" value="premium">
+									<div style="flex:1;">
+										<div class="d-flex justify-content-between">
+											<strong class="small font-weight-bold text-forest-green">Gói Chuyên Sâu & Ẩm Thực</strong>
+											<span class="small font-weight-bold text-accent" id="pkg-price-premium">+300.000đ</span>
+										</div>
+										<p class="small text-muted mb-0" style="font-size: 11px; line-height: 1.35;">
+											Gói chuẩn + Nung men da lươn gửi tận nhà + Mâm cơm quê truyền thống bên sông Cầu.
+										</p>
+									</div>
+								</label>
 							</div>
 
-							<div class="form-group mb-3">
-								<label class="small font-weight-bold text-dark">Khung giờ đón khách</label>
-								<select id="booking-input-slot" class="form-control custom-select">
-									<option value="morning">Sáng (08:30 - 12:30)</option>
-									<option value="afternoon" selected>Chiều (13:30 - 17:30)</option>
-								</select>
+							<!-- Bước 2: Dịch vụ cộng thêm -->
+							<div class="mb-3">
+								<label class="small font-weight-bold text-dark text-uppercase letter-spacing-1 mb-2 d-block">
+									2. Dịch vụ cộng thêm (Tùy chọn)
+								</label>
+								<label class="addon-item-row">
+									<div class="d-flex align-items-center gap-2">
+										<input type="checkbox" id="addon-giftbox" value="120000">
+										<span class="small font-weight-bold text-dark">Hộp quà gỗ điêu khắc lưu niệm</span>
+									</div>
+									<span class="small text-muted">+120.000đ</span>
+								</label>
+								<label class="addon-item-row">
+									<div class="d-flex align-items-center gap-2">
+										<input type="checkbox" id="addon-photo" value="150000">
+										<span class="small font-weight-bold text-dark">Đại sứ quay chụp ảnh máy cơ</span>
+									</div>
+									<span class="small text-muted">+150.000đ</span>
+								</label>
 							</div>
 
-							<div class="form-group mb-3">
-								<label class="small font-weight-bold text-dark">Số lượng khách</label>
-								<input type="number" id="booking-input-guests" class="form-control" min="1" max="8" value="2" required>
+							<!-- Bước 3: Lịch trình & Khung giờ -->
+							<div class="row mb-3">
+								<div class="col-12 mb-2">
+									<label class="small font-weight-bold text-dark">3. Ngày trải nghiệm</label>
+									<input type="date" id="booking-input-date" class="form-control" required>
+								</div>
+								<div class="col-12">
+									<label class="small font-weight-bold text-dark">Khung giờ đón tiếp</label>
+									<select id="booking-input-slot" class="form-control custom-select">
+										<option value="morning">Buổi sáng (08:30 - 12:30)</option>
+										<option value="afternoon" selected>Buổi chiều (13:30 - 17:30)</option>
+									</select>
+								</div>
+							</div>
+
+							<!-- Bước 4: Số lượng khách -->
+							<div class="d-flex align-items-center justify-content-between mb-3 p-2 bg-light rounded-10">
+								<div>
+									<strong class="d-block small text-dark font-weight-bold">Số lượng khách</strong>
+									<span class="small text-muted" style="font-size: 11px;">Tối đa 8 khách/lượt</span>
+								</div>
+								<div class="guest-stepper-wrap">
+									<button type="button" class="guest-stepper-btn" id="btn-guest-minus">-</button>
+									<input type="number" id="booking-input-guests" class="guest-stepper-input" min="1" max="8" value="2" readonly>
+									<button type="button" class="guest-stepper-btn" id="btn-guest-plus">+</button>
+								</div>
+							</div>
+
+							<!-- Revenue Split Transparency Notice -->
+							<div class="revenue-split-badge mb-3">
+								<div class="d-flex justify-content-between align-items-center mb-1">
+									<strong class="text-accent font-weight-bold" style="font-size: 12px;">Minh bạch dòng tiền 85/5/2/8</strong>
+									<span class="badge badge-success" style="font-size: 10px;">Xác thực</span>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<span class="small text-muted">Ủng hộ nghệ nhân (85%):</span>
+									<strong class="text-success h6 mb-0 font-weight-bold" id="calc-artisan-share">1.445.000đ</strong>
+								</div>
 							</div>
 
 							<!-- Live Total Price Breakdown -->
-							<div class="p-3 bg-light rounded-10 mb-3 small">
-								<div class="d-flex justify-content-between mb-1">
-									<span class="text-muted">Đơn giá:</span>
-									<span id="calc-unit-price">850.000đ × 2</span>
-								</div>
-								<div class="d-flex justify-content-between mb-1">
-									<span class="text-muted">Ủng hộ trực tiếp nghệ nhân (85%):</span>
-									<strong class="text-success" id="calc-artisan-share">1.445.000đ</strong>
+							<div class="p-3 bg-warm-ivory rounded-12 mb-3 border">
+								<div class="d-flex justify-content-between mb-1 small text-muted">
+									<span>Chi tiết:</span>
+									<span id="calc-breakdown-text">850.000đ × 2 khách</span>
 								</div>
 								<div class="d-flex justify-content-between pt-2 border-top">
 									<strong class="text-dark">Tổng thanh toán:</strong>
-									<strong class="text-forest-green h6 mb-0" id="calc-total-price">1.700.000đ</strong>
+									<strong class="text-forest-green h5 mb-0 font-weight-bold" id="calc-total-price">1.700.000đ</strong>
 								</div>
 							</div>
 
-							<button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mb-2" id="btn-submit-detail-booking">
-								Gửi yêu cầu đặt chỗ
+							<button type="submit" class="btn btn-primary btn-block font-weight-bold py-3 mb-2 shadow-sm" id="btn-submit-detail-booking" style="font-size: 1rem;">
+								Xác nhận & Gửi yêu cầu đặt chỗ
 							</button>
 							<div id="booking-status-feedback" class="small mt-2" aria-live="polite"></div>
 						</form>
 
-						<p class="small text-muted text-center mt-3 mb-0">
-							Sau khi đặt, bạn sẽ nhận mã QR check-in và được Đại sứ Di sản liên hệ hỗ trợ chu đáo.
+						<p class="small text-muted text-center mt-2 mb-0" style="font-size: 11px;">
+							🛡️ Đảm bảo an tâm: Xác nhận lịch qua SMS/Zalo cùng Đại sứ & Nghệ nhân trong 2 giờ.
 						</p>
 					</div>
 				</div>
@@ -414,6 +517,6 @@
 	<script src="/js/jquery-3.4.1.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/roles-data.js"></script>
-	<script src="/script.js?v=2.3"></script>
+	<script src="/script.js?v=2.4"></script>
 </body>
 </html>
