@@ -6,8 +6,8 @@
 	<meta name="author" content="HeritageLink">
 	<link rel="shortcut icon" href="favicon.png">
 
-	<title>Cổng Quản lý Đại sứ Di sản | HeritageLink</title>
-	<meta name="description" content="Khu vực dành riêng cho Đại sứ Di sản HeritageLink - Quản lý điểm di sản, theo dõi lịch đón khách, hoa hồng và sáng tạo nội dung văn hóa." />
+	<title>Không Gian Điều Hành: Cổng Quản Lý Đại Sứ Di Sản | HeritageLink</title>
+	<meta name="description" content="Khu vực dành riêng cho Đại sứ Di sản HeritageLink - Quản lý điểm di sản, tạo hồ sơ mới, theo dõi lịch đón khách và hoa hồng bảo trợ văn hóa." />
 
 	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,8 @@
 					<li><a href="index.html">Trang chủ</a></li>
 					<li><a href="explore.html">Khám phá</a></li>
 					<li><a href="heritage.html">Câu chuyện Di sản</a></li>
-					<li><a href="ambassadors.html">Mạng lưới Đại sứ</a></li>
+					<li><a href="ambassadors.html">Định hướng Đại sứ</a></li>
+					<li><a href="community.html">Cộng đồng</a></li>
 					<li><a href="ambassador-handbook.html">Cẩm nang & Đào tạo</a></li>
 					<li><a href="bookings.html">Quản lý booking</a></li>
 				</ul>
@@ -56,14 +57,66 @@
 		</div>
 	</nav>
 
-	<!-- Subpage Hero Banner -->
-	<header class="py-5 bg-forest-green text-white mt-5 pt-5">
-		<div class="container mt-3 text-center">
-			<span class="eyebrow" style="color: var(--color-accent) !important;">Không gian điều hành</span>
-			<h1 class="h2 font-weight-bold text-white mb-2">Cổng Quản lý Đại sứ Di sản</h1>
-			<p class="text-white-opacity lead mb-0" style="font-size: 1.05rem;">
-				Quản lý điểm di sản phụ trách, tạo Hồ sơ Di sản sống mới và theo dõi hoa hồng bảo trợ văn hóa
-			</p>
+	<!-- Multi-Role Switcher Toolbar -->
+	<div class="role-portal-bar mt-5 pt-3">
+		<div class="container">
+			<div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+				<div class="d-flex align-items-center gap-2">
+					<span class="text-white-opacity small font-weight-bold text-uppercase mr-2">
+						Không gian điều hành các vai trò:
+					</span>
+					<div class="role-switcher-container">
+						<a href="community.html" class="role-switch-pill" title="Cổng dành cho cộng đồng và nghệ nhân">
+							<span>🌿</span>
+							<span>Cộng đồng & Nghệ nhân</span>
+						</a>
+						<a href="ambassadors.html" class="role-switch-pill" title="Cổng định hướng và tuyển chọn Đại sứ">
+							<span>🎓</span>
+							<span>Cổng Tuyển Đại sứ</span>
+						</a>
+						<a href="ambassador.html" class="role-switch-pill active" title="Không gian điều hành thực tế của Đại sứ">
+							<span>💼</span>
+							<span>Dashboard Đại sứ</span>
+							<span class="role-badge-tag">Đang mở</span>
+						</a>
+						<a href="host.html" class="role-switch-pill" title="Cổng xem lịch đón khách của Hộ dân">
+							<span>📅</span>
+							<span>Lịch đón khách (Hộ dân)</span>
+						</a>
+						<a href="admin.html" class="role-switch-pill" title="Trung tâm điều hành Super Admin">
+							<span>⚙️</span>
+							<span>Super Admin</span>
+						</a>
+					</div>
+				</div>
+				<div class="d-none d-md-block text-white-opacity small font-weight-bold">
+					Hoa hồng bảo trợ: <span class="text-accent">5% GMV trên mỗi booking</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Subpage Hero Banner (Screenshot Header Style) -->
+	<header class="portal-hero-banner text-white py-4">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-8">
+					<span class="portal-eyebrow">
+						— KHÔNG GIAN ĐIỀU HÀNH —
+					</span>
+					<h1 class="h2 font-weight-bold text-white mb-2" style="font-size: 2.2rem;">
+						Cổng Quản lý Đại sứ Di sản
+					</h1>
+					<p class="text-white-opacity lead mb-0" style="font-size: 1.05rem;">
+						Quản lý điểm di sản phụ trách, tạo Hồ sơ Di sản sống mới và theo dõi hoa hồng bảo trợ văn hóa
+					</p>
+				</div>
+				<div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+					<button type="button" class="btn btn-accent px-4 py-2 font-weight-bold shadow-sm" onclick="switchAmbTab('amb-tab-spots')">
+						+ Đề xuất Hồ sơ Di sản mới →
+					</button>
+				</div>
+			</div>
 		</div>
 	</header>
 
@@ -73,9 +126,9 @@
 			<div class="row justify-content-center">
 				<div class="col-md-7 text-center">
 					<div class="bg-white p-5 rounded-20 shadow-lg border">
-						<div class="text-accent font-weight-bold mb-3" style="font-size: 1.8rem;">HẠNG NHẤT</div>
-						<h2 class="h4 font-weight-bold mb-2 text-forest-green">Dành riêng cho Đại sứ Di sản</h2>
-						<p class="text-muted mb-4">Bạn chưa đăng nhập với tài khoản Đại sứ hoặc đơn đăng ký của bạn đang được xét duyệt.</p>
+						<div class="text-accent font-weight-bold mb-3" style="font-size: 1.8rem;">CHƯA CÓ QUYỀN TRUY CẬP</div>
+						<h2 class="h4 font-weight-bold mb-2 text-forest-green">Dành riêng cho Đại sứ Di sản đã phê duyệt</h2>
+						<p class="text-muted mb-4">Bạn chưa đăng nhập với tài khoản Đại sứ hoặc đơn đăng ký của bạn đang trong quá trình thẩm định 3 tiêu chí.</p>
 						<div class="d-flex justify-content-center flex-wrap gap-2">
 							<a href="login.html" class="btn btn-primary px-4 py-2 font-weight-bold mr-2">Đăng nhập tài khoản Đại sứ</a>
 							<a href="ambassador-apply.html" class="btn btn-outline-primary px-4 py-2 font-weight-bold">Gửi đơn đăng ký mới</a>
@@ -87,13 +140,13 @@
 	</div>
 
 	<!-- Main Ambassador Portal Content -->
-	<main id="ambassador-main-content" class="py-5">
+	<main id="ambassador-main-content" class="py-4">
 		<div class="container">
-			<!-- Ambassador Profile Header Card -->
-			<div class="bg-white p-4 p-md-5 rounded-20 shadow-sm border mb-5">
+			<!-- Ambassador Profile Header Card (From Screenshot) -->
+			<div class="bg-white p-4 rounded-20 shadow-sm border mb-4">
 				<div class="row align-items-center">
 					<div class="col-auto mb-3 mb-md-0">
-						<img src="images/person_1.jpg" alt="Avatar Đại sứ" class="rounded-circle shadow-sm" style="width: 90px; height: 90px; object-fit: cover; border: 3px solid var(--color-accent);" />
+						<img src="images/person_1.jpg" alt="Avatar Đại sứ" class="rounded-circle shadow-sm" style="width: 85px; height: 85px; object-fit: cover; border: 3px solid var(--color-accent);" />
 					</div>
 					<div class="col">
 						<div class="d-flex flex-wrap align-items-center mb-1">
@@ -111,19 +164,109 @@
 						<a href="ambassador-handbook.html" class="btn btn-outline-primary btn-sm px-3 py-2 font-weight-bold shadow-sm mr-2">
 							📖 Cẩm nang & Đào tạo
 						</a>
-						<button type="button" class="btn btn-primary btn-sm px-4 py-2 font-weight-bold shadow-sm" data-toggle="collapse" data-target="#propose-spot-collapse">
-							+ Đề xuất Hồ sơ Di sản mới
+						<button type="button" class="btn btn-primary btn-sm px-4 py-2 font-weight-bold shadow-sm" onclick="switchAmbTab('amb-tab-spots')">
+							+ Đề xuất Hồ sơ mới
 						</button>
 					</div>
 				</div>
 			</div>
 
-			<!-- Collapse Form: Propose New Heritage Spot with Consent Checkbox -->
-			<div class="collapse mb-5" id="propose-spot-collapse">
-				<div class="p-4 p-md-5 rounded-20 shadow-lg border bg-white">
+			<!-- Dashboard Tabs Navigation (Divided by Tabs for Easy Tracking) -->
+			<div class="portal-tabs-wrapper mb-4 rounded-15 border">
+				<ul class="portal-tabs-nav" id="ambDashboardTabs" role="tablist">
+					<li>
+						<button type="button" class="portal-tab-btn active" id="btn-amb-tab-overview" onclick="switchAmbTab('amb-tab-overview')" role="tab" aria-selected="true" aria-controls="amb-tab-overview">
+							<span class="tab-icon">📊</span>
+							<span>1. Thống kê & Hiệu suất</span>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="portal-tab-btn" id="btn-amb-tab-spots" onclick="switchAmbTab('amb-tab-spots')" role="tab" aria-selected="false" aria-controls="amb-tab-spots">
+							<span class="tab-icon">🏛️</span>
+							<span>2. Điểm di sản & Đề xuất mới</span>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="portal-tab-btn" id="btn-amb-tab-bookings" onclick="switchAmbTab('amb-tab-bookings')" role="tab" aria-selected="false" aria-controls="amb-tab-bookings">
+							<span class="tab-icon">📅</span>
+							<span>3. Lịch đón khách</span>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="portal-tab-btn" id="btn-amb-tab-modules" onclick="switchAmbTab('amb-tab-modules')" role="tab" aria-selected="false" aria-controls="amb-tab-modules">
+							<span class="tab-icon">📚</span>
+							<span>4. Học phần Đào tạo</span>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="portal-tab-btn" id="btn-amb-tab-commission" onclick="switchAmbTab('amb-tab-commission')" role="tab" aria-selected="false" aria-controls="amb-tab-commission">
+							<span class="tab-icon">💵</span>
+							<span>5. Đối soát Hoa hồng 5%</span>
+						</button>
+					</li>
+				</ul>
+			</div>
+
+			<!-- ==============================================================
+			     TAB 1: THỐNG KÊ & HIỆU SUẤT
+			     ============================================================== -->
+			<div class="portal-pane active" id="amb-tab-overview" role="tabpanel" aria-labelledby="btn-amb-tab-overview">
+				<!-- 4 Key Metrics -->
+				<div class="row mb-3">
+					<div class="col-6 col-lg-3 mb-3">
+						<div class="portal-stat-card text-center">
+							<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Lượt xem hồ sơ</span>
+							<strong class="h3 font-weight-bold text-forest-green mb-0" id="stat-views">1.2K</strong>
+							<small class="d-block text-success mt-1">Lượt tiếp cận</small>
+						</div>
+					</div>
+
+					<div class="col-6 col-lg-3 mb-3">
+						<div class="portal-stat-card text-center">
+							<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Số booking tạo ra</span>
+							<strong class="h3 font-weight-bold text-forest-green mb-0" id="stat-bookings">3</strong>
+							<small class="d-block text-muted mt-1">Lượt khách ghé thăm</small>
+						</div>
+					</div>
+
+					<div class="col-6 col-lg-3 mb-3">
+						<div class="portal-stat-card text-center">
+							<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Hoa hồng đã nhận (5%)</span>
+							<strong class="h3 font-weight-bold text-success mb-0" id="stat-commission-recorded">85.000đ</strong>
+							<small class="d-block text-muted mt-1">Tour đã check-in</small>
+						</div>
+					</div>
+
+					<div class="col-6 col-lg-3 mb-3">
+						<div class="portal-stat-card text-center">
+							<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Hoa hồng tạm tính</span>
+							<strong class="h3 font-weight-bold text-accent mb-0" id="stat-commission-pending">120.000đ</strong>
+							<small class="d-block text-muted mt-1">Chờ đón tiếp</small>
+						</div>
+					</div>
+				</div>
+
+				<!-- Commission Formula Explanation Banner -->
+				<div class="p-4 bg-white rounded-20 border mb-4 d-flex align-items-center justify-content-between flex-wrap gap-2">
+					<div class="d-flex align-items-center">
+						<div class="small text-muted" style="font-size: 1.05rem;">
+							<strong class="text-forest-green">Cơ chế hoa hồng minh bạch:</strong> Hoa hồng Đại sứ = <strong>Tổng tiền khách trả (GMV) × 5%</strong>.
+							<span class="text-muted font-italic ml-1">(Ví dụ: Khách đặt trải nghiệm 850.000đ thì bạn nhận ngay 42.500đ).</span>
+						</div>
+					</div>
+					<span class="badge badge-success font-weight-bold py-2 px-3">Đối soát tự động</span>
+				</div>
+			</div>
+
+			<!-- ==============================================================
+			     TAB 2: ĐIỂM DI SẢN PHỤ TRÁCH & ĐỀ XUẤT HỒ SƠ MỚI
+			     ============================================================== -->
+			<div class="portal-pane" id="amb-tab-spots" role="tabpanel" aria-labelledby="btn-amb-tab-spots">
+				<!-- Propose Spot Form -->
+				<div class="p-4 p-md-5 rounded-20 shadow-sm border bg-white mb-4">
 					<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-						<h3 class="h5 font-weight-bold text-forest-green mb-0">Tạo Hồ sơ Di sản sống & Gửi thẩm định 3 tiêu chí</h3>
-						<button type="button" class="close text-muted" data-toggle="collapse" data-target="#propose-spot-collapse">&times;</button>
+						<h3 class="h5 font-weight-bold text-forest-green mb-0">+ Tạo Hồ sơ Di sản sống mới & Gửi thẩm định 3 tiêu chí</h3>
+						<span class="badge badge-accent px-3 py-1 font-weight-bold text-white">Kịch bản 4 lớp</span>
 					</div>
 
 					<form id="propose-spot-form">
@@ -165,7 +308,7 @@
 
 							<!-- Consent & Ethics Section -->
 							<div class="col-12 mb-3">
-								<div class="p-3 bg-light rounded-15 border">
+								<div class="p-3 bg-warm-ivory rounded-15 border">
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input" id="prop-consent" required checked>
 										<label class="custom-control-label small font-weight-bold text-forest-green" for="prop-consent">
@@ -173,7 +316,7 @@
 										</label>
 									</div>
 									<small class="text-muted d-block pl-4 mt-1">
-										Hồ sơ sẽ được Super Admin thẩm định qua 3 tiêu chí: Tính xác thực văn hóa, Kể chuyện di sản và Khả năng tương tác thực hành trước khi công bố.
+										Hồ sơ sẽ được thẩm định qua 3 tiêu chí: Tính xác thực văn hóa, Kể chuyện di sản và Khả năng tương tác thực chất trước khi xuất hiện trên trang Khám phá.
 									</small>
 								</div>
 							</div>
@@ -187,93 +330,96 @@
 						</div>
 					</form>
 				</div>
-			</div>
 
-			<!-- 4 Key Metrics with Formula Note -->
-			<div class="row mb-3">
-				<div class="col-6 col-lg-3 mb-3">
-					<div class="p-4 bg-white rounded-20 border shadow-sm text-center">
-						<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Lượt xem hồ sơ</span>
-						<strong class="h3 font-weight-bold text-forest-green mb-0" id="stat-views">1.2K</strong>
-						<small class="d-block text-success mt-1">Dữ liệu minh họa</small>
-					</div>
-				</div>
-
-				<div class="col-6 col-lg-3 mb-3">
-					<div class="p-4 bg-white rounded-20 border shadow-sm text-center">
-						<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Số booking tạo ra</span>
-						<strong class="h3 font-weight-bold text-forest-green mb-0" id="stat-bookings">3</strong>
-						<small class="d-block text-muted mt-1">Lượt khách ghé thăm</small>
-					</div>
-				</div>
-
-				<div class="col-6 col-lg-3 mb-3">
-					<div class="p-4 bg-white rounded-20 border shadow-sm text-center">
-						<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Hoa hồng đã nhận (5%)</span>
-						<strong class="h3 font-weight-bold text-success mb-0" id="stat-commission-recorded">85.000đ</strong>
-						<small class="d-block text-muted mt-1">Tour đã check-in</small>
-					</div>
-				</div>
-
-				<div class="col-6 col-lg-3 mb-3">
-					<div class="p-4 bg-white rounded-20 border shadow-sm text-center">
-						<span class="text-muted small font-weight-bold text-uppercase d-block mb-1">Hoa hồng tạm tính</span>
-						<strong class="h3 font-weight-bold text-accent mb-0" id="stat-commission-pending">120.000đ</strong>
-						<small class="d-block text-muted mt-1">Chờ khách đón tiếp</small>
+				<!-- Managed Heritage Spots List -->
+				<div class="p-4 p-md-5 bg-white rounded-20 border shadow-sm">
+					<h3 class="h5 font-weight-bold text-forest-green mb-3">Điểm di sản bạn đang phụ trách</h3>
+					<div id="ambassador-spots-list">
+						<!-- Populated by JS -->
 					</div>
 				</div>
 			</div>
 
-			<!-- Commission Formula Explanation Banner (Docx Section 2 & 5.1.1) -->
-			<div class="p-3 bg-white rounded-15 border mb-5 d-flex align-items-center justify-content-between flex-wrap gap-2">
-				<div class="d-flex align-items-center">
-					
-					<div class="small text-muted">
-						<strong class="text-forest-green">Cơ chế hoa hồng minh bạch:</strong> Hoa hồng Đại sứ = <strong>GMV × 5%</strong>.
-						<span class="text-muted font-italic ml-1">(Ví dụ mục tiêu Năm 1: 43 booking × 800.000đ × 5% = 1.720.000đ / Đại sứ bình quân).</span>
+			<!-- ==============================================================
+			     TAB 3: LỊCH ĐÓN KHÁCH & BOOKING
+			     ============================================================== -->
+			<div class="portal-pane" id="amb-tab-bookings" role="tabpanel" aria-labelledby="btn-amb-tab-bookings">
+				<div class="p-4 p-md-5 bg-white rounded-20 border shadow-sm">
+					<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+						<h3 class="h5 font-weight-bold text-forest-green mb-0">Lịch đón khách gần đây</h3>
+						<span class="badge badge-success px-3 py-1 font-weight-bold">Đầu mối hỗ trợ tại chỗ</span>
 					</div>
-				</div>
-				<span class="badge badge-light text-forest-green border font-weight-bold small py-1 px-2">Khớp hồ sơ mục 5.1.1</span>
-			</div>
-
-			<!-- Training Modules & Managed Spots -->
-			<div class="row mb-5">
-				<!-- Training Modules Left -->
-				<div class="col-lg-5 mb-4 mb-lg-0">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
-						<div class="d-flex justify-content-between align-items-center mb-3">
-							<h3 class="h5 font-weight-bold text-forest-green mb-0">4 Học phần Đào tạo</h3>
-							<a href="ambassador-handbook.html" class="small font-weight-bold text-accent">Học & Nhận Chứng chỉ →</a>
-						</div>
-						<div id="ambassador-modules-list">
-							<!-- Populated by JS -->
-						</div>
-					</div>
-				</div>
-
-				<!-- Managed Heritage Spots Right -->
-				<div class="col-lg-7">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
-						<h3 class="h5 font-weight-bold text-forest-green mb-3">Điểm di sản bạn đang phụ trách</h3>
-						<div id="ambassador-spots-list">
-							<!-- Populated by JS -->
-						</div>
+					<p class="text-muted small mb-3">Khi du khách đặt trải nghiệm, bạn có trách nhiệm xác nhận lịch và hỗ trợ hộ dân đón tiếp chu đáo.</p>
+					<div id="ambassador-bookings-list">
+						<!-- Populated by JS -->
 					</div>
 				</div>
 			</div>
 
-			<!-- Recent Bookings Table -->
-			<div class="p-4 bg-white rounded-20 border shadow-sm">
-				<h3 class="h5 font-weight-bold text-forest-green mb-3">Lịch đón khách gần đây</h3>
-				<div id="ambassador-bookings-list">
-					<!-- Populated by JS -->
+			<!-- ==============================================================
+			     TAB 4: 4 HỌC PHẦN ĐÀO TẠO & CẨM NANG
+			     ============================================================== -->
+			<div class="portal-pane" id="amb-tab-modules" role="tabpanel" aria-labelledby="btn-amb-tab-modules">
+				<div class="p-4 p-md-5 bg-white rounded-20 border shadow-sm">
+					<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+						<h3 class="h5 font-weight-bold text-forest-green mb-0">4 Học phần Đào tạo Trực tuyến</h3>
+						<a href="ambassador-handbook.html" class="btn btn-outline-primary btn-sm font-weight-bold">
+							Mở Cẩm nang đầy đủ →
+						</a>
+					</div>
+					<div id="ambassador-modules-list">
+						<!-- Populated by JS -->
+					</div>
 				</div>
 			</div>
+
+			<!-- ==============================================================
+			     TAB 5: ĐỐI SOÁT HOA HỒNG 5%
+			     ============================================================== -->
+			<div class="portal-pane" id="amb-tab-commission" role="tabpanel" aria-labelledby="btn-amb-tab-commission">
+				<div class="p-4 p-md-5 bg-white rounded-20 border shadow-sm">
+					<h3 class="h5 font-weight-bold text-forest-green mb-3">Minh bạch cơ chế chia sẻ doanh thu 85/5/2/8</h3>
+					<div class="revenue-split-bar mb-4">
+						<div class="split-seg-host" style="width: 85%;"><span>85% Hộ dân</span></div>
+						<div class="split-seg-ambassador" style="width: 5%;"><span>5% Đại sứ</span></div>
+						<div class="split-seg-payment" style="width: 2%;"><span>2%</span></div>
+						<div class="split-seg-platform" style="width: 8%;"><span>8%</span></div>
+					</div>
+
+					<div class="table-responsive">
+						<table class="table table-bordered text-center bg-light">
+							<thead class="thead-light">
+								<tr>
+									<th>Hộ dân (85%)</th>
+									<th class="text-accent-dark font-weight-bold">Đại sứ Sinh viên (5%)</th>
+									<th>Cổng thanh toán (2%)</th>
+									<th>Nền tảng (8%)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>722.500đ</td>
+									<td class="font-weight-bold text-accent-dark" style="font-size: 1.3rem;">42.500đ</td>
+									<td>17.000đ</td>
+									<td>68.000đ</td>
+								</tr>
+								<tr class="small text-muted">
+									<td>Chuyển trực tiếp cho hộ dân</td>
+									<td>Hoa hồng hỗ trợ học phí/điền dã</td>
+									<td>Phí chuyển khoản</td>
+									<td>Duy trì hệ thống</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</main>
 
 	<!-- Footer -->
-	<footer class="site-footer">
+	<footer class="site-footer bg-forest-green text-white py-5 mt-5">
 		<div class="container text-center">
 			<p class="mb-0 text-white-opacity small">
 				HeritageLink &copy; 2026. Mạng lưới Đại sứ Di sản sinh viên toàn quốc.
@@ -285,6 +431,35 @@
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
+		function switchAmbTab(targetTabId) {
+			var panes = document.querySelectorAll('.portal-pane');
+			var buttons = document.querySelectorAll('.portal-tab-btn');
+
+			panes.forEach(function (p) {
+				p.classList.remove('active');
+			});
+
+			buttons.forEach(function (b) {
+				b.classList.remove('active');
+				b.setAttribute('aria-selected', 'false');
+			});
+
+			var targetPane = document.getElementById(targetTabId);
+			if (targetPane) {
+				targetPane.classList.add('active');
+			}
+
+			var targetBtn = document.getElementById('btn-' + targetTabId);
+			if (targetBtn) {
+				targetBtn.classList.add('active');
+				targetBtn.setAttribute('aria-selected', 'true');
+			}
+
+			if (history.replaceState) {
+				history.replaceState(null, null, '#' + targetTabId);
+			}
+		}
+
 		async function checkAmbassadorAuth() {
 			try {
 				const res = await fetch('/api/session');
@@ -314,42 +489,48 @@
 
 				// Modules
 				const modulesList = document.getElementById('ambassador-modules-list');
-				modulesList.innerHTML = data.trainingModules.map(m => `
-					<div class="p-3 bg-light rounded-15 mb-2 border d-flex justify-content-between align-items-center">
-						<div>
-							<strong class="d-block small text-dark">${m.title}</strong>
-							<span class="small text-muted">Thời lượng: ${m.duration}</span>
+				if (modulesList) {
+					modulesList.innerHTML = data.trainingModules.map(m => `
+						<div class="p-3 bg-light rounded-15 mb-2 border d-flex justify-content-between align-items-center">
+							<div>
+								<strong class="d-block small text-dark">${m.title}</strong>
+								<span class="small text-muted">Thời lượng: ${m.duration}</span>
+							</div>
+							<span class="badge badge-success small">Đã hoàn thành</span>
 						</div>
-						<span class="badge badge-success small">Hoàn thành</span>
-					</div>
-				`).join('');
+					`).join('');
+				}
 
 				// Spots
 				const spotsList = document.getElementById('ambassador-spots-list');
-				spotsList.innerHTML = data.spots.map(s => `
-					<div class="p-3 bg-light rounded-15 mb-2 border d-flex justify-content-between align-items-center">
-						<div class="d-flex align-items-center gap-3">
-							<img src="${s.imageClass}" style="width: 70px; height: 50px; object-fit: cover; border-radius: 8px;">
-							<div>
-								<strong class="d-block text-dark small font-weight-bold">${s.title}</strong>
-								<span class="small text-muted">${s.location} • ${Number(s.price).toLocaleString('vi-VN')}đ</span>
+				if (spotsList) {
+					spotsList.innerHTML = data.spots.map(s => `
+						<div class="p-3 bg-light rounded-15 mb-2 border d-flex justify-content-between align-items-center">
+							<div class="d-flex align-items-center gap-3">
+								<img src="${s.imageClass}" style="width: 70px; height: 50px; object-fit: cover; border-radius: 8px;">
+								<div>
+									<strong class="d-block text-dark small font-weight-bold">${s.title}</strong>
+									<span class="small text-muted">${s.location} • ${Number(s.price).toLocaleString('vi-VN')}đ</span>
+								</div>
 							</div>
+							<span class="badge badge-primary small" style="background-color: var(--color-primary);">${s.badge}</span>
 						</div>
-						<span class="badge badge-primary small" style="background-color: var(--color-primary);">${s.badge}</span>
-					</div>
-				`).join('');
+					`).join('');
+				}
 
 				// Bookings
 				const bookingsList = document.getElementById('ambassador-bookings-list');
-				bookingsList.innerHTML = data.recentBookings.map(b => `
-					<div class="p-3 bg-light rounded-15 mb-2 border d-flex justify-content-between align-items-center">
-						<div>
-							<strong class="d-block text-dark small">${b.experienceTitle}</strong>
-							<span class="small text-muted">Khách: ${b.userName} • Ngày: ${b.bookingDate}</span>
+				if (bookingsList) {
+					bookingsList.innerHTML = data.recentBookings.map(b => `
+						<div class="p-3 bg-light rounded-15 mb-2 border d-flex justify-content-between align-items-center">
+							<div>
+								<strong class="d-block text-dark small">${b.experienceTitle}</strong>
+								<span class="small text-muted">Khách: ${b.userName} • Ngày: ${b.bookingDate}</span>
+							</div>
+							<span class="badge badge-${b.status === 'completed' ? 'success' : 'warning'} small">${b.status}</span>
 						</div>
-						<span class="badge badge-${b.status === 'completed' ? 'success' : 'warning'} small">${b.status}</span>
-					</div>
-				`).join('');
+					`).join('');
+				}
 			} catch (e) {
 				console.error(e);
 			}
@@ -369,7 +550,7 @@
 			};
 
 			const msg = document.getElementById('prop-message');
-			msg.textContent = 'Đang gửi hồ sơ...';
+			if (msg) msg.textContent = 'Đang gửi hồ sơ...';
 
 			try {
 				const res = await fetch('/api/ambassador/propose-spot', {
@@ -379,13 +560,17 @@
 				});
 				const result = await res.json();
 				if (!res.ok) throw new Error(result.message);
-				msg.className = 'small text-success font-weight-bold';
-				msg.textContent = `${result.message}`;
+				if (msg) {
+					msg.className = 'small text-success font-weight-bold';
+					msg.textContent = `${result.message}`;
+				}
 				document.getElementById('propose-spot-form').reset();
 				setTimeout(loadAmbassadorData, 1000);
 			} catch (err) {
-				msg.className = 'small text-danger font-weight-bold';
-				msg.textContent = err.message || 'Lỗi khi gửi.';
+				if (msg) {
+					msg.className = 'small text-danger font-weight-bold';
+					msg.textContent = err.message || 'Lỗi khi gửi.';
+				}
 			}
 		});
 

@@ -511,6 +511,24 @@ async function initDetailPage() {
       if (document.getElementById('detail-artisan-img') && exp.artisan.image) document.getElementById('detail-artisan-img').src = exp.artisan.image;
     }
 
+    // Populate Dynamic "Ai làm gì trong trải nghiệm này" Section (Prompt 3.4)
+    if (typeof DETAIL_ROLES_BY_EXP_ID !== 'undefined') {
+      const roleData = DETAIL_ROLES_BY_EXP_ID[exp.id] || DETAIL_ROLES_BY_EXP_ID.default;
+      if (roleData) {
+        const ambNameEl = document.getElementById('role-ambassador-name');
+        const ambDescEl = document.getElementById('role-ambassador-desc');
+        const artNameEl = document.getElementById('role-artisan-name');
+        const artDescEl = document.getElementById('role-artisan-desc');
+        const platDescEl = document.getElementById('role-platform-desc');
+
+        if (ambNameEl) ambNameEl.textContent = roleData.ambassadorName || exp.ambassador;
+        if (ambDescEl) ambDescEl.textContent = roleData.ambassadorRole;
+        if (artNameEl) artNameEl.textContent = roleData.artisanName || (exp.artisan ? exp.artisan.name : 'Nghệ nhân bản địa');
+        if (artDescEl) artDescEl.textContent = roleData.artisanRole;
+        if (platDescEl) platDescEl.textContent = roleData.platformRole;
+      }
+    }
+
     // Pricing & Live Calculator Setup
     const cardPrice = document.getElementById('detail-card-price');
     if (cardPrice) cardPrice.textContent = `${Number(exp.price).toLocaleString('vi-VN')}đ`;

@@ -6,8 +6,8 @@
 	<meta name="author" content="HeritageLink">
 	<link rel="shortcut icon" href="favicon.png">
 
-	<title>Mạng lưới Đại sứ Di sản Sinh viên | HeritageLink</title>
-	<meta name="description" content="Chương trình Đại sứ Di sản sinh viên HeritageLink - Đồng hành cùng nghệ nhân, số hóa di sản quê hương và xây dựng portfolio văn hóa thực chiến." />
+	<title>Cổng Không Gian Điều Hành: Đại Sứ Di Sản Sinh Viên | HeritageLink</title>
+	<meta name="description" content="Cổng thông tin điều hành dành riêng cho Đại sứ Di sản sinh viên - Bạn là người biên kịch trải nghiệm, kết nối nghệ nhân và số hóa di sản văn hóa quê hương." />
 
 	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,11 +24,12 @@
 
 <body class="bg-warm-ivory">
 
-	<!-- Navigation -->
+	<!-- Top Navigation Bar -->
 	<nav class="site-nav scrolled" id="main-site-nav">
 		<div class="container">
 			<div class="site-navigation d-flex align-items-center justify-content-between">
-				<a href="index.html" class="brand-logo">
+				<!-- Brand Logo -->
+				<a href="index.html" class="brand-logo" id="nav-brand-logo">
 					<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-img">
 					<div class="logo-text-block">
 						<span class="logo-main-text">HeritageLink</span>
@@ -36,181 +37,780 @@
 					</div>
 				</a>
 
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu">
+				<!-- Site Menu -->
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu" id="nav-desktop-menu">
 					<li><a href="index.html">Trang chủ</a></li>
 					<li><a href="explore.html">Khám phá</a></li>
 					<li><a href="heritage.html">Câu chuyện Di sản</a></li>
 					<li class="active"><a href="ambassadors.html">Đại sứ Di sản</a></li>
+					<li><a href="community.html">Cộng đồng</a></li>
 					<li><a href="ambassador-handbook.html">Cẩm nang & Đào tạo</a></li>
-					<li><a href="ai-itinerary.html">AI Lộ trình</a></li>
 					<li><a href="passport.html">Hộ chiếu số</a></li>
 				</ul>
 
+				<!-- Actions -->
 				<div class="header-auth-actions d-none d-lg-inline-flex align-items-center">
-					<a href="login.html" class="btn btn-outline-primary btn-sm px-3 py-1" id="nav-login-btn">Đăng nhập</a>
-					<a href="ambassador-apply.html" class="btn btn-accent btn-sm px-3 py-1 font-weight-bold">Đăng ký ngay</a>
-					<button class="btn btn-outline-primary btn-sm px-3 py-1 hidden" id="nav-logout-btn">Đăng xuất</button>
-					<span id="nav-user-badge" class="user-badge hidden"></span>
+					<span class="badge badge-accent font-weight-bold px-3 py-2 mr-2 text-white shadow-sm">
+						Đại sứ Di sản
+					</span>
+					<a href="ambassador.html" class="btn btn-outline-primary btn-sm px-3 py-1 font-weight-bold">Cổng Quản lý</a>
+					<a href="login.html" class="btn btn-outline-primary btn-sm px-3 py-1 ml-2">Đăng nhập</a>
 				</div>
 			</div>
 		</div>
 	</nav>
 
-	<!-- Ambassador Hero -->
-	<header class="py-5 bg-forest-green text-white mt-5 pt-5">
-		<div class="container mt-4 py-4 text-center">
-			<span class="eyebrow text-accent" style="color: var(--color-accent) !important;">Dành riêng cho sinh viên & thế hệ trẻ</span>
-			<h1 class="display-4 font-weight-bold text-white mb-3" style="font-size: 2.8rem;">
-				Trở thành người kể chuyện<br><span class="text-accent-gold">di sản quê hương.</span>
-			</h1>
-			<p class="lead text-white-opacity mx-auto mb-4" style="max-width: 650px;">
-				Kết nối nghệ nhân bản địa, sáng tạo video tài liệu và chuyển hóa các giá trị văn hóa chưa được khai thác thành những trải nghiệm du lịch bền vững.
-			</p>
-			<div class="d-flex justify-content-center flex-wrap gap-2">
-				<a href="ambassador-apply.html" class="btn btn-accent btn-lg px-4 py-3 font-weight-bold shadow-lg mr-2 mb-2">
-					Đăng ký tham gia ngay →
-				</a>
-				<a href="ambassador-handbook.html" class="btn btn-outline-white btn-lg px-4 py-3 font-weight-bold mr-2 mb-2">
-					📖 Cẩm nang & 4 Học phần Đào tạo
-				</a>
-				<a href="ambassador.html" class="btn btn-light btn-lg px-4 py-3 font-weight-bold text-forest-green mb-2">
-					Cổng Quản lý Đại sứ
-				</a>
+	<!-- Multi-Role Switcher Toolbar (Cổng điều hành tất cả vai trò) -->
+	<div class="role-portal-bar mt-5 pt-3">
+		<div class="container">
+			<div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+				<div class="d-flex align-items-center gap-2">
+					<span class="text-white-opacity small font-weight-bold text-uppercase mr-2">
+						Không gian điều hành các vai trò:
+					</span>
+					<div class="role-switcher-container">
+						<a href="community.html" class="role-switch-pill" title="Cổng dành cho cộng đồng và nghệ nhân bản địa">
+							<span>🌿</span>
+							<span>Cộng đồng & Nghệ nhân</span>
+						</a>
+						<a href="ambassadors.html" class="role-switch-pill active" title="Cổng dành riêng cho Đại sứ Di sản sinh viên">
+							<span>🎓</span>
+							<span>Đại sứ Di sản</span>
+							<span class="role-badge-tag">Đang mở</span>
+						</a>
+						<a href="ambassador.html" class="role-switch-pill" title="Cổng điều hành cá nhân của Đại sứ">
+							<span>💼</span>
+							<span>Dashboard Đại sứ</span>
+						</a>
+						<a href="explore.html" class="role-switch-pill" title="Cổng dành cho du khách khám phá">
+							<span>🧳</span>
+							<span>Du khách khám phá</span>
+						</a>
+						<a href="admin.html" class="role-switch-pill" title="Trung tâm điều hành và kiểm duyệt Super Admin">
+							<span>⚙️</span>
+							<span>Super Admin</span>
+						</a>
+					</div>
+				</div>
+				<div class="d-none d-md-block text-white-opacity small font-weight-bold">
+					Hoa hồng bảo trợ: <span class="text-accent">5% GMV trên mỗi booking phát sinh</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Portal Hero Header Banner (Backend Portal Style) -->
+	<header class="portal-hero-banner text-white py-4">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-8">
+					<span class="portal-eyebrow">
+						— KHÔNG GIAN ĐIỀU HÀNH ĐẠI SỨ DI SẢN —
+					</span>
+					<h1 class="h2 font-weight-bold text-white mb-2" style="font-size: 2.2rem;">
+						Cổng Quản lý & Định hướng Đại sứ Di sản
+					</h1>
+					<p class="text-white-opacity lead mb-0" style="font-size: 1.15rem; max-width: 760px;">
+						Bạn là người biên kịch trải nghiệm, không chỉ là người quay video. Kết nối nghệ nhân bản địa, số hóa văn hóa quê hương và nhận hoa hồng bảo trợ 5%.
+					</p>
+				</div>
+				<div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+					<div class="d-inline-flex flex-column align-items-lg-end gap-2">
+						<button type="button" class="btn btn-accent px-4 py-2 font-weight-bold shadow-sm" onclick="switchPortalTab('tab-amb-apply')">
+							✍️ Đăng ký trở thành Đại sứ →
+						</button>
+						<a href="ambassador.html" class="btn btn-outline-white btn-sm px-3 py-1 text-white">
+							💼 Đã là Đại sứ? Vào Dashboard cá nhân
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- 3 Quick Portal Highlights -->
+			<div class="row mt-4 pt-3 border-top border-white-opacity">
+				<div class="col-md-4 mb-2 mb-md-0">
+					<div class="d-flex align-items-center text-white">
+						<span class="h4 font-weight-bold text-accent mb-0 mr-3">5%</span>
+						<span class="small text-white-opacity">Hoa hồng bảo trợ trên mỗi booking từ nội dung bạn tạo</span>
+					</div>
+				</div>
+				<div class="col-md-4 mb-2 mb-md-0">
+					<div class="d-flex align-items-center text-white">
+						<span class="h4 font-weight-bold text-accent mb-0 mr-3">4 Lớp</span>
+						<span class="small text-white-opacity">Kịch bản trải nghiệm: Quan sát • Chạm • Tự làm • Nghe chuyện</span>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="d-flex align-items-center text-white">
+						<span class="h4 font-weight-bold text-accent mb-0 mr-3">10 Bước</span>
+						<span class="small text-white-opacity">Lộ trình rõ ràng từ đăng ký, điền dã đến nhận Chứng nhận</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</header>
 
-	<!-- Core Values & Skills for Students -->
-	<section class="py-5">
-		<div class="container py-4">
-			<div class="row justify-content-center text-center mb-5">
-				<div class="col-lg-8">
-					<p class="eyebrow">Quyền lợi & Giá trị</p>
-					<h2 class="section-title mb-3">Đại sứ Di sản Sinh viên nhận được gì?</h2>
-					<p class="text-muted">Không chỉ là hoạt động tình nguyện, đây là môi trường đào tạo thực chiến kết hợp quyền lợi kinh tế minh bạch.</p>
+	<!-- Portal Section Tabs Navigation (7 Tabs dividing all required prompt sections) -->
+	<div class="portal-tabs-wrapper">
+		<div class="container">
+			<ul class="portal-tabs-nav" id="ambassadorPortalTabs" role="tablist">
+				<li>
+					<button type="button" class="portal-tab-btn active" id="btn-tab-amb-who" onclick="switchPortalTab('tab-amb-who')" role="tab" aria-selected="true" aria-controls="tab-amb-who">
+						<span class="tab-icon">🎓</span>
+						<span>1. Đại sứ là ai?</span>
+						<span class="tab-badge">Mục a</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-amb-journey" onclick="switchPortalTab('tab-amb-journey')" role="tab" aria-selected="false" aria-controls="tab-amb-journey">
+						<span class="tab-icon">🗺️</span>
+						<span>2. Hành trình 10 bước</span>
+						<span class="tab-badge">Mục b</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-amb-layers" onclick="switchPortalTab('tab-amb-layers')" role="tab" aria-selected="false" aria-controls="tab-amb-layers">
+						<span class="tab-icon">🎭</span>
+						<span>3. Kịch bản 4 lớp</span>
+						<span class="tab-badge">Mục c</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-amb-skills" onclick="switchPortalTab('tab-amb-skills')" role="tab" aria-selected="false" aria-controls="tab-amb-skills">
+						<span class="tab-icon">💡</span>
+						<span>4. Kỹ năng đào tạo</span>
+						<span class="tab-badge">Mục d</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-amb-checklist" onclick="switchPortalTab('tab-amb-checklist')" role="tab" aria-selected="false" aria-controls="tab-amb-checklist">
+						<span class="tab-icon">📋</span>
+						<span>5. Checklist & Đạo đức</span>
+						<span class="tab-badge">Mục e-f</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-amb-evaluation" onclick="switchPortalTab('tab-amb-evaluation')" role="tab" aria-selected="false" aria-controls="tab-amb-evaluation">
+						<span class="tab-icon">⚖️</span>
+						<span>6. Đánh giá & Quyền lợi</span>
+						<span class="tab-badge">Mục g-h</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-amb-apply" onclick="switchPortalTab('tab-amb-apply')" role="tab" aria-selected="false" aria-controls="tab-amb-apply">
+						<span class="tab-icon">✍️</span>
+						<span>7. Đăng ký Đại sứ</span>
+						<span class="tab-badge">Ứng tuyển</span>
+					</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Main Content Area: Individual Tab Panes for Ambassador -->
+	<main class="container py-4">
+
+		<!-- ==============================================================
+		     TAB 1: ĐẠI SỨ LÀ AI & TỔNG QUAN (Mục a)
+		     ============================================================== -->
+		<div class="portal-pane active" id="tab-amb-who" role="tabpanel" aria-labelledby="btn-tab-amb-who">
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+				<div class="row align-items-center">
+					<div class="col-lg-8">
+						<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Định vị vai trò</span>
+						<h2 class="h3 font-weight-bold text-forest-green mb-3">
+							Đại sứ Di sản là ai trong mô hình HeritageLink?
+						</h2>
+						<p class="text-muted mb-3" style="font-size: 1.15rem; line-height: 1.75;">
+							Đại sứ Di sản là <strong>sinh viên các trường đại học, cao đẳng</strong>, ưu tiên những bạn trẻ đang học tập hoặc sinh sống tại địa phương có làng nghề, di sản hoặc trải nghiệm văn hóa đặc trưng.
+						</p>
+
+						<div class="p-4 bg-warm-ivory rounded-20 border mb-3">
+							<h3 class="h6 font-weight-bold text-forest-green mb-2">3 nguyên tắc cốt lõi về Đại sứ:</h3>
+							<ul class="mb-0 text-muted" style="font-size: 1.05rem;">
+								<li class="mb-2"><strong>Tuyển chọn qua kênh Đoàn – Hội:</strong> Tuyển qua kênh Đoàn Thanh niên – Hội Sinh viên, được tổ chức Đoàn/Hội xác nhận để tăng độ tin cậy khi làm việc với bà con và hộ dân bản địa.</li>
+								<li class="mb-2"><strong>Lực lượng tạo nguồn cung nội dung:</strong> Đại sứ không phải khách trả phí. Họ là lực lượng trực tiếp tạo ra nguồn cung nội dung chất lượng cao cho nền tảng.</li>
+								<li><strong>Người biên kịch trải nghiệm:</strong> Không chỉ là người cầm điện thoại quay video, Đại sứ trực tiếp cùng nghệ nhân cấu trúc nên hành trình trải nghiệm có chiều sâu cảm xúc.</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-lg-4 text-center mt-4 mt-lg-0">
+						<div class="p-4 bg-forest-green text-white rounded-20 shadow-sm">
+							<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-3">Quyền lợi trọng tâm</span>
+							<div class="display-4 font-weight-bold text-accent mb-1">5%</div>
+							<h3 class="h5 font-weight-bold text-white mb-2">Hoa hồng mỗi booking</h3>
+							<p class="small text-white-opacity mb-4">Ghi nhận minh bạch trên Dashboard cá nhân và cấp Chứng nhận Đại sứ Di sản.</p>
+							<button type="button" class="btn btn-accent btn-block font-weight-bold" onclick="switchPortalTab('tab-amb-journey')">
+								Xem Hành trình 10 bước →
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 
+			<!-- Core Tri-Role Reminder -->
+			<div class="p-4 bg-white rounded-20 border shadow-sm">
+				<div class="row align-items-center">
+					<div class="col-md-4 mb-3 mb-md-0 text-center border-right">
+						<strong class="text-forest-green d-block mb-1">Cộng đồng bản địa</strong>
+						<span class="small text-muted">Giữ và cung cấp giá trị di sản cốt lõi</span>
+					</div>
+					<div class="col-md-4 mb-3 mb-md-0 text-center border-right">
+						<strong class="text-accent-dark d-block mb-1">Đại sứ Di sản (Bạn)</strong>
+						<span class="small text-muted">Kết nối, số hóa và biên kịch trải nghiệm</span>
+					</div>
+					<div class="col-md-4 text-center">
+						<strong class="text-primary d-block mb-1">HeritageLink</strong>
+						<span class="small text-muted">Hạ tầng công nghệ, thanh toán & phân phối</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ==============================================================
+		     TAB 2: HÀNH TRÌNH 10 BƯỚC CỦA ĐẠI SỨ (Mục b)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-amb-journey" role="tabpanel" aria-labelledby="btn-tab-amb-journey">
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
+				<div class="d-flex justify-content-between align-items-center flex-wrap mb-4 pb-2 border-bottom">
+					<div>
+						<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Lộ trình 10 bước chuẩn</span>
+						<h2 class="h3 font-weight-bold text-forest-green mb-0">Hành trình của một Đại sứ Di sản</h2>
+					</div>
+					<span class="text-muted small">Từ tân binh đến Đại sứ được cấp chứng chỉ</span>
+				</div>
+
+				<div class="row">
+					<!-- Bước 1 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card">
+							<div class="d-flex align-items-center mb-2">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">Bước 1</span>
+								<h3 class="h6 font-weight-bold text-forest-green mb-0">Đăng ký trực tuyến</h3>
+							</div>
+							<p class="small text-muted mb-0">Điền form xét tuyển tại trang ứng tuyển trực tuyến, nêu rõ địa bàn và sự am hiểu di sản quê hương.</p>
+						</div>
+					</div>
+
+					<!-- Bước 2 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card">
+							<div class="d-flex align-items-center mb-2">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">Bước 2</span>
+								<h3 class="h6 font-weight-bold text-forest-green mb-0">Tuyển chọn</h3>
+							</div>
+							<p class="small text-muted mb-0">HeritageLink xét duyệt hồ sơ, ưu tiên sinh viên am hiểu văn hóa và địa bàn địa phương có làng nghề/di sản.</p>
+						</div>
+					</div>
+
+					<!-- Bước 3 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card">
+							<div class="d-flex align-items-center mb-2">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">Bước 3</span>
+								<h3 class="h6 font-weight-bold text-forest-green mb-0">Nhận hướng dẫn & template</h3>
+							</div>
+							<p class="small text-muted mb-0">Nhận bộ hướng dẫn trực tuyến: cách giới thiệu địa điểm, phỏng vấn nghệ nhân, yêu cầu ảnh/video, nguyên tắc kể chuyện. Học online, không cần tập trung.</p>
+						</div>
+					</div>
+
+					<!-- Bước 4 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card">
+							<div class="d-flex align-items-center mb-2">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">Bước 4</span>
+								<h3 class="h6 font-weight-bold text-forest-green mb-0">Tìm điểm di sản</h3>
+							</div>
+							<p class="small text-muted mb-0">Chủ động tìm làng nghề, hộ dân, nghệ nhân hoặc trải nghiệm tiềm năng tại địa phương quê hương của bạn.</p>
+						</div>
+					</div>
+
+					<!-- Bước 5 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card">
+							<div class="d-flex align-items-center mb-2">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">Bước 5</span>
+								<h3 class="h6 font-weight-bold text-forest-green mb-0">Xin đồng ý của cộng đồng</h3>
+							</div>
+							<p class="small text-muted mb-0">Giải thích mô hình hỗ trợ, xin đồng thuận ghi hình/phỏng vấn và lưu lại số điện thoại/Zalo liên lạc của nghệ nhân/hộ dân.</p>
+						</div>
+					</div>
+
+					<!-- Bước 6 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card border-gold">
+							<div class="d-flex align-items-center mb-2">
+								<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mr-2">Bước 6</span>
+								<h3 class="h6 font-weight-bold text-forest-green mb-0">Thiết kế kịch bản 4 lớp</h3>
+							</div>
+							<p class="small text-muted mb-0">Cùng nghệ nhân xác định cụ thể 4 lớp: Quan sát – Chạm – Tự làm – Nghe chuyện (chỉ rõ phần nào khách chỉ xem).</p>
+						</div>
+					</div>
+
+					<!-- Bước 7 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card">
+							<div class="d-flex align-items-center mb-2">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">Bước 7</span>
+								<h3 class="h6 font-weight-bold text-forest-green mb-0">Ghi hình, chụp ảnh, phỏng vấn</h3>
+							</div>
+							<p class="small text-muted mb-0">Tác nghiệp bằng điện thoại thông minh theo đúng bộ khung template hướng dẫn và checklist kỹ thuật.</p>
+						</div>
+					</div>
+
+					<!-- Bước 8 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card">
+							<div class="d-flex align-items-center mb-2">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">Bước 8</span>
+								<h3 class="h6 font-weight-bold text-forest-green mb-0">Gửi kiểm duyệt</h3>
+							</div>
+							<p class="small text-muted mb-0">Nộp Hồ sơ Di sản lên nền tảng. Chỉnh sửa hoàn thiện theo góp ý của Hội đồng thẩm định nếu được yêu cầu.</p>
+						</div>
+					</div>
+
+					<!-- Bước 9 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card">
+							<div class="d-flex align-items-center mb-2">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">Bước 9</span>
+								<h3 class="h6 font-weight-bold text-forest-green mb-0">Đăng tải & hỗ trợ vận hành</h3>
+							</div>
+							<p class="small text-muted mb-0">Khi trải nghiệm lên web, hỗ trợ xác nhận lịch đón khách, truyền đạt thông tin cho hộ dân và làm đầu mối tại chỗ khi cần.</p>
+						</div>
+					</div>
+
+					<!-- Bước 10 -->
+					<div class="col-12 mb-2">
+						<div class="p-4 bg-forest-green text-white rounded-20 shadow-sm d-flex justify-content-between align-items-center flex-wrap gap-3">
+							<div>
+								<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Bước 10 • Thu hoạch quả ngọt</span>
+								<h3 class="h5 font-weight-bold text-white mb-1">Nhận hoa hồng 5% và Chứng nhận Đại sứ Di sản</h3>
+								<p class="text-white-opacity small mb-0">Hưởng 5% giá trị mỗi booking phát sinh từ nội dung mình tạo ra, được ghi nhận vào Chứng chỉ đưa vào CV/Portfolio.</p>
+							</div>
+							<button type="button" class="btn btn-accent font-weight-bold px-4 py-2" onclick="switchPortalTab('tab-amb-layers')">
+								Xem Kịch bản 4 lớp →
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ==============================================================
+		     TAB 3: VAI TRÒ "BIÊN KỊCH TRẢI NGHIỆM" & 4 LỚP (Mục c)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-amb-layers" role="tabpanel" aria-labelledby="btn-tab-amb-layers">
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+				<div class="mb-4 pb-2 border-bottom">
+					<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Vai trò cốt lõi</span>
+					<h2 class="h3 font-weight-bold text-forest-green mb-2">
+						Bạn là "Biên kịch trải nghiệm", không chỉ là người quay video
+					</h2>
+					<p class="text-muted" style="font-size: 1.15rem;">
+						Với mỗi hồ sơ di sản, Đại sứ phải làm việc trực tiếp với nghệ nhân/hộ dân để xác định ranh giới rõ ràng giữa các tầng trải nghiệm:
+					</p>
+				</div>
+
+				<!-- Callout 3 nhiệm vụ biên kịch -->
+				<div class="row mb-4">
+					<div class="col-md-4 mb-3">
+						<div class="p-3 bg-warm-ivory rounded-15 border h-100">
+							<strong class="text-forest-green d-block mb-1">1. Khách được tự tay làm</strong>
+							<p class="small text-muted mb-0">Chọn công đoạn an toàn, vừa sức và có ý nghĩa để khách thực hành: nặn chi tiết gốm đơn giản, tập điệu múa xòe, gói bánh.</p>
+						</div>
+					</div>
+					<div class="col-md-4 mb-3">
+						<div class="p-3 bg-warm-ivory rounded-15 border h-100">
+							<strong class="text-danger d-block mb-1">2. Khách chỉ nên quan sát</strong>
+							<p class="small text-muted mb-0">Khâu đòi hỏi tay nghề cao, nguy hiểm (canh lò nung, nấu men) hoặc mang tính thiêng liêng (phần lõi nghi lễ tín ngưỡng).</p>
+						</div>
+					</div>
+					<div class="col-md-4 mb-3">
+						<div class="p-3 bg-warm-ivory rounded-15 border h-100">
+							<strong class="text-primary d-block mb-1">3. Lồng ghép câu chuyện nền</strong>
+							<p class="small text-muted mb-0">Vị trí cài cắm lịch sử làng nghề, ý nghĩa biểu tượng văn hóa và tâm sự đời người giữ nghề để tạo chiều sâu cảm xúc.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- 4 Thẻ Minh họa Kịch bản 4 lớp -->
+				<h3 class="h5 font-weight-bold text-forest-green mb-3">Mô hình trải nghiệm 4 lớp chuẩn HeritageLink</h3>
+				<div class="row">
+					<!-- Lớp 1 -->
+					<div class="col-md-6 col-lg-3 mb-3">
+						<div class="p-4 bg-white rounded-20 border shadow-sm h-100 border-top-4" style="border-top: 4px solid #173831 !important;">
+							<span class="badge badge-light border text-forest-green font-weight-bold mb-2">Lớp 1</span>
+							<h4 class="h5 font-weight-bold text-forest-green mb-2">👁️ Quan sát</h4>
+							<p class="small text-muted mb-0">Chiêm ngưỡng bàn tay tài hoa của nghệ nhân ở những công đoạn tinh xảo nhất hoặc nơi thờ tự thiêng liêng.</p>
+						</div>
+					</div>
+
+					<!-- Lớp 2 -->
+					<div class="col-md-6 col-lg-3 mb-3">
+						<div class="p-4 bg-white rounded-20 border shadow-sm h-100" style="border-top: 4px solid var(--color-accent) !important;">
+							<span class="badge badge-light border text-accent-dark font-weight-bold mb-2">Lớp 2</span>
+							<h4 class="h5 font-weight-bold text-forest-green mb-2">✋ Chạm</h4>
+							<p class="small text-muted mb-0">Cảm nhận trực tiếp chất liệu thô mộc: đất sét dẻo, thớ gỗ ngàn năm, sợi tơ óng ả hay hương rơm nếp của men làng.</p>
+						</div>
+					</div>
+
+					<!-- Lớp 3 -->
+					<div class="col-md-6 col-lg-3 mb-3">
+						<div class="p-4 bg-white rounded-20 border shadow-sm h-100" style="border-top: 4px solid #2D6A4F !important;">
+							<span class="badge badge-light border text-success font-weight-bold mb-2">Lớp 3</span>
+							<h4 class="h5 font-weight-bold text-forest-green mb-2">🎨 Tự làm</h4>
+							<p class="small text-muted mb-0">Tự tay làm một công đoạn an toàn dưới sự hướng dẫn của nghệ nhân để có sản phẩm đầu tay mang về.</p>
+						</div>
+					</div>
+
+					<!-- Lớp 4 -->
+					<div class="col-md-6 col-lg-3 mb-3">
+						<div class="p-4 bg-white rounded-20 border shadow-sm h-100" style="border-top: 4px solid #C8A051 !important;">
+							<span class="badge badge-light border text-primary font-weight-bold mb-2">Lớp 4</span>
+							<h4 class="h5 font-weight-bold text-forest-green mb-2">💬 Nghe chuyện</h4>
+							<p class="small text-muted mb-0">Lắng nghe những thăng trầm đời nghề, chuyện làng chuyện họ và chiều sâu tri thức bản địa.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Navigation -->
+				<div class="d-flex justify-content-between align-items-center pt-3 border-top mt-4">
+					<button type="button" class="btn btn-outline-secondary font-weight-bold" onclick="switchPortalTab('tab-amb-journey')">
+						← Quay lại: Hành trình 10 bước
+					</button>
+					<button type="button" class="btn btn-primary font-weight-bold" onclick="switchPortalTab('tab-amb-skills')">
+						Xem tiếp: 4 Nhóm kỹ năng được đào tạo →
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- ==============================================================
+		     TAB 4: 4 NHÓM KỸ NĂNG ĐƯỢC ĐÀO TẠO (Mục d)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-amb-skills" role="tabpanel" aria-labelledby="btn-tab-amb-skills">
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
+				<div class="text-center mb-4 pb-2 border-bottom">
+					<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Đào tạo trực tuyến</span>
+					<h2 class="h3 font-weight-bold text-forest-green mb-2">Bốn nhóm kỹ năng Đại sứ được trang bị</h2>
+					<p class="text-muted mx-auto mb-0" style="max-width: 680px;">
+						Bộ kỹ năng thực chiến được đúc kết từ các chuyên gia bảo tồn và nhà sáng tạo nội dung văn hóa.
+					</p>
+				</div>
+
+				<div class="row">
+					<!-- Kỹ năng 1 -->
+					<div class="col-md-6 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border h-100">
+							<div class="d-flex align-items-center mb-3">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">01</span>
+								<h3 class="h5 font-weight-bold text-forest-green mb-0">Kỹ năng Phỏng vấn</h3>
+							</div>
+							<p class="text-muted mb-0" style="font-size: 1.05rem;">
+								Khai thác đúng câu chuyện cốt lõi, tâm tư đời nghề và cảm xúc chân thật của nghệ nhân/hộ dân thay vì chỉ thu thập những thông tin bề mặt khô khan.
+							</p>
+						</div>
+					</div>
+
+					<!-- Kỹ năng 2 -->
+					<div class="col-md-6 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border h-100">
+							<div class="d-flex align-items-center mb-3">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">02</span>
+								<h3 class="h5 font-weight-bold text-forest-green mb-0">Quay dựng bằng điện thoại</h3>
+							</div>
+							<p class="text-muted mb-0" style="font-size: 1.05rem;">
+								Làm chủ ánh sáng, bố cục khung hình, thu âm rõ nét và biên tập video ngắn bằng smartphone theo chuẩn thẩm mỹ và hướng dẫn template của HeritageLink.
+							</p>
+						</div>
+					</div>
+
+					<!-- Kỹ năng 3 -->
+					<div class="col-md-6 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border h-100">
+							<div class="d-flex align-items-center mb-3">
+								<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">03</span>
+								<h3 class="h5 font-weight-bold text-forest-green mb-0">Kể chuyện (Storytelling)</h3>
+							</div>
+							<p class="text-muted mb-0" style="font-size: 1.05rem;">
+								Truyền tải giá trị văn hóa và hồn cốt dân tộc, biến các công đoạn kỹ thuật thành một câu chuyện truyền cảm hứng lay động du khách.
+							</p>
+						</div>
+					</div>
+
+					<!-- Kỹ năng 4 -->
+					<div class="col-md-6 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border h-100">
+							<div class="d-flex align-items-center mb-3">
+								<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mr-2">04</span>
+								<h3 class="h5 font-weight-bold text-forest-green mb-0">Đạo đức tiếp cận cộng đồng</h3>
+							</div>
+							<p class="text-muted mb-0" style="font-size: 1.05rem;">
+								Tôn trọng không gian linh thiêng, đặc biệt với các nghi lễ tín ngưỡng, phong tục tập quán và bí quyết ẩm thực gia truyền của gia đình.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="d-flex justify-content-between align-items-center pt-3 border-top mt-2">
+					<button type="button" class="btn btn-outline-secondary font-weight-bold" onclick="switchPortalTab('tab-amb-layers')">
+						← Quay lại: Kịch bản 4 lớp
+					</button>
+					<button type="button" class="btn btn-primary font-weight-bold" onclick="switchPortalTab('tab-amb-checklist')">
+						Xem tiếp: Checklist hồ sơ & Đạo đức →
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- ==============================================================
+		     TAB 5: CHECKLIST HỒ SƠ & BỘ QUY TẮC ĐẠO ĐỨC (Mục e & f)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-amb-checklist" role="tabpanel" aria-labelledby="btn-tab-amb-checklist">
 			<div class="row">
-				<div class="col-md-4 mb-4">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100 text-center">
-						<div class="step-num text-accent font-weight-bold mb-3" style="font-size: 1.6rem;">01</div>
-						<h3 class="h5 font-weight-bold text-forest-green mb-2">Portfolio Truyền thông Thực chiến</h3>
-						<p class="small text-muted mb-0">Trực tiếp sản xuất video phỏng vấn, bài viết storytelling, album ảnh thực địa được bảo chứng bởi HeritageLink và Hội đồng Nghệ nhân.</p>
+				<!-- Checklist Hồ sơ Di sản cần nộp (Mục e) -->
+				<div class="col-lg-6 mb-4">
+					<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm h-100">
+						<div class="d-flex align-items-center mb-3 pb-2 border-bottom">
+							<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">Mục e</span>
+							<h3 class="h5 font-weight-bold text-forest-green mb-0">Checklist Hồ sơ Di sản cần nộp</h3>
+						</div>
+						<p class="small text-muted mb-3">Danh sách 7 hạng mục cần hoàn thiện trước khi gửi Hội đồng thẩm định:</p>
+
+						<ul class="list-unstyled mb-0" style="font-size: 1.02rem;">
+							<li class="d-flex align-items-start mb-3">
+								<input type="checkbox" checked disabled class="mr-2 mt-1" />
+								<span><strong>Tên trải nghiệm & phân loại:</strong> Làng nghề / Ẩm thực / Tour văn hóa – di tích / Sản phẩm thủ công, kèm địa điểm chi tiết.</span>
+							</li>
+							<li class="d-flex align-items-start mb-3">
+								<input type="checkbox" checked disabled class="mr-2 mt-1" />
+								<span><strong>Câu chuyện văn hóa:</strong> Lịch sử làng nghề, ý nghĩa văn hóa, chuyện đời người thực hành nghề.</span>
+							</li>
+							<li class="d-flex align-items-start mb-3">
+								<input type="checkbox" checked disabled class="mr-2 mt-1" />
+								<span><strong>Hồ sơ nghệ nhân/hộ dân:</strong> Họ tên, số năm giữ nghề tâm huyết, lời kể ngắn xúc động.</span>
+							</li>
+							<li class="d-flex align-items-start mb-3">
+								<input type="checkbox" checked disabled class="mr-2 mt-1" />
+								<span><strong>Kịch bản 4 lớp:</strong> Quan sát – Chạm – Tự làm – Nghe chuyện (ghi rõ phần nào khách chỉ được quan sát).</span>
+							</li>
+							<li class="d-flex align-items-start mb-3">
+								<input type="checkbox" checked disabled class="mr-2 mt-1" />
+								<span><strong>Ảnh & video ngắn:</strong> Tác nghiệp theo đúng tiêu chuẩn kỹ thuật trong template.</span>
+							</li>
+							<li class="d-flex align-items-start mb-3">
+								<input type="checkbox" checked disabled class="mr-2 mt-1" />
+								<span><strong>Thông tin thực tế:</strong> Thời lượng, số khách tối đa, giá đề xuất, khung giờ, điểm hẹn, trang phục, lưu ý văn hóa.</span>
+							</li>
+							<li class="d-flex align-items-start">
+								<input type="checkbox" checked disabled class="mr-2 mt-1" />
+								<span><strong>Xác nhận đồng ý của cộng đồng:</strong> Có sự đồng ý ghi hình của nghệ nhân/hộ dân kèm số điện thoại/Zalo.</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 
-				<div class="col-md-4 mb-4">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100 text-center">
-						<div class="step-num text-accent font-weight-bold mb-3" style="font-size: 1.6rem;">02</div>
-						<h3 class="h5 font-weight-bold text-forest-green mb-2">Hoa hồng bảo trợ 5% GMV</h3>
-						<p class="small text-muted mb-0">Mỗi booking phát sinh từ điểm di sản bạn phụ trách, bạn nhận 5% hoa hồng hỗ trợ học phí và chi phí khảo sát thực địa.</p>
+				<!-- Bộ quy tắc đạo đức Đại sứ (Mục f) -->
+				<div class="col-lg-6 mb-4">
+					<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm h-100">
+						<div class="d-flex align-items-center mb-3 pb-2 border-bottom">
+							<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mr-2">Mục f</span>
+							<h3 class="h5 font-weight-bold text-forest-green mb-0">Bộ quy tắc đạo đức Đại sứ</h3>
+						</div>
+						<p class="small text-muted mb-3">6 cam kết danh dự bắt buộc của mỗi Đại sứ Di sản:</p>
+
+						<div class="p-3 bg-warm-ivory rounded-15 border">
+							<ol class="pl-3 mb-0" style="font-size: 1.02rem; line-height: 1.75;">
+								<li class="mb-2">Chỉ ghi hình và đăng tải khi đã có sự đồng ý rõ ràng của nghệ nhân và hộ dân.</li>
+								<li class="mb-2">Phản ánh đúng bản chất văn hóa, không thêm thắt hay "sân khấu hóa" làm sai lệch nét đẹp nguyên bản.</li>
+								<li class="mb-2">Tôn trọng không gian riêng tư, nơi thờ tự và phần thiêng liêng của nghi lễ. Tuyệt đối không đưa phần này vào hoạt động khách tự làm.</li>
+								<li class="mb-2">Không thương mại hóa di sản chỉ để tăng lượt đặt, nhất là di sản đang có nguy cơ mai một.</li>
+								<li class="mb-2">Truyền đạt trung thực cho hộ dân về giá, cách chia doanh thu và lịch đón khách.</li>
+								<li>Đặt chất lượng và chiều sâu nội dung lên trên số lượng hồ sơ nộp lên.</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="d-flex justify-content-between align-items-center pt-3 border-top mt-2">
+				<button type="button" class="btn btn-outline-secondary font-weight-bold" onclick="switchPortalTab('tab-amb-skills')">
+					← Quay lại: 4 Nhóm kỹ năng
+				</button>
+				<button type="button" class="btn btn-primary font-weight-bold" onclick="switchPortalTab('tab-amb-evaluation')">
+					Xem tiếp: Đánh giá & Quyền lợi →
+				</button>
+			</div>
+		</div>
+
+		<!-- ==============================================================
+		     TAB 6: ĐÁNH GIÁ & QUYỀN LỢI ĐẠI SỨ (Mục g & h)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-amb-evaluation" role="tabpanel" aria-labelledby="btn-tab-amb-evaluation">
+			<!-- (g) Đại sứ được đánh giá thế nào -->
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+				<div class="d-flex justify-content-between align-items-center flex-wrap mb-4 pb-2 border-bottom">
+					<div>
+						<span class="badge badge-primary px-3 py-1 font-weight-bold mr-2">Mục g</span>
+						<h3 class="h4 font-weight-bold text-forest-green mb-0">Đại sứ được đánh giá như thế nào?</h3>
+					</div>
+					<span class="text-muted small">Cân bằng giữa số lượng và chất lượng chiều sâu</span>
+				</div>
+
+				<div class="row">
+					<!-- 3 Chỉ số hiệu suất -->
+					<div class="col-md-6 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border h-100">
+							<h4 class="h5 font-weight-bold text-forest-green mb-3">3 Chỉ số hiệu suất chính:</h4>
+							<ul class="list-unstyled mb-0" style="font-size: 1.05rem;">
+								<li class="mb-3">
+									<strong class="text-dark">1. Số nội dung tạo ra:</strong> Số lượng hồ sơ di sản sống được hoàn thiện đạt chuẩn.
+								</li>
+								<li class="mb-3">
+									<strong class="text-dark">2. Chất lượng trải nghiệm:</strong> Điểm đánh giá thực tế của du khách sau khi check-in tại điểm đến.
+								</li>
+								<li>
+									<strong class="text-dark">3. Số booking phát sinh:</strong> Lượt đặt chỗ thực tế phát sinh từ chính nội dung bạn tạo ra.
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- 3 Tiêu chí kiểm duyệt hồ sơ -->
+					<div class="col-md-6 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border h-100">
+							<h4 class="h5 font-weight-bold text-forest-green mb-3">3 Tiêu chí kiểm duyệt hồ sơ:</h4>
+							<ul class="list-unstyled mb-0" style="font-size: 1.05rem;">
+								<li class="mb-3">
+									<strong class="text-dark">✦ Tính xác thực:</strong> Đúng bản chất văn hóa và đời sống người dân, không phóng đại hoặc làm sai lệch.
+								</li>
+								<li class="mb-3">
+									<strong class="text-dark">✦ Chất lượng storytelling:</strong> Mạch lạc, truyền cảm hứng, có cảm xúc và thông điệp rõ ràng.
+								</li>
+								<li>
+									<strong class="text-dark">✦ Mức độ tương tác thực chất:</strong> Khách có thực sự được tự tay làm hay chỉ dừng ở xem và chụp ảnh.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- (h) Đại sứ nhận được gì: 4 thẻ quyền lợi -->
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
+				<div class="d-flex justify-content-between align-items-center flex-wrap mb-4 pb-2 border-bottom">
+					<div>
+						<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Mục h</span>
+						<h3 class="h4 font-weight-bold text-forest-green mb-0">Đại sứ nhận được gì khi tham gia?</h3>
+					</div>
+					<span class="badge badge-success px-3 py-2 font-weight-bold text-white">4 Quyền lợi thực chất</span>
+				</div>
+
+				<div class="row">
+					<!-- Thẻ 1: Hoa hồng 5% -->
+					<div class="col-md-6 col-lg-3 mb-4">
+						<div class="portal-stat-card border-gold">
+							<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">01</span>
+							<h4 class="h5 font-weight-bold text-forest-green mb-2">Hoa hồng 5%</h4>
+							<p class="small text-muted mb-3">
+								Hưởng 5% trên giá trị mỗi giao dịch phát sinh từ nội dung mình tạo ra.
+							</p>
+							<div class="p-2 bg-warm-ivory rounded-10 border small">
+								Ví dụ: Khách đặt trải nghiệm giá <strong>850.000đ</strong>, bạn nhận ngay <strong class="text-success" id="amb-calc-sample">42.500đ</strong>.
+							</div>
+						</div>
+					</div>
+
+					<!-- Thẻ 2: Chứng nhận -->
+					<div class="col-md-6 col-lg-3 mb-4">
+						<div class="portal-stat-card">
+							<span class="badge badge-primary px-3 py-1 font-weight-bold mb-2">02</span>
+							<h4 class="h5 font-weight-bold text-forest-green mb-2">Chứng nhận Đại sứ</h4>
+							<p class="small text-muted mb-0">
+								Được cấp Chứng nhận Đại sứ Di sản từ HeritageLink và tổ chức Đoàn/Hội để đưa vào hồ sơ năng lực (CV / Portfolio).
+							</p>
+						</div>
+					</div>
+
+					<!-- Thẻ 3: Kỹ năng -->
+					<div class="col-md-6 col-lg-3 mb-4">
+						<div class="portal-stat-card">
+							<span class="badge badge-primary px-3 py-1 font-weight-bold mb-2">03</span>
+							<h4 class="h5 font-weight-bold text-forest-green mb-2">Bộ kỹ năng thực chiến</h4>
+							<p class="small text-muted mb-0">
+								Trực tiếp rèn luyện kỹ năng truyền thông, kể chuyện di sản, quay dựng smartphone và đạo đức tiếp cận cộng đồng.
+							</p>
+						</div>
+					</div>
+
+					<!-- Thẻ 4: Dashboard cá nhân -->
+					<div class="col-md-6 col-lg-3 mb-4">
+						<div class="portal-stat-card">
+							<span class="badge badge-primary px-3 py-1 font-weight-bold mb-2">04</span>
+							<h4 class="h5 font-weight-bold text-forest-green mb-2">Trang theo dõi cá nhân</h4>
+							<p class="small text-muted mb-0">
+								Dashboard theo dõi trực tiếp lượt xem, số booking, tổng hoa hồng tích lũy và thăng hạng khi tạo ra booking thành công.
+							</p>
+						</div>
 					</div>
 				</div>
 
-				<div class="col-md-4 mb-4">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100 text-center">
-						<div class="step-num text-accent font-weight-bold mb-3" style="font-size: 1.6rem;">03</div>
-						<h3 class="h5 font-weight-bold text-forest-green mb-2">Chứng chỉ Đại sứ Di sản</h3>
-						<p class="small text-muted mb-0">Được cấp chứng nhận bảo tồn văn hóa, có cơ hội tham gia các diễn đàn Thanh niên Di sản và dự án phát triển di sản bền vững.</p>
+				<div class="d-flex justify-content-between align-items-center pt-3 border-top mt-2">
+					<button type="button" class="btn btn-outline-secondary font-weight-bold" onclick="switchPortalTab('tab-amb-checklist')">
+						← Quay lại: Checklist & Đạo đức
+					</button>
+					<button type="button" class="btn btn-accent px-4 font-weight-bold" onclick="switchPortalTab('tab-amb-apply')">
+						Đăng ký trở thành Đại sứ ngay →
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- ==============================================================
+		     TAB 7: ĐĂNG KÝ TRỞ THÀNH ĐẠI SỨ (CTA)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-amb-apply" role="tabpanel" aria-labelledby="btn-tab-amb-apply">
+			<div class="row justify-content-center">
+				<div class="col-lg-9">
+					<div class="bg-white rounded-20 border shadow-lg p-4 p-md-5 text-center">
+						<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-3" style="font-size: 1rem;">
+							Tuyển chọn Đại sứ Di sản Khóa 2026
+						</span>
+						<h2 class="h3 font-weight-bold text-forest-green mb-3" style="font-size: 2.2rem;">
+							Sẵn sàng trở thành người kể chuyện di sản quê hương?
+						</h2>
+						<p class="text-muted mx-auto mb-4" style="max-width: 650px; font-size: 1.15rem;">
+							Tham gia cùng mạng lưới Đại sứ Di sản sinh viên toàn quốc. Được tổ chức Đoàn/Hội xác nhận, đào tạo bài bản và hưởng hoa hồng bảo trợ văn hóa 5%.
+						</p>
+
+						<div class="p-4 bg-warm-ivory rounded-20 border mb-4 text-left">
+							<h4 class="h6 font-weight-bold text-forest-green mb-2">Hồ sơ ứng tuyển trực tuyến yêu cầu:</h4>
+							<ul class="mb-0 text-muted small" style="font-size: 1rem;">
+								<li class="mb-1">Thông tin cá nhân, trường Đại học/Cao đẳng đang theo học.</li>
+								<li class="mb-1">Địa phương quê hương hoặc nơi am hiểu văn hóa có làng nghề tiềm năng.</li>
+								<li>Ý tưởng hoặc video ngắn 60 giây giới thiệu về một nét văn hóa bạn muốn số hóa.</li>
+							</ul>
+						</div>
+
+						<div class="d-flex justify-content-center flex-wrap gap-3">
+							<a href="ambassador-apply.html" class="btn btn-primary btn-lg px-5 py-3 font-weight-bold shadow-lg mr-2 mb-2">
+								Điền đơn đăng ký trực tuyến (3 phút) →
+							</a>
+							<a href="ambassador.html" class="btn btn-outline-primary btn-lg px-4 py-3 font-weight-bold mb-2">
+								Xem thử Dashboard Đại sứ
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
 
-	<!-- 8-Step Ambassador Journey -->
-	<section class="py-5 bg-soft-stone">
-		<div class="container py-4">
-			<div class="row justify-content-center text-center mb-5">
-				<div class="col-lg-8">
-					<p class="eyebrow">Quy trình 8 bước</p>
-					<h2 class="section-title mb-3">Hành trình đồng hành từ tân binh đến Đại sứ</h2>
-					<p class="text-muted">Một lộ trình rõ ràng, minh bạch giúp sinh viên tự tin tiếp cận cộng đồng.</p>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-6 col-lg-3 mb-3">
-					<div class="p-3 bg-white rounded-15 border shadow-sm h-100">
-						<strong class="text-accent font-weight-bold d-block mb-1">Bước 1</strong>
-						<h4 class="h6 font-weight-bold text-forest-green mb-1">Đăng ký trực tuyến</h4>
-						<p class="small text-muted mb-0">Điền form thông tin, trường học và clip ngắn 60s giới thiệu văn hóa quê hương.</p>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-3 mb-3">
-					<div class="p-3 bg-white rounded-15 border shadow-sm h-100">
-						<strong class="text-accent font-weight-bold d-block mb-1">Bước 2</strong>
-						<h4 class="h6 font-weight-bold text-forest-green mb-1">Xét duyệt & Phỏng vấn</h4>
-						<p class="small text-muted mb-0">Admin xem xét động lực, thái độ tôn trọng văn hóa và mức độ am hiểu địa bàn.</p>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-3 mb-3">
-					<div class="p-3 bg-white rounded-15 border shadow-sm h-100">
-						<strong class="text-accent font-weight-bold d-block mb-1">Bước 3</strong>
-						<h4 class="h6 font-weight-bold text-forest-green mb-1">Đào tạo kỹ năng</h4>
-						<p class="small text-muted mb-0">Học 4 module: Phỏng vấn, quay video smartphone, storytelling và đạo đức tiếp cận.</p>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-3 mb-3">
-					<div class="p-3 bg-white rounded-15 border shadow-sm h-100">
-						<strong class="text-accent font-weight-bold d-block mb-1">Bước 4</strong>
-						<h4 class="h6 font-weight-bold text-forest-green mb-1">Khảo sát thực địa</h4>
-						<p class="small text-muted mb-0">Đến nhà nghệ nhân, trò chuyện, chụp ảnh và ký biên bản đồng thuận công bố tư liệu.</p>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-3 mb-3">
-					<div class="p-3 bg-white rounded-15 border shadow-sm h-100">
-						<strong class="text-accent font-weight-bold d-block mb-1">Bước 5</strong>
-						<h4 class="h6 font-weight-bold text-forest-green mb-1">Xây dựng Hồ sơ sống</h4>
-						<p class="small text-muted mb-0">Đưa nội dung, câu chuyện, hình ảnh và 5 tầng trải nghiệm lên hệ thống.</p>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-3 mb-3">
-					<div class="p-3 bg-white rounded-15 border shadow-sm h-100">
-						<strong class="text-accent font-weight-bold d-block mb-1">Bước 6</strong>
-						<h4 class="h6 font-weight-bold text-forest-green mb-1">Kiểm duyệt 3 tiêu chí</h4>
-						<p class="small text-muted mb-0">Hội đồng HeritageLink thẩm định tính xác thực, đạo đức và an toàn cho du khách.</p>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-3 mb-3">
-					<div class="p-3 bg-white rounded-15 border shadow-sm h-100">
-						<strong class="text-accent font-weight-bold d-block mb-1">Bước 7</strong>
-						<h4 class="h6 font-weight-bold text-forest-green mb-1">Công bố trải nghiệm</h4>
-						<p class="small text-muted mb-0">Trải nghiệm xuất hiện trên bản đồ và trang khám phá, sẵn sàng đón khách.</p>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-3 mb-3">
-					<div class="p-3 bg-white rounded-15 border shadow-sm h-100 border-gold">
-						<strong class="text-accent font-weight-bold d-block mb-1">Bước 8</strong>
-						<h4 class="h6 font-weight-bold text-forest-green mb-1">Nhận hoa hồng & Tích lũy</h4>
-						<p class="small text-muted mb-0">Theo dõi doanh thu, nhận hoa hồng 5% và thăng hạng Hộ chiếu Đại sứ.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Call to Action Banner -->
-	<section class="py-5 bg-warm-ivory text-center">
-		<div class="container py-4">
-			<h2 class="h3 font-weight-bold text-forest-green mb-3">Sẵn sàng trở thành Đại sứ Di sản?</h2>
-			<p class="text-muted mb-4">Tham gia cùng mạng lưới Đại sứ Di sản sinh viên toàn quốc (Mục tiêu năm 1: 100 Đại sứ trên 10 địa phương trọng điểm).</p>
-			<a href="ambassador-apply.html" class="btn btn-primary btn-lg px-5 py-3 font-weight-bold shadow-lg">
-				Điền đơn đăng ký ngay (3 phút)
-			</a>
-		</div>
-	</section>
+	</main>
 
 	<!-- Footer -->
-	<footer class="site-footer">
+	<footer class="site-footer bg-forest-green text-white py-5 mt-5">
 		<div class="container text-center">
 			<p class="mb-0 text-white-opacity small">
 				HeritageLink &copy; 2026. Mạng lưới Đại sứ Di sản sinh viên toàn quốc.
@@ -221,6 +821,63 @@
 	<!-- Scripts -->
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="script.js"></script>
+	<script src="js/roles-data.js"></script>
+
+	<!-- Tab Switcher Script -->
+	<script>
+		function switchPortalTab(targetTabId) {
+			var panes = document.querySelectorAll('.portal-pane');
+			var buttons = document.querySelectorAll('.portal-tab-btn');
+
+			panes.forEach(function (p) {
+				p.classList.remove('active');
+			});
+
+			buttons.forEach(function (b) {
+				b.classList.remove('active');
+				b.setAttribute('aria-selected', 'false');
+			});
+
+			var targetPane = document.getElementById(targetTabId);
+			if (targetPane) {
+				targetPane.classList.add('active');
+			}
+
+			var targetBtn = document.getElementById('btn-' + targetTabId);
+			if (targetBtn) {
+				targetBtn.classList.add('active');
+				targetBtn.setAttribute('aria-selected', 'true');
+				targetBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+			}
+
+			if (history.replaceState) {
+				history.replaceState(null, null, '#' + targetTabId);
+			}
+
+			var wrapper = document.querySelector('.portal-tabs-wrapper');
+			if (wrapper) {
+				var rect = wrapper.getBoundingClientRect();
+				if (rect.top < 0) {
+					wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', function () {
+			var currentHash = window.location.hash.replace('#', '');
+			if (currentHash && document.getElementById(currentHash)) {
+				switchPortalTab(currentHash);
+			}
+
+			// Dynamic sample calculation for 5% commission on 850.000đ
+			if (typeof calculateRevenueSplit === 'function') {
+				var split = calculateRevenueSplit(850000);
+				var elSample = document.getElementById('amb-calc-sample');
+				if (elSample) {
+					elSample.textContent = split.formattedAmbassador;
+				}
+			}
+		});
+	</script>
 </body>
 </html>

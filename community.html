@@ -6,8 +6,8 @@
 	<meta name="author" content="HeritageLink">
 	<link rel="shortcut icon" href="favicon.png">
 
-	<title>Cộng đồng & Nghệ nhân Bản địa | HeritageLink</title>
-	<meta name="description" content="Khu vực dành riêng cho Nghệ nhân, Làng nghề và Hộ dân bản địa - Cùng HeritageLink gìn giữ và lan tỏa di sản với sự đồng hành của Đại sứ Sinh viên." />
+	<title>Cổng Không Gian Điều Hành: Nghệ Nhân & Hộ Dân Bản Địa | HeritageLink</title>
+	<meta name="description" content="Cổng thông tin điều hành dành riêng cho Nghệ nhân và Hộ dân bản địa - Bạn giữ nghề, HeritageLink đưa khách đến. Thu nhập minh bạch 85%, phân chia theo từng tab rõ ràng." />
 
 	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,13 +22,14 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-warm-ivory" style="font-size: 17px;">
+<body class="bg-warm-ivory community-page-body">
 
-	<!-- Top Navigation -->
+	<!-- Top Navigation Bar -->
 	<nav class="site-nav scrolled" id="main-site-nav">
 		<div class="container">
 			<div class="site-navigation d-flex align-items-center justify-content-between">
-				<a href="index.html" class="brand-logo">
+				<!-- Brand Logo -->
+				<a href="index.html" class="brand-logo" id="nav-brand-logo">
 					<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-img">
 					<div class="logo-text-block">
 						<span class="logo-main-text">HeritageLink</span>
@@ -36,184 +37,1066 @@
 					</div>
 				</a>
 
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu">
+				<!-- Site Menu: Contains 'Cộng đồng' placed right next to 'Đại sứ Di sản' -->
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu" id="nav-desktop-menu">
 					<li><a href="index.html">Trang chủ</a></li>
 					<li><a href="explore.html">Khám phá</a></li>
 					<li><a href="heritage.html">Câu chuyện Di sản</a></li>
 					<li><a href="ambassadors.html">Đại sứ Di sản</a></li>
-					<li class="active"><a href="community.html">Cộng đồng Bản địa</a></li>
+					<li class="active"><a href="community.html">Cộng đồng</a></li>
 					<li><a href="host.html">Cổng Nghệ nhân (Xem lịch)</a></li>
 				</ul>
 
+				<!-- Actions -->
 				<div class="header-auth-actions d-none d-lg-inline-flex align-items-center">
-					<a href="host.html" class="btn btn-primary btn-sm px-3 py-1 font-weight-bold">Cổng Nghệ nhân</a>
-					<a href="login.html" class="btn btn-outline-primary btn-sm px-3 py-1" id="nav-login-btn">Đăng nhập</a>
+					<span class="badge badge-accent font-weight-bold px-3 py-2 mr-2 text-white shadow-sm">
+						Hộ dân & Nghệ nhân
+					</span>
+					<a href="host.html" class="btn btn-outline-primary btn-sm px-3 py-1 font-weight-bold" id="nav-host-portal-btn">Cổng Xem lịch</a>
+					<a href="login.html" class="btn btn-outline-primary btn-sm px-3 py-1 ml-2" id="nav-login-btn">Đăng nhập</a>
 				</div>
 			</div>
 		</div>
 	</nav>
 
-	<!-- Hero Banner for Artisans & Elders -->
-	<header class="py-5 bg-forest-green text-white mt-5 pt-5">
-		<div class="container mt-4 py-4 text-center">
-			<span class="eyebrow" style="color: var(--color-accent) !important;">Dành riêng cho Nghệ nhân, Làng nghề & Hộ dân</span>
-			<h1 class="display-4 font-weight-bold text-white mb-3" style="font-size: 2.6rem;">
-				Bạn gìn giữ di sản.<br>
-				<span class="text-accent-gold">HeritageLink giúp câu chuyện đến với muôn nơi.</span>
-			</h1>
-			<p class="lead text-white-opacity mx-auto mb-4" style="max-width: 680px; font-size: 1.15rem;">
-				Bác và gia đình không cần rành công nghệ. Đã có các cháu sinh viên Đại sứ Di sản về tận làng hỗ trợ ghi hình, kể chuyện và đón tiếp du khách văn minh.
-			</p>
-			<a href="#artisan-connect-form" class="btn btn-accent btn-lg px-5 py-3 font-weight-bold shadow-lg">
-				Kết nối cùng HeritageLink (Miễn phí)
-			</a>
+	<!-- Multi-Role Switcher Toolbar (Cổng điều hành tất cả vai trò) -->
+	<div class="role-portal-bar mt-5 pt-3">
+		<div class="container">
+			<div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+				<div class="d-flex align-items-center gap-2">
+					<span class="text-white-opacity small font-weight-bold text-uppercase mr-2">
+						Không gian điều hành các vai trò:
+					</span>
+					<div class="role-switcher-container">
+						<a href="community.html" class="role-switch-pill active" title="Cổng dành riêng cho Hộ dân & Nghệ nhân bản địa">
+							<span>🌿</span>
+							<span>Cộng đồng & Nghệ nhân</span>
+							<span class="role-badge-tag">Đang mở</span>
+						</a>
+						<a href="ambassadors.html" class="role-switch-pill" title="Cổng dành cho sinh viên Đại sứ Di sản">
+							<span>🎓</span>
+							<span>Đại sứ Di sản</span>
+						</a>
+						<a href="host.html" class="role-switch-pill" title="Cổng xem lịch và xác nhận khách đón tiếp của Hộ dân">
+							<span>📅</span>
+							<span>Lịch đón khách (Hộ dân)</span>
+						</a>
+						<a href="explore.html" class="role-switch-pill" title="Cổng dành cho du khách khám phá trải nghiệm">
+							<span>🧳</span>
+							<span>Du khách khám phá</span>
+						</a>
+						<a href="admin.html" class="role-switch-pill" title="Trung tâm điều hành và kiểm duyệt Super Admin">
+							<span>⚙️</span>
+							<span>Super Admin</span>
+						</a>
+					</div>
+				</div>
+				<div class="d-none d-md-block text-white-opacity small font-weight-bold">
+					Mô hình 3 bên bền vững: <span class="text-accent">Hộ dân 85% • Đại sứ 5% • Nền tảng 8%</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Portal Hero Header Banner (Backend Portal Style) -->
+	<header class="portal-hero-banner text-white py-4">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-8">
+					<span class="portal-eyebrow">
+						— KHÔNG GIAN ĐIỀU HÀNH BẢN ĐỊA —
+					</span>
+					<h1 class="h2 font-weight-bold text-white mb-2" style="font-size: 2.2rem;">
+						Bạn giữ nghề – chúng tôi đưa khách đến
+					</h1>
+					<p class="text-white-opacity lead mb-0" style="font-size: 1.15rem; max-width: 760px;">
+						Không cần biết dùng mạng xã hội, không cần tự quảng cáo. Bác và gia đình chỉ cần đồng ý cho Đại sứ ghi hình và đón khách.
+					</p>
+				</div>
+				<div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+					<div class="d-inline-flex flex-column align-items-lg-end gap-2">
+						<button type="button" class="btn btn-accent px-4 py-2 font-weight-bold shadow-sm" onclick="switchPortalTab('tab-register')">
+							✍️ Gửi thông tin để Đại sứ liên hệ →
+						</button>
+						<a href="host.html" class="btn btn-outline-white btn-sm px-3 py-1 text-white">
+							📖 Đã hợp tác? Vào Cổng xem lịch đón khách
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- 3 Quick Portal Highlights -->
+			<div class="row mt-4 pt-3 border-top border-white-opacity">
+				<div class="col-md-4 mb-2 mb-md-0">
+					<div class="d-flex align-items-center text-white">
+						<span class="h4 font-weight-bold text-accent mb-0 mr-3">85%</span>
+						<span class="small text-white-opacity">Doanh thu trực tiếp về tay hộ dân sau mỗi lượt đặt</span>
+					</div>
+				</div>
+				<div class="col-md-4 mb-2 mb-md-0">
+					<div class="d-flex align-items-center text-white">
+						<span class="h4 font-weight-bold text-accent mb-0 mr-3">0đ</span>
+						<span class="small text-white-opacity">Không mất phí tham gia, không tốn tiền quảng cáo</span>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="d-flex align-items-center text-white">
+						<span class="h4 font-weight-bold text-accent mb-0 mr-3">1 : 1</span>
+						<span class="small text-white-opacity">Đại sứ sinh viên địa phương kề vai sát cánh hỗ trợ</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</header>
 
-	<!-- 4 Core Commitments to Community -->
-	<section class="py-5">
-		<div class="container py-4">
-			<div class="row justify-content-center text-center mb-5">
-				<div class="col-lg-8">
-					<p class="eyebrow">Cam kết bền vững</p>
-					<h2 class="section-title mb-3">4 Điều Bác & Bà Con Hoàn Toàn Yên Tâm</h2>
-					<p class="text-muted">Chúng tôi tôn trọng tối đa quyền tự quyết của người giữ nghề và văn hóa làng bản.</p>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-6 mb-4">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
-						<div class="d-flex align-items-center gap-3 mb-3">
-							<div class="step-badge text-forest-green font-weight-bold mb-0" style="font-size: 1.4rem;">01</div>
-							<h3 class="h5 font-weight-bold text-forest-green mb-0">Không cần thành thạo máy tính</h3>
-						</div>
-						<p class="text-muted mb-0">
-							Mọi thông báo có khách đặt lịch đều được gửi tin nhắn đơn giản qua Zalo hoặc điện thoại. Bác chỉ cần nhấn nút "Xác nhận đón khách" là xong.
-						</p>
-					</div>
-				</div>
-
-				<div class="col-md-6 mb-4">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
-						<div class="d-flex align-items-center gap-3 mb-3">
-							<div class="step-badge text-accent font-weight-bold mb-0" style="font-size: 1.4rem;">02</div>
-							<h3 class="h5 font-weight-bold text-forest-green mb-0">Đại sứ Sinh viên hỗ trợ tận nơi</h3>
-						</div>
-						<p class="text-muted mb-0">
-							Các bạn sinh viên đại học trẻ trung, lễ phép sẽ về tận nhà phỏng vấn, chụp ảnh, quay video và xây dựng bài giới thiệu hoàn toàn miễn phí.
-						</p>
-					</div>
-				</div>
-
-				<div class="col-md-6 mb-4">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100 border-gold">
-						<div class="d-flex align-items-center gap-3 mb-3">
-							<div class="step-badge text-success font-weight-bold mb-0" style="font-size: 1.4rem;">03</div>
-							<h3 class="h5 font-weight-bold text-forest-green mb-0">Hưởng 85% Doanh thu Minh bạch</h3>
-						</div>
-						<p class="text-muted mb-0">
-							Khác với các công ty du lịch trung gian cắt giảm giá cao, HeritageLink chuyển 85% giá vé trực tiếp về tài khoản của hộ dân để bà con an tâm giữ nghề.
-						</p>
-					</div>
-				</div>
-
-				<div class="col-md-6 mb-4">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
-						<div class="d-flex align-items-center gap-3 mb-3">
-							<div class="step-badge text-primary font-weight-bold mb-0" style="font-size: 1.4rem;">04</div>
-							<h3 class="h5 font-weight-bold text-forest-green mb-0">Bác quyết định nội dung công bố</h3>
-						</div>
-						<p class="text-muted mb-0">
-							Mọi hình ảnh và câu chuyện chỉ được đăng tải khi có sự đồng ý của gia đình. Các bí quyết nghề gia truyền hay khu vực thiêng liêng luôn được bảo mật tuyệt đối.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Simple Connection Form -->
-	<section class="py-5 bg-soft-stone" id="artisan-connect-form">
-		<div class="container py-4" style="max-width: 760px;">
-			<div class="bg-white rounded-20 border shadow-sm p-4 p-md-5">
-				<div class="text-center mb-4">
-					<span class="eyebrow">Biểu mẫu kết nối đơn giản</span>
-					<h2 class="h3 font-weight-bold text-forest-green mb-2">Để lại thông tin để chúng tôi liên hệ</h2>
-					<p class="text-muted small">Chỉ cần 1 phút điền thông tin, đội ngũ HeritageLink sẽ chủ động liên hệ trò chuyện với bác.</p>
-				</div>
-
-				<form id="community-inquiry-form">
-					<div class="form-group mb-3">
-						<label class="font-weight-bold text-dark">Họ và tên bác / Đại diện hộ gia đình *</label>
-						<input type="text" name="name" class="form-control form-control-lg rounded-10" placeholder="Ví dụ: Bác Phạm Văn Nam" required>
-					</div>
-
-					<div class="form-group mb-3">
-						<label class="font-weight-bold text-dark">Số điện thoại hoặc Zalo để chúng tôi gọi *</label>
-						<input type="tel" name="phone" class="form-control form-control-lg rounded-10" placeholder="Ví dụ: 0912 345 678" required>
-					</div>
-
-					<div class="form-group mb-3">
-						<label class="font-weight-bold text-dark">Địa phương của gia đình *</label>
-						<input type="text" name="location" class="form-control form-control-lg rounded-10" placeholder="Ví dụ: Làng Phù Lãng, Quế Võ, Bắc Ninh" required>
-					</div>
-
-					<div class="form-group mb-3">
-						<label class="font-weight-bold text-dark">Nghề hoặc hoạt động văn hóa muốn giới thiệu</label>
-						<select name="cultureType" class="form-control form-control-lg rounded-10 custom-select">
-							<option value="Làng nghề thủ công">Làng nghề thủ công (Gốm, thêu, đan lát, dệt...)</option>
-							<option value="Ẩm thực gia đình">Ẩm thực mâm cơm gia đình / món ăn truyền thống</option>
-							<option value="Homestay nhà cổ">Homestay nhà sàn / nhà cổ / sinh hoạt bản địa</option>
-							<option value="Nghệ thuật dân gian">Nghệ thuật dân gian / Di tích văn hóa</option>
-						</select>
-					</div>
-
-					<div class="form-group mb-3">
-						<label class="font-weight-bold text-dark">Mô tả ngắn (Nếu có)</label>
-						<textarea name="description" class="form-control rounded-10" rows="3" placeholder="Chia sẻ thêm một chút về nghề của gia đình..."></textarea>
-					</div>
-
-					<div class="form-group mb-4">
-						<label class="font-weight-bold text-dark">Cách bác muốn được liên hệ nhất</label>
-						<div class="d-flex gap-4">
-							<div class="custom-control custom-radio mr-4">
-								<input type="radio" id="contact-zalo" name="contactMethod" value="Zalo" class="custom-control-input" checked>
-								<label class="custom-control-label" for="contact-zalo">Nhắn qua Zalo</label>
-							</div>
-							<div class="custom-control custom-radio mr-4">
-								<input type="radio" id="contact-call" name="contactMethod" value="Phone" class="custom-control-input">
-								<label class="custom-control-label" for="contact-call">Gọi điện thoại trực tiếp</label>
-							</div>
-							<div class="custom-control custom-radio">
-								<input type="radio" id="contact-visit" name="contactMethod" value="Visit" class="custom-control-input">
-								<label class="custom-control-label" for="contact-visit">Đến thăm trực tiếp tại làng</label>
-							</div>
-						</div>
-					</div>
-
-					<button type="submit" class="btn btn-primary btn-block btn-lg font-weight-bold py-3 shadow-lg" id="btn-submit-community-inquiry">
-						Gửi thông tin kết nối
+	<!-- Portal Section Tabs Navigation (Tabbed Interface for Ease of Tracking) -->
+	<div class="portal-tabs-wrapper">
+		<div class="container">
+			<ul class="portal-tabs-nav" id="communityPortalTabs" role="tablist">
+				<li>
+					<button type="button" class="portal-tab-btn active" id="btn-tab-overview" onclick="switchPortalTab('tab-overview')" role="tab" aria-selected="true" aria-controls="tab-overview">
+						<span class="tab-icon">📋</span>
+						<span>1. Tổng quan & Đối tượng</span>
+						<span class="tab-badge">Mục a-b</span>
 					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-workflow" onclick="switchPortalTab('tab-workflow')" role="tab" aria-selected="false" aria-controls="tab-workflow">
+						<span class="tab-icon">⚡</span>
+						<span>2. Việc làm & Không cần làm</span>
+						<span class="tab-badge">Mục c-d</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-revenue" onclick="switchPortalTab('tab-revenue')" role="tab" aria-selected="false" aria-controls="tab-revenue">
+						<span class="tab-icon">💰</span>
+						<span>3. Doanh thu 85% & Quyền lợi</span>
+						<span class="tab-badge">Mục e</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-commitments" onclick="switchPortalTab('tab-commitments')" role="tab" aria-selected="false" aria-controls="tab-commitments">
+						<span class="tab-icon">🤝</span>
+						<span>4. Trách nhiệm & Cam kết</span>
+						<span class="tab-badge">Mục f</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-register" onclick="switchPortalTab('tab-register')" role="tab" aria-selected="false" aria-controls="tab-register">
+						<span class="tab-icon">📝</span>
+						<span>5. Đăng ký hợp tác</span>
+						<span class="tab-badge">Mục g</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="portal-tab-btn" id="btn-tab-faq" onclick="switchPortalTab('tab-faq')" role="tab" aria-selected="false" aria-controls="tab-faq">
+						<span class="tab-icon">❓</span>
+						<span>6. Câu hỏi thường gặp</span>
+						<span class="tab-badge">Mục h</span>
+					</button>
+				</li>
+			</ul>
+		</div>
+	</div>
 
-					<div id="community-inquiry-feedback" class="mt-3 text-center small" aria-live="polite"></div>
-				</form>
+	<!-- Main Content Area: Individual Tab Panes -->
+	<main class="container py-4">
+
+		<!-- ==============================================================
+		     TAB 1: TỔNG QUAN & ĐỐI TƯỢNG THAM GIA (Mục a & b)
+		     ============================================================== -->
+		<div class="portal-pane active" id="tab-overview" role="tabpanel" aria-labelledby="btn-tab-overview">
+			<!-- Hero Card with Background Context -->
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+				<div class="row align-items-center">
+					<div class="col-lg-8">
+						<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Giá trị cốt lõi</span>
+						<h2 class="h3 font-weight-bold text-forest-green mb-3">
+							“Không chỉ đến để nhìn di sản, mà đến để sống cùng di sản”
+						</h2>
+						<p class="text-muted mb-3" style="font-size: 1.15rem;">
+							HeritageLink được xây dựng dựa trên nguyên tắc: <strong>Cộng đồng tập trung giữ và cung cấp giá trị cốt lõi</strong>, Đại sứ sinh viên đảm nhiệm việc kết nối và số hóa, còn nền tảng lo toàn bộ hạ tầng công nghệ, thanh toán và kiểm duyệt.
+						</p>
+						<div class="p-3 bg-warm-ivory rounded-15 border">
+							<strong class="text-forest-green font-weight-bold">Thông điệp gửi tới các bác và gia đình:</strong>
+							<p class="mb-0 text-muted mt-1">
+								<em>“Bạn chỉ cần đồng ý và đón khách, phần còn lại có Đại sứ và HeritageLink lo.”</em>
+							</p>
+						</div>
+					</div>
+					<div class="col-lg-4 text-center mt-4 mt-lg-0">
+						<div class="p-4 bg-soft-stone rounded-20 border">
+							<div class="display-4 text-accent font-weight-bold mb-1">85%</div>
+							<h3 class="h6 font-weight-bold text-forest-green mb-2">Thu nhập trực tiếp</h3>
+							<p class="small text-muted mb-3">Tỷ lệ cao nhất trong các nền tảng du lịch văn hóa hiện nay.</p>
+							<button type="button" class="btn btn-primary btn-block font-weight-bold" onclick="switchPortalTab('tab-workflow')">
+								Xem 4 bước bạn làm →
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- (b) Ai có thể tham gia: 5 nhóm đối tượng -->
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
+				<div class="d-flex justify-content-between align-items-center flex-wrap mb-4 pb-2 border-bottom">
+					<div>
+						<span class="text-uppercase tracking-wider font-weight-bold small text-accent">Phạm vi đồng hành</span>
+						<h2 class="h3 font-weight-bold text-forest-green mb-0">Ai có thể tham gia cùng HeritageLink?</h2>
+					</div>
+					<span class="badge badge-success px-3 py-2 font-weight-bold mt-2 mt-md-0">5 nhóm đối tượng bản địa</span>
+				</div>
+
+				<div class="row">
+					<!-- Nhóm 1 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card bg-warm-ivory">
+							<div class="d-flex align-items-center mb-3">
+								<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mr-2">01</span>
+								<h3 class="h5 font-weight-bold text-forest-green mb-0">Nghệ nhân làm nghề</h3>
+							</div>
+							<p class="text-muted mb-0">Những bậc thầy có tay nghề điêu luyện, gìn giữ kỹ nghệ thủ công, hoa văn và tinh hoa làng nghề truyền thống qua nhiều thế hệ.</p>
+						</div>
+					</div>
+
+					<!-- Nhóm 2 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card bg-warm-ivory">
+							<div class="d-flex align-items-center mb-3">
+								<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mr-2">02</span>
+								<h3 class="h5 font-weight-bold text-forest-green mb-0">Hộ dân làm nghề</h3>
+							</div>
+							<p class="text-muted mb-0">Các gia đình đang trực tiếp sản xuất thủ công, làm bánh trái, dệt may, đan lát, gốm sứ hoặc nông sản sạch tại địa phương.</p>
+						</div>
+					</div>
+
+					<!-- Nhóm 3 -->
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="portal-stat-card bg-warm-ivory">
+							<div class="d-flex align-items-center mb-3">
+								<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mr-2">03</span>
+								<h3 class="h5 font-weight-bold text-forest-green mb-0">Người thực hành nghi lễ</h3>
+							</div>
+							<p class="text-muted mb-0">Già làng, trưởng bản, nghệ nhân dân gian nắm giữ phong tục tập quán, lời Then, điệu múa xòe, tiếng khèn và lễ hội truyền thống thiêng liêng.</p>
+						</div>
+					</div>
+
+					<!-- Nhóm 4 -->
+					<div class="col-md-6 col-lg-6 mb-4">
+						<div class="portal-stat-card bg-warm-ivory">
+							<div class="d-flex align-items-center mb-3">
+								<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mr-2">04</span>
+								<h3 class="h5 font-weight-bold text-forest-green mb-0">Hộ giữ món ăn gia truyền</h3>
+							</div>
+							<p class="text-muted mb-0">Gia đình gìn giữ công thức chế biến món ăn cổ truyền, bí quyết nêm nếm nguyên bản mang đậm phong vị và câu chuyện mâm cơm địa phương.</p>
+						</div>
+					</div>
+
+					<!-- Nhóm 5 -->
+					<div class="col-md-12 col-lg-6 mb-4">
+						<div class="portal-stat-card bg-warm-ivory">
+							<div class="d-flex align-items-center mb-3">
+								<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mr-2">05</span>
+								<h3 class="h5 font-weight-bold text-forest-green mb-0">Làng nghề & Hợp tác xã</h3>
+							</div>
+							<p class="text-muted mb-0">Cộng đồng làng nghề, hợp tác xã văn hóa mong muốn đón khách tham quan trải nghiệm văn minh, tăng thu nhập cho bà con mà không xáo trộn nếp sống yên bình.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Navigation to next tab -->
+				<div class="d-flex justify-content-between align-items-center pt-3 border-top mt-2">
+					<span class="text-muted small">Bước 1 trên 6 trong quy trình tìm hiểu</span>
+					<button type="button" class="btn btn-primary font-weight-bold" onclick="switchPortalTab('tab-workflow')">
+						Xem tiếp: Bạn chỉ cần làm gì? →
+					</button>
+				</div>
 			</div>
 		</div>
-	</section>
+
+		<!-- ==============================================================
+		     TAB 2: VIỆC BẠN LÀM & VIỆC KHÔNG CẦN LÀM (Mục c & d)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-workflow" role="tabpanel" aria-labelledby="btn-tab-workflow">
+			<!-- (c) Bạn chỉ cần làm 4 việc -->
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+				<div class="text-center mb-4 pb-2 border-bottom">
+					<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Quy trình cực kỳ đơn giản</span>
+					<h2 class="h3 font-weight-bold text-forest-green mb-2">Bạn chỉ cần làm 4 việc sau</h2>
+					<p class="text-muted mx-auto mb-0" style="max-width: 680px;">
+						Không có thủ tục giấy tờ phức tạp. Quy trình được thiết kế tối giản nhất để các bác và gia đình hoàn toàn thảnh thơi làm nghề.
+					</p>
+				</div>
+
+				<div class="row">
+					<!-- Bước 1 -->
+					<div class="col-md-6 col-lg-3 mb-4">
+						<div class="big-step-card text-center">
+							<div class="big-step-num">1</div>
+							<h3 class="h5 font-weight-bold text-forest-green mb-2">Đồng ý tham gia</h3>
+							<p class="text-muted mb-0" style="font-size: 1.05rem;">
+								Đồng ý cho Đại sứ ghi hình, phỏng vấn và cung cấp số điện thoại/Zalo. Chỉ vậy là đủ để đăng ký.
+							</p>
+						</div>
+					</div>
+
+					<!-- Bước 2 -->
+					<div class="col-md-6 col-lg-3 mb-4">
+						<div class="big-step-card text-center">
+							<div class="big-step-num">2</div>
+							<h3 class="h5 font-weight-bold text-forest-green mb-2">Cùng Đại sứ chuẩn bị trải nghiệm</h3>
+							<p class="text-muted mb-0" style="font-size: 1.05rem;">
+								Kể câu chuyện về nghề, chỉ ra phần nào khách được tự tay làm, phần nào khách chỉ nên đứng xem.
+							</p>
+						</div>
+					</div>
+
+					<!-- Bước 3 -->
+					<div class="col-md-6 col-lg-3 mb-4">
+						<div class="big-step-card text-center">
+							<div class="big-step-num">3</div>
+							<h3 class="h5 font-weight-bold text-forest-green mb-2">Xác nhận lịch đón khách</h3>
+							<p class="text-muted mb-0" style="font-size: 1.05rem;">
+								Nhận tin báo khách đặt qua Zalo hoặc tin nhắn SMS, xác nhận trực tiếp hoặc qua Đại sứ phụ trách.
+							</p>
+						</div>
+					</div>
+
+					<!-- Bước 4 -->
+					<div class="col-md-6 col-lg-3 mb-4">
+						<div class="big-step-card text-center border-gold">
+							<div class="big-step-num text-success">4</div>
+							<h3 class="h5 font-weight-bold text-forest-green mb-2">Đón khách và hướng dẫn</h3>
+							<p class="text-muted mb-0" style="font-size: 1.05rem;">
+								Cung cấp trải nghiệm đúng như đã mô tả, đảm bảo chất lượng và an toàn cho khách. Khách check-in bằng mã QR tại điểm đến.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- (d) Những điều bạn KHÔNG cần làm -->
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
+				<div class="row align-items-center">
+					<div class="col-lg-5 mb-4 mb-lg-0">
+						<span class="text-uppercase tracking-wider font-weight-bold small text-danger">Thảnh thơi đón khách</span>
+						<h2 class="h3 font-weight-bold text-forest-green mt-1 mb-3">Những điều bạn KHÔNG cần làm</h2>
+						<p class="text-muted mb-4" style="font-size: 1.15rem;">
+							Bác và gia đình không cần phải bận tâm về những công việc phức tạp trên mạng internet.
+						</p>
+						<div class="p-4 bg-forest-green text-white rounded-20 shadow-sm">
+							<p class="lead mb-0 text-accent font-weight-bold" style="font-size: 1.25rem;">
+								“Đại sứ Di sản và HeritageLink làm thay bạn.”
+							</p>
+							<p class="small text-white-opacity mt-2 mb-0">
+								Chúng tôi lo toàn bộ công nghệ, hình ảnh, bài viết giới thiệu, thu tiền và đưa đón khách đến tận nơi.
+							</p>
+						</div>
+					</div>
+
+					<div class="col-lg-7">
+						<div class="not-needed-card">
+							<div class="not-needed-icon">✕</div>
+							<div>
+								<h3 class="h6 font-weight-bold text-forest-green mb-1" style="font-size: 1.15rem;">Không phải tự đăng bài hay quản lý trang web</h3>
+								<p class="text-muted mb-0 small" style="font-size: 1.05rem;">HeritageLink quản lý toàn bộ hệ thống đăng tải, cập nhật nội dung thay bạn.</p>
+							</div>
+						</div>
+
+						<div class="not-needed-card">
+							<div class="not-needed-icon">✕</div>
+							<div>
+								<h3 class="h6 font-weight-bold text-forest-green mb-1" style="font-size: 1.15rem;">Không phải tự quay phim, chụp ảnh, viết giới thiệu</h3>
+								<p class="text-muted mb-0 small" style="font-size: 1.05rem;">Các bạn sinh viên Đại sứ Di sản sẽ về tận nhà quay phim, chụp ảnh đẹp và viết bài chu đáo.</p>
+							</div>
+						</div>
+
+						<div class="not-needed-card">
+							<div class="not-needed-icon">✕</div>
+							<div>
+								<h3 class="h6 font-weight-bold text-forest-green mb-1" style="font-size: 1.15rem;">Không phải học cách dùng ứng dụng phức tạp</h3>
+								<p class="text-muted mb-0 small" style="font-size: 1.05rem;">Mọi thông tin lịch đón khách chỉ gửi qua tin nhắn SMS thường hoặc Zalo quen thuộc.</p>
+							</div>
+						</div>
+
+						<div class="not-needed-card">
+							<div class="not-needed-icon">✕</div>
+							<div>
+								<h3 class="h6 font-weight-bold text-forest-green mb-1" style="font-size: 1.15rem;">Không phải bỏ tiền quảng cáo</h3>
+								<p class="text-muted mb-0 small" style="font-size: 1.05rem;">Bạn không mất một đồng chi phí quảng bá nào. HeritageLink kết nối sẵn lượng du khách có nhu cầu.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Navigation -->
+				<div class="d-flex justify-content-between align-items-center pt-3 border-top mt-4">
+					<button type="button" class="btn btn-outline-secondary font-weight-bold" onclick="switchPortalTab('tab-overview')">
+						← Quay lại: Tổng quan
+					</button>
+					<button type="button" class="btn btn-primary font-weight-bold" onclick="switchPortalTab('tab-revenue')">
+						Xem tiếp: Doanh thu 85% & Quyền lợi →
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- ==============================================================
+		     TAB 3: DOANH THU 85% & QUYỀN LỢI (Mục e)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-revenue" role="tabpanel" aria-labelledby="btn-tab-revenue">
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+				<div class="d-flex justify-content-between align-items-center flex-wrap mb-4 pb-2 border-bottom">
+					<div>
+						<span class="badge badge-success px-3 py-1 font-weight-bold mb-2">Minh bạch tài chính 100%</span>
+						<h2 class="h3 font-weight-bold text-forest-green mb-0">85% số tiền khách trả thuộc về bạn</h2>
+					</div>
+					<span class="badge badge-accent px-3 py-2 font-weight-bold text-white mt-2 mt-md-0">Tỷ lệ cố định chuẩn hồ sơ</span>
+				</div>
+
+				<p class="text-muted mb-4" style="font-size: 1.15rem;">
+					Sau mỗi lượt đặt, bạn biết rõ khách trả bao nhiêu, chi phí bao nhiêu và bạn thực nhận bao nhiêu. Bạn xem được doanh thu và lịch đặt chỗ ngay trên nền tảng.
+				</p>
+
+				<!-- Visual Revenue Split Component -->
+				<div class="revenue-split-visual mb-4">
+					<div class="d-flex justify-content-between align-items-center mb-2">
+						<strong class="text-forest-green" style="font-size: 1.15rem;">Thanh phân bổ tỷ lệ chia sẻ doanh thu tự động:</strong>
+						<span class="badge badge-light border text-forest-green font-weight-bold">85% Hộ dân • 5% Đại sứ • 2% Cổng thanh toán • 8% Nền tảng</span>
+					</div>
+
+					<!-- Dynamic Stacked Progress Bar -->
+					<div class="revenue-split-bar mb-3" aria-label="Thanh phân bổ tỷ lệ chia sẻ doanh thu">
+						<div class="split-seg-host" style="width: 85%;" title="85% Hộ dân / Nghệ nhân">
+							<span>85% Bạn nhận</span>
+						</div>
+						<div class="split-seg-ambassador" style="width: 5%;" title="5% Đại sứ Sinh viên">
+							<span>5%</span>
+						</div>
+						<div class="split-seg-payment" style="width: 2%;" title="2% Cổng thanh toán">
+							<span>2%</span>
+						</div>
+						<div class="split-seg-platform" style="width: 8%;" title="8% HeritageLink">
+							<span>8%</span>
+						</div>
+					</div>
+
+					<!-- Visual Example Breakdown for 850.000đ (Dynamic from roles-data.js) -->
+					<div class="p-3 bg-warm-ivory rounded-15 border mt-4">
+						<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+							<strong class="text-forest-green" style="font-size: 1.15rem;">
+								Ví dụ trực quan: Một du khách đặt trải nghiệm giá <span class="text-primary" id="split-example-total">850.000đ</span>
+							</strong>
+							<span class="text-muted small">Tự động đối soát minh bạch từng lượt đặt</span>
+						</div>
+
+						<div class="table-responsive">
+							<table class="table table-bordered bg-white mb-0 text-center" style="font-size: 1.05rem;">
+								<thead class="thead-light">
+									<tr>
+										<th class="font-weight-bold text-forest-green">Hộ dân / Nghệ nhân (85%)</th>
+										<th class="font-weight-bold text-accent-dark">Đại sứ Sinh viên (5%)</th>
+										<th class="font-weight-bold text-muted">Cổng thanh toán (2%)</th>
+										<th class="font-weight-bold text-primary">Nền tảng HeritageLink (8%)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="font-weight-bold text-success" style="font-size: 1.45rem;" id="split-val-host">722.500đ</td>
+										<td class="font-weight-bold text-accent-dark" id="split-val-ambassador">42.500đ</td>
+										<td class="text-muted" id="split-val-payment">17.000đ</td>
+										<td class="text-primary font-weight-bold" id="split-val-platform">68.000đ</td>
+									</tr>
+									<tr class="small text-muted font-italic">
+										<td>Chuyển trực tiếp về tài khoản của bạn</td>
+										<td>Hoa hồng hỗ trợ sinh viên khảo sát</td>
+										<td>Chi phí kỹ thuật ngân hàng</td>
+										<td>Duy trì máy chủ, đối soát & kiểm duyệt</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<!-- 5 Core Benefits Grid -->
+				<h3 class="h5 font-weight-bold text-forest-green mb-3">5 quyền lợi thiết thực đi kèm</h3>
+				<div class="row">
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border shadow-sm h-100">
+							<div class="text-accent font-weight-bold mb-2" style="font-size: 1.25rem;">✓ Minh bạch tuyệt đối</div>
+							<h4 class="h6 font-weight-bold text-forest-green mb-2">Xem rõ tiền và lịch đón</h4>
+							<p class="text-muted mb-0 small" style="font-size: 1.02rem;">Bạn xem được doanh thu và lịch đặt chỗ ngay trên trang theo dõi hoặc qua thông báo gửi về điện thoại.</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border shadow-sm h-100">
+							<div class="text-accent font-weight-bold mb-2" style="font-size: 1.25rem;">✓ Quảng bá miễn phí</div>
+							<h4 class="h6 font-weight-bold text-forest-green mb-2">Tiếp cận khách toàn quốc</h4>
+							<p class="text-muted mb-0 small" style="font-size: 1.02rem;">Hình ảnh làng nghề của bạn được xuất hiện trang trọng trên bản đồ di sản có sẵn hàng ngàn du khách ghé thăm mỗi tuần.</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border shadow-sm h-100">
+							<div class="text-accent font-weight-bold mb-2" style="font-size: 1.25rem;">✓ Kênh báo quen thuộc</div>
+							<h4 class="h6 font-weight-bold text-forest-green mb-2">Báo qua Zalo và SMS</h4>
+							<p class="text-muted mb-0 small" style="font-size: 1.02rem;">Mỗi khi có khách đặt, tin nhắn gửi ngay vào số Zalo hoặc tin nhắn SMS điện thoại để bạn chuẩn bị chu đáo.</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-6 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border shadow-sm h-100">
+							<div class="text-accent font-weight-bold mb-2" style="font-size: 1.25rem;">✓ Hỗ trợ thủ tục thuế</div>
+							<h4 class="h6 font-weight-bold text-forest-green mb-2">An tâm pháp lý và kê khai thuế</h4>
+							<p class="text-muted mb-0 small" style="font-size: 1.02rem;">Hệ thống chia doanh thu được thiết kế để khấu trừ và kê khai thuế thay cho hộ, cá nhân kinh doanh theo đúng quy định hiện hành.</p>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-lg-6 mb-4">
+						<div class="p-4 bg-warm-ivory rounded-20 border shadow-sm h-100">
+							<div class="text-accent font-weight-bold mb-2" style="font-size: 1.25rem;">✓ Đại sứ đồng hành</div>
+							<h4 class="h6 font-weight-bold text-forest-green mb-2">Có người trẻ kề vai sát cánh</h4>
+							<p class="text-muted mb-0 small" style="font-size: 1.02rem;">Bạn Đại sứ phụ trách địa bàn luôn là cầu nối nhiệt tình, hỗ trợ giải đáp thắc mắc, cập nhật thông tin và tiếp nhận mọi phản hồi.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Navigation -->
+				<div class="d-flex justify-content-between align-items-center pt-3 border-top mt-2">
+					<button type="button" class="btn btn-outline-secondary font-weight-bold" onclick="switchPortalTab('tab-workflow')">
+						← Quay lại: Việc làm & Không cần làm
+					</button>
+					<button type="button" class="btn btn-primary font-weight-bold" onclick="switchPortalTab('tab-commitments')">
+						Xem tiếp: Trách nhiệm & Cam kết →
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- ==============================================================
+		     TAB 4: TRÁCH NHIỆM & CAM KẾT (Mục f)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-commitments" role="tabpanel" aria-labelledby="btn-tab-commitments">
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
+				<div class="text-center mb-4 pb-2 border-bottom">
+					<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Hợp tác văn minh</span>
+					<h2 class="h3 font-weight-bold text-forest-green mb-2">Trách nhiệm & Cam kết của Bên Cung cấp</h2>
+					<p class="text-muted mx-auto mb-0" style="max-width: 720px;">
+						Để giữ gìn niềm tin và mang lại trải nghiệm ấm áp nhất cho du khách, hai bên cùng thực hiện những cam kết nhẹ nhàng sau:
+					</p>
+				</div>
+
+				<div class="p-4 p-md-5 bg-warm-ivory rounded-20 border shadow-sm mb-4">
+					<ul class="list-unstyled mb-0" id="community-commitments-list">
+						<li class="d-flex align-items-start mb-4">
+							<div class="mr-3 text-success font-weight-bold" style="font-size: 1.4rem; line-height: 1;">✦</div>
+							<div>
+								<h3 class="h6 font-weight-bold text-forest-green mb-1" style="font-size: 1.15rem;">Cung cấp trải nghiệm đúng nội dung, thời lượng và giá đã thống nhất</h3>
+								<p class="text-muted mb-0">Đón tiếp khách đúng giờ, hướng dẫn chân tình đúng theo kịch bản trải nghiệm đã thống nhất cùng bạn Đại sứ.</p>
+							</div>
+						</li>
+
+						<li class="d-flex align-items-start mb-4">
+							<div class="mr-3 text-success font-weight-bold" style="font-size: 1.4rem; line-height: 1;">✦</div>
+							<div>
+								<h3 class="h6 font-weight-bold text-forest-green mb-1" style="font-size: 1.15rem;">Đảm bảo chất lượng dịch vụ và an toàn cho khách</h3>
+								<p class="text-muted mb-0">Chịu trách nhiệm về chất lượng dịch vụ và an toàn của khách trong suốt buổi trải nghiệm tại gia đình, vì HeritageLink hoạt động với tư cách sàn trung gian kết nối.</p>
+							</div>
+						</li>
+
+						<li class="d-flex align-items-start mb-4">
+							<div class="mr-3 text-success font-weight-bold" style="font-size: 1.4rem; line-height: 1;">✦</div>
+							<div>
+								<h3 class="h6 font-weight-bold text-forest-green mb-1" style="font-size: 1.15rem;">Thông báo sớm cho Đại sứ khi cần đổi lịch hoặc tạm ngừng đón khách</h3>
+								<p class="text-muted mb-0">Chủ động báo sớm cho Đại sứ phụ trách khi nhà có việc đột xuất, có giỗ chạp, cần dời lịch hoặc tạm ngừng nhận khách để hệ thống khóa ngày kịp thời.</p>
+							</div>
+						</li>
+
+						<li class="d-flex align-items-start">
+							<div class="mr-3 text-success font-weight-bold" style="font-size: 1.4rem; line-height: 1;">✦</div>
+							<div>
+								<h3 class="h6 font-weight-bold text-forest-green mb-1" style="font-size: 1.15rem;">Tham gia đánh giá hai chiều văn minh</h3>
+								<p class="text-muted mb-0">Khách đánh giá trải nghiệm và gia đình cũng có thể đóng góp ý kiến phản hồi về thái độ của du khách cũng như sự hỗ trợ của bạn Đại sứ.</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Navigation -->
+				<div class="d-flex justify-content-between align-items-center pt-3 border-top">
+					<button type="button" class="btn btn-outline-secondary font-weight-bold" onclick="switchPortalTab('tab-revenue')">
+						← Quay lại: Doanh thu 85%
+					</button>
+					<button type="button" class="btn btn-accent px-4 font-weight-bold" onclick="switchPortalTab('tab-register')">
+						Sẵn sàng? Đi tới Form Đăng ký →
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- ==============================================================
+		     TAB 5: FORM ĐĂNG KÝ HỢP TÁC (Mục g)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-register" role="tabpanel" aria-labelledby="btn-tab-register">
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="bg-white rounded-20 border shadow-lg p-4 p-md-5">
+						<div class="text-center mb-4">
+							<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Đăng ký siêu ngắn</span>
+							<h2 class="h3 font-weight-bold text-forest-green mb-2" style="font-size: 2rem;">
+								Gửi thông tin để Đại sứ liên hệ cùng bạn
+							</h2>
+							<p class="text-muted">Chỉ mất 1 phút điền thông tin bên dưới, bạn Đại sứ phụ trách khu vực sẽ gọi điện hoặc nhắn tin Zalo trò chuyện cùng bạn.</p>
+						</div>
+
+						<!-- Alert Feedback Messages -->
+						<div id="community-form-alert" class="alert d-none mb-4" role="alert" aria-live="assertive"></div>
+
+						<form id="community-register-form" novalidate>
+							<!-- Trường 1: Họ và tên -->
+							<div class="form-group mb-4">
+								<label for="comm-input-name" class="font-weight-bold text-dark mb-1">
+									1. Họ và tên của bạn / Đại diện hộ gia đình <span class="text-danger">*</span>
+								</label>
+								<input type="text" id="comm-input-name" name="name" class="form-control form-elderly-input" placeholder="Ví dụ: Bác Phạm Văn Nam" required aria-required="true">
+								<div class="invalid-feedback font-weight-bold text-danger">Vui lòng nhập họ và tên của bạn.</div>
+							</div>
+
+							<!-- Trường 2: Số điện thoại / Zalo -->
+							<div class="form-group mb-4">
+								<label for="comm-input-phone" class="font-weight-bold text-dark mb-1">
+									2. Số điện thoại hoặc Zalo để liên hệ <span class="text-danger">*</span>
+								</label>
+								<input type="tel" id="comm-input-phone" name="phone" class="form-control form-elderly-input" placeholder="Ví dụ: 0912 345 678" required aria-required="true">
+								<div class="invalid-feedback font-weight-bold text-danger">Vui lòng nhập số điện thoại hoặc Zalo để chúng tôi liên lạc.</div>
+							</div>
+
+							<!-- Trường 3: Địa phương (xã/phường, tỉnh) -->
+							<div class="form-group mb-4">
+								<label for="comm-input-location" class="font-weight-bold text-dark mb-1">
+									3. Địa phương của bạn (xã/phường, tỉnh) <span class="text-danger">*</span>
+								</label>
+								<input type="text" id="comm-input-location" name="location" class="form-control form-elderly-input" placeholder="Ví dụ: Xã Phù Lãng, Thị xã Quế Võ, Tỉnh Bắc Ninh" required aria-required="true">
+								<div class="invalid-feedback font-weight-bold text-danger">Vui lòng nhập địa chỉ xã/phường và tỉnh nơi gia đình sinh sống.</div>
+							</div>
+
+							<!-- Trường 4: Loại trải nghiệm -->
+							<div class="form-group mb-4">
+								<label for="comm-input-type" class="font-weight-bold text-dark mb-1">
+									4. Loại trải nghiệm muốn giới thiệu <span class="text-danger">*</span>
+								</label>
+								<select id="comm-input-type" name="experienceType" class="form-control form-elderly-input custom-select" required aria-required="true">
+									<option value="">-- Vui lòng chọn loại trải nghiệm --</option>
+									<option value="Làng nghề">Làng nghề thủ công truyền thống (Gốm, dệt, thêu, đan lát, mộc...)</option>
+									<option value="Ẩm thực">Ẩm thực cổ truyền / Món ăn gia truyền</option>
+									<option value="Văn hóa – nghi lễ">Văn hóa – nghi lễ (Múa dân gian, âm nhạc cổ truyền, phong tục)</option>
+									<option value="Sản phẩm thủ công">Sản phẩm thủ công độc bản</option>
+									<option value="Khác">Trải nghiệm đời sống bản địa khác</option>
+								</select>
+								<div class="invalid-feedback font-weight-bold text-danger">Vui lòng chọn loại hình trải nghiệm của gia đình.</div>
+							</div>
+
+							<!-- Trường 5: Ô tick bắt buộc -->
+							<div class="form-group mb-4">
+								<div class="custom-control custom-checkbox p-3 bg-warm-ivory rounded-15 border">
+									<input type="checkbox" class="custom-control-input" id="comm-consent-check" required aria-required="true">
+									<label class="custom-control-label font-weight-bold text-forest-green" for="comm-consent-check" style="font-size: 1.1rem; cursor: pointer;">
+										Tôi đồng ý để Đại sứ HeritageLink liên hệ, ghi hình và phỏng vấn <span class="text-danger">*</span>
+									</label>
+									<div class="invalid-feedback font-weight-bold text-danger">Bạn cần tick đồng ý để Đại sứ có thể liên hệ hỗ trợ bạn.</div>
+								</div>
+							</div>
+
+							<!-- Tùy chọn: Người đăng ký thay (Đại sứ / người thân) -->
+							<div class="form-group mb-4">
+								<div class="custom-control custom-checkbox mb-2">
+									<input type="checkbox" class="custom-control-input" id="comm-proxy-toggle">
+									<label class="custom-control-label text-muted" for="comm-proxy-toggle" style="font-size: 1.05rem; cursor: pointer;">
+										Tôi đăng ký thay (Đại sứ / con cháu / người thân trong gia đình)
+									</label>
+								</div>
+
+								<!-- Hidden field reveals when proxy is toggled -->
+								<div id="comm-proxy-details" class="d-none p-3 bg-warm-ivory rounded-15 border mt-2">
+									<label for="comm-input-proxy-name" class="font-weight-bold small text-dark mb-1">
+										Họ tên và số điện thoại người đăng ký thay:
+									</label>
+									<input type="text" id="comm-input-proxy-name" name="proxyContact" class="form-control form-elderly-input" placeholder="Ví dụ: Lê Minh Anh (Đại sứ sinh viên) - 0988 123 456">
+								</div>
+							</div>
+
+							<!-- Submit Button -->
+							<button type="submit" class="btn btn-primary btn-block btn-elderly-large font-weight-bold shadow-lg" id="btn-submit-community-form">
+								Gửi đăng ký hợp tác
+							</button>
+
+							<p class="text-center text-muted small mt-3 mb-0">
+								HeritageLink cam kết bảo mật tuyệt đối thông tin liên lạc và không gửi tin nhắn làm phiền.
+							</p>
+						</form>
+					</div>
+
+					<!-- Navigation -->
+					<div class="d-flex justify-content-between align-items-center pt-3 mt-3">
+						<button type="button" class="btn btn-outline-secondary font-weight-bold" onclick="switchPortalTab('tab-commitments')">
+							← Quay lại: Cam kết
+						</button>
+						<button type="button" class="btn btn-outline-primary font-weight-bold" onclick="switchPortalTab('tab-faq')">
+							Xem câu hỏi thường gặp →
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ==============================================================
+		     TAB 6: CÂU HỎI THƯỜNG GẶP (Mục h)
+		     ============================================================== -->
+		<div class="portal-pane" id="tab-faq" role="tabpanel" aria-labelledby="btn-tab-faq">
+			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
+				<div class="text-center mb-5 pb-2 border-bottom">
+					<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Giải đáp thắc mắc</span>
+					<h2 class="h3 font-weight-bold text-forest-green mb-2">Câu hỏi thường gặp của bà con</h2>
+					<p class="text-muted mx-auto mb-0" style="max-width: 700px;">
+						Các băn khoăn bà con và nghệ nhân thường hỏi nhất khi mới bắt đầu tìm hiểu về mô hình.
+					</p>
+				</div>
+
+				<div class="community-accordion mb-4" id="community-faq-accordion">
+					<!-- FAQ 1 -->
+					<div class="community-accordion-item">
+						<button class="community-accordion-btn" type="button" aria-expanded="true" aria-controls="faq-ans-1" id="faq-btn-1">
+							<span>1. Tôi có mất phí gì không?</span>
+							<span class="community-accordion-icon" aria-hidden="true">+</span>
+						</button>
+						<div id="faq-ans-1" class="community-accordion-body show" role="region" aria-labelledby="faq-btn-1">
+							Hoàn toàn không. Bạn không phải trả bất kỳ khoản phí nào: không phí tham gia, không phí chụp ảnh quay phim, không phí đăng bài quảng bá. HeritageLink chỉ giữ 8% chi phí vận hành khi có khách thực tế đặt và trải nghiệm thành công.
+						</div>
+					</div>
+
+					<!-- FAQ 2 -->
+					<div class="community-accordion-item">
+						<button class="community-accordion-btn" type="button" aria-expanded="false" aria-controls="faq-ans-2" id="faq-btn-2">
+							<span>2. Tiền khách trả về tay tôi khi nào, bằng cách nào?</span>
+							<span class="community-accordion-icon" aria-hidden="true">+</span>
+						</button>
+						<div id="faq-ans-2" class="community-accordion-body d-none" role="region" aria-labelledby="faq-btn-2">
+							Tiền được chuyển khoản trực tiếp vào tài khoản ngân hàng của bạn (hoặc người thân do bạn chỉ định, hoặc nhận tiền mặt qua Đại sứ phụ trách) ngay sau khi buổi trải nghiệm kết thúc và khách check-in thành công. Bạn luôn biết rõ số tiền thực nhận trước mỗi buổi đón khách.
+						</div>
+					</div>
+
+					<!-- FAQ 3 -->
+					<div class="community-accordion-item">
+						<button class="community-accordion-btn" type="button" aria-expanded="false" aria-controls="faq-ans-3" id="faq-btn-3">
+							<span>3. Nếu tôi bận, không đón khách được thì sao?</span>
+							<span class="community-accordion-icon" aria-hidden="true">+</span>
+						</button>
+						<div id="faq-ans-3" class="community-accordion-body d-none" role="region" aria-labelledby="faq-btn-3">
+							Bạn hoàn toàn làm chủ thời gian. Khi bận việc riêng, gia đình có giỗ chạp, mùa màng bận rộn hay lý do sức khỏe, bạn chỉ cần gọi điện hoặc nhắn tin cho Đại sứ phụ trách để tạm đóng lịch nhận khách trên trang web.
+						</div>
+					</div>
+
+					<!-- FAQ 4 -->
+					<div class="community-accordion-item">
+						<button class="community-accordion-btn" type="button" aria-expanded="false" aria-controls="faq-ans-4" id="faq-btn-4">
+							<span>4. Phần thờ cúng, nghi lễ trong nhà tôi có bị quay lên mạng không?</span>
+							<span class="community-accordion-icon" aria-hidden="true">+</span>
+						</button>
+						<div id="faq-ans-4" class="community-accordion-body d-none" role="region" aria-labelledby="faq-btn-4">
+							Tuyệt đối không khi bạn chưa đồng ý. Đại sứ chỉ ghi hình những nội dung bạn cho phép. Các khu vực thờ tự thiêng liêng, bí quyết gia truyền hay nghi lễ tâm linh sẽ chỉ để khách đứng ngoài chiêm bái hoặc hoàn toàn không đưa vào trải nghiệm, tùy theo mong muốn của bạn.
+						</div>
+					</div>
+
+					<!-- FAQ 5 -->
+					<div class="community-accordion-item">
+						<button class="community-accordion-btn" type="button" aria-expanded="false" aria-controls="faq-ans-5" id="faq-btn-5">
+							<span>5. Tôi không biết dùng điện thoại thông minh thì có tham gia được không?</span>
+							<span class="community-accordion-icon" aria-hidden="true">+</span>
+						</button>
+						<div id="faq-ans-5" class="community-accordion-body d-none" role="region" aria-labelledby="faq-btn-5">
+							Bạn hoàn toàn tham gia được bình thường! Bạn chỉ cần có một chiếc điện thoại nghe gọi cơ bản để nhận cuộc gọi hoặc tin nhắn SMS báo lịch. Bạn Đại sứ sinh viên phụ trách địa bàn sẽ là người đồng hành hỗ trợ mọi khâu công nghệ thay bạn.
+						</div>
+					</div>
+				</div>
+
+				<!-- Navigation -->
+				<div class="d-flex justify-content-between align-items-center pt-3 border-top">
+					<button type="button" class="btn btn-outline-secondary font-weight-bold" onclick="switchPortalTab('tab-register')">
+						← Quay lại: Form Đăng ký
+					</button>
+					<button type="button" class="btn btn-primary font-weight-bold" onclick="switchPortalTab('tab-overview')">
+						Về đầu: Tổng quan →
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</main>
 
 	<!-- Footer -->
-	<footer class="site-footer">
-		<div class="container text-center">
-			<p class="mb-0 text-white-opacity small">
-				HeritageLink &copy; 2026. Đồng hành bền vững cùng Nghệ nhân và Cộng đồng bản địa Việt Nam.
-			</p>
+	<footer class="site-footer bg-forest-green text-white py-5 mt-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 mb-4 mb-lg-0">
+					<a href="index.html" class="brand-logo mb-3 d-inline-block text-white">
+						<div class="logo-text-block">
+							<span class="logo-main-text text-white">HeritageLink</span>
+							<span class="logo-slogan-text text-accent">LƯU GIỮ HỒN CỐT DI SẢN</span>
+						</div>
+					</a>
+					<p class="text-white-opacity small mb-3">
+						HeritageLink – Nền tảng khởi nghiệp sinh viên kết nối du khách, Đại sứ Di sản và cộng đồng bản địa.
+					</p>
+					<p class="small text-accent font-italic">
+						“Không chỉ đến để nhìn di sản, mà đến để sống cùng di sản.”
+					</p>
+				</div>
+
+				<div class="col-6 col-lg-2 mb-4 mb-lg-0">
+					<h4 class="h6 font-weight-bold text-white mb-3">Khám phá</h4>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-2"><a href="explore.html" class="text-white-opacity">Tất cả trải nghiệm</a></li>
+						<li class="mb-2"><a href="heritage.html" class="text-white-opacity">Hồ sơ Di sản sống</a></li>
+						<li class="mb-2"><a href="passport.html" class="text-white-opacity">Hộ chiếu số</a></li>
+					</ul>
+				</div>
+
+				<div class="col-6 col-lg-3 mb-4 mb-lg-0">
+					<h4 class="h6 font-weight-bold text-white mb-3">Các vai trò</h4>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-2"><a href="ambassadors.html" class="text-white-opacity">Dành cho Đại sứ Sinh viên</a></li>
+						<li class="mb-2"><a href="community.html" class="text-white-opacity font-weight-bold text-accent">Dành cho Nghệ nhân & Hộ dân</a></li>
+						<li class="mb-2"><a href="host.html" class="text-white-opacity">Cổng xem lịch của Hộ dân</a></li>
+						<li class="mb-2"><a href="ambassador-apply.html" class="text-white-opacity">Đăng ký Đại sứ</a></li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3">
+					<h4 class="h6 font-weight-bold text-white mb-3">Cam kết bảo tồn</h4>
+					<p class="small text-white-opacity mb-2">
+						100% hoạt động dựa trên sự đồng thuận và tôn trọng bản sắc văn hóa của cộng đồng bản địa.
+					</p>
+					<p class="small text-white-opacity mb-0">
+						Tỷ lệ chia sẻ doanh thu cố định: 85% Hộ dân • 5% Đại sứ • 2% Thanh toán • 8% Nền tảng.
+					</p>
+				</div>
+			</div>
+
+			<div class="border-top border-white-opacity pt-4 mt-4 text-center">
+				<p class="small text-white-opacity mb-0">
+					Bản quyền &copy; 2026 <strong>HeritageLink</strong>. Lưu giữ hồn cốt di sản Việt.
+				</p>
+			</div>
 		</div>
 	</footer>
 
 	<!-- Scripts -->
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="script.js"></script>
+	<script src="js/roles-data.js"></script>
+
+	<!-- Portal Tab Switching & Interactions Script -->
+	<script>
+		// Function to switch between Portal Tabs
+		function switchPortalTab(targetTabId) {
+			var panes = document.querySelectorAll('.portal-pane');
+			var buttons = document.querySelectorAll('.portal-tab-btn');
+
+			// Hide all panes
+			panes.forEach(function (p) {
+				p.classList.remove('active');
+			});
+
+			// Deactivate all buttons
+			buttons.forEach(function (b) {
+				b.classList.remove('active');
+				b.setAttribute('aria-selected', 'false');
+			});
+
+			// Show target pane
+			var targetPane = document.getElementById(targetTabId);
+			if (targetPane) {
+				targetPane.classList.add('active');
+			}
+
+			// Activate button
+			var targetBtn = document.getElementById('btn-' + targetTabId);
+			if (targetBtn) {
+				targetBtn.classList.add('active');
+				targetBtn.setAttribute('aria-selected', 'true');
+				// Smooth scroll tab into view if horizontal overflowing
+				targetBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+			}
+
+			// Update URL hash without jumping
+			if (history.replaceState) {
+				history.replaceState(null, null, '#' + targetTabId);
+			}
+
+			// Scroll viewport smoothly to tabs top
+			var wrapper = document.querySelector('.portal-tabs-wrapper');
+			if (wrapper) {
+				var rect = wrapper.getBoundingClientRect();
+				if (rect.top < 0) {
+					wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', function () {
+			// 1. Check URL hash on page load to open specific tab (e.g. #tab-register)
+			var currentHash = window.location.hash.replace('#', '');
+			if (currentHash && document.getElementById(currentHash)) {
+				switchPortalTab(currentHash);
+			}
+
+			// 2. Calculate dynamic values for 850.000đ example using REVENUE_SPLIT
+			if (typeof calculateRevenueSplit === 'function') {
+				var samplePrice = 850000;
+				var split = calculateRevenueSplit(samplePrice);
+				var elTotal = document.getElementById('split-example-total');
+				var elHost = document.getElementById('split-val-host');
+				var elAmb = document.getElementById('split-val-ambassador');
+				var elPay = document.getElementById('split-val-payment');
+				var elPlat = document.getElementById('split-val-platform');
+
+				if (elTotal) elTotal.textContent = split.formattedPrice;
+				if (elHost) elHost.textContent = split.formattedHost;
+				if (elAmb) elAmb.textContent = split.formattedAmbassador;
+				if (elPay) elPay.textContent = split.formattedPayment;
+				if (elPlat) elPlat.textContent = split.formattedPlatform;
+			}
+
+			// 3. Toggle proxy register inputs
+			var proxyToggle = document.getElementById('comm-proxy-toggle');
+			var proxyDetails = document.getElementById('comm-proxy-details');
+			if (proxyToggle && proxyDetails) {
+				proxyToggle.addEventListener('change', function () {
+					if (this.checked) {
+						proxyDetails.classList.remove('d-none');
+					} else {
+						proxyDetails.classList.add('d-none');
+					}
+				});
+			}
+
+			// 4. Accessible Accordion Toggle Logic
+			var accordionButtons = document.querySelectorAll('.community-accordion-btn');
+			accordionButtons.forEach(function (btn) {
+				btn.addEventListener('click', function () {
+					var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+					var targetId = btn.getAttribute('aria-controls');
+					var targetBody = document.getElementById(targetId);
+
+					// Toggle current
+					if (isExpanded) {
+						btn.setAttribute('aria-expanded', 'false');
+						if (targetBody) {
+							targetBody.classList.remove('show');
+							targetBody.classList.add('d-none');
+						}
+					} else {
+						btn.setAttribute('aria-expanded', 'true');
+						if (targetBody) {
+							targetBody.classList.remove('d-none');
+							targetBody.classList.add('show');
+						}
+					}
+				});
+
+				// Keyboard support: Enter or Space
+				btn.addEventListener('keydown', function (e) {
+					if (e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
+						btn.click();
+					}
+				});
+			});
+
+			// 5. Form validation and temporary storage
+			var registerForm = document.getElementById('community-register-form');
+			var alertBox = document.getElementById('community-form-alert');
+
+			if (registerForm) {
+				registerForm.addEventListener('submit', function (e) {
+					e.preventDefault();
+					e.stopPropagation();
+
+					var nameInput = document.getElementById('comm-input-name');
+					var phoneInput = document.getElementById('comm-input-phone');
+					var locInput = document.getElementById('comm-input-location');
+					var typeInput = document.getElementById('comm-input-type');
+					var consentCheck = document.getElementById('comm-consent-check');
+
+					var isValid = true;
+
+					// Validate required fields
+					[nameInput, phoneInput, locInput, typeInput].forEach(function (input) {
+						if (!input || !input.value.trim()) {
+							if (input) input.classList.add('is-invalid');
+							isValid = false;
+						} else {
+							input.classList.remove('is-invalid');
+						}
+					});
+
+					// Validate consent checkbox
+					if (!consentCheck || !consentCheck.checked) {
+						if (consentCheck) consentCheck.classList.add('is-invalid');
+						isValid = false;
+					} else {
+						consentCheck.classList.remove('is-invalid');
+					}
+
+					if (!isValid) {
+						if (alertBox) {
+							alertBox.className = 'alert alert-danger mb-4';
+							alertBox.textContent = 'Bác vui lòng điền đầy đủ các thông tin bắt buộc (*) và tick đồng ý để Đại sứ có thể liên hệ hỗ trợ.';
+							alertBox.classList.remove('d-none');
+							alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+						}
+						return;
+					}
+
+					// Prepare payload
+					var payload = {
+						fullName: nameInput.value.trim(),
+						phone: phoneInput.value.trim(),
+						location: locInput.value.trim(),
+						experienceType: typeInput.value,
+						consent: consentCheck.checked,
+						proxyContact: (proxyToggle && proxyToggle.checked) ? (document.getElementById('comm-input-proxy-name')?.value || '') : '',
+						submittedAt: new Date().toISOString()
+					};
+
+					// Save temporarily to localStorage (with try/catch)
+					try {
+						var existing = JSON.parse(localStorage.getItem('heritagelink_community_inquiries') || '[]');
+						existing.push(payload);
+						localStorage.setItem('heritagelink_community_inquiries', JSON.stringify(existing));
+					} catch (storageErr) {
+						console.warn('Không thể lưu localStorage:', storageErr);
+					}
+
+					// TODO: nối API lưu form (POST /api/community-inquiries) khi backend sẵn sàng
+
+					// Display success feedback
+					if (alertBox) {
+						alertBox.className = 'alert alert-success p-4 mb-4';
+						alertBox.innerHTML = '<h3 class="h5 font-weight-bold text-success mb-2">Đăng ký thành công!</h3>' +
+							'<p class="mb-0" style="font-size: 1.15rem;">Cảm ơn bạn! Đại sứ phụ trách khu vực sẽ gọi điện hoặc nhắn Zalo trong vài ngày tới.</p>';
+						alertBox.classList.remove('d-none');
+						alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+					}
+
+					// Reset form state
+					registerForm.reset();
+					if (proxyDetails) proxyDetails.classList.add('d-none');
+				});
+			}
+		});
+	</script>
 </body>
 </html>
