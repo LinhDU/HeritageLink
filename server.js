@@ -101,7 +101,8 @@ app.get('/heritage', (req, res) => {
   res.sendFile(path.join(__dirname, 'heritage.html'));
 });
 
-app.get('/heritage/:slug', (req, res) => {
+app.get('/heritage/:slug', (req, res, next) => {
+  if (req.params.slug && req.params.slug.includes('.')) return next();
   res.sendFile(path.join(__dirname, 'heritage.html'));
 });
 
@@ -117,11 +118,13 @@ app.get('/detail', (req, res) => {
   res.sendFile(path.join(__dirname, 'detail.html'));
 });
 
-app.get('/experience/:id', (req, res) => {
+app.get('/experience/:id', (req, res, next) => {
+  if (req.params.id && req.params.id.includes('.')) return next();
   res.sendFile(path.join(__dirname, 'detail.html'));
 });
 
-app.get('*', (req, res) => {
+app.get('*', (req, res, next) => {
+  if (req.path && req.path.includes('.')) return next();
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
