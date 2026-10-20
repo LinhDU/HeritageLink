@@ -230,32 +230,34 @@ function initHomeHeritageMap() {
     scrollWheelZoom: false
   }).setView([18.2, 106.5], 6);
 
-  // 1. OpenStreetMap Standard - Real geography, street, river, province names in Vietnamese
+  // 1. Bản đồ Tiếng Việt chuẩn xác (Google Maps Vietnam - 100% tiếng Việt, tên tỉnh thành, đường sá, không chữ ngoại ngữ)
+  const googleMapVi = L.tileLayer('https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&hl=vi', {
+    subdomains: ['0', '1', '2', '3'],
+    maxZoom: 20,
+    attribution: '&copy; Bản đồ Việt Nam (Google Maps)'
+  });
+
+  // 2. Ảnh Vệ tinh thực tế có nhãn tiếng Việt (Hybrid Satellite)
+  const googleSatVi = L.tileLayer('https://mt{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}&hl=vi', {
+    subdomains: ['0', '1', '2', '3'],
+    maxZoom: 20,
+    attribution: '&copy; Vệ tinh Google'
+  });
+
+  // 3. OpenStreetMap
   const osmStandard = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+    attribution: '&copy; OpenStreetMap contributors'
   });
 
-  // 2. Esri World Imagery (Satellite) - Real high-res satellite photos
-  const esriSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 18,
-    attribution: 'Tiles &copy; Esri &mdash; DigitalGlobe, Earthstar Geographics'
-  });
+  // Default to 100% Vietnamese map
+  googleMapVi.addTo(homeMap);
 
-  // 3. Esri World Topo Map (Terrain & Natural Elevation)
-  const esriTopo = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 18,
-    attribution: 'Tiles &copy; Esri &mdash; USGS, FAO, NPS, NRCAN'
-  });
-
-  // Default to real OpenStreetMap tiles
-  osmStandard.addTo(homeMap);
-
-  // Interactive Layer Switcher so user can choose Standard, Satellite, or Topo
+  // Interactive Layer Switcher so user can choose Standard, Satellite, or OSM
   const baseMaps = {
-    "🗺️ Bản đồ Địa lý (OSM)": osmStandard,
-    "🛰️ Ảnh Vệ tinh thật": esriSatellite,
-    "⛰️ Bản đồ Địa hình": esriTopo
+    "🇻🇳 Bản đồ Tiếng Việt": googleMapVi,
+    "🛰️ Ảnh Vệ tinh chi tiết": googleSatVi,
+    "🗺️ OpenStreetMap": osmStandard
   };
   L.control.layers(baseMaps, null, { position: 'topright' }).addTo(homeMap);
 
@@ -460,9 +462,10 @@ function renderStandaloneAiResult(data) {
   if (mapEl && typeof L !== 'undefined') {
     if (!itinMap) {
       itinMap = L.map('ai-itinerary-map', { scrollWheelZoom: false }).setView([21.0, 106.0], 8);
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+      L.tileLayer('https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&hl=vi', {
+        subdomains: ['0', '1', '2', '3'],
+        maxZoom: 20,
+        attribution: '&copy; Bản đồ Việt Nam'
       }).addTo(itinMap);
     }
 
@@ -1154,18 +1157,20 @@ function initExplorePage() {
     if (!exploreMap && typeof L !== 'undefined') {
       exploreMap = L.map('explore-leaflet-map').setView([18.5, 106.5], 6);
       
-      const exploreOsm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
+      const exploreGMap = L.tileLayer('https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&hl=vi', {
+        subdomains: ['0', '1', '2', '3'],
+        maxZoom: 20,
+        attribution: '&copy; Bản đồ Việt Nam'
       }).addTo(exploreMap);
 
-      const exploreSat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        maxZoom: 18,
-        attribution: 'Tiles &copy; Esri'
+      const exploreSat = L.tileLayer('https://mt{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}&hl=vi', {
+        subdomains: ['0', '1', '2', '3'],
+        maxZoom: 20,
+        attribution: '&copy; Vệ tinh Google'
       });
 
       L.control.layers({
-        "🗺️ Bản đồ Địa lý": exploreOsm,
+        "🇻🇳 Bản đồ Tiếng Việt": exploreGMap,
         "🛰️ Vệ tinh thực tế": exploreSat
       }, null, { position: 'topright' }).addTo(exploreMap);
 
