@@ -47,28 +47,11 @@ async function getAdminOverview(req, res) {
 async function createExperience(req, res) {
   if (!ensureAdmin(req, res)) return;
 
-  const payload = req.body || {};
-  const requiredFields = ['category', 'title', 'ambassador', 'duration', 'location', 'price', 'badge'];
-
-  const missing = requiredFields.filter((field) => !payload[field]);
-  if (missing.length) {
-    return res.status(400).json({ message: 'Thiếu thông tin bắt buộc cho trải nghiệm.' });
-  }
-
-  const rating = Number(payload.rating || 4.5);
-  const price = Number(payload.price);
-  const imageUrl = payload.imageUrl || payload.imageClass || 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80';
-
-  const created = await db.queryOne(
-    `
-      INSERT INTO experiences (category, title, ambassador, rating, duration, location, price, imageClass, badge)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-      RETURNING *
-    `,
-    [payload.category, payload.title, payload.ambassador, rating, payload.duration, payload.location, price, imageUrl, payload.badge]
-  );
-
-  return res.status(201).json({ message: 'Tạo trải nghiệm thành công.', experience: created });
+  // Docx & System Rule: Admin no longer creates tours directly.
+  // Tours are surveyed, created, and customized by Student Ambassadors, then reviewed by Admin.
+  return res.status(403).json({
+    message: 'Nghiệp vụ mới: Admin không còn vai trò trực tiếp tạo tour. Mọi tour/trải nghiệm do Đại sứ Sinh viên khởi tạo, thiết kế giao diện và gửi Ban Quản Trị kiểm duyệt 3 tiêu chí di sản sống.'
+  });
 }
 
 async function updateExperience(req, res) {
@@ -324,6 +307,153 @@ async function createAmbassadorDirectly(req, res) {
   });
 }
 
+async function createHostDirectly(req, res) {
+  if (!ensureAdmin(req, res)) return;
+
+  const { name, email, phone, craft, region, password } = req.body || {};
+
+  if (!name || !email) {
+    return res.status(400).json({ message: 'Họ tên nghệ nhân và Email là bắt buộc.' });
+  }
+
+  const cleanEmail = email.toLowerCase().trim();
+  const existingUser = memoryStore.users.find((u) => u.email.toLowerCase() === cleanEmail);
+
+  if (existingUser && existingUser.role === 'host') {
+    return res.status(400).json({ message: 'Email này đã tồn tại tài khoản Hộ dân/Nghệ nhân.' });
+  }
+
+  const initialPassword = password || 'hodan123';
+  const hash = bcrypt.hashSync(initialPassword, 10);
+
+  let user;
+  if (existingUser) {
+    existingUser.role = 'host';
+    existingUser.name = name.trim();
+    existingUser.phone = phone ? phone.trim() : existingUser.phone;
+    existingUser.craft = craft ? craft.trim() : existingUser.craft;
+    existingUser.region = region ? region.trim() : existingUser.region;
+    user = existingUser;
+  } else {
+    user = {
+      id: memoryStore.users.length + 1,
+      email: cleanEmail,
+      name: name.trim(),
+      phone: phone ? phone.trim() : '',
+      craft: craft ? craft.trim() : 'Nghề thủ công bản địa',
+      region: region ? region.trim() : 'Bắc Ninh',
+      role: 'host',
+      passwordhash: hash,
+      passwordHash: hash,
+      createdAt: new Date().toISOString()
+    };
+    memoryStore.users.push(user);
+  }
+
+  try {
+    await db.query(
+      `INSERT INTO users (email, name, phone, passwordhash, passwordHash, role)
+       VALUES ($1, $2, $3, $4, $5, 'host')
+       ON CONFLICT (email) DO UPDATE SET role = 'host', name = EXCLUDED.name`,
+      [cleanEmail, user.name, user.phone, hash, hash]
+    );
+  } catch (e) {}
+
+  const emailPreview = {
+    to: cleanEmail,
+    subject: '[HeritageLink] Thông tin cấp tài khoản Hộ dân / Nghệ nhân bản địa',
+    applicantName: user.name,
+    craft: user.craft,
+    region: user.region,
+    username: cleanEmail,
+    initialPassword: initialPassword,
+    portalUrl: '/host.html',
+    loginUrl: '/login.html',
+    sentAt: new Date().toLocaleString('vi-VN')
+  };
+
+  return res.status(201).json({
+    message: `Đã cấp tài khoản Hộ dân / Nghệ nhân thành công cho ${user.name}!`,
+    user,
+    emailPreview
+  });
+}
+
+async function createClientDirectly(req, res) {
+  if (!ensureAdmin(req, res)) return;
+
+  const { name, email, phone, password } = req.body || {};
+
+  if (!name || !email) {
+    return res.status(400).json({ message: 'Họ tên và Email là bắt buộc.' });
+  }
+
+  const cleanEmail = email.toLowerCase().trim();
+  const existingUser = memoryStore.users.find((u) => u.email.toLowerCase() === cleanEmail);
+
+  if (existingUser) {
+    return res.status(400).json({ message: 'Email này đã tồn tại trong hệ thống.' });
+  }
+
+  const initialPassword = password || 'client123';
+  const hash = bcrypt.hashSync(initialPassword, 10);
+
+  const user = {
+    id: memoryStore.users.length + 1,
+    email: cleanEmail,
+    name: name.trim(),
+    phone: phone ? phone.trim() : '',
+    role: 'client',
+    passwordhash: hash,
+    passwordHash: hash,
+    createdAt: new Date().toISOString()
+  };
+  memoryStore.users.push(user);
+
+  try {
+    await db.query(
+      `INSERT INTO users (email, name, phone, passwordhash, passwordHash, role)
+       VALUES ($1, $2, $3, $4, $5, 'client')`,
+      [cleanEmail, user.name, user.phone, hash, hash]
+    );
+  } catch (e) {}
+
+  const emailPreview = {
+    to: cleanEmail,
+    subject: '[HeritageLink] Thông tin cấp tài khoản Du khách HeritageLink',
+    applicantName: user.name,
+    username: cleanEmail,
+    initialPassword: initialPassword,
+    portalUrl: '/explore.html',
+    loginUrl: '/login.html',
+    sentAt: new Date().toLocaleString('vi-VN')
+  };
+
+  return res.status(201).json({
+    message: `Đã cấp tài khoản Khách hàng thành công cho ${user.name}!`,
+    user,
+    emailPreview
+  });
+}
+
+async function getAllAccounts(req, res) {
+  if (!ensureAdmin(req, res)) return;
+
+  const users = memoryStore.users.map((u) => ({
+    id: u.id,
+    name: u.name,
+    email: u.email,
+    role: u.role,
+    phone: u.phone || '',
+    school: u.school || '',
+    region: u.region || '',
+    craft: u.craft || '',
+    createdAt: u.createdAt || new Date().toISOString()
+  }));
+
+  return res.json(users);
+}
+
 module.exports = {
   getAdminOverview,
   createExperience,
@@ -331,6 +461,9 @@ module.exports = {
   deleteExperience,
   approveAmbassadorApplication,
   rejectAmbassadorApplication,
-  createAmbassadorDirectly
+  createAmbassadorDirectly,
+  createHostDirectly,
+  createClientDirectly,
+  getAllAccounts
 };
 

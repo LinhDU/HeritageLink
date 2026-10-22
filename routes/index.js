@@ -10,7 +10,10 @@ const {
   deleteExperience,
   approveAmbassadorApplication,
   rejectAmbassadorApplication,
-  createAmbassadorDirectly
+  createAmbassadorDirectly,
+  createHostDirectly,
+  createClientDirectly,
+  getAllAccounts
 } = require('../controllers/adminController');
 
 const router = express.Router();
@@ -60,6 +63,15 @@ router.delete('/api/admin/experiences/:id', deleteExperience);
 router.post('/api/admin/ambassadors/:id/approve', approveAmbassadorApplication);
 router.post('/api/admin/ambassadors/:id/reject', rejectAmbassadorApplication);
 router.post('/api/admin/ambassadors/create', createAmbassadorDirectly);
+router.post('/api/admin/hosts/create', createHostDirectly);
+router.post('/api/admin/clients/create', createClientDirectly);
+router.post('/api/admin/accounts/create', (req, res) => {
+  const role = req.body?.role || 'ambassador';
+  if (role === 'host') return createHostDirectly(req, res);
+  if (role === 'client') return createClientDirectly(req, res);
+  return createAmbassadorDirectly(req, res);
+});
+router.get('/api/admin/accounts', getAllAccounts);
 
 // Booking Lookup API (Referencing LocalLife.asia "Tra cứu đặt chỗ")
 router.get('/api/bookings/lookup', (req, res) => {
@@ -343,12 +355,219 @@ router.get('/api/ambassador/overview', async (req, res) => {
   });
 });
 
+// Get all registered hosts/artisans for selection
+router.get('/api/hosts', (req, res) => {
+  const hosts = memoryStore.users
+    .filter((u) => u.role === 'host')
+    .map((u) => ({
+      id: u.id,
+      name: u.name,
+      craft: u.craft || 'Nghề thủ công bản địa',
+      region: u.region || '',
+      phone: u.phone || '',
+      email: u.email
+    }));
+  res.json(hosts);
+});
+
+// Ambassador Tour Creation with Custom Detail UI Theme
+router.post('/api/ambassador/experiences', async (req, res) => {
+  if (!req.session.user || (req.session.user.role !== 'ambassador' && req.session.user.role !== 'admin')) {
+    return res.status(403).json({ message: 'Chỉ Đại sứ Di sản mới có quyền tạo tour và thiết kế giao diện.' });
+  }
+
+  const {
+    title,
+    category,
+    location,
+    price,
+    duration,
+    maxGuests,
+    imageUrl,
+    galleryImages,
+    hostId,
+    hostName,
+    story,
+    specialIntro,
+    layers,
+    artisan,
+    packages,
+    addons,
+    customTheme,
+    consentAgreed
+  } = req.body || {};
+
+  if (!title || !location) {
+    return res.status(400).json({ message: 'Vui lòng cung cấp tên tour và địa phương.' });
+  }
+
+  const themeConfig = {
+    themePreset: customTheme?.themePreset || customTheme?.palette || 'terracotta',
+    palette: customTheme?.palette || customTheme?.themePreset || 'terracotta',
+    primaryColor: customTheme?.primaryColor || customTheme?.colorPrimary || '#8d4925',
+    colorPrimary: customTheme?.colorPrimary || customTheme?.primaryColor || '#8d4925',
+    accentColor: customTheme?.accentColor || customTheme?.colorAccent || '#c59b27',
+    colorAccent: customTheme?.colorAccent || customTheme?.accentColor || '#c59b27',
+    secondaryColor: customTheme?.secondaryColor || customTheme?.colorBgSecondary || '#fdf8f5',
+    colorBgSecondary: customTheme?.colorBgSecondary || customTheme?.secondaryColor || '#fdf8f5',
+    heroLayout: customTheme?.heroLayout || 'split',
+    fontStyle: customTheme?.fontStyle || customTheme?.fontFamily || 'serif',
+    fontFamily: customTheme?.fontFamily || customTheme?.fontStyle || 'serif',
+    badgeText: customTheme?.badgeText || 'Đại sứ Khảo sát 100% Thực địa',
+    ambassadorNote: customTheme?.ambassadorNote || customTheme?.ambassadorGreeting || `Lời ngỏ từ Đại sứ ${req.session.user.name}: Hãy cùng chúng mình trải nghiệm trọn vẹn văn hóa sống bản địa!`,
+    ambassadorGreeting: customTheme?.ambassadorGreeting || customTheme?.ambassadorNote || `Lời ngỏ từ Đại sứ ${req.session.user.name}: Hãy cùng chúng mình trải nghiệm trọn vẹn văn hóa sống bản địa!`,
+    audioTitle: customTheme?.audioTitle || '',
+    audioGuideUrl: customTheme?.audioGuideUrl || '',
+    culturalTips: customTheme?.culturalTips || 'Tôn trọng nếp sống và phong tục người dân bản xứ.'
+  };
+
+  const newExp = {
+    id: memoryStore.nextExperienceId++,
+    category: category || 'craft',
+    segmentName: category === 'craft' ? 'Làng nghề thủ công' : category === 'food' ? 'Ẩm thực địa phương' : category === 'culture' ? 'Tour văn hóa & Lưu trú' : 'Sản phẩm mang về',
+    title,
+    ambassador: req.session.user.name,
+    ambassadorId: req.session.user.id,
+    rating: 5.0,
+    reviewCount: 0,
+    duration: duration || '1 buổi (4 giờ)',
+    maxGuests: Number(maxGuests || 8),
+    location,
+    price: Number(price || 850000),
+    imageClass: imageUrl || 'images/gom-bacninh.jpg',
+    galleryImages: Array.isArray(galleryImages) && galleryImages.length ? galleryImages : [imageUrl || 'images/gom-bacninh.jpg', 'images/person_2.jpg', 'images/gal_2.jpg'],
+    hostId: hostId ? Number(hostId) : null,
+    hostName: hostName || (artisan?.name || 'Nghệ nhân bản địa'),
+    badge: 'Chờ kiểm duyệt',
+    status: 'pending',
+    verifiedDate: 'Đang chờ Admin duyệt 3 tiêu chí',
+    hasStay: category === 'culture',
+    consentAgreed: !!consentAgreed,
+    specialIntro: specialIntro || 'Trải nghiệm đặc sắc được khảo sát và bảo trợ trực tiếp bởi Đại sứ Sinh viên HeritageLink.',
+    story: story || 'Hồ sơ di sản văn hóa do Đại sứ khảo sát thực địa và có sự ủy quyền kể chuyện từ nghệ nhân bản địa.',
+    layers: layers || {
+      layer1_observe: 'Quan sát các công đoạn chế tác bí truyền của làng.',
+      layer2_touch: 'Cầm nắm nguyên liệu tự nhiên của vùng đất.',
+      layer3_do: 'Tự tay làm sản phẩm thủ công dưới sự kèm cặp của nghệ nhân.',
+      layer4_listen: 'Lắng nghe những huyền tích, chuyện giữ nghề ngàn đời.'
+    },
+    artisan: artisan || {
+      name: hostName || `Nghệ nhân hợp tác cùng ${req.session.user.name}`,
+      years: 'Hơn 25 năm giữ nghề',
+      quote: 'Mong văn hóa của làng được lan tỏa đến thế hệ trẻ muôn phương.',
+      image: 'images/person_2.jpg'
+    },
+    packages: packages || {
+      standardPrice: Number(price || 850000),
+      standardDesc: 'Gói chuẩn: Kèm cặp thực hành 1:1 + Thành phẩm mang về.',
+      premiumPrice: Number(price || 850000) + 300000,
+      premiumDesc: 'Gói chuyên sâu: Trọn gói chuẩn + Bữa cơm quê truyền thống.'
+    },
+    addons: addons || [],
+    customTheme: themeConfig,
+    createdAt: new Date().toISOString()
+  };
+
+  memoryStore.experiences.unshift(newExp);
+  if (typeof saveLocalFallback === 'function') saveLocalFallback();
+
+  return res.status(201).json({
+    message: 'Khởi tạo Tour Di sản và giao diện trang Detail thành công! Đã gửi hồ sơ lên Ban Quản Trị để thẩm định 3 tiêu chí.',
+    experience: newExp
+  });
+});
+
+// Ambassador Tour Update (incl. Custom Detail UI Theme)
+router.put('/api/ambassador/experiences/:id', async (req, res) => {
+  if (!req.session.user || (req.session.user.role !== 'ambassador' && req.session.user.role !== 'admin')) {
+    return res.status(403).json({ message: 'Chỉ Đại sứ mới có quyền chỉnh sửa tour.' });
+  }
+
+  const id = Number(req.params.id);
+  const exp = memoryStore.experiences.find((e) => e.id === id);
+
+  if (!exp) {
+    return res.status(404).json({ message: 'Không tìm thấy trải nghiệm.' });
+  }
+
+  const {
+    title,
+    category,
+    location,
+    price,
+    duration,
+    maxGuests,
+    imageUrl,
+    galleryImages,
+    hostId,
+    hostName,
+    story,
+    specialIntro,
+    layers,
+    artisan,
+    packages,
+    addons,
+    customTheme
+  } = req.body || {};
+
+  if (title) exp.title = title;
+  if (category) {
+    exp.category = category;
+    exp.segmentName = category === 'craft' ? 'Làng nghề thủ công' : category === 'food' ? 'Ẩm thực địa phương' : category === 'culture' ? 'Tour văn hóa & Lưu trú' : 'Sản phẩm mang về';
+  }
+  if (location) exp.location = location;
+  if (price) exp.price = Number(price);
+  if (duration) exp.duration = duration;
+  if (maxGuests) exp.maxGuests = Number(maxGuests);
+  if (imageUrl) exp.imageClass = imageUrl;
+  if (galleryImages) exp.galleryImages = galleryImages;
+  if (hostId) exp.hostId = Number(hostId);
+  if (hostName) exp.hostName = hostName;
+  if (story) exp.story = story;
+  if (specialIntro) exp.specialIntro = specialIntro;
+  if (layers) exp.layers = { ...exp.layers, ...layers };
+  if (artisan) exp.artisan = { ...exp.artisan, ...artisan };
+  if (packages) exp.packages = { ...exp.packages, ...packages };
+  if (addons) exp.addons = addons;
+
+  if (customTheme) {
+    exp.customTheme = {
+      ...exp.customTheme,
+      ...customTheme
+    };
+  }
+
+  if (typeof saveLocalFallback === 'function') saveLocalFallback();
+
+  return res.json({
+    message: 'Cập nhật Tour và tùy biến giao diện trang Detail thành công!',
+    experience: exp
+  });
+});
+
+// Ambassador Tours List
+router.get('/api/ambassador/experiences', (req, res) => {
+  if (!req.session.user || (req.session.user.role !== 'ambassador' && req.session.user.role !== 'admin')) {
+    return res.status(403).json({ message: 'Bạn không có quyền truy cập.' });
+  }
+
+  const myTours = memoryStore.experiences.filter(
+    (e) =>
+      req.session.user.role === 'admin' ||
+      e.ambassadorId === req.session.user.id ||
+      e.ambassador?.toLowerCase().includes('minh anh') ||
+      e.ambassador === req.session.user.name
+  );
+
+  res.json(myTours);
+});
+
 router.post('/api/ambassador/propose-spot', async (req, res) => {
   if (!req.session.user || (req.session.user.role !== 'ambassador' && req.session.user.role !== 'admin')) {
     return res.status(403).json({ message: 'Chỉ Đại sứ mới được đề xuất điểm di sản.' });
   }
 
-  const { title, category, location, price, duration, badge, imageUrl, consentAgreed } = req.body || {};
+  const { title, category, location, price, duration, badge, imageUrl, consentAgreed, customTheme } = req.body || {};
   if (!title || !location) {
     return res.status(400).json({ message: 'Vui lòng điền đủ thông tin điểm di sản.' });
   }
@@ -382,16 +601,26 @@ router.post('/api/ambassador/propose-spot', async (req, res) => {
       years: 'Hơn 25 năm giữ nghề',
       quote: 'Mong văn hóa của làng được lan tỏa đến thế hệ trẻ muôn phương.'
     },
-    culturalNotes: 'Tôn trọng nếp sống và văn hóa tâm linh của đồng bào bản địa.'
+    culturalNotes: 'Tôn trọng nếp sống và văn hóa tâm linh của đồng bào bản địa.',
+    customTheme: customTheme || {
+      themePreset: 'terracotta',
+      primaryColor: '#8d4925',
+      accentColor: '#c59b27',
+      heroLayout: 'split',
+      fontStyle: 'serif',
+      badgeText: 'Khảo sát thực địa bởi Đại sứ'
+    }
   };
 
-  memoryStore.experiences.push(newExp);
+  memoryStore.experiences.unshift(newExp);
+  if (typeof saveLocalFallback === 'function') saveLocalFallback();
 
   res.status(201).json({
     message: 'Đề xuất điểm di sản thành công! Hồ sơ đã được gửi tới Super Admin để thẩm định 3 tiêu chí.',
     spot: newExp
   });
 });
+
 
 // Living Heritage Profiles APIs (Hồ sơ Di sản sống)
 router.get('/api/heritage-profiles', (req, res) => {

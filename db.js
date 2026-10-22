@@ -137,7 +137,20 @@ const seedExperiences = [
     },
     culturalNotes: 'Vui lòng mặc trang phục thoải mái để dễ nhào nặn đất. Giữ trật tự và không tự ý bước vào gian thờ tổ nghề gốm.',
     stampTheme: 'Làng nghề',
-    stampId: 'STAMP-GOM-PHULANG'
+    stampId: 'STAMP-GOM-PHULANG',
+    customTheme: {
+      themePreset: 'terracotta',
+      primaryColor: '#8d4925',
+      accentColor: '#c59b27',
+      secondaryColor: '#fdf8f5',
+      heroLayout: 'split',
+      fontStyle: 'serif',
+      badgeText: 'Thực địa 100% cùng Nghệ nhân lão thành',
+      ambassadorNote: 'Chào bạn, mình là Lê Minh Anh. Làng Phù Lãng mùa này nắng dịu rất thích hợp nặn gốm. Mình sẽ cùng bạn đến tận xưởng bác Nam và tự tay chuốt chiếc bình hoa mộc nhé!',
+      audioTitle: 'Tiếng bàn xoay & chuyện lò nung củi rơm 700 năm',
+      audioGuideUrl: '#',
+      culturalTips: 'Nên mặc áo tối màu thoải mái để nhào nặn đất sét. Bác Nam rất thích trà sen, chúng mình sẽ cùng bác thưởng trà sau giờ chuốt gốm.'
+    }
   },
   {
     id: 2,
@@ -173,7 +186,20 @@ const seedExperiences = [
     },
     culturalNotes: 'Khi vào nhà trình tường không ngồi gian thiêng và không huýt sáo trong nhà. Xin phép trước khi chụp ảnh người già và trẻ nhỏ.',
     stampTheme: 'Không gian sống',
-    stampId: 'STAMP-HAGIANG-LOLO'
+    stampId: 'STAMP-HAGIANG-LOLO',
+    customTheme: {
+      themePreset: 'indigo',
+      primaryColor: '#1b4332',
+      accentColor: '#2d6a4f',
+      secondaryColor: '#f2f7f4',
+      heroLayout: 'cinematic',
+      fontStyle: 'sans',
+      badgeText: 'Homestay Bản Mông & Chàm Tự Nhiên',
+      ambassadorNote: 'Minh Anh đã sống cùng gia đình chú Sình suốt 2 tuần để hoàn thiện lộ trình này. Buổi tối bên bếp lửa nhà trình tường sẽ là kỷ niệm bạn không bao giờ quên!',
+      audioTitle: 'Tiếng khèn Mông vắt ngang cao nguyên đá Lũng Cú',
+      audioGuideUrl: '#',
+      culturalTips: 'Mang theo áo ấm vì đêm trên cao nguyên đá se lạnh. Chú Sình sẽ chuẩn bị nước lá hồi sảng khoái cho bạn ngâm chân.'
+    }
   },
   {
     id: 3,
@@ -397,6 +423,42 @@ const memoryStore = {
     },
     {
       id: 4,
+      email: 'sinh.vang@heritagelink.vn',
+      name: 'Trưởng bản Vàng A Sình',
+      passwordHash: bcrypt.hashSync('hodan123', 10),
+      passwordhash: bcrypt.hashSync('hodan123', 10),
+      role: 'host',
+      phone: '0988776655',
+      region: 'Lô Lô Chải, Lũng Cú, Hà Giang',
+      craft: 'Nhà trình tường & Dệt lanh Mông',
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: 5,
+      email: 'lan.theu@heritagelink.vn',
+      name: 'Nghệ nhân Nguyễn Thị Lan',
+      passwordHash: bcrypt.hashSync('hodan123', 10),
+      passwordhash: bcrypt.hashSync('hodan123', 10),
+      role: 'host',
+      phone: '0977889900',
+      region: 'Khoái Châu, Hưng Yên',
+      craft: 'Thêu tay nghệ thuật',
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: 6,
+      email: 'mebay.amthuc@heritagelink.vn',
+      name: 'Mẹ Bảy Hòa Vang',
+      passwordHash: bcrypt.hashSync('hodan123', 10),
+      passwordhash: bcrypt.hashSync('hodan123', 10),
+      role: 'host',
+      phone: '0933221100',
+      region: 'Hòa Vang, Đà Nẵng',
+      craft: 'Ẩm thực đồng quê truyền thống',
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: 7,
       email: 'client@heritagelink.vn',
       name: 'Trần Văn Khách',
       passwordHash: bcrypt.hashSync('client123', 10),

@@ -767,15 +767,21 @@
 					<div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom flex-wrap gap-2">
 						<div>
 							<h3 class="h5 font-weight-bold text-forest-green mb-1">
-								Quản lý Mạng lưới Đại sứ Di sản Sinh viên
+								Quản lý Cấp Tài Khoản Hệ Thống & Mạng Lưới Di Sản
 							</h3>
 							<p class="small text-muted mb-0">
-								Xét duyệt hồ sơ 3 tiêu chí • Cung cấp tài khoản hệ thống qua Email • Khởi tạo Đại sứ trực tiếp
+								Xét duyệt & cấp tài khoản cho Đại sứ Sinh viên, Nghệ nhân Hộ dân bản địa và Du khách
 							</p>
 						</div>
-						<div class="d-flex gap-2">
+						<div class="d-flex flex-wrap gap-2">
 							<button type="button" class="btn btn-primary btn-sm font-weight-bold px-3 shadow-sm" data-toggle="modal" data-target="#modalDirectAmbassador">
-								+ Thêm Đại sứ mới trực tiếp
+								+ Cấp TK Đại sứ
+							</button>
+							<button type="button" class="btn btn-sm font-weight-bold px-3 shadow-sm" data-toggle="modal" data-target="#modalDirectHost" style="background:#2d6a4f; color:#fff; border:none;">
+								+ Cấp TK Nghệ nhân
+							</button>
+							<button type="button" class="btn btn-sm font-weight-bold px-3 shadow-sm" data-toggle="modal" data-target="#modalDirectClient" style="background:#fff; color:#2d6a4f; border: 1.5px solid #2d6a4f;">
+								+ Cấp TK Khách hàng
 							</button>
 						</div>
 					</div>
@@ -844,90 +850,51 @@
 			</section>
 
 			<!-- ========================================== -->
-			<!-- TAB 4: EXPERIENCES MANAGEMENT (CRUD)       -->
+			<!-- TAB 4: EXPERIENCES QUALITY OVERSIGHT      -->
 			<!-- ========================================== -->
 			<section id="tab-experiences" class="admin-tab-pane">
 				<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
 					<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom flex-wrap gap-2">
 						<div>
 							<h3 class="h5 font-weight-bold text-forest-green mb-1">
-								Quản lý Danh mục Trải nghiệm Di sản
+								Kiểm duyệt & Giám sát Chất lượng Tour Di sản
 							</h3>
-							<p class="small text-muted mb-0">Thêm mới, sửa đổi thông tin hoặc cập nhật trạng thái hiển thị</p>
+							<p class="small text-muted mb-0">Admin giám sát chất lượng 3 tiêu chí, kiểm tra giao diện trang Detail và phê duyệt tour do Đại sứ tạo</p>
 						</div>
-						<button type="button" id="reset-form-btn" class="btn btn-outline-primary btn-sm px-3 font-weight-bold">
-							Làm mới form
-						</button>
+						<div class="d-flex align-items-center gap-2">
+							<button type="button" class="btn btn-outline-primary btn-sm px-3 font-weight-bold" onclick="switchTab('moderation')">
+								⚖️ Sang hàng chờ Thẩm định 3 tiêu chí →
+							</button>
+						</div>
 					</div>
 
-					<form id="admin-crud-form" class="mb-5 p-4 bg-light rounded-20 border">
-						<input type="hidden" id="crud-exp-id" name="id" />
-
-						<div class="row">
-							<div class="col-md-4 mb-3">
-								<label class="small font-weight-bold text-dark mb-1">Phân khúc di sản</label>
-								<select id="crud-category" name="category" class="form-control custom-select" required>
-									<option value="craft">Làng nghề thủ công (craft)</option>
-									<option value="food">Ẩm thực địa phương (food)</option>
-									<option value="culture">Tour văn hóa & Lưu trú (culture)</option>
-									<option value="product">Sản phẩm mang về (product)</option>
-								</select>
-							</div>
-
-							<div class="col-md-5 mb-3">
-								<label class="small font-weight-bold text-dark mb-1">Tiêu đề trải nghiệm</label>
-								<input type="text" id="crud-title" name="title" class="form-control" placeholder="Ví dụ: Gốm truyền thống Phù Lãng" required />
-							</div>
-
-							<div class="col-md-3 mb-3">
-								<label class="small font-weight-bold text-dark mb-1">Đại sứ phụ trách</label>
-								<input type="text" id="crud-ambassador" name="ambassador" class="form-control" placeholder="Tên đại sứ" required />
-							</div>
-
-							<div class="col-md-3 mb-3">
-								<label class="small font-weight-bold text-dark mb-1">Đánh giá (0 - 5)</label>
-								<input type="number" id="crud-rating" name="rating" step="0.1" min="0" max="5" value="4.9" class="form-control" required />
-							</div>
-
-							<div class="col-md-3 mb-3">
-								<label class="small font-weight-bold text-dark mb-1">Thời lượng</label>
-								<input type="text" id="crud-duration" name="duration" class="form-control" placeholder="1 buổi (4 giờ)" required />
-							</div>
-
-							<div class="col-md-3 mb-3">
-								<label class="small font-weight-bold text-dark mb-1">Địa phương</label>
-								<input type="text" id="crud-location" name="location" class="form-control" placeholder="Bắc Ninh / Hà Giang..." required />
-							</div>
-
-							<div class="col-md-3 mb-3">
-								<label class="small font-weight-bold text-dark mb-1">Giá vé (VNĐ)</label>
-								<input type="number" id="crud-price" name="price" min="0" placeholder="850000" class="form-control" required />
-							</div>
-
-							<div class="col-md-4 mb-3">
-								<label class="small font-weight-bold text-dark mb-1">Huy hiệu</label>
-								<input type="text" id="crud-badge" name="badge" class="form-control" value="Đã kiểm duyệt" required />
-							</div>
-
-							<div class="col-md-8 mb-3">
-								<label class="small font-weight-bold text-dark mb-1">Ảnh đại diện (URL hoặc đường dẫn file)</label>
-								<input type="text" id="crud-image" name="imageUrl" class="form-control" value="images/gom-bacninh.jpg" required />
+					<!-- Business Role Clarification Notice -->
+					<div class="p-4 bg-warm-ivory rounded-20 border mb-4" style="border-left: 5px solid var(--color-accent) !important;">
+						<div class="d-flex align-items-start gap-3">
+							<span style="font-size: 1.8rem; line-height: 1;">🛡️</span>
+							<div>
+								<strong class="d-block text-forest-green small font-weight-bold mb-1" style="font-size: 14.5px;">
+									Quy định Nghiệp vụ: Ban Quản Trị (Admin) Không Trực Tiếp Tạo Tour
+								</strong>
+								<p class="small text-muted mb-0" style="line-height: 1.55;">
+									Theo đề án HeritageLink, toàn bộ tour và kịch bản trải nghiệm do <strong>Đại sứ Sinh viên</strong> trực tiếp khảo sát thực địa, khởi tạo và thiết kế giao diện chi tiết. Ban Quản Trị chỉ đóng vai trò <strong>Thẩm định Chất lượng 3 Tiêu chí</strong> (Xác thực văn hóa 40%, Kể chuyện 30%, Tương tác 30%), bảo đảm an toàn du khách và <strong>Cấp phát tài khoản</strong> cho Đại sứ, Nghệ nhân và Khách hàng.
+								</p>
 							</div>
 						</div>
+					</div>
 
-						<div class="d-flex align-items-center">
-							<button type="submit" id="save-exp-btn" class="btn btn-primary px-4 py-2 mr-2 font-weight-bold">
-								Lưu trải nghiệm
-							</button>
-							<button type="button" id="cancel-edit-btn" class="btn btn-outline-secondary px-4 py-2 font-weight-bold d-none">
-								Hủy bỏ chỉnh sửa
-							</button>
-							<div id="crud-message" class="ml-3 small font-weight-bold"></div>
+					<!-- Filter Bar -->
+					<div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+						<div class="btn-group btn-group-sm" id="exp-status-filter">
+							<button type="button" class="btn btn-primary font-weight-bold" onclick="filterAdminExperiences('all', this)">Tất cả tour</button>
+							<button type="button" class="btn btn-outline-primary font-weight-bold" onclick="filterAdminExperiences('pending', this)">Chờ kiểm duyệt</button>
+							<button type="button" class="btn btn-outline-primary font-weight-bold" onclick="filterAdminExperiences('approved', this)">Đã kiểm duyệt</button>
+							<button type="button" class="btn btn-outline-primary font-weight-bold" onclick="filterAdminExperiences('need_edit', this)">Cần chỉnh sửa</button>
 						</div>
-					</form>
+						<span class="small text-muted" id="exp-count-label">Đang tải danh sách...</span>
+					</div>
 
 					<!-- Current Experiences List -->
-					<h4 class="h6 font-weight-bold text-forest-green mb-3">Danh sách trải nghiệm đang hiển thị trên nền tảng</h4>
 					<div id="crud-experience-list" class="admin-experience-list">
 						<p class="text-muted small">Đang tải danh sách trải nghiệm...</p>
 					</div>
@@ -1144,6 +1111,131 @@
 	</div>
 
 	<!-- ========================================== -->
+	<!-- MODAL 3: DIRECT HOST / ARTISAN CREATION    -->
+	<!-- ========================================== -->
+	<div class="modal fade" id="modalDirectHost" tabindex="-1" role="dialog" aria-labelledby="modalDirectHostLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content rounded-20 border shadow-lg">
+				<div class="modal-header bg-forest-green text-white rounded-top-20">
+					<h5 class="modal-title font-weight-bold mb-0" id="modalDirectHostLabel">
+						Cấp Tài Khoản Nghệ Nhân / Hộ Dân Bản Địa
+					</h5>
+					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form id="form-direct-host">
+					<div class="modal-body p-4">
+						<p class="small text-muted mb-3">
+							Khởi tạo tài khoản trực tiếp cho Nghệ nhân / Hộ dân bản địa để quản lý lịch đón khách, quét QR check-in và nhận đối soát 85% doanh thu qua HeritageLink.
+						</p>
+
+						<div class="form-group mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Họ và tên Nghệ nhân / Chủ hộ <span class="text-danger">*</span></label>
+							<input type="text" id="direct-host-name" class="form-control rounded-10" placeholder="Ví dụ: Nghệ nhân Nguyễn Văn Sinh" required>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Địa chỉ Email <span class="text-danger">*</span></label>
+								<input type="email" id="direct-host-email" class="form-control rounded-10" placeholder="sinh.vang@heritagelink.vn" required>
+							</div>
+							<div class="col-md-6 form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Số điện thoại</label>
+								<input type="tel" id="direct-host-phone" class="form-control rounded-10" placeholder="0912 345 678">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Làng nghề / Nghề thủ công <span class="text-danger">*</span></label>
+								<input type="text" id="direct-host-craft" class="form-control rounded-10" placeholder="Dát vàng quỳ Kiêu Kỵ" value="Nghề thủ công bản địa" required>
+							</div>
+							<div class="col-md-6 form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Địa phương / Vùng miền <span class="text-danger">*</span></label>
+								<input type="text" id="direct-host-region" class="form-control rounded-10" placeholder="Bắc Ninh" value="Gia Lâm, Hà Nội" required>
+							</div>
+						</div>
+
+						<div class="form-group mb-3">
+							<div class="d-flex justify-content-between align-items-center mb-1">
+								<label class="small font-weight-bold text-dark mb-0">Mật khẩu khởi tạo</label>
+								<span class="small text-muted font-italic">Mặc định: hodan123</span>
+							</div>
+							<input type="text" id="direct-host-password" class="form-control rounded-10" value="hodan123" required>
+						</div>
+
+						<div id="direct-host-msg" class="alert d-none small font-weight-bold text-center mb-0"></div>
+					</div>
+					<div class="modal-footer bg-light rounded-bottom-20">
+						<button type="button" class="btn btn-outline-secondary px-3 font-weight-bold" data-dismiss="modal">Hủy bỏ</button>
+						<button type="submit" class="btn btn-primary px-4 font-weight-bold" id="btn-submit-direct-host" style="background:#2d6a4f; border-color:#2d6a4f;">
+							Khởi tạo & Cấp tài khoản Hộ dân
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- ========================================== -->
+	<!-- MODAL 4: DIRECT CLIENT / TOURIST CREATION   -->
+	<!-- ========================================== -->
+	<div class="modal fade" id="modalDirectClient" tabindex="-1" role="dialog" aria-labelledby="modalDirectClientLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content rounded-20 border shadow-lg">
+				<div class="modal-header bg-forest-green text-white rounded-top-20">
+					<h5 class="modal-title font-weight-bold mb-0" id="modalDirectClientLabel">
+						Cấp Tài Khoản Du Khách / Khách Hàng
+					</h5>
+					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form id="form-direct-client">
+					<div class="modal-body p-4">
+						<p class="small text-muted mb-3">
+							Cấp tài khoản du khách trực tiếp từ Ban Quản Trị hoặc hỗ trợ kích hoạt cho khách hàng VIP / đoàn du khách trải nghiệm di sản.
+						</p>
+
+						<div class="form-group mb-3">
+							<label class="small font-weight-bold text-dark mb-1">Họ và tên Du khách <span class="text-danger">*</span></label>
+							<input type="text" id="direct-client-name" class="form-control rounded-10" placeholder="Ví dụ: Trần Minh Hoàng" required>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Địa chỉ Email <span class="text-danger">*</span></label>
+								<input type="email" id="direct-client-email" class="form-control rounded-10" placeholder="hoang.tran@gmail.com" required>
+							</div>
+							<div class="col-md-6 form-group mb-3">
+								<label class="small font-weight-bold text-dark mb-1">Số điện thoại</label>
+								<input type="tel" id="direct-client-phone" class="form-control rounded-10" placeholder="0987 654 321">
+							</div>
+						</div>
+
+						<div class="form-group mb-3">
+							<div class="d-flex justify-content-between align-items-center mb-1">
+								<label class="small font-weight-bold text-dark mb-0">Mật khẩu khởi tạo</label>
+								<span class="small text-muted font-italic">Mặc định: client123</span>
+							</div>
+							<input type="text" id="direct-client-password" class="form-control rounded-10" value="client123" required>
+						</div>
+
+						<div id="direct-client-msg" class="alert d-none small font-weight-bold text-center mb-0"></div>
+					</div>
+					<div class="modal-footer bg-light rounded-bottom-20">
+						<button type="button" class="btn btn-outline-secondary px-3 font-weight-bold" data-dismiss="modal">Hủy bỏ</button>
+						<button type="submit" class="btn btn-primary px-4 font-weight-bold" id="btn-submit-direct-client">
+							Khởi tạo & Cấp tài khoản Du khách
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- ========================================== -->
 	<!-- MODAL 2: SIMULATED EMAIL CREDENTIALS POPUP -->
 	<!-- ========================================== -->
 	<div class="modal fade" id="modalAmbassadorEmailPreview" tabindex="-1" role="dialog" aria-labelledby="modalAmbassadorEmailPreviewLabel" aria-hidden="true">
@@ -1151,7 +1243,7 @@
 			<div class="modal-content rounded-20 border shadow-lg">
 				<div class="modal-header bg-forest-green text-white rounded-top-20">
 					<h5 class="modal-title font-weight-bold mb-0" id="modalAmbassadorEmailPreviewLabel">
-						Thư Điện Tử Thông Báo Cấp Tài Khoản Đại Sứ Di Sản
+						Thư Điện Tử Thông Báo Cấp Tài Khoản Hệ Thống
 					</h5>
 					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -1171,7 +1263,7 @@
 						<div class="row small mb-1">
 							<div class="col-sm-2 text-muted font-weight-bold">Tiêu đề:</div>
 							<div class="col-sm-10 font-weight-bold text-dark" id="email-preview-subject">
-								[HeritageLink] Chúc mừng bạn đã được phê duyệt làm Đại sứ Di sản!
+								[HeritageLink] Thông báo cấp tài khoản hệ thống
 							</div>
 						</div>
 						<div class="row small">
@@ -1191,14 +1283,14 @@
 						<h5 class="font-weight-bold text-forest-green mb-2">
 							Xin chào <span id="email-preview-name" class="text-accent">Bạn</span>,
 						</h5>
-						<p class="text-dark small leading-relaxed mb-3">
-							Ban Quản Trị HeritageLink trân trọng chúc mừng bạn đã chính thức vượt qua quy trình thẩm định 3 tiêu chí di sản và được công nhận là <strong>Đại sứ Di sản Sinh viên</strong> chính thức thuộc Mạng lưới Văn hóa HeritageLink.
+						<p class="text-dark small leading-relaxed mb-3" id="email-preview-lead-text">
+							Ban Quản Trị HeritageLink trân trọng thông báo tài khoản định danh trên nền tảng HeritageLink của bạn đã được khởi tạo thành công.
 						</p>
 
 						<!-- Official Credentials Card -->
 						<div class="p-3 p-md-4 rounded-15 border mb-4" style="background-color: #fbf9f4; border-color: #e5dcc7 !important;">
 							<div class="d-flex align-items-center mb-3 pb-2 border-bottom">
-								<span class="badge badge-accent px-3 py-1 text-white font-weight-bold mr-2">THÔNG TIN TÀI KHOẢN HỆ THỐNG</span>
+								<span class="badge badge-accent px-3 py-1 text-white font-weight-bold mr-2" id="email-preview-badge-role">THÔNG TIN TÀI KHOẢN HỆ THỐNG</span>
 								<span class="small text-muted font-italic">Được cấp bởi Ban Quản Trị</span>
 							</div>
 
@@ -1208,41 +1300,35 @@
 							</div>
 							<div class="row small g-2 mb-2">
 								<div class="col-sm-4 text-muted">Mật khẩu khởi tạo:</div>
-								<div class="col-sm-8 font-weight-bold text-danger font-monospace" id="email-preview-password" style="font-size: 1.05rem;">daisu123</div>
+								<div class="col-sm-8 font-weight-bold text-danger font-monospace" id="email-preview-password" style="font-size: 1.05rem;">...</div>
 							</div>
 							<div class="row small g-2 mb-2">
 								<div class="col-sm-4 text-muted">Vai trò hệ thống:</div>
-								<div class="col-sm-8 font-weight-bold text-dark">Đại sứ Di sản (Ambassador)</div>
+								<div class="col-sm-8 font-weight-bold text-dark" id="email-preview-role-text">Đại sứ Di sản (Ambassador)</div>
 							</div>
-							<div class="row small g-2 mb-2">
-								<div class="col-sm-4 text-muted">Đơn vị / Trường học:</div>
+							<div class="row small g-2 mb-2" id="email-preview-field-1-row">
+								<div class="col-sm-4 text-muted" id="email-preview-field-1-lbl">Đơn vị / Trường học:</div>
 								<div class="col-sm-8 text-dark" id="email-preview-school">...</div>
 							</div>
-							<div class="row small g-2 mb-3">
-								<div class="col-sm-4 text-muted">Địa bàn di sản phụ trách:</div>
+							<div class="row small g-2 mb-3" id="email-preview-field-2-row">
+								<div class="col-sm-4 text-muted" id="email-preview-field-2-lbl">Địa bàn phụ trách:</div>
 								<div class="col-sm-8 font-weight-bold text-forest-green" id="email-preview-region">...</div>
 							</div>
 
-							<div class="p-2 bg-white rounded-10 border small text-muted">
-								<strong>Chính sách đối soát:</strong> Bạn được tự động ghi nhận <strong>5% hoa hồng</strong> trên tổng GMV mỗi lượt booking hoàn thành tại các điểm di sản bạn phụ trách hoặc kết nối.
+							<div class="p-2 bg-white rounded-10 border small text-muted" id="email-preview-policy-box">
+								<strong>Chính sách:</strong> Tài khoản đã được kích hoạt đầy đủ quyền trên nền tảng.
 							</div>
 						</div>
 
 						<h6 class="font-weight-bold text-forest-green mb-2 small text-uppercase letter-spacing-1">
 							Các bước bắt đầu:
 						</h6>
-						<ol class="small text-dark pl-3 mb-4 leading-relaxed">
+						<ol class="small text-dark pl-3 mb-4 leading-relaxed" id="email-preview-instructions">
 							<li class="mb-1">
 								<strong>Đăng nhập vào hệ thống:</strong> Truy cập <a href="login.html" target="_blank" class="font-weight-bold text-accent">Cổng Đăng nhập</a> bằng Email và mật khẩu trên, sau đó tiến hành đổi mật khẩu mới.
 							</li>
 							<li class="mb-1">
-								<strong>Hoàn thành 4 Học phần Đào tạo:</strong> Truy cập <a href="ambassador-handbook.html" target="_blank" class="font-weight-bold text-accent">Cẩm nang Đại sứ Di sản</a> để học kỹ năng phỏng vấn văn hóa, quay dựng video smartphone, nghệ thuật Storytelling và quy tắc đạo đức.
-							</li>
-							<li class="mb-1">
-								<strong>Làm bài kiểm tra & Nhận Chứng chỉ số:</strong> Hoàn thành bài trắc nghiệm 8 câu hỏi để nhận Chứng chỉ số vinh danh Đại sứ chính thức.
-							</li>
-							<li class="mb-1">
-								<strong>Đề xuất & Đồng hành số hóa:</strong> Sử dụng <a href="ambassador.html" target="_blank" class="font-weight-bold text-accent">Cổng làm việc Đại sứ</a> để tạo hồ sơ trải nghiệm 4 lớp gửi Super Admin duyệt, theo dõi hoa hồng và hỗ trợ các hộ dân nghệ nhân.
+								<strong>Truy cập không gian làm việc:</strong> Sử dụng các tính năng tương ứng với vai trò của bạn trên nền tảng HeritageLink.
 							</li>
 						</ol>
 
@@ -1540,26 +1626,32 @@
 				return;
 			}
 
-			container.innerHTML = pendingList.map(exp => `
-				<div class="p-3 bg-warm-ivory rounded-15 border mb-3 shadow-sm">
+			container.innerHTML = pendingList.map(exp => {
+				const theme = exp.customTheme || {};
+				return `
+				<div class="p-3 bg-warm-ivory rounded-15 border mb-3 shadow-sm" id="exp-mod-card-${exp.id}">
 					<div class="row align-items-center">
 						<div class="col-md-5 mb-2 mb-md-0">
 							<div class="d-flex align-items-center gap-2 mb-1">
 								<span class="badge badge-warning text-dark font-weight-bold small">${exp.badge}</span>
 								<span class="badge badge-light border text-muted small">Phân khúc: ${exp.segmentName || exp.category}</span>
+								${theme.palette ? `<span class="badge badge-white border text-forest-green small font-weight-bold">🎨 Gam màu: ${theme.palette}</span>` : ''}
 							</div>
 							<strong class="d-block text-forest-green font-weight-bold" style="font-size: 1.05rem;">${exp.title}</strong>
 							<span class="small text-muted">${exp.location} • Đại sứ phụ trách: <strong>${exp.ambassador}</strong> • Giá: <strong>${Number(exp.price).toLocaleString('vi-VN')}đ</strong></span>
 						</div>
-						<div class="col-md-4 mb-2 mb-md-0">
-							<div class="d-flex flex-wrap gap-2">
-								<span class="badge badge-light border text-dark p-2">Xác thực: <strong class="text-success">9.5/10</strong></span>
-								<span class="badge badge-light border text-dark p-2">Câu chuyện: <strong class="text-success">9.0/10</strong></span>
-								<span class="badge badge-light border text-dark p-2">Thực hành: <strong class="text-success">10/10</strong></span>
+						<div class="col-md-3 mb-2 mb-md-0">
+							<div class="d-flex flex-wrap gap-1">
+								<span class="badge badge-light border text-dark p-1" style="font-size:11px;">Xác thực: <strong class="text-success">9.5/10</strong></span>
+								<span class="badge badge-light border text-dark p-1" style="font-size:11px;">Kể chuyện: <strong class="text-success">9.0/10</strong></span>
+								<span class="badge badge-light border text-dark p-1" style="font-size:11px;">Tương tác: <strong class="text-success">10/10</strong></span>
 							</div>
 						</div>
-						<div class="col-md-3 text-md-right">
-							<button class="btn btn-sm btn-success px-3 py-1 font-weight-bold mr-1" onclick="moderateExperience(${exp.id}, 'approve')">
+						<div class="col-md-4 text-md-right">
+							<a href="/detail.html?id=${exp.id}" target="_blank" class="btn btn-sm btn-outline-forest-green px-2 py-1 font-weight-bold mr-1 shadow-sm" title="Xem giao diện Detail thực tế do Đại sứ thiết kế">
+								👁️ Xem Detail
+							</a>
+							<button class="btn btn-sm btn-success px-3 py-1 font-weight-bold mr-1 shadow-sm" onclick="moderateExperience(${exp.id}, 'approve')">
 								Duyệt
 							</button>
 							<button class="btn btn-sm btn-outline-warning text-dark px-2 py-1 font-weight-bold mr-1" onclick="moderateExperience(${exp.id}, 'need_edit')">
@@ -1571,7 +1663,8 @@
 						</div>
 					</div>
 				</div>
-			`).join('');
+			`;
+			}).join('');
 		}
 
 		window.moderateExperience = async function(id, decision) {
@@ -1621,47 +1714,121 @@
 			}
 		};
 
+		let currentAdminExpFilter = 'all';
+
+		window.filterAdminExperiences = function(status, btn) {
+			currentAdminExpFilter = status;
+			const group = document.getElementById('exp-status-filter');
+			if (group) {
+				group.querySelectorAll('.btn').forEach(b => {
+					b.className = 'btn btn-outline-primary font-weight-bold';
+				});
+				btn.className = 'btn btn-primary font-weight-bold';
+			}
+			renderCrudExperienceList();
+		};
+
 		function renderCrudExperienceList() {
 			const container = document.getElementById('crud-experience-list');
 			if (!container) return;
-			container.innerHTML = allExperiences.map(e => `
-				<div class="p-3 bg-light rounded-15 mb-2 border d-flex justify-content-between align-items-center">
-					<div class="d-flex align-items-center gap-3">
-						<img src="${e.imageClass}" style="width:65px; height:45px; object-fit:cover; border-radius:6px;">
-						<div>
-							<strong class="d-block text-dark small">${e.title}</strong>
-							<span class="small text-muted">${e.location} • Đại sứ: ${e.ambassador} • <strong>${Number(e.price).toLocaleString('vi-VN')}đ</strong></span>
+
+			let list = [...allExperiences];
+			if (currentAdminExpFilter === 'pending') {
+				list = list.filter(e => e.badge === 'Chờ duyệt');
+			} else if (currentAdminExpFilter === 'approved') {
+				list = list.filter(e => e.badge === 'Đã kiểm duyệt' || !e.badge || (e.badge !== 'Chờ duyệt' && e.badge !== 'Cần chỉnh sửa' && e.badge !== 'Từ chối'));
+			} else if (currentAdminExpFilter === 'need_edit') {
+				list = list.filter(e => e.badge === 'Cần chỉnh sửa');
+			}
+
+			const label = document.getElementById('exp-count-label');
+			if (label) label.textContent = `Hiển thị ${list.length} / ${allExperiences.length} trải nghiệm`;
+
+			if (!list.length) {
+				container.innerHTML = '<div class="p-4 bg-light rounded-15 text-center text-muted small">Không có tour nào trong phân loại này.</div>';
+				return;
+			}
+
+			container.innerHTML = list.map(e => {
+				const isPending = e.badge === 'Chờ duyệt';
+				const isNeedEdit = e.badge === 'Cần chỉnh sửa';
+				const isApproved = !isPending && !isNeedEdit && e.badge !== 'Từ chối';
+				
+				const statusBadge = isPending 
+					? '<span class="badge badge-warning text-dark px-2 py-1 font-weight-bold">Chờ kiểm duyệt</span>'
+					: isNeedEdit 
+						? '<span class="badge badge-info text-dark px-2 py-1 font-weight-bold">Cần chỉnh sửa</span>'
+						: isApproved 
+							? '<span class="badge badge-success px-2 py-1 font-weight-bold">Đã kiểm duyệt</span>'
+							: '<span class="badge badge-secondary px-2 py-1 font-weight-bold">' + (e.badge || 'Chưa duyệt') + '</span>';
+
+				const theme = e.customTheme || {};
+				const paletteName = theme.palette === 'indigo' ? 'Chàm Indigo' :
+					theme.palette === 'brocade' ? 'Thổ cẩm Tây Bắc' :
+					theme.palette === 'imperial' ? 'Hoàng tộc Huế' : 'Đất nung Bát Tràng';
+				const heroLayoutName = theme.heroLayout === 'cinematic' ? 'Cinematic 16:9' :
+					theme.heroLayout === 'story' ? 'Story Canvas' : 'Split 2 Cột';
+				const fontName = theme.fontFamily === 'serif' ? 'Serif Cổ điển' : 'Sans Hiện đại';
+
+				return `
+					<div class="p-3 bg-light rounded-20 mb-3 border shadow-sm">
+						<div class="row align-items-center">
+							<div class="col-md-2 text-center mb-3 mb-md-0">
+								<img src="${e.imageClass}" alt="${e.title}" class="rounded-15 shadow-sm" style="width: 100%; height: 90px; object-fit: cover;">
+							</div>
+							<div class="col-md-6 mb-3 mb-md-0">
+								<div class="d-flex align-items-center gap-2 mb-1">
+									${statusBadge}
+									<span class="badge badge-light border text-muted small">${e.category || 'Văn hóa'}</span>
+									<span class="badge badge-light border text-forest-green small font-weight-bold">${e.location}</span>
+								</div>
+								<h6 class="font-weight-bold text-forest-green mb-1" style="font-size: 1.05rem;">${e.title}</h6>
+								<div class="small text-muted mb-2">
+									Khởi tạo bởi Đại sứ: <strong class="text-dark">${e.ambassador || 'Đại sứ Di sản'}</strong> 
+									${e.hostName ? `• Nghệ nhân: <strong class="text-forest-green">${e.hostName}</strong>` : ''} 
+									• Giá: <strong class="text-primary">${Number(e.price).toLocaleString('vi-VN')}đ</strong>
+								</div>
+								<div class="d-flex flex-wrap gap-1 align-items-center" style="font-size: 11px;">
+									<span class="text-muted mr-1 font-weight-bold">🎨 Custom UI:</span>
+									<span class="badge badge-white border text-dark">Gam màu: ${paletteName}</span>
+									<span class="badge badge-white border text-dark">Hero: ${heroLayoutName}</span>
+									<span class="badge badge-white border text-dark">Phông: ${fontName}</span>
+									${theme.badgeText ? `<span class="badge badge-warning text-dark font-weight-bold">${theme.badgeText}</span>` : ''}
+								</div>
+							</div>
+							<div class="col-md-4 text-md-right">
+								<div class="d-flex flex-column flex-sm-row justify-content-md-end gap-2">
+									<a href="/detail.html?id=${e.id}" target="_blank" class="btn btn-sm btn-outline-forest-green font-weight-bold px-3 py-2 shadow-sm" title="Mở trang chi tiết trải nghiệm để kiểm tra giao diện và nội dung thực tế do Đại sứ thiết kế">
+										👁️ Xem Detail thực tế
+									</a>
+									<button type="button" class="btn btn-sm btn-success font-weight-bold px-3 py-2 shadow-sm" onclick="quickReviewExp(${e.id})">
+										⚖️ Thẩm định
+									</button>
+									<button type="button" class="btn btn-sm btn-outline-danger font-weight-bold px-2 py-2" onclick="onDeleteExperience(${e.id})" title="Xóa tour vi phạm">
+										🗑️
+									</button>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div>
-						<button class="btn btn-sm btn-outline-primary py-1 px-3 mr-1 font-weight-bold" onclick="onEditExperience(${e.id})">Sửa</button>
-						<button class="btn btn-sm btn-outline-danger py-1 px-3 font-weight-bold" onclick="onDeleteExperience(${e.id})">Xóa</button>
-					</div>
-				</div>
-			`).join('');
+				`;
+			}).join('');
 		}
 
-		window.onEditExperience = function(id) {
-			const exp = allExperiences.find(e => e.id === id);
-			if (!exp) return;
-			document.getElementById('crud-exp-id').value = exp.id;
-			document.getElementById('crud-category').value = exp.category;
-			document.getElementById('crud-title').value = exp.title;
-			document.getElementById('crud-ambassador').value = exp.ambassador;
-			document.getElementById('crud-rating').value = exp.rating;
-			document.getElementById('crud-duration').value = exp.duration;
-			document.getElementById('crud-location').value = exp.location;
-			document.getElementById('crud-price').value = exp.price;
-			document.getElementById('crud-badge').value = exp.badge;
-			document.getElementById('crud-image').value = exp.imageClass;
-
-			document.getElementById('save-exp-btn').textContent = 'Cập nhật thay đổi';
-			document.getElementById('cancel-edit-btn').classList.remove('d-none');
-			window.scrollTo({ top: document.getElementById('admin-crud-form').offsetTop - 100, behavior: 'smooth' });
+		window.quickReviewExp = function(id) {
+			switchTab('moderation');
+			setTimeout(() => {
+				const card = document.getElementById(`exp-mod-card-${id}`);
+				if (card) {
+					card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+					card.style.outline = '3px solid var(--color-forest)';
+					setTimeout(() => { card.style.outline = 'none'; }, 2500);
+				}
+			}, 250);
 		};
 
 		window.onDeleteExperience = async function(id) {
-			if (!confirm('Bạn có chắc chắn muốn xóa trải nghiệm này?')) return;
+			if (!confirm('Bạn có chắc chắn muốn xóa tour trải nghiệm này?')) return;
 			try {
 				const res = await fetch(`/api/admin/experiences/${id}`, { method: 'DELETE' });
 				const data = await res.json();
@@ -1671,62 +1838,6 @@
 				alert('Lỗi xóa.');
 			}
 		};
-
-		document.getElementById('admin-crud-form')?.addEventListener('submit', async (e) => {
-			e.preventDefault();
-			const id = document.getElementById('crud-exp-id').value;
-			const payload = {
-				category: document.getElementById('crud-category').value,
-				title: document.getElementById('crud-title').value.trim(),
-				ambassador: document.getElementById('crud-ambassador').value.trim(),
-				rating: Number(document.getElementById('crud-rating').value),
-				duration: document.getElementById('crud-duration').value.trim(),
-				location: document.getElementById('crud-location').value.trim(),
-				price: Number(document.getElementById('crud-price').value),
-				badge: document.getElementById('crud-badge').value.trim(),
-				imageUrl: document.getElementById('crud-image').value.trim()
-			};
-
-			const msg = document.getElementById('crud-message');
-			msg.textContent = 'Đang lưu...';
-
-			try {
-				const method = id ? 'PUT' : 'POST';
-				const url = id ? `/api/admin/experiences/${id}` : '/api/admin/experiences';
-				const res = await fetch(url, {
-					method,
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify(payload)
-				});
-				const data = await res.json();
-				if (!res.ok) throw new Error(data.message);
-
-				msg.className = 'ml-3 small font-weight-bold text-success';
-				msg.textContent = `${data.message}`;
-				document.getElementById('admin-crud-form').reset();
-				document.getElementById('crud-exp-id').value = '';
-				document.getElementById('save-exp-btn').textContent = 'Lưu trải nghiệm';
-				document.getElementById('cancel-edit-btn').classList.add('d-none');
-				loadAdminOverview();
-			} catch (err) {
-				msg.className = 'ml-3 small font-weight-bold text-danger';
-				msg.textContent = err.message || 'Lỗi lưu.';
-			}
-		});
-
-		document.getElementById('cancel-edit-btn')?.addEventListener('click', () => {
-			document.getElementById('admin-crud-form').reset();
-			document.getElementById('crud-exp-id').value = '';
-			document.getElementById('save-exp-btn').textContent = 'Lưu trải nghiệm';
-			document.getElementById('cancel-edit-btn').classList.add('d-none');
-		});
-
-		document.getElementById('reset-form-btn')?.addEventListener('click', () => {
-			document.getElementById('admin-crud-form').reset();
-			document.getElementById('crud-exp-id').value = '';
-			document.getElementById('save-exp-btn').textContent = 'Lưu trải nghiệm';
-			document.getElementById('cancel-edit-btn').classList.add('d-none');
-		});
 
 		// Logout handlers
 		const doLogout = async () => {
@@ -1795,34 +1906,94 @@
 			});
 		};
 
+		let lastEmailPreviewData = null;
+
 		function openEmailModalWithData(preview) {
-			document.getElementById('email-preview-to').textContent = preview.to;
-			document.getElementById('email-preview-name').textContent = preview.applicantName;
-			document.getElementById('email-preview-username').textContent = preview.username;
-			document.getElementById('email-preview-password').textContent = preview.initialPassword || 'daisu123';
-			document.getElementById('email-preview-school').textContent = preview.school || 'Đại học';
-			document.getElementById('email-preview-region').textContent = preview.region || 'Bắc Ninh & Hà Giang';
+			lastEmailPreviewData = preview;
+			const role = preview.role || (preview.craft ? 'host' : (preview.portalUrl?.includes('ambassador') ? 'ambassador' : 'client'));
+
+			document.getElementById('email-preview-to').textContent = preview.to || '...';
+			document.getElementById('email-preview-name').textContent = preview.applicantName || preview.name || 'Quý vị';
+			document.getElementById('email-preview-username').textContent = preview.username || preview.to || '...';
+			document.getElementById('email-preview-password').textContent = preview.initialPassword || '...';
 			document.getElementById('email-preview-time').textContent = preview.sentAt || new Date().toLocaleString('vi-VN');
 			document.getElementById('copy-status-msg').textContent = 'Tài khoản đã sẵn sàng kích hoạt';
+
+			const subjectEl = document.getElementById('email-preview-subject');
+			const leadEl = document.getElementById('email-preview-lead-text');
+			const roleTextEl = document.getElementById('email-preview-role-text');
+			const f1Row = document.getElementById('email-preview-field-1-row');
+			const f1Lbl = document.getElementById('email-preview-field-1-lbl');
+			const f1Val = document.getElementById('email-preview-school');
+			const f2Row = document.getElementById('email-preview-field-2-row');
+			const f2Lbl = document.getElementById('email-preview-field-2-lbl');
+			const f2Val = document.getElementById('email-preview-region');
+			const policyBox = document.getElementById('email-preview-policy-box');
+			const instructions = document.getElementById('email-preview-instructions');
+
+			if (role === 'host') {
+				if (subjectEl) subjectEl.textContent = preview.subject || '[HeritageLink] Thông tin cấp tài khoản Hộ dân / Nghệ nhân bản địa';
+				if (leadEl) leadEl.innerHTML = 'Ban Quản Trị HeritageLink trân trọng thông báo tài khoản định danh dành cho <strong>Hộ dân / Nghệ nhân Bản địa</strong> của bạn đã được kích hoạt thành công.';
+				if (roleTextEl) roleTextEl.textContent = 'Nghệ nhân / Chủ hộ di sản (Host)';
+				if (f1Row) f1Row.style.display = '';
+				if (f1Lbl) f1Lbl.textContent = 'Nghề thủ công / Làng nghề:';
+				if (f1Val) f1Val.textContent = preview.craft || 'Nghề thủ công truyền thống';
+				if (f2Row) f2Row.style.display = '';
+				if (f2Lbl) f2Lbl.textContent = 'Địa phương:';
+				if (f2Val) f2Val.textContent = preview.region || 'Bắc Ninh';
+				if (policyBox) policyBox.innerHTML = '<strong>Chính sách đối soát:</strong> Nhận trực tiếp <strong>85% GMV</strong> mỗi lượt đón khách hoàn thành, thanh toán minh bạch định kỳ.';
+				if (instructions) instructions.innerHTML = `
+					<li class="mb-1"><strong>Đăng nhập vào hệ thống:</strong> Truy cập <a href="/login.html" target="_blank" class="font-weight-bold text-accent">Cổng Đăng nhập</a> bằng Email và mật khẩu được cấp.</li>
+					<li class="mb-1"><strong>Không gian Hộ dân:</strong> Truy cập <a href="/host.html" target="_blank" class="font-weight-bold text-accent">Cổng Nghệ nhân / Hộ dân</a> để xem lịch đón khách, quét QR check-in và đối soát doanh thu.</li>
+				`;
+			} else if (role === 'client') {
+				if (subjectEl) subjectEl.textContent = preview.subject || '[HeritageLink] Chào mừng bạn gia nhập Cộng đồng Du khách HeritageLink';
+				if (leadEl) leadEl.innerHTML = 'Ban Quản Trị HeritageLink chào đón bạn đồng hành cùng những chuyến du lịch di sản sống sâu sắc và ý nghĩa.';
+				if (roleTextEl) roleTextEl.textContent = 'Du khách / Khách hàng (Client)';
+				if (f1Row) f1Row.style.display = 'none';
+				if (f2Row) f2Row.style.display = 'none';
+				if (policyBox) policyBox.innerHTML = '<strong>Quyền lợi thành viên:</strong> Tích lũy huy hiệu di sản, bảo hiểm trải nghiệm và chăm sóc 24/7 từ Đại sứ sinh viên.';
+				if (instructions) instructions.innerHTML = `
+					<li class="mb-1"><strong>Đăng nhập:</strong> Truy cập <a href="/login.html" target="_blank" class="font-weight-bold text-accent">Cổng Đăng nhập</a> với email và mật khẩu khởi tạo.</li>
+					<li class="mb-1"><strong>Khám phá & Đặt tour:</strong> Duyệt các trải nghiệm di sản độc bản tại <a href="/index.html#experiences" target="_blank" class="font-weight-bold text-accent">Trang chủ Trải nghiệm</a>.</li>
+				`;
+			} else {
+				// Ambassador
+				if (subjectEl) subjectEl.textContent = preview.subject || '[HeritageLink] Chúc mừng bạn đã được cấp tài khoản Đại sứ Di sản!';
+				if (leadEl) leadEl.innerHTML = 'Ban Quản Trị HeritageLink trân trọng chúc mừng bạn đã chính thức vượt qua quy trình thẩm định 3 tiêu chí di sản và được công nhận là <strong>Đại sứ Di sản Sinh viên</strong> chính thức thuộc Mạng lưới Văn hóa HeritageLink.';
+				if (roleTextEl) roleTextEl.textContent = 'Đại sứ Di sản (Ambassador)';
+				if (f1Row) f1Row.style.display = '';
+				if (f1Lbl) f1Lbl.textContent = 'Đơn vị / Trường học:';
+				if (f1Val) f1Val.textContent = preview.school || 'Đại học';
+				if (f2Row) f2Row.style.display = '';
+				if (f2Lbl) f2Lbl.textContent = 'Địa bàn di sản phụ trách:';
+				if (f2Val) f2Val.textContent = preview.region || 'Bắc Ninh & Hà Giang';
+				if (policyBox) policyBox.innerHTML = '<strong>Chính sách đối soát:</strong> Bạn được tự động ghi nhận <strong>5% hoa hồng</strong> trên tổng GMV mỗi lượt booking hoàn thành tại các điểm di sản bạn phụ trách hoặc kết nối.';
+				if (instructions) instructions.innerHTML = `
+					<li class="mb-1"><strong>Đăng nhập vào hệ thống:</strong> Truy cập <a href="/login.html" target="_blank" class="font-weight-bold text-accent">Cổng Đăng nhập</a> bằng Email và mật khẩu trên, sau đó tiến hành đổi mật khẩu mới.</li>
+					<li class="mb-1"><strong>Hoàn thành 4 Học phần Đào tạo:</strong> Truy cập <a href="/ambassador-handbook.html" target="_blank" class="font-weight-bold text-accent">Cẩm nang Đại sứ Di sản</a> để học kỹ năng phỏng vấn văn hóa, Storytelling và quy tắc đạo đức.</li>
+					<li class="mb-1"><strong>Tạo & Tùy biến Tour:</strong> Truy cập <a href="/ambassador.html" target="_blank" class="font-weight-bold text-accent">Cổng Đại sứ</a> để tạo tour di sản và tùy biến màu sắc, bố cục trang Detail.</li>
+				`;
+			}
 
 			$('#modalAmbassadorEmailPreview').modal('show');
 		}
 
 		window.copyEmailCredentials = function() {
-			const username = document.getElementById('email-preview-username').textContent;
-			const password = document.getElementById('email-preview-password').textContent;
-			const name = document.getElementById('email-preview-name').textContent;
-			const region = document.getElementById('email-preview-region').textContent;
+			if (!lastEmailPreviewData) return;
+			const p = lastEmailPreviewData;
+			const role = p.role || (p.craft ? 'host' : (p.portalUrl?.includes('ambassador') ? 'ambassador' : 'client'));
+			const roleName = role === 'host' ? 'Nghệ nhân / Chủ hộ di sản' : (role === 'client' ? 'Du khách / Khách hàng' : 'Đại sứ Di sản Sinh viên');
+			const portal = role === 'host' ? `${window.location.origin}/host.html` : (role === 'client' ? `${window.location.origin}/index.html` : `${window.location.origin}/ambassador.html`);
 
-			const text = `[HERITAGELINK - TÀI KHOẢN ĐẠI SỨ DI SẢN]\n` +
-				`Kính gửi: ${name}\n` +
-				`Vai trò: Đại sứ Di sản Sinh viên (Phụ trách: ${region})\n` +
+			const text = `[HERITAGELINK - THÔNG TIN TÀI KHOẢN HỆ THỐNG]\n` +
+				`Kính gửi: ${p.applicantName || p.name || 'Quý vị'}\n` +
+				`Vai trò: ${roleName}\n` +
 				`Cổng đăng nhập: ${window.location.origin}/login.html\n` +
-				`Tài khoản (Email): ${username}\n` +
-				`Mật khẩu khởi tạo: ${password}\n` +
-				`Cẩm nang đào tạo 4 học phần: ${window.location.origin}/ambassador-handbook.html\n` +
-				`Cổng làm việc Đại sứ: ${window.location.origin}/ambassador.html\n` +
-				`Chính sách hoa hồng: 5% GMV mỗi booking hoàn thành.`;
+				`Tài khoản (Email): ${p.username || p.to}\n` +
+				`Mật khẩu khởi tạo: ${p.initialPassword || '...'}\n` +
+				`Cổng làm việc / Trang chính: ${portal}\n` +
+				`Hotline hỗ trợ: 1900 6868 (HeritageLink Support)`;
 
 			navigator.clipboard.writeText(text).then(() => {
 				const statusMsg = document.getElementById('copy-status-msg');
@@ -1831,7 +2002,7 @@
 					statusMsg.textContent = 'Tài khoản đã sẵn sàng kích hoạt';
 				}, 3500);
 			}).catch(() => {
-				alert('Đã sao chép tài khoản: ' + username + ' / Mật khẩu: ' + password);
+				alert('Đã sao chép tài khoản: ' + (p.username || p.to) + ' / Mật khẩu: ' + p.initialPassword);
 			});
 		};
 
@@ -1878,6 +2049,96 @@
 				msg.classList.remove('d-none');
 				submitBtn.disabled = false;
 				submitBtn.innerHTML = 'Khởi tạo & Xuất Email cấp tài khoản';
+			}
+		});
+
+		// Direct Host / Artisan form submission handler
+		document.getElementById('form-direct-host')?.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			const name = document.getElementById('direct-host-name').value.trim();
+			const email = document.getElementById('direct-host-email').value.trim();
+			const phone = document.getElementById('direct-host-phone').value.trim();
+			const craft = document.getElementById('direct-host-craft').value.trim();
+			const region = document.getElementById('direct-host-region').value.trim();
+			const password = document.getElementById('direct-host-password').value.trim();
+			const msg = document.getElementById('direct-host-msg');
+			const submitBtn = document.getElementById('btn-submit-direct-host');
+
+			submitBtn.disabled = true;
+			submitBtn.innerHTML = 'Đang khởi tạo...';
+			msg.classList.add('d-none');
+
+			try {
+				const res = await fetch('/api/admin/hosts/create', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ name, email, phone, craft, region, password })
+				});
+				const data = await res.json();
+				if (!res.ok) throw new Error(data.message || 'Lỗi khởi tạo Hộ dân/Nghệ nhân.');
+
+				$('#modalDirectHost').modal('hide');
+				document.getElementById('form-direct-host').reset();
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = 'Khởi tạo & Cấp tài khoản Hộ dân';
+
+				await loadAdminOverview();
+
+				if (data.emailPreview) {
+					openEmailModalWithData(data.emailPreview);
+				} else {
+					alert(data.message);
+				}
+			} catch (err) {
+				msg.className = 'alert alert-danger small font-weight-bold text-center mb-0';
+				msg.textContent = err.message || 'Lỗi kết nối máy chủ.';
+				msg.classList.remove('d-none');
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = 'Khởi tạo & Cấp tài khoản Hộ dân';
+			}
+		});
+
+		// Direct Client / Tourist form submission handler
+		document.getElementById('form-direct-client')?.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			const name = document.getElementById('direct-client-name').value.trim();
+			const email = document.getElementById('direct-client-email').value.trim();
+			const phone = document.getElementById('direct-client-phone').value.trim();
+			const password = document.getElementById('direct-client-password').value.trim();
+			const msg = document.getElementById('direct-client-msg');
+			const submitBtn = document.getElementById('btn-submit-direct-client');
+
+			submitBtn.disabled = true;
+			submitBtn.innerHTML = 'Đang khởi tạo...';
+			msg.classList.add('d-none');
+
+			try {
+				const res = await fetch('/api/admin/clients/create', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ name, email, phone, password })
+				});
+				const data = await res.json();
+				if (!res.ok) throw new Error(data.message || 'Lỗi khởi tạo Du khách.');
+
+				$('#modalDirectClient').modal('hide');
+				document.getElementById('form-direct-client').reset();
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = 'Khởi tạo & Cấp tài khoản Du khách';
+
+				await loadAdminOverview();
+
+				if (data.emailPreview) {
+					openEmailModalWithData(data.emailPreview);
+				} else {
+					alert(data.message);
+				}
+			} catch (err) {
+				msg.className = 'alert alert-danger small font-weight-bold text-center mb-0';
+				msg.textContent = err.message || 'Lỗi kết nối máy chủ.';
+				msg.classList.remove('d-none');
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = 'Khởi tạo & Cấp tài khoản Du khách';
 			}
 		});
 

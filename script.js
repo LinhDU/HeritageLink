@@ -520,7 +520,154 @@ async function initDetailPage() {
     document.getElementById('detail-ambassador-name').textContent = exp.ambassador;
 
     const mainImg = resolveImageUrl(exp.imageClass);
-    document.getElementById('detail-hero-main-img').src = mainImg;
+    if (document.getElementById('detail-hero-main-img')) {
+      document.getElementById('detail-hero-main-img').src = mainImg;
+    }
+
+    // Apply Ambassador's Custom Detail UI Theme
+    if (exp.customTheme) {
+      const theme = exp.customTheme;
+      if (theme.primaryColor) {
+        document.documentElement.style.setProperty('--color-primary', theme.primaryColor);
+        document.documentElement.style.setProperty('--color-forest', theme.primaryColor);
+      }
+      if (theme.accentColor) {
+        document.documentElement.style.setProperty('--color-accent', theme.accentColor);
+      }
+      if (theme.secondaryColor) {
+        document.documentElement.style.setProperty('--color-bg-secondary', theme.secondaryColor);
+      }
+      if (theme.fontStyle === 'serif') {
+        document.body.classList.add('theme-serif-mode');
+      } else {
+        document.body.classList.remove('theme-serif-mode');
+      }
+
+      // Custom Badge Text
+      if (theme.badgeText && document.getElementById('detail-verified-badge')) {
+        document.getElementById('detail-verified-badge').textContent = theme.badgeText;
+      }
+
+      // Ambassador Note Box
+      const ambNoteBox = document.getElementById('detail-ambassador-custom-box');
+      if (ambNoteBox) {
+        if (theme.ambassadorNote) {
+          ambNoteBox.classList.remove('d-none');
+          if (document.getElementById('amb-custom-name')) {
+            document.getElementById('amb-custom-name').textContent = exp.ambassador || 'Đại sứ Di sản';
+          }
+          if (document.getElementById('amb-custom-note')) {
+            document.getElementById('amb-custom-note').textContent = `“${theme.ambassadorNote}”`;
+          }
+        }
+      }
+
+      // Audio Guide Box
+      const audioBox = document.getElementById('detail-audio-guide-box');
+      if (audioBox) {
+        if (theme.audioTitle) {
+          audioBox.classList.remove('d-none');
+          if (document.getElementById('detail-audio-title')) {
+            document.getElementById('detail-audio-title').textContent = theme.audioTitle;
+          }
+        }
+      }
+
+      // Cultural Tips Box
+      const tipsBox = document.getElementById('detail-cultural-tips-box');
+      if (tipsBox) {
+        if (theme.culturalTips) {
+          tipsBox.classList.remove('d-none');
+          if (document.getElementById('detail-cultural-tips-text')) {
+            document.getElementById('detail-cultural-tips-text').textContent = theme.culturalTips;
+          }
+        }
+      }
+
+      // Hero Layout Customization
+      const heroContainer = document.getElementById('detail-hero-section');
+      if (heroContainer) {
+        if (theme.heroLayout === 'cinematic') {
+          const stdHeader = document.getElementById('detail-standard-header');
+          if (stdHeader) stdHeader.classList.add('d-none');
+          const stdGrid = document.getElementById('detail-hero-grid');
+          if (stdGrid) stdGrid.classList.add('d-none');
+
+          let cinWrap = document.getElementById('detail-cinematic-wrapper');
+          if (!cinWrap) {
+            cinWrap = document.createElement('div');
+            cinWrap.id = 'detail-cinematic-wrapper';
+            heroContainer.appendChild(cinWrap);
+          }
+          cinWrap.className = 'hero-cinematic-banner rounded-20 p-4 p-md-5 mb-5 text-white shadow-lg position-relative overflow-hidden';
+          cinWrap.style.background = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.78)), url('${mainImg}') center/cover no-repeat`;
+          cinWrap.innerHTML = `
+            <div class="row align-items-center" style="min-height: 380px;">
+              <div class="col-lg-9">
+                <span class="badge badge-accent px-3 py-2 text-white font-weight-bold mb-3 shadow-sm">${theme.badgeText || exp.badge || 'Trải nghiệm Di sản Sống'}</span>
+                <h1 class="display-4 font-weight-bold text-white mb-3" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">${exp.title}</h1>
+                <p class="lead text-white-opacity mb-4" style="font-size: 1.15rem; line-height: 1.6;">${exp.specialIntro || exp.story || ''}</p>
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">📍 ${exp.location}</span>
+                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">⏱️ ${exp.duration}</span>
+                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">👥 Tối đa ${exp.maxGuests || 8} khách</span>
+                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">🎓 Đại sứ đồng hành: ${exp.ambassador}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (theme.heroLayout === 'story') {
+          const stdHeader = document.getElementById('detail-standard-header');
+          if (stdHeader) stdHeader.classList.add('d-none');
+          const stdGrid = document.getElementById('detail-hero-grid');
+          if (stdGrid) stdGrid.classList.add('d-none');
+
+          let storyWrap = document.getElementById('detail-story-wrapper');
+          if (!storyWrap) {
+            storyWrap = document.createElement('div');
+            storyWrap.id = 'detail-story-wrapper';
+            heroContainer.appendChild(storyWrap);
+          }
+          storyWrap.className = 'hero-story-banner p-4 p-md-5 rounded-20 bg-white border shadow-sm mb-5';
+          storyWrap.innerHTML = `
+            <div class="row align-items-center">
+              <div class="col-lg-7 mb-4 mb-lg-0">
+                <div class="rounded-20 overflow-hidden shadow-sm" style="height: 380px;">
+                  <img src="${mainImg}" alt="${exp.title}" class="w-100 h-100" style="object-fit: cover;">
+                </div>
+              </div>
+              <div class="col-lg-5 pl-lg-4">
+                <span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">${theme.badgeText || 'Hành trình Kể chuyện Di sản'}</span>
+                <h2 class="h3 font-weight-bold text-forest-green mb-3">${exp.title}</h2>
+                <div class="p-3 bg-warm-ivory rounded-15 border-left border-gold mb-3" style="border-left-width: 4px !important;">
+                  <strong class="d-block text-dark small font-weight-bold mb-1">🌿 Lời tự sự từ Nghệ nhân & Đại sứ:</strong>
+                  <p class="font-italic text-muted small mb-0">${exp.artisan ? `“${exp.artisan.quote}”` : exp.story}</p>
+                </div>
+                <div class="small text-muted mb-0">
+                  <span>📍 ${exp.location}</span> • <span>⏱️ ${exp.duration}</span> • <span>🤝 Đại sứ: <strong>${exp.ambassador}</strong></span>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    // Audio guide player interactive toggle
+    const audioToggleBtn = document.getElementById('btn-audio-toggle');
+    if (audioToggleBtn) {
+      let isPlaying = false;
+      audioToggleBtn.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          audioToggleBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>`;
+          audioToggleBtn.classList.replace('btn-primary', 'btn-success');
+        } else {
+          audioToggleBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>`;
+          audioToggleBtn.classList.replace('btn-success', 'btn-primary');
+        }
+      });
+    }
 
     // Populate Story & 5 Layers
     document.getElementById('detail-story-content').textContent = exp.story || '';
