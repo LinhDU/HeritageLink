@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 40" width="800" height="40">
+<g fill="none" stroke="#C8A051" stroke-linecap="round" stroke-linejoin="round">
+<line x1="0" y1="4" x2="800" y2="4" stroke-width="1.2" />
+<line x1="0" y1="7" x2="800" y2="7" stroke-width="0.8" stroke-dasharray="3,3" />
+<line x1="0" y1="33" x2="800" y2="33" stroke-width="0.8" stroke-dasharray="3,3" />
+<line x1="0" y1="36" x2="800" y2="36" stroke-width="1.2" />
+<g transform="translate(20, 10.0) scale(0.38)">
+<path d="M 10,40 C 22,34 38,32 52,36" stroke-width="2" />
+<path d="M 10,40 C 28,42 44,45 60,50" stroke-width="1.5" />
+<circle cx="36" cy="36" r="2.2" fill="#C8A051" />
+<path d="M 40,34 C 48,18 70,12 96,16" stroke-width="2" />
+<path d="M 52,36 C 70,39 88,48 100,56" stroke-width="2" />
+<path d="M 65,37 C 78,12 98,2 128,0" stroke-width="2.2" />
+<path d="M 128,0 C 114,14 106,28 104,50" stroke-width="1.8" />
+<path d="M 100,56 C 124,60 156,66 186,72" stroke-width="2.2" />
+<path d="M 104,56 C 128,66 158,76 182,86" stroke-width="1.8" />
+</g>
+<circle cx="140" cy="20.0" r="5" stroke-width="1" />
+<circle cx="140" cy="20.0" r="1.5" fill="#C8A051" />
+<line x1="128" y1="20.0" x2="133" y2="20.0" stroke-width="1" />
+<line x1="147" y1="20.0" x2="152" y2="20.0" stroke-width="1" />
+<g transform="translate(220, 10.0) scale(0.38)">
+<path d="M 10,40 C 22,34 38,32 52,36" stroke-width="2" />
+<path d="M 10,40 C 28,42 44,45 60,50" stroke-width="1.5" />
+<circle cx="36" cy="36" r="2.2" fill="#C8A051" />
+<path d="M 40,34 C 48,18 70,12 96,16" stroke-width="2" />
+<path d="M 52,36 C 70,39 88,48 100,56" stroke-width="2" />
+<path d="M 65,37 C 78,12 98,2 128,0" stroke-width="2.2" />
+<path d="M 128,0 C 114,14 106,28 104,50" stroke-width="1.8" />
+<path d="M 100,56 C 124,60 156,66 186,72" stroke-width="2.2" />
+<path d="M 104,56 C 128,66 158,76 182,86" stroke-width="1.8" />
+</g>
+<circle cx="340" cy="20.0" r="5" stroke-width="1" />
+<circle cx="340" cy="20.0" r="1.5" fill="#C8A051" />
+<line x1="328" y1="20.0" x2="333" y2="20.0" stroke-width="1" />
+<line x1="347" y1="20.0" x2="352" y2="20.0" stroke-width="1" />
+<g transform="translate(420, 10.0) scale(0.38)">
+<path d="M 10,40 C 22,34 38,32 52,36" stroke-width="2" />
+<path d="M 10,40 C 28,42 44,45 60,50" stroke-width="1.5" />
+<circle cx="36" cy="36" r="2.2" fill="#C8A051" />
+<path d="M 40,34 C 48,18 70,12 96,16" stroke-width="2" />
+<path d="M 52,36 C 70,39 88,48 100,56" stroke-width="2" />
+<path d="M 65,37 C 78,12 98,2 128,0" stroke-width="2.2" />
+<path d="M 128,0 C 114,14 106,28 104,50" stroke-width="1.8" />
+<path d="M 100,56 C 124,60 156,66 186,72" stroke-width="2.2" />
+<path d="M 104,56 C 128,66 158,76 182,86" stroke-width="1.8" />
+</g>
+<circle cx="540" cy="20.0" r="5" stroke-width="1" />
+<circle cx="540" cy="20.0" r="1.5" fill="#C8A051" />
+<line x1="528" y1="20.0" x2="533" y2="20.0" stroke-width="1" />
+<line x1="547" y1="20.0" x2="552" y2="20.0" stroke-width="1" />
+<g transform="translate(620, 10.0) scale(0.38)">
+<path d="M 10,40 C 22,34 38,32 52,36" stroke-width="2" />
+<path d="M 10,40 C 28,42 44,45 60,50" stroke-width="1.5" />
+<circle cx="36" cy="36" r="2.2" fill="#C8A051" />
+<path d="M 40,34 C 48,18 70,12 96,16" stroke-width="2" />
+<path d="M 52,36 C 70,39 88,48 100,56" stroke-width="2" />
+<path d="M 65,37 C 78,12 98,2 128,0" stroke-width="2.2" />
+<path d="M 128,0 C 114,14 106,28 104,50" stroke-width="1.8" />
+<path d="M 100,56 C 124,60 156,66 186,72" stroke-width="2.2" />
+<path d="M 104,56 C 128,66 158,76 182,86" stroke-width="1.8" />
+</g>
+<circle cx="740" cy="20.0" r="5" stroke-width="1" />
+<circle cx="740" cy="20.0" r="1.5" fill="#C8A051" />
+<line x1="728" y1="20.0" x2="733" y2="20.0" stroke-width="1" />
+<line x1="747" y1="20.0" x2="752" y2="20.0" stroke-width="1" />
+<g transform="translate(820, 10.0) scale(0.38)">
+<path d="M 10,40 C 22,34 38,32 52,36" stroke-width="2" />
+<path d="M 10,40 C 28,42 44,45 60,50" stroke-width="1.5" />
+<circle cx="36" cy="36" r="2.2" fill="#C8A051" />
+<path d="M 40,34 C 48,18 70,12 96,16" stroke-width="2" />
+<path d="M 52,36 C 70,39 88,48 100,56" stroke-width="2" />
+<path d="M 65,37 C 78,12 98,2 128,0" stroke-width="2.2" />
+<path d="M 128,0 C 114,14 106,28 104,50" stroke-width="1.8" />
+<path d="M 100,56 C 124,60 156,66 186,72" stroke-width="2.2" />
+<path d="M 104,56 C 128,66 158,76 182,86" stroke-width="1.8" />
+</g>
+<circle cx="940" cy="20.0" r="5" stroke-width="1" />
+<circle cx="940" cy="20.0" r="1.5" fill="#C8A051" />
+<line x1="928" y1="20.0" x2="933" y2="20.0" stroke-width="1" />
+<line x1="947" y1="20.0" x2="952" y2="20.0" stroke-width="1" />
+</g>
+</svg>

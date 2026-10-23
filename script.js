@@ -160,48 +160,45 @@ function renderHomeExperiences() {
   if (!filtered.length) {
     container.innerHTML = `
       <div class="col-12 text-center py-5">
-        <p class="lead text-muted">Chưa có trải nghiệm nào trong danh mục này.</p>
+        <p class="lead text-muted font-serif">Chưa có trải nghiệm nào trong danh mục này.</p>
       </div>
     `;
     return;
   }
 
-  const wishlist = getWishlist();
-
   container.innerHTML = filtered.map(exp => {
-    const isFav = wishlist.includes(exp.id);
     const imgSrc = resolveImageUrl(exp.imageClass);
     return `
       <div class="col-md-6 col-lg-4 mb-4">
-        <article class="experience-card">
-          <div class="card-thumb-wrap">
+        <article class="traditional-exp-card">
+          <div class="exp-photo-box">
             <img src="${imgSrc}" alt="${exp.title}" loading="lazy">
-            <span class="badge-verified"><span style="color:var(--color-seal); font-weight:bold; margin-right:2px;">印</span> ${exp.badge || 'Di sản xác thực'}</span>
-            <button type="button" class="favorite-btn ${isFav ? 'favorited' : ''}" onclick="onToggleWishlist(${exp.id}, this)" title="Lưu yêu thích">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
+            <div class="exp-seal-bar">
+              <span class="exp-seal-tag">[ ${exp.location} • ${exp.segmentName || 'Làng nghề'} ]</span>
+              <span class="exp-seal-status">${exp.badge || 'Nguyên bản'}</span>
+            </div>
           </div>
-          <div class="card-content">
-            <span class="meta-location">${exp.location} • ${exp.segmentName || 'Làng nghề'}</span>
-            <h3 class="card-title">
+          <div class="exp-body">
+            <h3 class="exp-title">
               <a href="detail.html?id=${exp.id}">${exp.title}</a>
             </h3>
-            <div class="feature-tags">
-              <span class="feature-tag">Đánh giá ${exp.rating} (${exp.reviewCount || 30})</span>
-              <span class="feature-tag">Thời lượng: ${exp.duration}</span>
-              <span class="feature-tag">1-${exp.maxGuests || 8} khách</span>
+            <div class="exp-meta-line">
+              <span>Thời lượng: ${exp.duration}</span>
+              <span class="meta-dot">•</span>
+              <span>Nhóm: 1-${exp.maxGuests || 8} khách</span>
+              <span class="meta-dot">•</span>
+              <span>Đánh giá: ${exp.rating}/5</span>
             </div>
-            <div class="ambassador-byline">
-              <span class="text-accent font-weight-bold">Bản sắc</span>
-              <span>Đại sứ đồng hành: <strong>${exp.ambassador}</strong></span>
+            <div class="exp-ambassador-line">
+              Đại sứ phụ trách: <strong>${exp.ambassador}</strong>
             </div>
-            <div class="card-footer-action">
-              <div class="price-tag">
-                ${Number(exp.price).toLocaleString('vi-VN')}đ
-                <small>/khách</small>
+            <div class="exp-foot">
+              <div class="exp-price">
+                <span class="price-val">${Number(exp.price).toLocaleString('vi-VN')}đ</span>
+                <span class="price-unit">/ khách</span>
               </div>
-              <a href="detail.html?id=${exp.id}" class="btn btn-primary btn-sm px-3 font-weight-bold">
-                Khám phá ngay
+              <a href="detail.html?id=${exp.id}" class="exp-link">
+                Chi tiết hành trình →
               </a>
             </div>
           </div>
@@ -255,9 +252,9 @@ function initHomeHeritageMap() {
 
   // Interactive Layer Switcher so user can choose Standard, Satellite, or OSM
   const baseMaps = {
-    "🇻🇳 Bản đồ Tiếng Việt": googleMapVi,
-    "🛰️ Ảnh Vệ tinh chi tiết": googleSatVi,
-    "🗺️ OpenStreetMap": osmStandard
+    "Bản đồ Tiếng Việt": googleMapVi,
+    "Ảnh Vệ tinh chi tiết": googleSatVi,
+    "Bản đồ OpenStreetMap": osmStandard
   };
   L.control.layers(baseMaps, null, { position: 'topright' }).addTo(homeMap);
 
@@ -281,19 +278,19 @@ function renderHomeMapMarkers(regionFilter = 'all') {
     // Custom Icon with Deep Forest Green styling
     const customIcon = L.divIcon({
       className: 'heritage-custom-pin-wrap',
-      html: `<div class="heritage-custom-pin" style="width:34px; height:34px; border-radius:50%;">${idx + 1}</div>`,
-      iconSize: [34, 34],
-      iconAnchor: [17, 17]
+      html: `<div class="heritage-custom-pin">${idx + 1}</div>`,
+      iconSize: [32, 32],
+      iconAnchor: [16, 16]
     });
 
     const popupContent = `
-      <div style="min-width: 220px; font-family: var(--font-body); padding: 4px;">
-        <img src="${resolveImageUrl(exp.imageClass)}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;">
-        <strong style="font-family: var(--font-heading); color: var(--color-primary); font-size:14px; display:block; margin-bottom:4px;">${exp.title}</strong>
-        <span style="font-size:12px; color: var(--color-text-muted); display:block; margin-bottom:6px;">${exp.location} • ${exp.segmentName}</span>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <strong style="color: var(--color-primary); font-size:13px;">${Number(exp.price).toLocaleString('vi-VN')}đ</strong>
-          <a href="detail.html?id=${exp.id}" style="background: var(--color-primary); color:#fff; font-size:11px; padding:4px 10px; border-radius:20px; text-decoration:none; font-weight:bold;">Đặt ngay</a>
+      <div class="heritage-popup-box">
+        <img src="${resolveImageUrl(exp.imageClass)}" alt="${exp.title}" class="heritage-popup-img">
+        <span class="heritage-popup-tag">[ ${exp.location} • ${exp.segmentName} ]</span>
+        <h4 class="heritage-popup-title">${exp.title}</h4>
+        <div class="heritage-popup-footer">
+          <span class="heritage-popup-price">${Number(exp.price).toLocaleString('vi-VN')}đ <small>/ người</small></span>
+          <a href="detail.html?id=${exp.id}" class="heritage-popup-link">Chi tiết →</a>
         </div>
       </div>
     `;
@@ -318,13 +315,15 @@ function renderMapSidebarList(regionFilter = 'all') {
   });
 
   sidebar.innerHTML = items.map((exp, idx) => `
-    <div class="map-list-item" onclick="focusOnMapSpot(${exp.id})" id="sidebar-item-${exp.id}">
-      <img src="${resolveImageUrl(exp.imageClass)}" alt="${exp.title}">
-      <div style="flex:1;">
-        <span class="badge badge-accent small mb-1" style="font-size:10px;">Điểm #${idx + 1}</span>
-        <h4 class="item-title">${exp.title}</h4>
-        <div class="item-loc">${exp.location} • Đại sứ ${exp.ambassador}</div>
-        <div class="item-price">${Number(exp.price).toLocaleString('vi-VN')}đ</div>
+    <div class="traditional-map-item" onclick="focusOnMapSpot(${exp.id})" id="sidebar-item-${exp.id}">
+      <div class="map-item-thumb">
+        <img src="${resolveImageUrl(exp.imageClass)}" alt="${exp.title}">
+      </div>
+      <div class="map-item-content">
+        <span class="map-item-seal">[ TỌA ĐỘ ${idx + 1} • ${exp.location} ]</span>
+        <h4 class="map-item-title">${exp.title}</h4>
+        <div class="map-item-byline">Đại sứ: ${exp.ambassador}</div>
+        <div class="map-item-price">${Number(exp.price).toLocaleString('vi-VN')}đ <small>/ khách</small></div>
       </div>
     </div>
   `).join('');
@@ -338,7 +337,7 @@ window.focusOnMapSpot = function(id) {
     const marker = homeMapMarkers.find(m => m.expId === id);
     if (marker) marker.openPopup();
 
-    document.querySelectorAll('.map-list-item').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.traditional-map-item, .map-list-item').forEach(el => el.classList.remove('active'));
     const activeEl = document.getElementById(`sidebar-item-${id}`);
     if (activeEl) activeEl.classList.add('active');
   }
@@ -380,7 +379,7 @@ function initAiItineraryHandlers() {
       } finally {
         if (btn) {
           btn.disabled = false;
-          btn.innerHTML = '<span class="icon-refresh mr-1"></span> Tạo hành trình thông minh';
+          btn.innerHTML = 'Tạo hành trình thông minh';
         }
       }
     });
@@ -415,7 +414,7 @@ function initAiItineraryHandlers() {
       } finally {
         if (btn) {
           btn.disabled = false;
-          btn.innerHTML = '<span>Tạo lại lộ trình</span> <span class="icon-refresh ml-1"></span>';
+          btn.innerHTML = 'Tạo lại lộ trình';
         }
       }
     });

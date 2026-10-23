@@ -203,50 +203,55 @@ a:hover {
   line-height: 1;
 }
 
-/* 2. Đường Phân Cách Hoa Văn Văn Hóa (Vietnamese Lotus & Drum Divider) */
+/* 2. Đường Phân Cách Hoa Văn Chim Lạc & Trống Đồng (Dong Son Heritage Divider) */
 .heritage-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin: 18px 0 24px 0;
+  gap: 12px;
+  margin: 14px 0 22px 0;
 }
 
 .heritage-divider::before,
 .heritage-divider::after {
   content: '';
-  height: 1px;
-  flex: 1;
-  max-width: 100px;
-  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  height: 20px;
+  width: 76px;
+  background-image: url("images/chim-lac-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.42;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease;
+}
+
+.heritage-divider::before {
+  transform: scaleX(-1); /* Flocking inward toward the seal */
 }
 
 .heritage-divider-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--color-accent);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: none;
 }
 
-/* 3. Watermark Trống Đồng Đông Sơn Chìm Tinh Xảo */
+/* 3. Watermark Trống Đồng Đông Sơn & Chim Lạc Chìm Tinh Xảo */
 .watermark-dongson-bg {
   position: relative;
+  overflow: hidden;
 }
 
 .watermark-dongson-bg::after {
   content: '';
   position: absolute;
   top: 50%;
-  right: -50px;
-  width: 420px;
-  height: 420px;
+  right: -60px;
+  width: 520px;
+  height: 520px;
   transform: translateY(-50%);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' width='200' height='200'%3E%3Cg fill='none' stroke='%23C59B27' stroke-width='1.2' opacity='0.75'%3E%3Ccircle cx='100' cy='100' r='12' fill='%23C59B27' opacity='0.3'/%3E%3Ccircle cx='100' cy='100' r='25'/%3E%3Ccircle cx='100' cy='100' r='38' stroke-dasharray='2,2'/%3E%3Ccircle cx='100' cy='100' r='52'/%3E%3Ccircle cx='100' cy='100' r='68' stroke-dasharray='4,2'/%3E%3Ccircle cx='100' cy='100' r='84'/%3E%3Ccircle cx='100' cy='100' r='96'/%3E%3Cpath d='M100,75 L103,90 L100,87 L97,90 Z M100,125 L103,110 L100,113 L97,110 Z M75,100 L90,103 L87,100 L90,97 Z M125,100 L110,103 L113,100 L110,97 Z M82,82 L93,90 L90,89 L89,90 Z M118,118 L107,110 L110,111 L111,110 Z M82,118 L93,110 L90,111 L89,110 Z M118,82 L107,90 L110,89 L111,90 Z' fill='%23C59B27'/%3E%3Ccircle cx='100' cy='100' r='60' stroke-width='1.5' stroke-dasharray='1 7'/%3E%3Ccircle cx='100' cy='100' r='76' stroke-width='1' stroke-dasharray='3 5'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("images/dongson-drum-bronze.svg");
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.05;
+  opacity: 0.045;
   pointer-events: none;
   z-index: 0;
 }
@@ -1119,44 +1124,47 @@ a:hover {
    Section 5: Featured Experiences Grid & Experience Card
    ========================================================================== */
 
-/* Filter Chips / Tabs (Section 5) — Cultural Curator Tabs */
+/* Filter Tabs (Section 5) — Thẻ phân loại mộc bản truyền thống */
 .filter-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(23, 56, 49, 0.12);
+  padding-bottom: 14px;
 }
 
 .filter-btn {
-  font-family: var(--font-body);
-  font-size: 0.84rem;
+  font-family: var(--font-heading);
+  font-size: 0.86rem;
   font-weight: 500;
-  padding: 7px 16px;
-  border-radius: 6px;
-  background: #FFFFFF;
-  color: var(--color-text-muted);
-  border: 1px solid rgba(23, 56, 49, 0.14);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 6px 16px;
+  border-radius: 0px !important;
+  background: transparent;
+  color: #38423E;
+  border: 1px solid rgba(23, 56, 49, 0.22);
+  box-shadow: none !important;
+  transition: all 0.2s ease;
   cursor: pointer;
   user-select: none;
   line-height: 1.4;
+  letter-spacing: 0.02em;
 }
 
 .filter-btn:hover {
-  background: #FAF8F5;
+  background: rgba(179, 138, 56, 0.08);
   color: var(--color-primary);
-  border-color: rgba(200, 160, 81, 0.45);
-  transform: translateY(-1px);
+  border-color: var(--traditional-bronze);
+  transform: none;
 }
 
 .filter-btn.active {
   background: var(--color-primary);
-  color: #FFFFFF;
+  color: #FAF6EE !important;
   border-color: var(--color-primary);
   font-weight: 600;
-  box-shadow: 0 3px 10px rgba(23, 56, 49, 0.2);
+  box-shadow: none !important;
 }
 
 .experience-card {
@@ -1872,20 +1880,56 @@ a:hover {
 /* ==========================================================================
    Detail Page Booking Card (Sticky Widget)
    ========================================================================== */
+/* ==========================================================================
+   Detail Page Booking Card (Sticky Widget) - Phong cách Mộc bản Di sản
+   ========================================================================== */
 .sticky-booking-card {
   position: sticky;
   top: 90px;
   background: #FFFFFF;
-  border: 1px solid var(--color-border-bronze);
-  border-radius: var(--radius-xl);
+  border: 1px solid var(--traditional-border-bronze, #C59B27) !important;
+  outline: 1px solid rgba(179, 138, 56, 0.2);
+  outline-offset: -4px;
+  border-radius: 0px !important;
   padding: 28px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: none !important;
+  overflow: hidden;
+}
+
+/* Họa tiết Trống Đồng Đông Sơn chìm góc dưới thẻ đặt chỗ */
+.sticky-booking-card::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 240px;
+  height: 240px;
+  background-image: url("images/dongson-drum-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.055;
+  pointer-events: none;
+}
+
+/* Chim Lạc chìm góc trên thẻ đặt chỗ */
+.sticky-booking-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  width: 100px;
+  height: 50px;
+  background-image: url("images/chim-lac-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.06;
+  pointer-events: none;
 }
 
 .revenue-split-badge {
-  background: linear-gradient(135deg, rgba(21, 57, 45, 0.06) 0%, rgba(197, 155, 39, 0.12) 100%);
-  border: 1px solid var(--color-border-bronze);
-  border-radius: var(--radius-md);
+  background: #FAF6EE !important;
+  border: 1px solid var(--traditional-border-bronze, #C59B27) !important;
+  border-radius: 0px !important;
   padding: 14px 18px;
   font-size: 0.84rem;
 }
@@ -1893,11 +1937,11 @@ a:hover {
 /* Detail Page Interactive Tabs */
 .detail-tabs-nav {
   display: flex;
-  gap: 8px;
-  background: rgba(21, 57, 45, 0.05);
-  padding: 6px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border-bronze);
+  gap: 4px;
+  background: #FAF6EE;
+  padding: 4px;
+  border-radius: 0px !important;
+  border: 1px solid var(--traditional-border-bronze, #C59B27);
   overflow-x: auto;
   white-space: nowrap;
   list-style: none;
@@ -1906,13 +1950,14 @@ a:hover {
 
 .detail-tab-btn {
   padding: 10px 18px;
-  border-radius: var(--radius-md);
+  border-radius: 0px !important;
+  font-family: var(--font-heading) !important;
   font-weight: 600;
   font-size: 0.92rem;
-  color: var(--color-primary);
-  border: none;
+  color: var(--traditional-jade, #173831) !important;
+  border: 1px solid transparent;
   background: transparent;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1921,8 +1966,15 @@ a:hover {
 }
 
 .detail-tab-btn:hover {
-  background: rgba(255, 255, 255, 0.7);
-  color: var(--color-primary);
+  background: rgba(223, 184, 71, 0.12);
+  color: var(--traditional-jade, #173831);
+}
+
+.detail-tab-btn.active {
+  background: #FFFFFF !important;
+  border-color: var(--traditional-border-bronze) !important;
+  color: var(--traditional-seal, #A82824) !important;
+  font-weight: 700;
 }
 
 .detail-tab-btn.active {
@@ -2405,6 +2457,7 @@ a:hover {
   position: relative;
   overflow: hidden;
   border-bottom: 2px solid var(--color-accent);
+  margin-top: 76px;
 }
 
 .portal-hero-banner::after {
@@ -2425,22 +2478,11 @@ a:hover {
   margin-bottom: 8px;
 }
 
-/* Role Switcher Toolbar */
+/* Role Switcher Toolbar (Hidden on dedicated portal pages) */
 .role-portal-bar {
-  background: #0D231A;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 0;
+  display: none !important;
 }
 
-.role-switcher-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  overflow-x: auto;
-  white-space: nowrap;
-  padding-bottom: 4px;
-  -webkit-overflow-scrolling: touch;
-}
 
 .role-switch-pill {
   display: inline-flex;
@@ -2686,6 +2728,2086 @@ a:hover {
     position: static !important;
   }
 }
+
+/* ==========================================================================
+   PURE TRADITIONAL VIETNAMESE DESIGN SYSTEM (BẢN SẮC & MỘC MẠC)
+   Eliminates all modern app/SaaS icons, floating elements & hyper-rounded cards
+   ========================================================================== */
+
+/* 1. Traditional Palette & Typography Tokens */
+:root {
+  --traditional-paper: #FAF6EE;
+  --traditional-paper-card: #FFFFFF;
+  --traditional-ink: #1C201D;
+  --traditional-jade: #173831;
+  --traditional-seal: #A82E24;
+  --traditional-bronze: #B38A38;
+  --traditional-border: rgba(23, 56, 49, 0.16);
+  --traditional-border-bronze: rgba(179, 138, 56, 0.35);
+}
+
+/* 2. Traditional Buttons (Sharp/2px radius, hairline rim, no modern neon/pills) */
+.btn-heritage-primary {
+  background: var(--traditional-jade);
+  color: #FAF6EE !important;
+  border: 1px solid #0F2621;
+  padding: 10px 24px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 3px !important;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.btn-heritage-primary:hover {
+  background: #245347;
+  color: #FFFFFF !important;
+  border-color: var(--traditional-bronze);
+  transform: translateY(-1px);
+}
+
+.btn-heritage-outline {
+  background: transparent;
+  color: #FAF6EE !important;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  padding: 10px 24px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 3px !important;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+}
+
+.btn-heritage-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #FFFFFF;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+/* Biến thể outline cho nền sáng / thẻ trắng */
+.bg-white .btn-heritage-outline,
+.application-form-box .btn-heritage-outline,
+#unauthorized-barrier .btn-heritage-outline,
+.btn-heritage-outline-dark {
+  color: var(--traditional-jade, #173831) !important;
+  border: 1px solid var(--traditional-jade, #173831) !important;
+}
+
+.bg-white .btn-heritage-outline:hover,
+.application-form-box .btn-heritage-outline:hover,
+#unauthorized-barrier .btn-heritage-outline:hover,
+.btn-heritage-outline-dark:hover {
+  background: var(--traditional-jade, #173831) !important;
+  color: #FAF6EE !important;
+}
+
+.btn-heritage-search {
+  background: var(--traditional-seal);
+  color: #FFFFFF !important;
+  border: 1px solid #8B231A;
+  height: 48px;
+  border-radius: 3px !important;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(168, 46, 36, 0.25);
+}
+
+.btn-heritage-search:hover {
+  background: #BE3529;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+.btn-heritage-nav-solid {
+  background: var(--traditional-bronze);
+  color: #173831 !important;
+  border: 1px solid #9C782F;
+  border-radius: 3px !important;
+  font-weight: 700;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+
+.btn-heritage-nav-solid:hover {
+  background: #C99E44;
+  color: #0F2621 !important;
+}
+
+.btn-heritage-nav-outline {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 3px !important;
+  font-weight: 600;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+}
+
+.btn-heritage-nav-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF !important;
+  border-color: #FFFFFF;
+}
+
+/* 3. Hero Section (Traditional Dignified with Dong Son & Chim Lac Watermark) */
+.hero-traditional-section {
+  position: relative;
+  background-color: var(--traditional-jade);
+  padding: 110px 0 64px 0;
+  overflow: hidden;
+}
+
+.hero-traditional-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(circle at 80% 25%, rgba(179, 138, 56, 0.15) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(23, 56, 49, 0.94) 0%, rgba(15, 38, 33, 0.98) 100%);
+  z-index: 1;
+}
+
+/* Họa tiết Trống Đồng & Chim Lạc chìm tinh xảo trên nền Hero */
+.hero-traditional-section::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -90px;
+  width: 780px;
+  height: 780px;
+  transform: translateY(-50%);
+  background-image: url("images/dongson-drum-gold.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.085;
+  pointer-events: none;
+  z-index: 1;
+  animation: dongson-slow-spin 260s linear infinite;
+}
+
+@keyframes dongson-slow-spin {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.hero-traditional-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-traditional-content {
+  position: relative;
+}
+
+/* Họa tiết Chim Lạc chìm sau tiêu đề Hero */
+.hero-traditional-content::before {
+  content: '';
+  position: absolute;
+  top: -45px;
+  left: -25px;
+  width: 280px;
+  height: 140px;
+  background-image: url("images/chim-lac-gold.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.traditional-seal-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: #DFB847;
+}
+
+.heritage-seal-tag {
+  display: inline-block;
+  color: #FAF6EE;
+  background: var(--traditional-seal);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  outline: 1px solid var(--traditional-seal);
+  outline-offset: -3px;
+  padding: 2px 7px;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  border-radius: 2px;
+}
+
+.eyebrow-divider {
+  color: var(--traditional-bronze);
+  opacity: 0.6;
+}
+
+.eyebrow-sub-text {
+  color: rgba(250, 246, 238, 0.82);
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.traditional-hero-title {
+  font-family: var(--font-heading);
+  font-size: 2.85rem;
+  line-height: 1.22;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.traditional-hero-highlight {
+  color: #DFB847;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.traditional-lead {
+  font-size: 1.02rem;
+  line-height: 1.68;
+  color: rgba(250, 246, 238, 0.85);
+  font-weight: 300;
+  max-width: 560px;
+  margin-bottom: 20px;
+}
+
+.traditional-quote-strip {
+  border-left: 2px solid var(--traditional-bronze);
+  background: rgba(179, 138, 56, 0.08);
+  padding: 8px 16px;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #FAF6EE;
+  border-radius: 0 3px 3px 0;
+}
+
+.traditional-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Khung ảnh tư liệu văn hóa */
+.traditional-photo-frame {
+  position: relative;
+  background: #FAF6EE;
+  padding: 8px;
+  border: 1px solid var(--traditional-border-bronze);
+  outline: 1px solid rgba(179, 138, 56, 0.2);
+  outline-offset: -4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.photo-inner-border {
+  position: relative;
+  height: 440px;
+  overflow: hidden;
+  border: 1px solid rgba(23, 56, 49, 0.15);
+}
+
+.photo-inner-border .slides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.photo-inner-border .slides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0; left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.photo-inner-border .slides img.active {
+  opacity: 1;
+}
+
+.photo-caption-strip {
+  padding: 10px 12px 4px 12px;
+  background: #FAF6EE;
+  color: var(--traditional-ink);
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-top: 1px solid var(--traditional-border-bronze);
+}
+
+.caption-seal {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: var(--traditional-seal);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.caption-text {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: #3B443F;
+}
+
+/* 4. Khung Tra cứu Di sản (Search Box) — Phẳng, mộc, có hoa văn Trống Đồng & Chim Lạc chìm */
+.traditional-search-section {
+  position: relative;
+  background: var(--traditional-paper);
+  padding: 36px 0 20px 0;
+  border-bottom: 1px solid var(--traditional-border);
+  overflow: hidden;
+}
+
+/* Họa tiết Trống Đồng Đông Sơn chìm góc trái nền tra cứu */
+.traditional-search-section::before {
+  content: '';
+  position: absolute;
+  bottom: -160px;
+  left: -80px;
+  width: 520px;
+  height: 520px;
+  background-image: url("images/dongson-drum-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.traditional-search-box {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  border: 1px solid var(--traditional-border-bronze);
+  outline: 1px solid rgba(179, 138, 56, 0.2);
+  outline-offset: -4px;
+  padding: 24px 28px;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+/* Chim Lạc bay chìm thanh nhã góc phải khung tra cứu */
+.traditional-search-box::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  width: 130px;
+  height: 65px;
+  background-image: url("images/chim-lac-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.search-box-title {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--traditional-jade);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--traditional-bronze);
+  padding-bottom: 3px;
+}
+
+.traditional-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--traditional-ink);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.traditional-select,
+.traditional-input {
+  border: 1px solid rgba(23, 56, 49, 0.2) !important;
+  border-radius: 2px !important;
+  height: 48px !important;
+  font-size: 0.9rem !important;
+  background-color: #FAF8F5 !important;
+  color: var(--traditional-ink) !important;
+  padding: 8px 12px !important;
+}
+
+.traditional-select:focus,
+.traditional-input:focus {
+  border-color: var(--traditional-bronze) !important;
+  background-color: #FFFFFF !important;
+  box-shadow: none !important;
+  outline: 1px solid var(--traditional-bronze);
+}
+
+.traditional-quick-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 0.84rem;
+  border-top: 1px solid rgba(23, 56, 49, 0.08);
+}
+
+.quick-chips-title {
+  color: #6C7570;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.chip-divider {
+  color: var(--traditional-bronze);
+  opacity: 0.45;
+}
+
+.quick-map-link {
+  color: var(--traditional-seal);
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-decoration: none !important;
+}
+
+.quick-map-link:hover {
+  text-decoration: underline !important;
+}
+
+/* 5. Bốn Dòng Chảy Di Sản & Trải Nghiệm Tuyển Chọn (Watermark Trống Đồng & Chim Lạc) */
+#categories {
+  position: relative;
+  overflow: hidden;
+}
+
+#categories::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 520px;
+  height: 520px;
+  background-image: url("images/dongson-drum-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+#categories::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: -30px;
+  width: 240px;
+  height: 120px;
+  background-image: url("images/chim-lac-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+#discover {
+  position: relative;
+  overflow: hidden;
+}
+
+#discover::before {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  right: -70px;
+  width: 540px;
+  height: 540px;
+  background-image: url("images/dongson-drum-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.traditional-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--traditional-bronze);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.traditional-section-title {
+  font-family: var(--font-heading);
+  font-size: 2.15rem;
+  font-weight: 600;
+  color: var(--traditional-jade);
+  letter-spacing: -0.015em;
+}
+
+.traditional-cat-card {
+  display: block;
+  background: #FFFFFF;
+  border: 1px solid var(--traditional-border);
+  border-radius: 2px;
+  overflow: hidden;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+  height: 100%;
+}
+
+.traditional-cat-card:hover {
+  border-color: var(--traditional-bronze);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(23, 56, 49, 0.08);
+}
+
+.cat-card-frame {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--traditional-border);
+}
+
+.cat-card-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.traditional-cat-card:hover .cat-card-frame img {
+  transform: scale(1.04);
+}
+
+.cat-seal-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(168, 46, 36, 0.92);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 2px 7px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.cat-card-body {
+  padding: 16px 18px 20px 18px;
+}
+
+.cat-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--traditional-jade);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.traditional-cat-card:hover .cat-card-title {
+  color: var(--traditional-seal);
+}
+
+.cat-card-desc {
+  font-size: 0.84rem;
+  color: #55625C;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* 6. Trải nghiệm Tuyển chọn (Traditional Experience Cards) — Khung Mộc Bản Văn Hóa */
+.traditional-exp-card,
+.experience-card {
+  background: #FFFFFF !important;
+  border-radius: 0px !important;
+  border: 1px solid rgba(23, 56, 49, 0.2) !important;
+  outline: 1px solid rgba(179, 138, 56, 0.22);
+  outline-offset: -4px;
+  box-shadow: none !important;
+  overflow: hidden;
+  transition: border-color 0.25s ease, outline-color 0.25s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.traditional-exp-card:hover,
+.experience-card:hover {
+  border-color: var(--traditional-bronze) !important;
+  outline-color: var(--traditional-bronze) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.traditional-exp-card .exp-photo-box,
+.experience-card .card-thumb-wrap {
+  position: relative;
+  height: 215px !important;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(23, 56, 49, 0.15) !important;
+}
+
+.traditional-exp-card .exp-photo-box img,
+.experience-card .card-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0px !important;
+  transition: transform 0.5s ease;
+}
+
+.traditional-exp-card:hover .exp-photo-box img,
+.experience-card:hover .card-thumb-wrap img {
+  transform: scale(1.03);
+}
+
+.exp-seal-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 14px;
+  background: #FAF6EE;
+  border-top: 1px solid rgba(23, 56, 49, 0.1);
+  border-bottom: 1px solid rgba(23, 56, 49, 0.1);
+}
+
+.exp-seal-tag {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--traditional-seal);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.exp-seal-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--traditional-bronze);
+  letter-spacing: 0.04em;
+}
+
+.traditional-exp-card .exp-body,
+.experience-card .card-content {
+  padding: 16px 18px 18px 18px !important;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.exp-title,
+.experience-card .card-title {
+  font-family: var(--font-heading) !important;
+  font-size: 1.12rem !important;
+  font-weight: 600 !important;
+  color: var(--traditional-jade) !important;
+  margin-bottom: 8px !important;
+  line-height: 1.36 !important;
+}
+
+.exp-title a,
+.experience-card .card-title a {
+  color: var(--traditional-jade) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.exp-title a:hover,
+.experience-card .card-title a:hover {
+  color: var(--traditional-seal) !important;
+}
+
+.exp-meta-line {
+  font-size: 0.8rem;
+  color: #55625C;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.meta-dot {
+  color: var(--traditional-bronze);
+  opacity: 0.6;
+}
+
+.exp-ambassador-line,
+.experience-card .ambassador-byline {
+  font-size: 0.82rem !important;
+  color: #38423E !important;
+  margin-bottom: 12px;
+  padding-top: 8px !important;
+  border-top: 1px dashed rgba(23, 56, 49, 0.12) !important;
+  margin-top: auto;
+}
+
+.traditional-exp-card .exp-foot,
+.experience-card .card-footer-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px !important;
+  border-top: 1px solid rgba(23, 56, 49, 0.12) !important;
+  margin-top: 4px;
+}
+
+.exp-price,
+.experience-card .price-tag {
+  font-family: var(--font-heading);
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  color: var(--traditional-jade) !important;
+}
+
+.exp-price small,
+.experience-card .price-tag small {
+  font-size: 0.78rem !important;
+  font-weight: normal;
+  color: #6C7570 !important;
+}
+
+.exp-link {
+  font-family: var(--font-heading);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--traditional-seal);
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.exp-link:hover {
+  border-bottom-color: var(--traditional-seal);
+  color: #831F17;
+}
+
+/* 7. Dải Cam kết & Giá trị Di sản (Values Strip with Chim Lạc Frieze) */
+.traditional-values-section {
+  position: relative;
+  background: #FFFFFF;
+  border-top: 1px solid var(--traditional-border);
+  border-bottom: 1px solid var(--traditional-border);
+  overflow: hidden;
+}
+
+/* Dải hoa văn chim Lạc & hoa văn trống đồng chạy ngang thanh lịch */
+.traditional-values-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 14px;
+  background-image: url("images/chim-lac-frieze.svg");
+  background-size: auto 14px;
+  background-repeat: repeat-x;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.traditional-value-box {
+  padding: 12px 24px;
+  border-right: 1px solid rgba(23, 56, 49, 0.12);
+  height: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .traditional-value-box {
+    border-right: none;
+    border-bottom: 1px solid rgba(23, 56, 49, 0.1);
+    padding: 18px 0;
+  }
+}
+
+.border-lg-none {
+  border-right: none !important;
+}
+
+.value-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.value-roman {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--traditional-bronze);
+  line-height: 1;
+}
+
+.value-seal {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--traditional-seal);
+  border: 1px solid rgba(168, 46, 36, 0.35);
+  background: rgba(168, 46, 36, 0.04);
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+
+.value-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--traditional-jade);
+  margin-bottom: 6px;
+}
+
+.value-desc {
+  font-size: 0.85rem;
+  color: #55625C;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+/* 8. Đại sứ Di sản (Traditional Ambassador Cards) */
+.traditional-ambassador-card {
+  background: #FFFFFF;
+  border: 1px solid var(--traditional-border);
+  padding: 22px 18px;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.traditional-ambassador-card:hover {
+  border-color: var(--traditional-bronze);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(23, 56, 49, 0.08);
+}
+
+.amb-photo-frame {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  padding: 3px;
+  border: 1px solid var(--traditional-border-bronze);
+  outline: 1px solid rgba(179, 138, 56, 0.25);
+  outline-offset: -3px;
+  border-radius: 2px;
+  background: #FAF6EE;
+}
+
+.amb-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+.amb-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--traditional-jade);
+  margin-bottom: 3px;
+}
+
+.amb-school {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--traditional-bronze);
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.amb-desc {
+  font-size: 0.8rem;
+  color: #55625C;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.amb-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--traditional-jade);
+  background: #F4EFE5;
+  border: 1px solid rgba(23, 56, 49, 0.12);
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/* 9. Bản đồ Di sản & Danh mục Địa phương (Traditional Map & Catalog) */
+.btn-heritage-filter {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 0px !important;
+  border: 1px solid rgba(23, 56, 49, 0.25) !important;
+  background: #FFFFFF;
+  color: var(--traditional-jade) !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease;
+}
+
+.btn-heritage-filter:hover,
+.btn-heritage-filter.active {
+  background: var(--traditional-jade) !important;
+  color: #FAF6EE !important;
+  border-color: var(--traditional-jade) !important;
+}
+
+.map-container-box {
+  background: #FFFFFF !important;
+  border-radius: 0px !important;
+  border: 1px solid var(--traditional-border-bronze) !important;
+  outline: 1px solid rgba(179, 138, 56, 0.22);
+  outline-offset: -4px;
+  box-shadow: none !important;
+}
+
+.map-sidebar-list {
+  background-color: #FAF6EE !important;
+  padding: 16px !important;
+}
+
+.traditional-map-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #FFFFFF;
+  border: 1px solid rgba(23, 56, 49, 0.14);
+  border-left: 3px solid transparent;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease;
+}
+
+.traditional-map-item:hover,
+.traditional-map-item.active {
+  border-color: var(--traditional-bronze);
+  border-left-color: var(--traditional-seal);
+  background: #FFFFFF;
+  transform: none !important;
+}
+
+.map-item-thumb {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border: 1px solid rgba(23, 56, 49, 0.15);
+  overflow: hidden;
+  background: #FAF6EE;
+}
+
+.map-item-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0px !important;
+}
+
+.map-item-content {
+  flex: 1;
+}
+
+.map-item-seal {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--traditional-seal);
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.map-item-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--traditional-jade);
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+
+.map-item-byline {
+  font-size: 0.78rem;
+  color: #55625C;
+  margin-bottom: 3px;
+}
+
+.map-item-price {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--traditional-jade);
+}
+
+.map-item-price small {
+  font-weight: normal;
+  font-size: 0.75rem;
+  color: #6C7570;
+}
+
+/* Leaflet Popup Box */
+.heritage-popup-box {
+  min-width: 210px;
+  font-family: var(--font-body);
+  padding: 4px;
+}
+
+.heritage-popup-img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 0px !important;
+  border: 1px solid rgba(23, 56, 49, 0.15);
+  margin-bottom: 6px;
+}
+
+.heritage-popup-tag {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--traditional-seal);
+  margin-bottom: 2px;
+  letter-spacing: 0.06em;
+}
+
+.heritage-popup-title {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--traditional-jade);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.heritage-popup-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(23, 56, 49, 0.1);
+  padding-top: 5px;
+}
+
+.heritage-popup-price {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--traditional-jade);
+}
+
+.heritage-popup-link {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--traditional-seal);
+  text-decoration: none !important;
+}
+
+.heritage-popup-link:hover {
+  text-decoration: underline !important;
+}
+
+/* 10. Hồ Sơ Di Sản Sống (Living Heritage Stories with Dong Son & Chim Lạc Watermark) */
+#stories {
+  position: relative;
+  overflow: hidden;
+}
+
+#stories::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -80px;
+  width: 540px;
+  height: 540px;
+  background-image: url("images/dongson-drum-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.traditional-featured-story {
+  background: #FFFFFF;
+  border: 1px solid rgba(23, 56, 49, 0.2);
+  outline: 1px solid rgba(179, 138, 56, 0.25);
+  outline-offset: -5px;
+  padding: 24px;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+.story-photo-frame {
+  position: relative;
+  border: 1px solid rgba(23, 56, 49, 0.15);
+  background: #FAF6EE;
+}
+
+.story-photo-frame img {
+  width: 100%;
+  height: 310px;
+  object-fit: cover;
+  border-radius: 0px !important;
+  display: block;
+}
+
+.story-photo-caption {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #55625C;
+  background: #FAF6EE;
+  border-top: 1px solid rgba(23, 56, 49, 0.1);
+}
+
+.story-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.story-seal-tag {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--traditional-seal);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.story-author-meta {
+  font-size: 0.8rem;
+  color: #6C7570;
+}
+
+.traditional-story-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--traditional-jade);
+  line-height: 1.35;
+}
+
+.traditional-story-quote {
+  position: relative;
+  border-left: 3px solid var(--traditional-bronze);
+  background: rgba(179, 138, 56, 0.08);
+  padding: 14px 18px;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--traditional-jade);
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* Họa tiết chim Lạc bay chìm trong khung trích dẫn */
+.traditional-story-quote::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  bottom: 4px;
+  width: 120px;
+  height: 60px;
+  background-image: url("images/chim-lac-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.09;
+  pointer-events: none;
+}
+
+.story-excerpt {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #4A5550;
+}
+
+.traditional-side-story-box {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px;
+  background: #FFFFFF;
+  border: 1px solid rgba(23, 56, 49, 0.16);
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.traditional-side-story-box:hover {
+  border-color: var(--traditional-bronze);
+  background: #FAF8F4;
+}
+
+.side-story-thumb {
+  width: 95px;
+  height: 85px;
+  flex-shrink: 0;
+  border: 1px solid rgba(23, 56, 49, 0.15);
+  overflow: hidden;
+  background: #FAF6EE;
+}
+
+.side-story-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0px !important;
+}
+
+.side-story-content {
+  flex: 1;
+}
+
+.side-story-tag {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--traditional-seal);
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.side-story-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 3px;
+}
+
+.side-story-title a {
+  color: var(--traditional-jade);
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.side-story-title a:hover {
+  color: var(--traditional-seal);
+}
+
+.side-story-desc {
+  font-size: 0.78rem;
+  color: #55625C;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+/* 11. Hộ Chiếu Di Sản Số (Digital Passport with Dong Son Watermark) */
+.traditional-passport-status-box {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid var(--traditional-border-bronze);
+  outline: 1px solid rgba(179, 138, 56, 0.2);
+  outline-offset: -4px;
+  padding: 18px 22px;
+  border-radius: 0px !important;
+  overflow: hidden;
+}
+
+/* Chim Lạc chìm góc sổ chứng thực */
+.traditional-passport-status-box::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  width: 130px;
+  height: 65px;
+  background-image: url("images/chim-lac-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.status-box-title {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--traditional-jade);
+  letter-spacing: 0.1em;
+}
+
+.status-box-seal {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--traditional-seal);
+  letter-spacing: 0.06em;
+}
+
+.status-box-text {
+  font-size: 0.85rem;
+  color: #4A5550;
+  line-height: 1.5;
+}
+
+.status-box-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(23, 56, 49, 0.15);
+}
+
+.track-step {
+  color: #7B8580;
+  font-weight: 500;
+}
+
+.track-step.active {
+  color: var(--traditional-seal);
+  font-weight: 700;
+}
+
+.track-arrow {
+  color: var(--traditional-bronze);
+  opacity: 0.5;
+}
+
+.stamp-status-seal {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--traditional-seal);
+  letter-spacing: 0.06em;
+  margin-top: 3px;
+}
+
+.stamp-status-seal.locked {
+  color: #8C9691;
+}
+
+.passport-stamp-badge {
+  border-radius: 0px !important;
+  background: #FFFFFF;
+  border: 1px solid rgba(23, 56, 49, 0.15);
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.passport-cover-preview {
+  position: relative;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  border: 2px solid var(--traditional-bronze);
+  outline: 1px solid rgba(223, 184, 71, 0.4);
+  outline-offset: -6px;
+  background: #173831;
+  overflow: hidden;
+}
+
+/* Họa tiết Trống Đồng & Chim Lạc chìm trong bìa hộ chiếu */
+.passport-cover-preview::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -80px;
+  transform: translateY(-50%);
+  width: 460px;
+  height: 460px;
+  background-image: url("images/dongson-drum-gold.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.11;
+  pointer-events: none;
+}
+
+/* 12. AI Lộ Trình (Cultural Itinerary Assistant) */
+.itinerary-tool-card {
+  position: relative;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  background: #FFFFFF;
+  border: 1px solid var(--traditional-border-bronze);
+  outline: 1px solid rgba(179, 138, 56, 0.2);
+  outline-offset: -4px;
+  padding: 24px 26px;
+  overflow: hidden;
+}
+
+.itinerary-tool-card::before {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 140px;
+  height: 70px;
+  background-image: url("images/chim-lac-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.traditional-itinerary-header {
+  border-radius: 0px !important;
+  border: 1px solid var(--traditional-border);
+  background: #FFFFFF;
+}
+
+.itinerary-day-node {
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  background: #FFFFFF;
+  border: 1px solid rgba(23, 56, 49, 0.15);
+  border-left: 4px solid var(--traditional-jade);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+
+.itinerary-seal-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--traditional-seal);
+  letter-spacing: 0.08em;
+}
+
+.itinerary-step-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--traditional-jade);
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   13. Khung Đồng Hành Di Sản (Movement with Grand Dong Son Drum Watermark)
+   ========================================================================== */
+.cta-movement-section {
+  position: relative;
+  background-color: var(--traditional-jade, #173831) !important;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+/* Trống Đồng Đông Sơn khổng lồ chìm giữa nền phong trào di sản */
+.cta-movement-section::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 860px;
+  height: 860px;
+  background-image: url("images/dongson-drum-gold.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.07;
+  pointer-events: none;
+  animation: dongson-slow-spin 280s linear infinite;
+}
+
+.cta-movement-section .lead {
+  color: rgba(250, 246, 238, 0.94) !important;
+  font-family: var(--font-body);
+}
+
+.traditional-movement-card {
+  position: relative;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  background: rgba(14, 38, 32, 0.94) !important; /* Lớp nền xanh sẫm ấm áp */
+  border: 1px solid rgba(223, 184, 71, 0.45) !important;
+  outline: 1px solid rgba(223, 184, 71, 0.2);
+  outline-offset: -4px;
+  padding: 34px 26px;
+  transition: all 0.25s ease;
+  z-index: 1;
+  text-align: center;
+}
+
+/* Họa tiết Chim Lạc chìm góc trên thẻ movement */
+.traditional-movement-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 90px;
+  height: 45px;
+  background-image: url("images/chim-lac-gold.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.085;
+  pointer-events: none;
+}
+
+.traditional-movement-card:hover {
+  background: rgba(23, 56, 49, 0.98) !important;
+  border-color: #DFB847 !important;
+  transform: translateY(-2px);
+}
+
+.traditional-movement-card .movement-roman {
+  font-family: var(--font-heading) !important;
+  font-size: 1.65rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  color: #DFB847 !important; /* Hoàng Kim Đông Sơn rực rỡ */
+  letter-spacing: 0.12em;
+  margin-bottom: 12px !important;
+}
+
+.traditional-movement-card .movement-card-title,
+.traditional-movement-card h3 {
+  font-family: var(--font-heading) !important;
+  font-size: 1.32rem !important;
+  font-weight: 600 !important;
+  color: #FAF6EE !important; /* Luôn màu sáng rõ nét, không bị chìm */
+  margin-bottom: 14px !important;
+  line-height: 1.35;
+}
+
+.traditional-movement-card .movement-card-title.text-accent-gold,
+.traditional-movement-card h3.text-accent-gold {
+  color: #DFB847 !important; /* Vàng hoàng kim sắc nét cho Sinh viên */
+}
+
+.traditional-movement-card .movement-card-desc,
+.traditional-movement-card p {
+  font-family: var(--font-body) !important;
+  font-size: 0.92rem !important;
+  line-height: 1.68 !important;
+  color: rgba(250, 246, 238, 0.92) !important; /* Chữ sáng rõ rệt trên nền tối */
+  margin-bottom: 26px !important;
+}
+
+.traditional-movement-card.featured-movement-card {
+  border-color: #DFB847 !important;
+  outline-color: rgba(223, 184, 71, 0.35);
+  background: rgba(18, 46, 39, 0.96) !important;
+}
+
+.traditional-movement-card .btn {
+  border-radius: 0px !important;
+  font-family: var(--font-heading) !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.03em;
+  padding: 10px 18px;
+}
+
+/* ==========================================================================
+   GLOBAL TRADITIONAL HIGH-CONTRAST & COLOR UTILITIES
+   (Đảm bảo không bao giờ bị chìm chữ trên nền tối ở bất kỳ trang nào)
+   ========================================================================== */
+.text-accent-gold,
+.text-gold,
+.text-accent {
+  color: #DFB847 !important; /* Hoàng Kim Đông Sơn */
+}
+
+.text-seal,
+.text-cinnabar {
+  color: #A82824 !important; /* Đỏ Son Triện Khắc */
+}
+
+.text-jade {
+  color: #173831 !important; /* Ngọc Bích Cổ */
+}
+
+.text-white-opacity,
+.lead.text-white-opacity,
+p.text-white-opacity,
+span.text-white-opacity,
+ul.text-white-opacity li,
+a.text-white-opacity {
+  color: rgba(250, 246, 238, 0.92) !important; /* Trắng ngà Dó rõ nét */
+  opacity: 1 !important;
+}
+
+/* ==========================================================================
+   SUBPAGE PORTAL HERO BANNER WITH DONG SON & CHIM LAC WATERMARKS
+   (Đồng bộ cho Ambassador, Host, Bookings, Community, Explore, Heritage, etc.)
+   ========================================================================== */
+.portal-hero-banner {
+  background-color: var(--traditional-jade, #173831) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-bottom: 2px solid var(--traditional-border-bronze, #C59B27) !important;
+  margin-top: 76px;
+  padding: 44px 0 38px 0 !important;
+}
+
+/* Trống Đồng Đông Sơn chìm góc phải hero banner */
+.portal-hero-banner::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -60px;
+  transform: translateY(-50%);
+  width: 520px;
+  height: 520px;
+  background-image: url("images/dongson-drum-gold.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.085;
+  pointer-events: none;
+  animation: dongson-slow-spin 260s linear infinite;
+  z-index: 1;
+}
+
+/* Chim Lạc chìm góc trái hero banner */
+.portal-hero-banner::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 190px;
+  height: 95px;
+  background-image: url("images/chim-lac-gold.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.065;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.portal-hero-banner .container {
+  position: relative;
+  z-index: 2;
+}
+
+.portal-hero-banner h1,
+.portal-hero-banner .h2 {
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  letter-spacing: -0.01em;
+}
+
+.portal-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.15em !important;
+  color: #DFB847 !important;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.portal-hero-banner p.lead,
+.portal-hero-banner .text-white-opacity {
+  color: rgba(250, 246, 238, 0.94) !important;
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   ADMIN DASHBOARD UNIFIED TRADITIONAL STYLING (admin.html)
+   (Đồng bộ giao diện Admin sang phong cách Mộc bản & Dó truyền thống)
+   ========================================================================== */
+body.admin-body {
+  background-color: var(--traditional-paper, #FAF6EE) !important;
+  color: var(--traditional-ink, #1D2622) !important;
+  font-family: var(--font-body) !important;
+}
+
+/* Admin Sidebar Truyền Thống Ngọc Bích với Trống Đồng & Chim Lạc */
+.admin-sidebar {
+  background: linear-gradient(180deg, #132E22 0%, #0A1B14 100%) !important;
+  border-right: 1px solid var(--traditional-border-bronze, #C59B27) !important;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25) !important;
+  position: fixed;
+  overflow: hidden;
+}
+
+/* Trống Đồng Đông Sơn khổng lồ chìm góc dưới thanh bên Admin */
+.admin-sidebar::after {
+  content: '';
+  position: absolute;
+  bottom: -90px;
+  right: -90px;
+  width: 360px;
+  height: 360px;
+  background-image: url("images/dongson-drum-gold.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.085;
+  pointer-events: none;
+  animation: dongson-slow-spin 260s linear infinite;
+  z-index: 0;
+}
+
+.admin-sidebar-brand {
+  position: relative;
+  z-index: 1;
+  padding: 24px 20px !important;
+  border-bottom: 1px solid rgba(223, 184, 71, 0.25) !important;
+  background: rgba(15, 38, 30, 0.5) !important;
+}
+
+.admin-sidebar-brand .brand-title {
+  font-family: var(--font-heading) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0.02em;
+}
+
+.admin-sidebar-brand .brand-subtitle {
+  color: #DFB847 !important;
+  font-family: var(--font-heading) !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+}
+
+.admin-sidebar-menu {
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar-category-label {
+  font-family: var(--font-heading) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  color: #DFB847 !important;
+  opacity: 0.85;
+  margin: 18px 14px 8px !important;
+}
+
+.sidebar-nav-item {
+  border-radius: 0px !important; /* Bỏ bo góc hiện đại */
+  border-left: 3px solid transparent !important;
+  color: rgba(250, 246, 238, 0.85) !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  padding: 11px 16px !important;
+  margin-bottom: 4px !important;
+  transition: all 0.2s ease !important;
+}
+
+.sidebar-nav-item:hover {
+  background: rgba(223, 184, 71, 0.1) !important;
+  border-left-color: rgba(223, 184, 71, 0.5) !important;
+  color: #FFFFFF !important;
+  transform: translateX(3px) !important;
+}
+
+.sidebar-nav-item.active {
+  background: rgba(223, 184, 71, 0.18) !important;
+  border-left: 3px solid #DFB847 !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+}
+
+.admin-sidebar-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(223, 184, 71, 0.25) !important;
+  background: rgba(10, 27, 20, 0.85) !important;
+}
+
+.admin-avatar {
+  border-radius: 0px !important;
+  background: #DFB847 !important;
+  color: #173831 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  border: 1px solid #FAF6EE !important;
+}
+
+/* Admin Top Navbar */
+.admin-top-navbar {
+  background: var(--traditional-paper, #FAF6EE) !important;
+  border-bottom: 1px solid var(--traditional-border-bronze, #C59B27) !important;
+  box-shadow: none !important;
+  padding: 16px 30px !important;
+}
+
+.navbar-breadcrumb-title {
+  font-family: var(--font-heading) !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: var(--traditional-jade, #173831) !important;
+}
+
+.navbar-breadcrumb-sub {
+  font-family: var(--font-heading) !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.1em !important;
+  color: var(--traditional-bronze, #B38A38) !important;
+}
+
+.admin-top-search input {
+  border-radius: 0px !important;
+  border: 1px solid var(--traditional-border-bronze, #C59B27) !important;
+  background-color: #FFFFFF !important;
+  font-family: var(--font-body);
+}
+
+.admin-top-search input:focus {
+  border-color: var(--traditional-jade) !important;
+  box-shadow: none !important;
+  outline: 1px solid var(--traditional-bronze);
+}
+
+/* Các thẻ chỉ số & bảng biểu Admin mang phong cách Mộc bản */
+.material-stat-card,
+.material-chart-card,
+.material-admin-card,
+.admin-tab-pane > div,
+#unauthorized-barrier .bg-white {
+  background: #FFFFFF !important;
+  border-radius: 0px !important;
+  border: 1px solid var(--traditional-border-bronze, #C59B27) !important;
+  outline: 1px solid rgba(179, 138, 56, 0.18) !important;
+  outline-offset: -4px !important;
+  box-shadow: none !important;
+  position: relative !important;
+  overflow: hidden;
+}
+
+/* Chim Lạc chìm góc thẻ thống kê Admin */
+.material-stat-card::after,
+.material-chart-card::after,
+.material-admin-card::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 90px;
+  height: 45px;
+  background-image: url("images/chim-lac-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.055;
+  pointer-events: none;
+}
+
+.material-stat-header {
+  border-radius: 0px !important; /* Không dùng bo góc modern */
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: none !important;
+}
+
+.stat-header-orange {
+  background: #B38A38 !important; /* Đồng cổ */
+}
+
+.stat-header-green {
+  background: #173831 !important; /* Ngọc bích */
+}
+
+.stat-header-red {
+  background: #A82824 !important; /* Đỏ son */
+}
+
+.stat-header-blue {
+  background: #2D5A50 !important; /* Chàm trầm */
+}
+
+.material-stat-value {
+  font-family: var(--font-heading) !important;
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  color: var(--traditional-jade, #173831) !important;
+}
+
+.material-stat-category,
+.material-chart-desc {
+  font-family: var(--font-heading) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  color: #6C7570 !important;
+}
+
+.material-chart-title,
+.admin-tab-pane h2,
+.admin-tab-pane h3 {
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  color: var(--traditional-jade, #173831) !important;
+}
+
+/* Bảng Quản trị Admin */
+.table,
+.admin-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--traditional-border-bronze) !important;
+  background: #FFFFFF;
+}
+
+.table thead th,
+.admin-table thead th {
+  background: #F4EFE6 !important;
+  color: var(--traditional-jade, #173831) !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--traditional-border-bronze) !important;
+  border-top: none !important;
+  padding: 12px 14px !important;
+}
+
+.table tbody td,
+.admin-table tbody td {
+  border-top: 1px solid rgba(23, 56, 49, 0.1) !important;
+  font-size: 0.86rem !important;
+  padding: 12px 14px !important;
+  vertical-align: middle;
+}
+
+.table tbody tr:hover {
+  background-color: #FAF7F0 !important;
+}
+
+/* Khung Thông báo Rào cản Truy cập (Unauthorized Barrier) */
+#unauthorized-barrier .bg-white {
+  padding: 42px 36px !important;
+  background: #FFFFFF !important;
+  border: 2px solid var(--traditional-border-bronze) !important;
+  outline: 1px solid rgba(179, 138, 56, 0.3) !important;
+  outline-offset: -6px !important;
+  position: relative;
+}
+
+#unauthorized-barrier .bg-white::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  height: 260px;
+  background-image: url("images/dongson-drum-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+#unauthorized-barrier h2,
+#unauthorized-barrier h3 {
+  font-family: var(--font-heading) !important;
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+  color: var(--traditional-jade, #173831) !important;
+}
+
+/* ==========================================================================
+   AMBASSADOR & PORTAL UNIFIED TRADITIONAL WORKSPACE
+   (Đồng bộ toàn diện cho ambassador.html, ambassadors.html, handbook, apply)
+   ========================================================================== */
+.amb-card,
+.stat-box,
+.detail-card,
+.training-card,
+.application-form-box,
+.cultural-tips-card,
+.ambassador-custom-card {
+  border-radius: 0px !important;
+  background: #FFFFFF !important;
+  border: 1px solid var(--traditional-border-bronze, #C59B27) !important;
+  outline: 1px solid rgba(179, 138, 56, 0.18) !important;
+  outline-offset: -4px !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+/* Họa tiết chim Lạc chìm góc các thẻ tác nghiệp đại sứ */
+.amb-card::after,
+.stat-box::after,
+.training-card::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 80px;
+  height: 40px;
+  background-image: url("images/chim-lac-bronze.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.055;
+  pointer-events: none;
+}
+
+.amb-tab-btn,
+.detail-tab-btn {
+  font-family: var(--font-heading) !important;
+  font-size: 0.92rem !important;
+  border-radius: 0px !important;
+  border-bottom: 2px solid transparent !important;
+  color: var(--traditional-jade, #173831) !important;
+  background: transparent !important;
+  padding: 10px 18px !important;
+}
+
+.amb-tab-btn.active,
+.detail-tab-btn.active {
+  border-bottom: 2px solid var(--traditional-bronze, #B38A38) !important;
+  color: var(--traditional-seal, #A82824) !important;
+  font-weight: 700 !important;
+  background: #FAF6EE !important;
+}
+
+/* Form Controls Chuẩn Mộc Bản */
+.form-control,
+.custom-select {
+  border-radius: 0px !important;
+  border: 1px solid rgba(23, 56, 49, 0.28) !important;
+  background-color: #FFFFFF !important;
+  font-family: var(--font-body);
+  color: var(--traditional-ink);
+}
+
+.form-control:focus,
+.custom-select:focus {
+  border-color: var(--traditional-bronze) !important;
+  box-shadow: none !important;
+  outline: 1px solid var(--traditional-bronze);
+}
+
+
+
 
 
 
