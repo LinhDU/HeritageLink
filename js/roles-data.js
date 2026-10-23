@@ -334,6 +334,14 @@ const DETAIL_ROLES_BY_EXP_ID = {
     platformRole: "kiểm duyệt nội dung theo 3 tiêu chí, xử lý thanh toán và chia doanh thu minh bạch.",
     badges: ["Đã có sự đồng ý ghi hình của nghệ nhân", "Đã kiểm duyệt: xác thực · storytelling · tương tác"]
   },
+  8: {
+    ambassadorName: "Trần Phương Linh",
+    ambassadorRole: "đã trực tiếp khảo sát thực địa tại làng Vạn Phúc, ghi hình cỗ khung cửi Jacquard gỗ và xây dựng hồ sơ Lụa Vân; là đầu mối kết nối cùng nghệ nhân Mai.",
+    artisanName: "Nghệ nhân Nguyễn Thị Mai",
+    artisanRole: "nghệ nhân 46 năm nghề trực tiếp hướng dẫn kỹ thuật quay tơ dệt lụa và chịu trách nhiệm về chất lượng, an toàn buổi trải nghiệm.",
+    platformRole: "kiểm duyệt nội dung theo 3 tiêu chí, xử lý thanh toán và chia doanh thu minh bạch (85% chuyển thẳng nghệ nhân).",
+    badges: ["Đã có sự đồng thuận ủy quyền của nghệ nhân Mai", "Đã kiểm duyệt: xác thực · storytelling · tương tác"]
+  },
   default: {
     ambassadorName: "Đại sứ Di sản HeritageLink",
     ambassadorRole: "đã khảo sát, ghi hình và xây dựng hồ sơ; là đầu mối xác nhận lịch và hỗ trợ bạn tại chỗ.",

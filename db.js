@@ -380,6 +380,82 @@ const seedExperiences = [
     culturalNotes: 'Gốm mộc không pha hóa chất men bóng. Trước khi dùng lần đầu nên luộc qua nước sôi hoặc nước trà.',
     stampTheme: 'Sản phẩm',
     stampId: 'STAMP-PRODUCT-AMCHEN'
+  },
+  {
+    id: 8,
+    category: 'craft',
+    segmentName: 'Làng nghề thủ công',
+    title: 'Lụa Vạn Phúc – Nghệ thuật Lụa Vân nghìn năm đất Thăng Long',
+    location: 'Hà Nội',
+    price: 850000,
+    duration: '1 buổi (3.5 giờ)',
+    maxGuests: 8,
+    ambassador: 'Trần Phương Linh',
+    ambassadorId: 2,
+    hostId: 8,
+    hostName: 'Nghệ nhân Nguyễn Thị Mai',
+    rating: 5.0,
+    reviewCount: 32,
+    imageClass: 'images/vanphuc/img_8039.jpg',
+    videoUrl: 'images/vanphuc/lang-lua-van-phuc.mp4',
+    videoTitle: 'Phim tư liệu thực địa: Tiếng thoi đưa & Nghệ thuật dệt Lụa Vân Vạn Phúc',
+    gallery: [
+      'images/vanphuc/img_8039.jpg',
+      'images/vanphuc/img_8034.jpg',
+      'images/vanphuc/img_8035.jpg',
+      'images/vanphuc/img_8036.jpg',
+      'images/vanphuc/img_8037.jpg',
+      'images/vanphuc/img_8038.jpg',
+      'images/vanphuc/img_8040.jpg'
+    ],
+    galleryImages: [
+      'images/vanphuc/img_8039.jpg',
+      'images/vanphuc/img_8034.jpg',
+      'images/vanphuc/img_8035.jpg',
+      'images/vanphuc/img_8036.jpg',
+      'images/vanphuc/img_8037.jpg',
+      'images/vanphuc/img_8038.jpg',
+      'images/vanphuc/img_8040.jpg'
+    ],
+    badge: 'Đã kiểm duyệt',
+    hasStay: false,
+    verifiedDate: '23/10/2026',
+    specialIntro: 'Trải nghiệm văn hóa sống độc bản được ghi hình thực địa cùng cỗ khung cửi Jacquard gỗ cổ truyền và Nghệ nhân Nguyễn Thị Mai tại làng lụa nghìn năm tuổi Vạn Phúc.',
+    story: 'Làng lụa Vạn Phúc bên dòng sông Nhuệ là cái nôi dệt tơ tằm cổ kính nhất Việt Nam với hơn một thiên niên kỷ thăng trầm. Nơi đây lưu giữ tuyệt kỹ dệt Lụa Vân – thứ gấm lụa cung đình tinh xảo với hoa văn chìm nổi huyền ảo theo từng góc độ ánh sáng. Trải nghiệm đưa bạn về với xưởng dệt cổ, tận mắt ngắm nhìn cỗ khung cửi Jacquard gỗ rọi ánh đèn vàng, nghe tiếng thoi đưa lách cách và chạm tay vào những súc lụa mềm mướt như dòng nước mùa thu.',
+    heritageSlug: 'lua-van-phuc',
+    layers: {
+      layer1_observe: 'Quan sát giàn guồng xa quay cuộn hàng vạn sợi tơ tằm óng ả và đôi bàn tay nghệ nhân luồn từng sợi tơ lên cỗ khung cửi Jacquard gỗ đồ sộ.',
+      layer1_image: 'images/vanphuc/img_8036.jpg',
+      layer1_video: 'images/vanphuc/lang-lua-van-phuc.mp4',
+      layer2_touch: 'Chạm tay vào bề mặt mát mịn óng ả của dải Lụa Vân vừa hoàn thiện trên khung dệt còn vương hương thơm mộc của sợi tơ tằm.',
+      layer2_image: 'images/vanphuc/img_8040.jpg',
+      layer3_do: 'Trực tiếp ngồi vào bàn quay tơ, học cách điều chỉnh con suốt và thử tay luồn sợi dệt dải lụa kỷ niệm dưới sự chỉ dẫn của nghệ nhân lão thành.',
+      layer3_image: 'images/vanphuc/img_8034.jpg',
+      layer4_listen: 'Lắng nghe huyền tích Bà tổ nghề Ả Lã Đê Nương thế kỷ thứ 9, giai thoại Lụa Vân tiến vua triều Nguyễn và niềm tự hào tham gia đấu xảo quốc tế Marseille.',
+      layer4_image: 'images/vanphuc/img_8037.jpg'
+    },
+    artisan: {
+      name: 'Nghệ nhân Nguyễn Thị Mai',
+      years: '46 năm giữ lửa dệt Lụa Vân cổ truyền Vạn Phúc',
+      quote: 'Lụa Vạn Phúc không chỉ là sợi vải, đó là mồ hôi, là tinh hoa của đất trời và linh hồn của nghìn năm Thăng Long dệt nên.',
+      image: 'images/vanphuc/img_8037.jpg'
+    },
+    culturalNotes: 'Vui lòng đi nhẹ, nói khẽ trong gian xưởng dệt cổ kính. Tránh chạm vào các trục tơ mỏng mảnh khi khung cửi đang vận hành.',
+    stampTheme: 'Làng nghề',
+    stampId: 'STAMP-LUA-VANPHUC',
+    customTheme: {
+      themePreset: 'silk',
+      primaryColor: '#173831',
+      accentColor: '#DFB847',
+      secondaryColor: '#FAF6EE',
+      heroLayout: 'cinematic',
+      fontStyle: 'serif',
+      badgeText: 'Thực địa 100% cùng Nghệ nhân Lão thành Vạn Phúc',
+      ambassadorNote: 'Chào bạn, mình là Phương Linh. Vạn Phúc mùa này rực rỡ sắc màu lụa phơi trong nắng. Mình sẽ cùng bạn đến tận xưởng nghệ nhân Mai, tận mắt thấy quy trình dệt Lụa Vân độc bản nhé!',
+      audioTitle: 'Tiếng thoi đưa & Chuyện nghìn năm Lụa Vân tiến vua',
+      audioGuideUrl: '#',
+      culturalTips: 'Nên mặc trang phục trang nhã để có những bức ảnh kỷ niệm tuyệt đẹp bên giàn tơ và súc lụa óng ánh.'
+    }
   }
 ];
 
@@ -465,6 +541,18 @@ const memoryStore = {
       passwordhash: bcrypt.hashSync('client123', 10),
       role: 'client',
       phone: '0909988776',
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: 8,
+      email: 'mai.vanphuc@heritagelink.vn',
+      name: 'Nghệ nhân Nguyễn Thị Mai',
+      passwordHash: bcrypt.hashSync('hodan123', 10),
+      passwordhash: bcrypt.hashSync('hodan123', 10),
+      role: 'host',
+      phone: '0912889977',
+      region: 'Vạn Phúc, Hà Đông, Hà Nội',
+      craft: 'Dệt Lụa Vân Cổ Truyền',
       createdAt: new Date().toISOString()
     }
   ],
@@ -553,7 +641,7 @@ const memoryStore = {
       earnedAt: '2026-10-20T14:30:00.000Z'
     }
   ],
-  nextExperienceId: 8,
+  nextExperienceId: 9,
   nextBookingId: 3,
   nextAppId: 3,
   nextStampId: 2
@@ -965,6 +1053,33 @@ const seedHeritageProfiles = [
       image: 'images/person_3.jpg'
     },
     relatedExperienceId: 6
+  },
+  {
+    slug: 'lua-van-phuc',
+    title: 'Lụa Vạn Phúc – Nghệ thuật Lụa Vân nghìn năm đất Thăng Long',
+    location: 'Phường Vạn Phúc, Quận Hà Đông, TP. Hà Nội',
+    category: 'craft',
+    categoryName: 'Làng nghề thủ công',
+    coverImage: 'images/vanphuc/img_8039.jpg',
+    ambassadorName: 'Trần Phương Linh',
+    ambassadorSchool: 'ĐH Quốc gia Hà Nội',
+    consentGranted: 'Đã nhận được sự đồng thuận và ủy quyền truyền thông từ Nghệ nhân Nguyễn Thị Mai và Hội đồng Làng nghề Lụa Vạn Phúc.',
+    verifiedDate: '23/10/2026',
+    history: 'Làng lụa Vạn Phúc (tên cổ là Vạn Bảo) có lịch sử hơn 1.000 năm, khởi nguồn từ thế kỷ thứ 9 do bà Ả Lã Đê Nương truyền dạy nghề dệt tơ tằm. Nổi tiếng nhất là Lụa Vân – loại lụa quý với hoa văn chìm nổi tinh xảo từng được chọn tiến vua triều Nguyễn và từng vinh dự tham gia các kỳ Đấu xảo quốc tế tại Marseille, Paris thời Pháp thuộc.',
+    processSteps: [
+      { step: '1. Tuyển tơ tằm & mắc cửi đồ sộ', desc: 'Chọn những sợi tơ tằm tự nhiên óng ả nhất, giàn guồng xa quay cuộn hàng vạn sợi tơ chạy dài tăm tắp vào cỗ máy mắc cửi gỗ khổng lồ.' },
+      { step: '2. Lắp đặt thẻ bài đục lỗ hoa văn Jacquard', desc: 'Cỗ khung cửi gỗ cổ truyền được lập trình cơ học bằng chuỗi thẻ bài đục lỗ, quyết định từng đường vân hoa cúc thọ, tứ quý hay mây nước.' },
+      { step: '3. Dệt lụa tơ tằm & điều chỉnh con suốt', desc: 'Đôi bàn tay nghệ nhân thoăn thoắt ghì go, chân đạp nhịp nhàng, con suốt lao vút qua lại tạo nên tấm Lụa Vân mềm mướt như làn gió.' },
+      { step: '4. Nấu tẩy, nhuộm thảo mộc & phơi nắng', desc: 'Lụa sau khi dệt được nấu tẩy chất keo tơ, nhuộm bằng củ nâu, lá bàng tự nhiên và căng phơi dưới nắng ấm bên bờ sông Nhuệ.' }
+    ],
+    culturalValues: 'Linh hồn của nghìn năm Thăng Long, biểu trưng cho sự mềm mại, đoan trang và đỉnh cao tay nghề thủ công dệt gấm vóc Việt Nam.',
+    artisan: {
+      name: 'Nghệ nhân Nguyễn Thị Mai',
+      role: 'Nghệ nhân giữ lửa Lụa Vân Vạn Phúc • 46 năm kinh nghiệm',
+      quote: 'Lụa Vạn Phúc không chỉ là sợi vải, đó là mồ hôi, là tinh hoa của đất trời và linh hồn của nghìn năm Thăng Long dệt nên.',
+      image: 'images/vanphuc/img_8037.jpg'
+    },
+    relatedExperienceId: 8
   }
 ];
 

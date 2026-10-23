@@ -21,7 +21,8 @@ const HERITAGE_COORDINATES = {
   4: { lat: 16.0028, lng: 108.1481, name: 'Ẩm thực Hòa Vang', province: 'Đà Nẵng', region: 'central' },
   5: { lat: 20.2858, lng: 105.9083, name: 'Cố Đô Hoa Lư & Tràng An', province: 'Ninh Bình', region: 'north' },
   6: { lat: 15.8801, lng: 108.3380, name: 'Đèn lồng Hội An', province: 'Quảng Nam', region: 'central' },
-  7: { lat: 21.1448, lng: 106.1950, name: 'Ấm chén gốm mộc Phù Lãng', province: 'Bắc Ninh', region: 'north' }
+  7: { lat: 21.1448, lng: 106.1950, name: 'Ấm chén gốm mộc Phù Lãng', province: 'Bắc Ninh', region: 'north' },
+  8: { lat: 20.9784, lng: 105.7766, name: 'Lụa Vạn Phúc (Hà Đông)', province: 'Hà Nội', region: 'north' }
 };
 
 // Base API URL resolver: Supports both http://localhost:3000 and file:/// protocol
@@ -64,13 +65,44 @@ function getOfflineDataFallback(url) {
       { id: 4, category: 'food', segmentName: 'Ẩm thực địa phương', title: 'Mâm cơm đồng quê Hòa Vang – Hương vị gia đình miền Trung', location: 'Đà Nẵng', price: 750000, duration: '3 giờ', maxGuests: 10, ambassador: 'Lan Anh', rating: 4.8, reviewCount: 52, imageClass: 'images/amthuc-danang.jpg', badge: 'Đã kiểm duyệt' },
       { id: 5, category: 'culture', segmentName: 'Tour văn hóa & Di tích', title: 'Huyền sử Cố Đô Hoa Lư & Chèo thuyền xuyên thủy động Tràng An', location: 'Ninh Bình', price: 950000, duration: '1 ngày', maxGuests: 12, ambassador: 'Lê Minh Anh', rating: 4.9, reviewCount: 64, imageClass: 'images/ninhbinh.jpg', badge: 'Đã kiểm duyệt' },
       { id: 6, category: 'craft', segmentName: 'Làng nghề thủ công', title: 'Nghệ thuật làm đèn lồng lụa Hội An – Thắp sáng phố cổ', location: 'Quảng Nam', price: 450000, duration: '2.5 giờ', maxGuests: 15, ambassador: 'Quốc Bình', rating: 4.9, reviewCount: 88, imageClass: 'images/hoian.jpg', badge: 'Đã kiểm duyệt' },
-      { id: 7, category: 'product', segmentName: 'Sản phẩm thủ công', title: 'Bộ ấm chén gốm mộc Phù Lãng khắc tay men da lươn độc bản', location: 'Bắc Ninh', price: 350000, duration: 'Giao hàng tận nơi', maxGuests: 1, ambassador: 'Trần Văn Hoàng', rating: 4.9, reviewCount: 15, imageClass: 'images/gom-bacninh.jpg', badge: 'Đã kiểm duyệt' }
+      { id: 7, category: 'product', segmentName: 'Sản phẩm thủ công', title: 'Bộ ấm chén gốm mộc Phù Lãng khắc tay men da lươn độc bản', location: 'Bắc Ninh', price: 350000, duration: 'Giao hàng tận nơi', maxGuests: 1, ambassador: 'Trần Văn Hoàng', rating: 4.9, reviewCount: 15, imageClass: 'images/gom-bacninh.jpg', badge: 'Đã kiểm duyệt' },
+      { id: 8, category: 'craft', segmentName: 'Làng nghề thủ công', title: 'Lụa Vạn Phúc – Nghệ thuật Lụa Vân nghìn năm đất Thăng Long', location: 'Hà Nội', price: 850000, duration: '1 buổi (3.5 giờ)', maxGuests: 8, ambassador: 'Trần Phương Linh', rating: 5.0, reviewCount: 32, imageClass: 'images/vanphuc/img_8039.jpg', videoUrl: 'images/vanphuc/lang-lua-van-phuc.mp4', badge: 'Đã kiểm duyệt' }
     ];
   }
   if (cleanUrl.startsWith('/api/experiences/')) {
     const id = Number(cleanUrl.replace('/api/experiences/', '')) || 1;
     const all = getOfflineDataFallback('/api/experiences');
     const item = all.find(x => x.id === id) || all[0];
+    if (id === 8) {
+      return {
+        ...item,
+        videoUrl: 'images/vanphuc/lang-lua-van-phuc.mp4',
+        videoTitle: 'Phim tư liệu thực địa: Tiếng thoi đưa & Nghệ thuật dệt Lụa Vân Vạn Phúc',
+        gallery: [
+          'images/vanphuc/img_8039.jpg',
+          'images/vanphuc/img_8034.jpg',
+          'images/vanphuc/img_8035.jpg',
+          'images/vanphuc/img_8036.jpg',
+          'images/vanphuc/img_8037.jpg',
+          'images/vanphuc/img_8038.jpg',
+          'images/vanphuc/img_8040.jpg'
+        ],
+        story: 'Làng lụa Vạn Phúc bên dòng sông Nhuệ là cái nôi dệt tơ tằm cổ kính nhất Việt Nam với hơn một thiên niên kỷ thăng trầm. Nơi đây lưu giữ tuyệt kỹ dệt Lụa Vân – thứ gấm lụa cung đình tinh xảo với hoa văn chìm nổi huyền ảo theo từng góc độ ánh sáng. Trải nghiệm đưa bạn về với xưởng dệt cổ, tận mắt ngắm nhìn cỗ khung cửi Jacquard gỗ rọi ánh đèn vàng, nghe tiếng thoi đưa lách cách và chạm tay vào những súc lụa mềm mướt như dòng nước mùa thu.',
+        heritageSlug: 'lua-van-phuc',
+        layers: {
+          layer1_observe: 'Quan sát giàn guồng xa quay cuộn hàng vạn sợi tơ tằm óng ả và đôi bàn tay nghệ nhân luồn từng sợi tơ lên cỗ khung cửi Jacquard gỗ đồ sộ.',
+          layer1_image: 'images/vanphuc/img_8036.jpg',
+          layer1_video: 'images/vanphuc/lang-lua-van-phuc.mp4',
+          layer2_touch: 'Chạm tay vào bề mặt mát mịn óng ả của dải Lụa Vân vừa hoàn thiện trên khung dệt còn vương hương thơm mộc của sợi tơ tằm.',
+          layer2_image: 'images/vanphuc/img_8040.jpg',
+          layer3_do: 'Trực tiếp ngồi vào bàn quay tơ, học cách điều chỉnh con suốt và thử tay luồn sợi dệt dải lụa kỷ niệm dưới sự chỉ dẫn của nghệ nhân lão thành.',
+          layer3_image: 'images/vanphuc/img_8034.jpg',
+          layer4_listen: 'Lắng nghe huyền tích Bà tổ nghề Ả Lã Đê Nương thế kỷ thứ 9, giai thoại Lụa Vân tiến vua triều Nguyễn và niềm tự hào tham gia đấu xảo quốc tế Marseille.',
+          layer4_image: 'images/vanphuc/img_8037.jpg'
+        },
+        artisan: { name: 'Nghệ nhân Nguyễn Thị Mai', years: '46 năm giữ lửa dệt Lụa Vân cổ truyền Vạn Phúc', quote: 'Lụa Vạn Phúc không chỉ là sợi vải, đó là mồ hôi, là tinh hoa của đất trời và linh hồn của nghìn năm Thăng Long dệt nên.', image: 'images/vanphuc/img_8037.jpg' }
+      };
+    }
     return {
       ...item,
       story: 'Làng gốm Phù Lãng bên bờ sông Cầu có lịch sử hơn 700 năm. Khác với men ngọc hay men rạn Bát Tràng, gốm Phù Lãng nổi tiếng với men da lươn tự nhiên thô mộc, tạo hình từ đất sét vàng đỏ và nung hoàn toàn bằng củi rơm truyền thống.',
@@ -521,6 +553,18 @@ async function initDetailPage() {
     const mainImg = resolveImageUrl(exp.imageClass);
     if (document.getElementById('detail-hero-main-img')) {
       document.getElementById('detail-hero-main-img').src = mainImg;
+    }
+    if (exp.gallery && exp.gallery.length >= 2) {
+      if (document.getElementById('detail-sub-img-1')) {
+        document.getElementById('detail-sub-img-1').src = resolveImageUrl(exp.gallery[1] || exp.gallery[0]);
+      }
+      if (document.getElementById('detail-sub-img-2')) {
+        document.getElementById('detail-sub-img-2').src = resolveImageUrl(exp.gallery[2] || exp.gallery[1]);
+      }
+    }
+    const livingHeritageLink = document.getElementById('link-living-heritage');
+    if (livingHeritageLink && exp.heritageSlug) {
+      livingHeritageLink.href = `heritage.html?slug=${exp.heritageSlug}`;
     }
 
     // Apply Ambassador's Custom Detail UI Theme
