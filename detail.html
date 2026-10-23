@@ -159,16 +159,16 @@
 					<!-- Interactive Tab Navigation Header -->
 					<div class="detail-tabs-nav" role="tablist">
 						<button class="detail-tab-btn active" data-tab="tab-overview" type="button">
-							<span>🌿</span> Tổng quan & Câu chuyện
+							Tổng quan & Câu chuyện
 						</button>
 						<button class="detail-tab-btn" data-tab="tab-journey" type="button">
-							<span>🏺</span> Hành trình 4 Lớp
+							Hành trình 4 Lớp giác quan
 						</button>
 						<button class="detail-tab-btn" data-tab="tab-artisan" type="button">
-							<span>🤝</span> Nghệ nhân & Ba bên
+							Nghệ nhân & Hộ dân
 						</button>
 						<button class="detail-tab-btn" data-tab="tab-reviews" type="button">
-							<span>⭐</span> Đánh giá (<span id="tab-review-count-badge">38</span>)
+							Đánh giá du khách (<span id="tab-review-count-badge">38</span>)
 						</button>
 					</div>
 
@@ -188,6 +188,20 @@
 							</p>
 						</div>
 
+						<!-- Thước phim thực địa Tour Video (nếu có) -->
+						<div id="detail-tour-video-box" class="p-4 bg-white rounded-20 border shadow-sm mb-4 d-none">
+							<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom flex-wrap gap-2">
+								<div>
+									<span class="badge badge-accent text-white font-weight-bold px-2 py-1 small mb-1">Thước phim Thực địa</span>
+									<h3 class="h5 font-weight-bold text-forest-green mb-0" id="detail-tour-video-title">Phóng sự khảo sát di sản</h3>
+								</div>
+								<span class="small text-muted font-weight-bold">Bản ghi hình trực tiếp từ thực địa</span>
+							</div>
+							<div class="rounded-15 overflow-hidden border bg-dark">
+								<video id="detail-tour-video-player" controls class="w-100" style="max-height: 420px; display: block; margin: 0 auto; background: #000;"></video>
+							</div>
+						</div>
+
 						<!-- Audio Guide Player Widget -->
 						<div id="detail-audio-guide-box" class="audio-guide-player p-3 rounded-15 border mb-4 d-none d-flex align-items-center justify-content-between flex-wrap gap-2">
 							<div class="d-flex align-items-center gap-3">
@@ -195,7 +209,7 @@
 									<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
 								</button>
 								<div>
-									<strong class="d-block small text-forest-green">🎧 Audio Guide do Đại sứ biên soạn:</strong>
+									<strong class="d-block small text-forest-green">Audio Guide do Đại sứ biên soạn:</strong>
 									<span class="small text-muted" id="detail-audio-title">Tiếng bàn xoay & chuyện giữ nghề</span>
 								</div>
 							</div>
@@ -250,7 +264,6 @@
 						<!-- Cultural Tips Card -->
 						<div id="detail-cultural-tips-box" class="cultural-tips-card p-4 rounded-20 border shadow-sm mb-4 d-none">
 							<div class="d-flex align-items-center gap-2 mb-2">
-								<span style="font-size: 1.3rem;">💡</span>
 								<h4 class="h6 font-weight-bold text-forest-green mb-0">Mẹo bản địa & Quy tắc ứng xử từ Đại sứ:</h4>
 							</div>
 							<p class="small text-muted mb-0" id="detail-cultural-tips-text" style="line-height: 1.55;">
@@ -271,12 +284,19 @@
 									<div class="layer-step-badge">1</div>
 									<div class="p-3 bg-warm-ivory rounded-15 border shadow-sm">
 										<div class="d-flex justify-content-between align-items-center mb-1">
-											<h4 class="h6 font-weight-bold text-forest-green mb-0">Quan sát (Nhìn thấy)</h4>
-											<span class="badge badge-light border small text-muted font-weight-bold">45 phút</span>
+											<h4 class="h6 font-weight-bold text-forest-green mb-0">Giai đoạn 1: Quan sát (Nhìn nhận nghệ nhân thực hành)</h4>
+											<span class="badge badge-light border small text-muted font-weight-bold">Tầng nhận thức</span>
 										</div>
-										<p class="small text-muted mb-0" id="detail-layer1">
+										<p class="small text-muted mb-2" id="detail-layer1">
 											Quan sát nghệ nhân chuốt gốm trên bàn xoay thủ công và kỹ thuật canh lửa lò nung củi rơm 3 ngày 3 đêm liên tục.
 										</p>
+										<!-- Stage 1 Media (Image & Video) -->
+										<div id="detail-layer1-img-box" class="mt-2 d-none">
+											<img id="detail-layer1-img" src="" class="rounded-12 border w-100 mb-2 shadow-2xs" style="max-height: 260px; object-fit: cover;" alt="Giai đoạn 1: Quan sát">
+										</div>
+										<div id="detail-layer1-vid-box" class="mt-2 d-none">
+											<video id="detail-layer1-vid" controls class="rounded-12 border w-100 shadow-2xs" style="max-height: 260px; background: #000;"></video>
+										</div>
 									</div>
 								</div>
 
@@ -285,12 +305,19 @@
 									<div class="layer-step-badge">2</div>
 									<div class="p-3 bg-warm-ivory rounded-15 border shadow-sm">
 										<div class="d-flex justify-content-between align-items-center mb-1">
-											<h4 class="h6 font-weight-bold text-forest-green mb-0">Cảm nhận (Chạm vào)</h4>
-											<span class="badge badge-light border small text-muted font-weight-bold">30 phút</span>
+											<h4 class="h6 font-weight-bold text-forest-green mb-0">Giai đoạn 2: Chạm tay (Cảm nhận chất liệu tự nhiên)</h4>
+											<span class="badge badge-light border small text-muted font-weight-bold">Tầng cảm giác</span>
 										</div>
-										<p class="small text-muted mb-0" id="detail-layer2">
+										<p class="small text-muted mb-2" id="detail-layer2">
 											Chạm tay vào khối đất sét phù sa ủ dẻo, cảm nhận bề mặt thô mộc ấm nóng của men da lươn vừa ra lò.
 										</p>
+										<!-- Stage 2 Media -->
+										<div id="detail-layer2-img-box" class="mt-2 d-none">
+											<img id="detail-layer2-img" src="" class="rounded-12 border w-100 mb-2 shadow-2xs" style="max-height: 260px; object-fit: cover;" alt="Giai đoạn 2: Chạm tay">
+										</div>
+										<div id="detail-layer2-vid-box" class="mt-2 d-none">
+											<video id="detail-layer2-vid" controls class="rounded-12 border w-100 shadow-2xs" style="max-height: 260px; background: #000;"></video>
+										</div>
 									</div>
 								</div>
 
@@ -299,12 +326,19 @@
 									<div class="layer-step-badge">3</div>
 									<div class="p-3 bg-warm-ivory rounded-15 border shadow-sm border-gold">
 										<div class="d-flex justify-content-between align-items-center mb-1">
-											<h4 class="h6 font-weight-bold text-forest-green mb-0">Thực hành (Tự làm) — Trọng tâm</h4>
+											<h4 class="h6 font-weight-bold text-forest-green mb-0">Giai đoạn 3: Tự làm (Thực hành chế tác 1:1) — Trọng tâm</h4>
 											<span class="badge badge-accent text-white font-weight-bold small">Có sản phẩm mang về</span>
 										</div>
-										<p class="small text-muted mb-0" id="detail-layer3">
+										<p class="small text-muted mb-2" id="detail-layer3">
 											Trực tiếp nhào đất, tự tay chuốt chiếc cốc mộc hoặc bình hoa kỷ niệm dưới sự hướng dẫn 1:1 của nghệ nhân.
 										</p>
+										<!-- Stage 3 Media -->
+										<div id="detail-layer3-img-box" class="mt-2 d-none">
+											<img id="detail-layer3-img" src="" class="rounded-12 border w-100 mb-2 shadow-2xs" style="max-height: 260px; object-fit: cover;" alt="Giai đoạn 3: Tự làm">
+										</div>
+										<div id="detail-layer3-vid-box" class="mt-2 d-none">
+											<video id="detail-layer3-vid" controls class="rounded-12 border w-100 shadow-2xs" style="max-height: 260px; background: #000;"></video>
+										</div>
 									</div>
 								</div>
 
@@ -313,12 +347,19 @@
 									<div class="layer-step-badge">4</div>
 									<div class="p-3 bg-warm-ivory rounded-15 border shadow-sm">
 										<div class="d-flex justify-content-between align-items-center mb-1">
-											<h4 class="h6 font-weight-bold text-forest-green mb-0">Lắng nghe (Nghe chuyện)</h4>
-											<span class="badge badge-light border small text-muted font-weight-bold">45 phút</span>
+											<h4 class="h6 font-weight-bold text-forest-green mb-0">Giai đoạn 4: Lắng nghe (Huyền tích & Triết lý sống)</h4>
+											<span class="badge badge-light border small text-muted font-weight-bold">Tầng tri thức</span>
 										</div>
-										<p class="small text-muted mb-0" id="detail-layer4">
+										<p class="small text-muted mb-2" id="detail-layer4">
 											Lắng nghe bác Nam kể huyền tích tổ nghề Hứa Vĩnh Kiều, chuyện làng gốm sơ tán thời chiến và triết lý sống hòa với đất.
 										</p>
+										<!-- Stage 4 Media -->
+										<div id="detail-layer4-img-box" class="mt-2 d-none">
+											<img id="detail-layer4-img" src="" class="rounded-12 border w-100 mb-2 shadow-2xs" style="max-height: 260px; object-fit: cover;" alt="Giai đoạn 4: Lắng nghe">
+										</div>
+										<div id="detail-layer4-vid-box" class="mt-2 d-none">
+											<video id="detail-layer4-vid" controls class="rounded-12 border w-100 shadow-2xs" style="max-height: 260px; background: #000;"></video>
+										</div>
 									</div>
 								</div>
 							</div>

@@ -3,3 +3,5 @@ node_modules/
 .env
 .env.local
 heritagelink_store.json
+uploads/*
+!uploads/.gitkeep

@@ -28,8 +28,14 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const fs = require('fs');
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 app.use(
   session({
     secret: 'heritagelink-secret-key',
@@ -42,6 +48,7 @@ app.use(
   })
 );
 
+app.use('/uploads', express.static(uploadDir));
 app.use(express.static(path.join(__dirname)));
 app.use(routes);
 

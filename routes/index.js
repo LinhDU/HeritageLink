@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const { db, memoryStore, calculateRevenueSplit } = require('../db');
 const { login, register, logout, getCurrentUser } = require('../controllers/authController');
 const { getExperiences, getExperienceById, getImpact, createApplication } = require('../controllers/experienceController');
@@ -17,6 +19,63 @@ const {
 } = require('../controllers/adminController');
 
 const router = express.Router();
+
+// File upload API for images and videos
+router.post('/api/upload', (req, res) => {
+  try {
+    const { data, name } = req.body || {};
+    if (!data) {
+      return res.status(400).json({ message: 'Không có dữ liệu tệp tải lên.' });
+    }
+
+    if (typeof data === 'string' && (data.startsWith('http') || data.startsWith('images/') || data.startsWith('/uploads/'))) {
+      return res.json({ url: data, filename: name || 'file' });
+    }
+
+    const matches = data.match(/^data:([A-Za-z0-9\-+\/]+);base64,(.+)$/);
+    if (!matches || matches.length !== 3) {
+      return res.status(400).json({ message: 'Định dạng tệp không hợp lệ.' });
+    }
+
+    const mimeType = matches[1];
+    const buffer = Buffer.from(matches[2], 'base64');
+
+    let ext = 'bin';
+    if (mimeType.includes('jpeg') || mimeType.includes('jpg')) ext = 'jpg';
+    else if (mimeType.includes('png')) ext = 'png';
+    else if (mimeType.includes('webp')) ext = 'webp';
+    else if (mimeType.includes('gif')) ext = 'gif';
+    else if (mimeType.includes('mp4')) ext = 'mp4';
+    else if (mimeType.includes('webm')) ext = 'webm';
+    else if (mimeType.includes('quicktime') || mimeType.includes('mov')) ext = 'mov';
+    else if (mimeType.includes('ogg')) ext = 'ogg';
+    else if (mimeType.includes('mp3') || mimeType.includes('mpeg')) ext = 'mp3';
+    else if (name && name.includes('.')) ext = name.split('.').pop().toLowerCase();
+
+    const uploadDir = path.join(__dirname, '..', 'uploads');
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    const cleanName = (name || 'media').replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 30);
+    const filename = `${Date.now()}_${cleanName}.${ext}`;
+    const filePath = path.join(uploadDir, filename);
+
+    fs.writeFileSync(filePath, buffer);
+
+    const fileUrl = `/uploads/${filename}`;
+    return res.json({
+      message: 'Tải tệp lên thành công!',
+      url: fileUrl,
+      filename,
+      mimeType,
+      size: buffer.length
+    });
+  } catch (err) {
+    console.error('Upload error:', err);
+    return res.status(500).json({ message: 'Lỗi khi lưu tệp tải lên.', error: err.message });
+  }
+});
 
 router.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'HeritageLink API đang hoạt động' });
@@ -384,12 +443,15 @@ router.post('/api/ambassador/experiences', async (req, res) => {
     duration,
     maxGuests,
     imageUrl,
+    videoUrl,
+    videoTitle,
     galleryImages,
     hostId,
     hostName,
     story,
     specialIntro,
     layers,
+    stages,
     artisan,
     packages,
     addons,
@@ -435,6 +497,8 @@ router.post('/api/ambassador/experiences', async (req, res) => {
     location,
     price: Number(price || 850000),
     imageClass: imageUrl || 'images/gom-bacninh.jpg',
+    videoUrl: videoUrl || '',
+    videoTitle: videoTitle || 'Thước phim thực địa di sản',
     galleryImages: Array.isArray(galleryImages) && galleryImages.length ? galleryImages : [imageUrl || 'images/gom-bacninh.jpg', 'images/person_2.jpg', 'images/gal_2.jpg'],
     hostId: hostId ? Number(hostId) : null,
     hostName: hostName || (artisan?.name || 'Nghệ nhân bản địa'),
@@ -447,10 +511,24 @@ router.post('/api/ambassador/experiences', async (req, res) => {
     story: story || 'Hồ sơ di sản văn hóa do Đại sứ khảo sát thực địa và có sự ủy quyền kể chuyện từ nghệ nhân bản địa.',
     layers: layers || {
       layer1_observe: 'Quan sát các công đoạn chế tác bí truyền của làng.',
+      layer1_image: '',
+      layer1_video: '',
       layer2_touch: 'Cầm nắm nguyên liệu tự nhiên của vùng đất.',
+      layer2_image: '',
+      layer2_video: '',
       layer3_do: 'Tự tay làm sản phẩm thủ công dưới sự kèm cặp của nghệ nhân.',
-      layer4_listen: 'Lắng nghe những huyền tích, chuyện giữ nghề ngàn đời.'
+      layer3_image: '',
+      layer3_video: '',
+      layer4_listen: 'Lắng nghe những huyền tích, chuyện giữ nghề ngàn đời.',
+      layer4_image: '',
+      layer4_video: ''
     },
+    stages: Array.isArray(stages) && stages.length ? stages : [
+      { id: 1, name: 'Giai đoạn 1: Quan sát', desc: layers?.layer1_observe || 'Quan sát các công đoạn chế tác bí truyền của làng.', image: layers?.layer1_image || '', video: layers?.layer1_video || '' },
+      { id: 2, name: 'Giai đoạn 2: Chạm tay', desc: layers?.layer2_touch || 'Cầm nắm nguyên liệu tự nhiên của vùng đất.', image: layers?.layer2_image || '', video: layers?.layer2_video || '' },
+      { id: 3, name: 'Giai đoạn 3: Tự làm', desc: layers?.layer3_do || 'Tự tay làm sản phẩm thủ công dưới sự kèm cặp của nghệ nhân.', image: layers?.layer3_image || '', video: layers?.layer3_video || '' },
+      { id: 4, name: 'Giai đoạn 4: Lắng nghe', desc: layers?.layer4_listen || 'Lắng nghe những huyền tích, chuyện giữ nghề ngàn đời.', image: layers?.layer4_image || '', video: layers?.layer4_video || '' }
+    ],
     artisan: artisan || {
       name: hostName || `Nghệ nhân hợp tác cùng ${req.session.user.name}`,
       years: 'Hơn 25 năm giữ nghề',
@@ -498,12 +576,15 @@ router.put('/api/ambassador/experiences/:id', async (req, res) => {
     duration,
     maxGuests,
     imageUrl,
+    videoUrl,
+    videoTitle,
     galleryImages,
     hostId,
     hostName,
     story,
     specialIntro,
     layers,
+    stages,
     artisan,
     packages,
     addons,
@@ -520,12 +601,15 @@ router.put('/api/ambassador/experiences/:id', async (req, res) => {
   if (duration) exp.duration = duration;
   if (maxGuests) exp.maxGuests = Number(maxGuests);
   if (imageUrl) exp.imageClass = imageUrl;
+  if (videoUrl !== undefined) exp.videoUrl = videoUrl;
+  if (videoTitle !== undefined) exp.videoTitle = videoTitle;
   if (galleryImages) exp.galleryImages = galleryImages;
   if (hostId) exp.hostId = Number(hostId);
   if (hostName) exp.hostName = hostName;
   if (story) exp.story = story;
   if (specialIntro) exp.specialIntro = specialIntro;
   if (layers) exp.layers = { ...exp.layers, ...layers };
+  if (stages) exp.stages = stages;
   if (artisan) exp.artisan = { ...exp.artisan, ...artisan };
   if (packages) exp.packages = { ...exp.packages, ...packages };
   if (addons) exp.addons = addons;

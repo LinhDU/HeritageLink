@@ -67,24 +67,19 @@
 					</span>
 					<div class="role-switcher-container">
 						<a href="community.html" class="role-switch-pill" title="Cổng dành cho cộng đồng và nghệ nhân">
-							<span>🌿</span>
 							<span>Cộng đồng & Nghệ nhân</span>
 						</a>
 						<a href="ambassadors.html" class="role-switch-pill" title="Cổng định hướng và tuyển chọn Đại sứ">
-							<span>🎓</span>
 							<span>Cổng Tuyển Đại sứ</span>
 						</a>
 						<a href="ambassador.html" class="role-switch-pill active" title="Không gian điều hành thực tế của Đại sứ">
-							<span>💼</span>
 							<span>Dashboard Đại sứ</span>
 							<span class="role-badge-tag">Đang mở</span>
 						</a>
 						<a href="host.html" class="role-switch-pill" title="Cổng xem lịch đón khách của Hộ dân">
-							<span>📅</span>
 							<span>Lịch đón khách (Hộ dân)</span>
 						</a>
 						<a href="admin.html" class="role-switch-pill" title="Trung tâm điều hành Super Admin">
-							<span>⚙️</span>
 							<span>Super Admin</span>
 						</a>
 					</div>
@@ -162,7 +157,7 @@
 					</div>
 					<div class="col-md-auto mt-3 mt-md-0 text-md-right">
 						<a href="ambassador-handbook.html" class="btn btn-outline-primary btn-sm px-3 py-2 font-weight-bold shadow-sm mr-2">
-							📖 Cẩm nang & Đào tạo
+							Cẩm nang & Đào tạo
 						</a>
 						<button type="button" class="btn btn-primary btn-sm px-4 py-2 font-weight-bold shadow-sm" onclick="switchAmbTab('amb-tab-spots')">
 							+ Đề xuất Hồ sơ mới
@@ -176,31 +171,26 @@
 				<ul class="portal-tabs-nav" id="ambDashboardTabs" role="tablist">
 					<li>
 						<button type="button" class="portal-tab-btn active" id="btn-amb-tab-overview" onclick="switchAmbTab('amb-tab-overview')" role="tab" aria-selected="true" aria-controls="amb-tab-overview">
-							<span class="tab-icon">📊</span>
 							<span>1. Thống kê & Hiệu suất</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" class="portal-tab-btn" id="btn-amb-tab-spots" onclick="switchAmbTab('amb-tab-spots')" role="tab" aria-selected="false" aria-controls="amb-tab-spots">
-							<span class="tab-icon">🏛️</span>
-							<span>2. Điểm di sản & Đề xuất mới</span>
+							<span>2. Quản lý & Tạo Tour Di sản</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" class="portal-tab-btn" id="btn-amb-tab-bookings" onclick="switchAmbTab('amb-tab-bookings')" role="tab" aria-selected="false" aria-controls="amb-tab-bookings">
-							<span class="tab-icon">📅</span>
 							<span>3. Lịch đón khách</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" class="portal-tab-btn" id="btn-amb-tab-modules" onclick="switchAmbTab('amb-tab-modules')" role="tab" aria-selected="false" aria-controls="amb-tab-modules">
-							<span class="tab-icon">📚</span>
 							<span>4. Học phần Đào tạo</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" class="portal-tab-btn" id="btn-amb-tab-commission" onclick="switchAmbTab('amb-tab-commission')" role="tab" aria-selected="false" aria-controls="amb-tab-commission">
-							<span class="tab-icon">💵</span>
 							<span>5. Đối soát Hoa hồng 5%</span>
 						</button>
 					</li>
@@ -298,12 +288,12 @@
 					<ul class="nav nav-pills mb-4" id="builder-steps-nav" role="tablist">
 						<li class="nav-item mr-2">
 							<a class="nav-link active font-weight-bold px-3 py-2" id="step1-tab" data-toggle="pill" href="#pills-step1" role="tab">
-								1. Thông tin Tour & Kịch bản 4 Lớp
+								1. Thông tin Tour, Video & 4 Giai đoạn Thực địa
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link font-weight-bold px-3 py-2" id="step2-tab" data-toggle="pill" href="#pills-step2" role="tab">
-								🎨 2. TÙY BIẾN GIAO DIỆN TRANG DETAIL
+								2. Tùy biến Giao diện Trang Detail
 							</a>
 						</li>
 					</ul>
@@ -369,9 +359,60 @@
 										<input type="number" id="tb-premium-price" class="form-control" placeholder="1150000" min="100000" />
 									</div>
 
-									<div class="col-12 form-group mb-3">
-										<label class="small font-weight-bold text-dark">Đường dẫn ảnh đại diện thực địa *</label>
-										<input type="text" id="tb-image" class="form-control" value="images/gom-bacninh.jpg" required />
+									<!-- Hình ảnh bìa & Thước phim Thực địa (Tải lên trực tiếp) -->
+									<div class="col-12 mb-4">
+										<div class="p-3 p-md-4 rounded-15 border bg-light">
+											<div class="row">
+												<!-- Ảnh đại diện thực địa -->
+												<div class="col-md-6 mb-3 mb-md-0">
+													<label class="small font-weight-bold text-dark d-block mb-1">
+														Ảnh bìa thực địa (Tải ảnh trực tiếp từ thiết bị) *
+													</label>
+													<input type="file" id="tb-cover-file" accept="image/*" class="d-none" onchange="handleCoverFileChange(this)" />
+													<input type="hidden" id="tb-image" value="images/gom-bacninh.jpg" required />
+													
+													<div class="d-flex align-items-center gap-2 mb-2">
+														<button type="button" class="btn btn-outline-primary btn-sm font-weight-bold px-3" onclick="document.getElementById('tb-cover-file').click()">
+															Chọn tệp ảnh bìa
+														</button>
+														<span class="small text-muted text-truncate" id="tb-cover-filename" style="max-width: 180px;">images/gom-bacninh.jpg</span>
+													</div>
+
+													<div id="tb-cover-preview-box" class="position-relative rounded-12 overflow-hidden border" style="height: 160px; background: #e9ecef;">
+														<img id="tb-cover-preview-img" src="images/gom-bacninh.jpg" alt="Ảnh bìa thực địa" class="w-100 h-100" style="object-fit: cover;" />
+														<span class="badge badge-dark position-absolute small" style="bottom: 8px; left: 8px; background: rgba(0,0,0,0.65);">Ảnh bìa trang Detail</span>
+													</div>
+													<small class="text-muted d-block mt-1">Hỗ trợ định dạng JPG, PNG, WebP (Tải trực tiếp, không cần dán link)</small>
+												</div>
+
+												<!-- Thước phim phóng sự thực địa -->
+												<div class="col-md-6">
+													<label class="small font-weight-bold text-dark d-block mb-1">
+														Thước phim phóng sự thực địa (Tải video trực tiếp từ thiết bị)
+													</label>
+													<input type="file" id="tb-video-file" accept="video/*" class="d-none" onchange="handleVideoFileChange(this)" />
+													<input type="hidden" id="tb-video-url" value="" />
+
+													<input type="text" id="tb-video-title" class="form-control form-control-sm mb-2" placeholder="Tiêu đề thước phim (Ví dụ: Khảo sát thực địa làng gốm)" />
+
+													<div class="d-flex align-items-center gap-2 mb-2">
+														<button type="button" class="btn btn-outline-primary btn-sm font-weight-bold px-3" onclick="document.getElementById('tb-video-file').click()">
+															Chọn tệp video
+														</button>
+														<span class="small text-muted text-truncate" id="tb-video-filename" style="max-width: 150px;">Chưa tải video</span>
+														<button type="button" class="btn btn-sm btn-link text-danger p-0 ml-auto d-none" id="btn-remove-tour-video" onclick="removeTourVideo()">Gỡ video</button>
+													</div>
+
+													<div id="tb-video-preview-box" class="rounded-12 overflow-hidden border bg-dark d-none" style="height: 160px;">
+														<video id="tb-video-preview-player" controls class="w-100 h-100" style="object-fit: contain; background: #000;"></video>
+													</div>
+													<div id="tb-video-placeholder-box" class="rounded-12 border d-flex flex-column align-items-center justify-content-center text-center p-3" style="height: 160px; background: #fafafa; border-style: dashed !important;">
+														<span class="small font-weight-bold text-dark mb-1">Chưa có video phóng sự</span>
+														<small class="text-muted">Tải lên video MP4/WebM từ điện thoại hoặc máy tính để phát trên trang Detail</small>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 
 									<div class="col-12 form-group mb-3">
@@ -379,31 +420,209 @@
 										<textarea id="tb-special-intro" class="form-control" rows="2" placeholder="Điểm khác biệt độc bản của trải nghiệm này so với các tour thông thường..."></textarea>
 									</div>
 
-									<div class="col-12 form-group mb-3">
+									<div class="col-12 form-group mb-4">
 										<label class="small font-weight-bold text-dark">Câu chuyện di sản & Lịch sử làng nghề (Storytelling)</label>
 										<textarea id="tb-story" class="form-control" rows="3" placeholder="Chiều sâu văn hóa, nguồn gốc tổ nghề, nếp sống đồng bào..."></textarea>
 									</div>
 
-									<!-- 4 Layers -->
-									<div class="col-12 mb-3">
-										<div class="p-3 bg-light rounded-15 border">
-											<strong class="d-block text-forest-green small font-weight-bold mb-2">Kịch bản 4 lớp cảm xúc di sản (Docx 4.3):</strong>
-											<div class="row">
-												<div class="col-md-6 mb-2">
-													<label class="small text-muted mb-1 font-weight-bold">Lớp 1: Quan sát</label>
-													<input type="text" id="tb-layer1" class="form-control form-control-sm" value="Quan sát các công đoạn chế tác bí truyền của làng." />
+									<!-- KỊCH BẢN 4 GIAI ĐOẠN CẢM XÚC DI SẢN (TÁCH BIỆT TỪNG PHẦN CÓ THỂ THÊM ẢNH & VIDEO) -->
+									<div class="col-12 mb-4">
+										<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom flex-wrap gap-2">
+											<div>
+												<h4 class="h6 font-weight-bold text-forest-green mb-0">
+													Kịch bản 4 Giai đoạn Trải nghiệm Di sản (Docx 4.3)
+												</h4>
+												<small class="text-muted">
+													Phân tách thành 4 phần độc lập. Bạn có thể thêm mô tả chi tiết, tải ảnh thực địa và video clip minh họa cho từng giai đoạn.
+												</small>
+											</div>
+											<span class="badge badge-light border small font-weight-bold px-3 py-1 text-dark">
+												4 Giai đoạn Chuẩn mực
+											</span>
+										</div>
+
+										<div class="row">
+											<!-- Giai đoạn 1 -->
+											<div class="col-12 mb-3">
+												<div class="p-3 bg-white rounded-15 border shadow-2xs">
+													<div class="d-flex justify-content-between align-items-center mb-2 pb-1 border-bottom">
+														<span class="font-weight-bold text-forest-green small">
+															Giai đoạn 1: Quan sát (Nhìn nhận nghệ nhân thực hành)
+														</span>
+														<span class="badge badge-light border small text-muted">Tầng nhận thức</span>
+													</div>
+													<div class="form-group mb-2">
+														<label class="small text-muted mb-1 font-weight-bold">Mô tả hoạt động quan sát:</label>
+														<textarea id="tb-layer1" class="form-control form-control-sm" rows="2" placeholder="Ví dụ: Quan sát các công đoạn chế tác bí truyền của làng...">Quan sát các công đoạn chế tác bí truyền của làng.</textarea>
+													</div>
+													<div class="row align-items-center">
+														<div class="col-md-6 mb-2 mb-md-0">
+															<input type="file" id="tb-stage1-img-file" accept="image/*" class="d-none" onchange="handleStageFileChange(1, 'img', this)" />
+															<input type="hidden" id="tb-stage1-img-val" value="" />
+															<div class="d-flex align-items-center gap-2">
+																<button type="button" class="btn btn-sm btn-outline-secondary font-weight-bold" onclick="document.getElementById('tb-stage1-img-file').click()">
+																	Tải ảnh Giai đoạn 1
+																</button>
+																<span class="small text-muted text-truncate" id="tb-stage1-img-name" style="max-width: 140px;">Chưa có ảnh</span>
+																<button type="button" class="btn btn-sm btn-link text-danger p-0 d-none" id="tb-stage1-img-remove" onclick="removeStageMedia(1, 'img')">Gỡ</button>
+															</div>
+															<div id="tb-stage1-img-preview-box" class="mt-2 d-none">
+																<img id="tb-stage1-img-preview" src="" class="rounded-8 border" style="max-height: 110px; width: auto; object-fit: cover;" />
+															</div>
+														</div>
+														<div class="col-md-6">
+															<input type="file" id="tb-stage1-vid-file" accept="video/*" class="d-none" onchange="handleStageFileChange(1, 'vid', this)" />
+															<input type="hidden" id="tb-stage1-vid-val" value="" />
+															<div class="d-flex align-items-center gap-2">
+																<button type="button" class="btn btn-sm btn-outline-secondary font-weight-bold" onclick="document.getElementById('tb-stage1-vid-file').click()">
+																	Tải video Giai đoạn 1
+																</button>
+																<span class="small text-muted text-truncate" id="tb-stage1-vid-name" style="max-width: 140px;">Chưa có video</span>
+																<button type="button" class="btn btn-sm btn-link text-danger p-0 d-none" id="tb-stage1-vid-remove" onclick="removeStageMedia(1, 'vid')">Gỡ</button>
+															</div>
+															<div id="tb-stage1-vid-preview-box" class="mt-2 d-none">
+																<video id="tb-stage1-vid-preview" controls class="rounded-8 border w-100" style="max-height: 110px; background: #000;"></video>
+															</div>
+														</div>
+													</div>
 												</div>
-												<div class="col-md-6 mb-2">
-													<label class="small text-muted mb-1 font-weight-bold">Lớp 2: Chạm tay</label>
-													<input type="text" id="tb-layer2" class="form-control form-control-sm" value="Chạm tay vào khối nguyên liệu tự nhiên của vùng đất." />
+											</div>
+
+											<!-- Giai đoạn 2 -->
+											<div class="col-12 mb-3">
+												<div class="p-3 bg-white rounded-15 border shadow-2xs">
+													<div class="d-flex justify-content-between align-items-center mb-2 pb-1 border-bottom">
+														<span class="font-weight-bold text-forest-green small">
+															Giai đoạn 2: Chạm tay (Cảm nhận chất liệu tự nhiên)
+														</span>
+														<span class="badge badge-light border small text-muted">Tầng cảm giác</span>
+													</div>
+													<div class="form-group mb-2">
+														<label class="small text-muted mb-1 font-weight-bold">Mô tả hoạt động tiếp xúc chất liệu:</label>
+														<textarea id="tb-layer2" class="form-control form-control-sm" rows="2" placeholder="Ví dụ: Chạm tay vào khối nguyên liệu tự nhiên của vùng đất...">Chạm tay vào khối nguyên liệu tự nhiên của vùng đất.</textarea>
+													</div>
+													<div class="row align-items-center">
+														<div class="col-md-6 mb-2 mb-md-0">
+															<input type="file" id="tb-stage2-img-file" accept="image/*" class="d-none" onchange="handleStageFileChange(2, 'img', this)" />
+															<input type="hidden" id="tb-stage2-img-val" value="" />
+															<div class="d-flex align-items-center gap-2">
+																<button type="button" class="btn btn-sm btn-outline-secondary font-weight-bold" onclick="document.getElementById('tb-stage2-img-file').click()">
+																	Tải ảnh Giai đoạn 2
+																</button>
+																<span class="small text-muted text-truncate" id="tb-stage2-img-name" style="max-width: 140px;">Chưa có ảnh</span>
+																<button type="button" class="btn btn-sm btn-link text-danger p-0 d-none" id="tb-stage2-img-remove" onclick="removeStageMedia(2, 'img')">Gỡ</button>
+															</div>
+															<div id="tb-stage2-img-preview-box" class="mt-2 d-none">
+																<img id="tb-stage2-img-preview" src="" class="rounded-8 border" style="max-height: 110px; width: auto; object-fit: cover;" />
+															</div>
+														</div>
+														<div class="col-md-6">
+															<input type="file" id="tb-stage2-vid-file" accept="video/*" class="d-none" onchange="handleStageFileChange(2, 'vid', this)" />
+															<input type="hidden" id="tb-stage2-vid-val" value="" />
+															<div class="d-flex align-items-center gap-2">
+																<button type="button" class="btn btn-sm btn-outline-secondary font-weight-bold" onclick="document.getElementById('tb-stage2-vid-file').click()">
+																	Tải video Giai đoạn 2
+																</button>
+																<span class="small text-muted text-truncate" id="tb-stage2-vid-name" style="max-width: 140px;">Chưa có video</span>
+																<button type="button" class="btn btn-sm btn-link text-danger p-0 d-none" id="tb-stage2-vid-remove" onclick="removeStageMedia(2, 'vid')">Gỡ</button>
+															</div>
+															<div id="tb-stage2-vid-preview-box" class="mt-2 d-none">
+																<video id="tb-stage2-vid-preview" controls class="rounded-8 border w-100" style="max-height: 110px; background: #000;"></video>
+															</div>
+														</div>
+													</div>
 												</div>
-												<div class="col-md-6 mb-2">
-													<label class="small text-muted mb-1 font-weight-bold">Lớp 3: Tự làm</label>
-													<input type="text" id="tb-layer3" class="form-control form-control-sm" value="Tự tay làm sản phẩm lưu niệm dưới sự kèm cặp 1:1 của nghệ nhân." />
+											</div>
+
+											<!-- Giai đoạn 3 -->
+											<div class="col-12 mb-3">
+												<div class="p-3 bg-white rounded-15 border shadow-2xs border-gold" style="border-width: 1.5px !important;">
+													<div class="d-flex justify-content-between align-items-center mb-2 pb-1 border-bottom">
+														<span class="font-weight-bold text-forest-green small">
+															Giai đoạn 3: Tự làm (Thực hành chế tác 1:1 cùng nghệ nhân) — Trọng tâm
+														</span>
+														<span class="badge badge-accent text-white small font-weight-bold">Có sản phẩm mang về</span>
+													</div>
+													<div class="form-group mb-2">
+														<label class="small text-muted mb-1 font-weight-bold">Mô tả công đoạn tự tay làm thành phẩm:</label>
+														<textarea id="tb-layer3" class="form-control form-control-sm" rows="2" placeholder="Ví dụ: Tự tay làm sản phẩm lưu niệm dưới sự kèm cặp 1:1 của nghệ nhân...">Tự tay làm sản phẩm lưu niệm dưới sự kèm cặp 1:1 của nghệ nhân.</textarea>
+													</div>
+													<div class="row align-items-center">
+														<div class="col-md-6 mb-2 mb-md-0">
+															<input type="file" id="tb-stage3-img-file" accept="image/*" class="d-none" onchange="handleStageFileChange(3, 'img', this)" />
+															<input type="hidden" id="tb-stage3-img-val" value="" />
+															<div class="d-flex align-items-center gap-2">
+																<button type="button" class="btn btn-sm btn-outline-secondary font-weight-bold" onclick="document.getElementById('tb-stage3-img-file').click()">
+																	Tải ảnh Giai đoạn 3
+																</button>
+																<span class="small text-muted text-truncate" id="tb-stage3-img-name" style="max-width: 140px;">Chưa có ảnh</span>
+																<button type="button" class="btn btn-sm btn-link text-danger p-0 d-none" id="tb-stage3-img-remove" onclick="removeStageMedia(3, 'img')">Gỡ</button>
+															</div>
+															<div id="tb-stage3-img-preview-box" class="mt-2 d-none">
+																<img id="tb-stage3-img-preview" src="" class="rounded-8 border" style="max-height: 110px; width: auto; object-fit: cover;" />
+															</div>
+														</div>
+														<div class="col-md-6">
+															<input type="file" id="tb-stage3-vid-file" accept="video/*" class="d-none" onchange="handleStageFileChange(3, 'vid', this)" />
+															<input type="hidden" id="tb-stage3-vid-val" value="" />
+															<div class="d-flex align-items-center gap-2">
+																<button type="button" class="btn btn-sm btn-outline-secondary font-weight-bold" onclick="document.getElementById('tb-stage3-vid-file').click()">
+																	Tải video Giai đoạn 3
+																</button>
+																<span class="small text-muted text-truncate" id="tb-stage3-vid-name" style="max-width: 140px;">Chưa có video</span>
+																<button type="button" class="btn btn-sm btn-link text-danger p-0 d-none" id="tb-stage3-vid-remove" onclick="removeStageMedia(3, 'vid')">Gỡ</button>
+															</div>
+															<div id="tb-stage3-vid-preview-box" class="mt-2 d-none">
+																<video id="tb-stage3-vid-preview" controls class="rounded-8 border w-100" style="max-height: 110px; background: #000;"></video>
+															</div>
+														</div>
+													</div>
 												</div>
-												<div class="col-md-6 mb-2">
-													<label class="small text-muted mb-1 font-weight-bold">Lớp 4: Lắng nghe</label>
-													<input type="text" id="tb-layer4" class="form-control form-control-sm" value="Lắng nghe những huyền tích và chuyện đời giữ nghề ngàn đời." />
+											</div>
+
+											<!-- Giai đoạn 4 -->
+											<div class="col-12 mb-3">
+												<div class="p-3 bg-white rounded-15 border shadow-2xs">
+													<div class="d-flex justify-content-between align-items-center mb-2 pb-1 border-bottom">
+														<span class="font-weight-bold text-forest-green small">
+															Giai đoạn 4: Lắng nghe (Huyền tích & Triết lý giữ nghề ngàn đời)
+														</span>
+														<span class="badge badge-light border small text-muted">Tầng tri thức</span>
+													</div>
+													<div class="form-group mb-2">
+														<label class="small text-muted mb-1 font-weight-bold">Mô tả câu chuyện di sản được lắng nghe:</label>
+														<textarea id="tb-layer4" class="form-control form-control-sm" rows="2" placeholder="Ví dụ: Lắng nghe những huyền tích và chuyện đời giữ nghề ngàn đời...">Lắng nghe những huyền tích và chuyện đời giữ nghề ngàn đời.</textarea>
+													</div>
+													<div class="row align-items-center">
+														<div class="col-md-6 mb-2 mb-md-0">
+															<input type="file" id="tb-stage4-img-file" accept="image/*" class="d-none" onchange="handleStageFileChange(4, 'img', this)" />
+															<input type="hidden" id="tb-stage4-img-val" value="" />
+															<div class="d-flex align-items-center gap-2">
+																<button type="button" class="btn btn-sm btn-outline-secondary font-weight-bold" onclick="document.getElementById('tb-stage4-img-file').click()">
+																	Tải ảnh Giai đoạn 4
+																</button>
+																<span class="small text-muted text-truncate" id="tb-stage4-img-name" style="max-width: 140px;">Chưa có ảnh</span>
+																<button type="button" class="btn btn-sm btn-link text-danger p-0 d-none" id="tb-stage4-img-remove" onclick="removeStageMedia(4, 'img')">Gỡ</button>
+															</div>
+															<div id="tb-stage4-img-preview-box" class="mt-2 d-none">
+																<img id="tb-stage4-img-preview" src="" class="rounded-8 border" style="max-height: 110px; width: auto; object-fit: cover;" />
+															</div>
+														</div>
+														<div class="col-md-6">
+															<input type="file" id="tb-stage4-vid-file" accept="video/*" class="d-none" onchange="handleStageFileChange(4, 'vid', this)" />
+															<input type="hidden" id="tb-stage4-vid-val" value="" />
+															<div class="d-flex align-items-center gap-2">
+																<button type="button" class="btn btn-sm btn-outline-secondary font-weight-bold" onclick="document.getElementById('tb-stage4-vid-file').click()">
+																	Tải video Giai đoạn 4
+																</button>
+																<span class="small text-muted text-truncate" id="tb-stage4-vid-name" style="max-width: 140px;">Chưa có video</span>
+																<button type="button" class="btn btn-sm btn-link text-danger p-0 d-none" id="tb-stage4-vid-remove" onclick="removeStageMedia(4, 'vid')">Gỡ</button>
+															</div>
+															<div id="tb-stage4-vid-preview-box" class="mt-2 d-none">
+																<video id="tb-stage4-vid-preview" controls class="rounded-8 border w-100" style="max-height: 110px; background: #000;"></video>
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -436,16 +655,16 @@
 											</label>
 											<div class="d-flex flex-wrap gap-2 mb-3" id="theme-presets-bar">
 												<button type="button" class="btn btn-sm btn-outline-secondary theme-preset-btn active px-3 py-2 font-weight-bold" data-preset="terracotta" data-primary="#8d4925" data-accent="#c59b27" data-bg="#fdf8f5">
-													🏺 Gốm mộc & Đất nung
+													Gốm mộc & Đất nung
 												</button>
 												<button type="button" class="btn btn-sm btn-outline-secondary theme-preset-btn px-3 py-2 font-weight-bold" data-preset="indigo" data-primary="#1b4332" data-accent="#2d6a4f" data-bg="#f2f7f4">
-													🌿 Chàm & Rừng đại ngàn
+													Chàm & Rừng đại ngàn
 												</button>
 												<button type="button" class="btn btn-sm btn-outline-secondary theme-preset-btn px-3 py-2 font-weight-bold" data-preset="brocade" data-primary="#9c27b0" data-accent="#e91e63" data-bg="#fdf4ff">
-													🌺 Thổ cẩm rực rỡ
+													Thổ cẩm rực rỡ
 												</button>
 												<button type="button" class="btn btn-sm btn-outline-secondary theme-preset-btn px-3 py-2 font-weight-bold" data-preset="imperial" data-primary="#8c1d40" data-accent="#d4af37" data-bg="#fffaf0">
-													⛩️ Hoàng thành Cổ kính
+													Hoàng thành Cổ kính
 												</button>
 											</div>
 
@@ -483,21 +702,21 @@
 												<div class="col-md-4 mb-2">
 													<label class="p-3 border rounded-15 d-block text-center cursor-pointer hero-layout-option active" style="cursor: pointer;">
 														<input type="radio" name="heroLayout" value="split" checked class="d-none">
-														<strong class="d-block small text-forest-green font-weight-bold">🖼️ Split Gallery</strong>
+														<strong class="d-block small text-forest-green font-weight-bold">Bố cục Split Gallery</strong>
 														<small class="text-muted">1 ảnh lớn + 2 ảnh phụ (Cổ điển)</small>
 													</label>
 												</div>
 												<div class="col-md-4 mb-2">
 													<label class="p-3 border rounded-15 d-block text-center cursor-pointer hero-layout-option" style="cursor: pointer;">
 														<input type="radio" name="heroLayout" value="cinematic" class="d-none">
-														<strong class="d-block small text-forest-green font-weight-bold">🎬 Cinematic Banner</strong>
+														<strong class="d-block small text-forest-green font-weight-bold">Bố cục Cinematic Banner</strong>
 														<small class="text-muted">Toàn màn hình nền sâu điện ảnh</small>
 													</label>
 												</div>
 												<div class="col-md-4 mb-2">
 													<label class="p-3 border rounded-15 d-block text-center cursor-pointer hero-layout-option" style="cursor: pointer;">
 														<input type="radio" name="heroLayout" value="story" class="d-none">
-														<strong class="d-block small text-forest-green font-weight-bold">📖 Story Showcase</strong>
+														<strong class="d-block small text-forest-green font-weight-bold">Bố cục Story Showcase</strong>
 														<small class="text-muted">Tập trung trích dẫn & lời tự sự</small>
 													</label>
 												</div>
@@ -548,7 +767,7 @@
 										<div class="sticky-top" style="top: 100px;">
 											<div class="d-flex justify-content-between align-items-center mb-2">
 												<label class="small font-weight-bold text-dark mb-0">
-													👁️ Mô phỏng Giao diện Trang Detail (Live Preview)
+													Mô phỏng Giao diện Trang Detail (Live Preview)
 												</label>
 												<span class="badge badge-success small">Thời gian thực</span>
 											</div>
@@ -583,7 +802,7 @@
 
 												<!-- Mini Audio Guide -->
 												<div class="p-2 bg-light rounded-10 border mb-2 d-flex align-items-center justify-content-between">
-													<small class="text-dark font-weight-bold text-truncate" id="prev-audio-title">🎧 Tiếng bàn xoay gốm</small>
+													<small class="text-dark font-weight-bold text-truncate" id="prev-audio-title">Thuyết minh: Tiếng bàn xoay gốm</small>
 													<span class="badge badge-primary px-2 py-0" style="font-size: 9px; background: #8d4925;">Phát</span>
 												</div>
 
@@ -601,7 +820,7 @@
 
 						<div class="d-flex align-items-center flex-wrap gap-2 pt-3 border-top">
 							<button type="submit" class="btn btn-primary px-4 py-2 font-weight-bold mr-3 shadow-sm" id="btn-submit-tour">
-								💾 Lưu Tour & Gửi Ban Quản Trị Kiểm Duyệt 3 Tiêu Chí
+								Lưu Tour & Gửi Ban Quản Trị Kiểm Duyệt 3 Tiêu Chí
 							</button>
 							<button type="button" class="btn btn-outline-secondary px-3 py-2 font-weight-bold mr-3" id="btn-cancel-builder">
 								Hủy bỏ
@@ -933,9 +1152,185 @@
 			});
 		}
 
+		// Media Upload Helper using FileReader and /api/upload
+		async function uploadMediaFile(file) {
+			return new Promise((resolve) => {
+				const reader = new FileReader();
+				reader.onload = async () => {
+					const dataUrl = reader.result;
+					try {
+						const res = await fetch('/api/upload', {
+							method: 'POST',
+							headers: { 'Content-Type': 'application/json' },
+							body: JSON.stringify({ data: dataUrl, name: file.name })
+						});
+						if (res.ok) {
+							const result = await res.json();
+							resolve({ url: result.url, dataUrl });
+						} else {
+							resolve({ url: dataUrl, dataUrl });
+						}
+					} catch (err) {
+						resolve({ url: dataUrl, dataUrl });
+					}
+				};
+				reader.onerror = () => resolve({ url: '', dataUrl: '' });
+				reader.readAsDataURL(file);
+			});
+		}
+
+		// Handle Cover Photo Upload
+		async function handleCoverFileChange(input) {
+			const file = input?.files?.[0];
+			if (!file) return;
+
+			document.getElementById('tb-cover-filename').textContent = file.name;
+			const previewImg = document.getElementById('tb-cover-preview-img');
+			const prevHeroBox = document.getElementById('prev-hero-box');
+
+			// Quick preview via objectURL
+			const tempUrl = URL.createObjectURL(file);
+			if (previewImg) previewImg.src = tempUrl;
+			if (prevHeroBox) prevHeroBox.style.backgroundImage = `url('${tempUrl}')`;
+
+			// Upload asynchronously to server
+			const result = await uploadMediaFile(file);
+			if (result?.url) {
+				document.getElementById('tb-image').value = result.url;
+				if (previewImg) previewImg.src = result.url;
+				if (prevHeroBox) prevHeroBox.style.backgroundImage = `url('${result.url}')`;
+			}
+		}
+
+		// Handle Tour Video Upload
+		async function handleVideoFileChange(input) {
+			const file = input?.files?.[0];
+			if (!file) return;
+
+			document.getElementById('tb-video-filename').textContent = file.name;
+			const player = document.getElementById('tb-video-preview-player');
+			const previewBox = document.getElementById('tb-video-preview-box');
+			const placeholderBox = document.getElementById('tb-video-placeholder-box');
+			const removeBtn = document.getElementById('btn-remove-tour-video');
+
+			const tempUrl = URL.createObjectURL(file);
+			if (player) {
+				player.src = tempUrl;
+				player.load();
+			}
+			previewBox?.classList.remove('d-none');
+			placeholderBox?.classList.add('d-none');
+			removeBtn?.classList.remove('d-none');
+
+			const result = await uploadMediaFile(file);
+			if (result?.url) {
+				document.getElementById('tb-video-url').value = result.url;
+			}
+		}
+
+		function removeTourVideo() {
+			document.getElementById('tb-video-file').value = '';
+			document.getElementById('tb-video-url').value = '';
+			document.getElementById('tb-video-filename').textContent = 'Chưa tải video';
+			const player = document.getElementById('tb-video-preview-player');
+			if (player) {
+				player.pause();
+				player.src = '';
+			}
+			document.getElementById('tb-video-preview-box')?.classList.add('d-none');
+			document.getElementById('tb-video-placeholder-box')?.classList.remove('d-none');
+			document.getElementById('btn-remove-tour-video')?.classList.add('d-none');
+		}
+
+		// Handle 4 Stages Media (Image or Video)
+		async function handleStageFileChange(stageNum, type, input) {
+			const file = input?.files?.[0];
+			if (!file) return;
+
+			if (type === 'img') {
+				const nameEl = document.getElementById(`tb-stage${stageNum}-img-name`);
+				const previewBox = document.getElementById(`tb-stage${stageNum}-img-preview-box`);
+				const previewImg = document.getElementById(`tb-stage${stageNum}-img-preview`);
+				const removeBtn = document.getElementById(`tb-stage${stageNum}-img-remove`);
+				const hiddenInput = document.getElementById(`tb-stage${stageNum}-img-val`);
+
+				if (nameEl) nameEl.textContent = file.name;
+				const tempUrl = URL.createObjectURL(file);
+				if (previewImg) previewImg.src = tempUrl;
+				previewBox?.classList.remove('d-none');
+				removeBtn?.classList.remove('d-none');
+
+				const result = await uploadMediaFile(file);
+				if (result?.url && hiddenInput) {
+					hiddenInput.value = result.url;
+					if (previewImg) previewImg.src = result.url;
+				}
+			} else if (type === 'vid') {
+				const nameEl = document.getElementById(`tb-stage${stageNum}-vid-name`);
+				const previewBox = document.getElementById(`tb-stage${stageNum}-vid-preview-box`);
+				const player = document.getElementById(`tb-stage${stageNum}-vid-preview`);
+				const removeBtn = document.getElementById(`tb-stage${stageNum}-vid-remove`);
+				const hiddenInput = document.getElementById(`tb-stage${stageNum}-vid-val`);
+
+				if (nameEl) nameEl.textContent = file.name;
+				const tempUrl = URL.createObjectURL(file);
+				if (player) {
+					player.src = tempUrl;
+					player.load();
+				}
+				previewBox?.classList.remove('d-none');
+				removeBtn?.classList.remove('d-none');
+
+				const result = await uploadMediaFile(file);
+				if (result?.url && hiddenInput) {
+					hiddenInput.value = result.url;
+				}
+			}
+		}
+
+		function removeStageMedia(stageNum, type) {
+			if (type === 'img') {
+				const fileInput = document.getElementById(`tb-stage${stageNum}-img-file`);
+				if (fileInput) fileInput.value = '';
+				const hiddenInput = document.getElementById(`tb-stage${stageNum}-img-val`);
+				if (hiddenInput) hiddenInput.value = '';
+				const nameEl = document.getElementById(`tb-stage${stageNum}-img-name`);
+				if (nameEl) nameEl.textContent = 'Chưa có ảnh';
+				const previewImg = document.getElementById(`tb-stage${stageNum}-img-preview`);
+				if (previewImg) previewImg.src = '';
+				document.getElementById(`tb-stage${stageNum}-img-preview-box`)?.classList.add('d-none');
+				document.getElementById(`tb-stage${stageNum}-img-remove`)?.classList.add('d-none');
+			} else if (type === 'vid') {
+				const fileInput = document.getElementById(`tb-stage${stageNum}-vid-file`);
+				if (fileInput) fileInput.value = '';
+				const hiddenInput = document.getElementById(`tb-stage${stageNum}-vid-val`);
+				if (hiddenInput) hiddenInput.value = '';
+				const nameEl = document.getElementById(`tb-stage${stageNum}-vid-name`);
+				if (nameEl) nameEl.textContent = 'Chưa có video';
+				const player = document.getElementById(`tb-stage${stageNum}-vid-preview`);
+				if (player) {
+					player.pause();
+					player.src = '';
+				}
+				document.getElementById(`tb-stage${stageNum}-vid-preview-box`)?.classList.add('d-none');
+				document.getElementById(`tb-stage${stageNum}-vid-remove`)?.classList.add('d-none');
+			}
+		}
+
 		function resetTourBuilder() {
 			document.getElementById('tb-edit-id').value = '';
 			document.getElementById('ambassador-tour-form').reset();
+			document.getElementById('tb-image').value = 'images/gom-bacninh.jpg';
+			document.getElementById('tb-cover-filename').textContent = 'images/gom-bacninh.jpg';
+			const coverImg = document.getElementById('tb-cover-preview-img');
+			if (coverImg) coverImg.src = 'images/gom-bacninh.jpg';
+
+			removeTourVideo();
+			for (let i = 1; i <= 4; i++) {
+				removeStageMedia(i, 'img');
+				removeStageMedia(i, 'vid');
+			}
+
 			document.getElementById('tb-color-primary').value = '#8d4925';
 			document.getElementById('primary-hex-label').textContent = '#8d4925';
 			document.getElementById('tb-color-accent').value = '#c59b27';
@@ -963,7 +1358,31 @@
 			document.getElementById('tb-max-guests').value = tour.maxGuests || 8;
 			document.getElementById('tb-price').value = tour.price || 850000;
 			document.getElementById('tb-premium-price').value = tour.packages?.premiumPrice || (Number(tour.price || 850000) + 300000);
-			document.getElementById('tb-image').value = tour.imageClass || 'images/gom-bacninh.jpg';
+			
+			// Cover Photo
+			const coverSrc = tour.imageClass || 'images/gom-bacninh.jpg';
+			document.getElementById('tb-image').value = coverSrc;
+			document.getElementById('tb-cover-filename').textContent = coverSrc.split('/').pop() || coverSrc;
+			const coverImg = document.getElementById('tb-cover-preview-img');
+			if (coverImg) coverImg.src = coverSrc;
+
+			// Tour Video
+			document.getElementById('tb-video-title').value = tour.videoTitle || '';
+			if (tour.videoUrl) {
+				document.getElementById('tb-video-url').value = tour.videoUrl;
+				document.getElementById('tb-video-filename').textContent = tour.videoUrl.split('/').pop() || 'Video đã lưu';
+				const player = document.getElementById('tb-video-preview-player');
+				if (player) {
+					player.src = tour.videoUrl;
+					player.load();
+				}
+				document.getElementById('tb-video-preview-box')?.classList.remove('d-none');
+				document.getElementById('tb-video-placeholder-box')?.classList.add('d-none');
+				document.getElementById('btn-remove-tour-video')?.classList.remove('d-none');
+			} else {
+				removeTourVideo();
+			}
+
 			document.getElementById('tb-special-intro').value = tour.specialIntro || '';
 			document.getElementById('tb-story').value = tour.story || '';
 
@@ -972,11 +1391,108 @@
 			}
 			document.getElementById('tb-host-name').value = tour.hostName || tour.artisan?.name || '';
 
-			if (tour.layers) {
-				document.getElementById('tb-layer1').value = tour.layers.layer1_observe || '';
-				document.getElementById('tb-layer2').value = tour.layers.layer2_touch || '';
-				document.getElementById('tb-layer3').value = tour.layers.layer3_do || '';
-				document.getElementById('tb-layer4').value = tour.layers.layer4_listen || '';
+			// 4 Stages / Layers & Media
+			const l = tour.layers || {};
+			const stages = tour.stages || [];
+
+			const stage1Desc = stages[0]?.desc || l.layer1_observe || '';
+			const stage1Img = stages[0]?.image || l.layer1_image || '';
+			const stage1Vid = stages[0]?.video || l.layer1_video || '';
+			document.getElementById('tb-layer1').value = stage1Desc;
+			if (stage1Img) {
+				document.getElementById('tb-stage1-img-val').value = stage1Img;
+				document.getElementById('tb-stage1-img-name').textContent = stage1Img.split('/').pop();
+				const pImg = document.getElementById('tb-stage1-img-preview');
+				if (pImg) pImg.src = stage1Img;
+				document.getElementById('tb-stage1-img-preview-box')?.classList.remove('d-none');
+				document.getElementById('tb-stage1-img-remove')?.classList.remove('d-none');
+			} else {
+				removeStageMedia(1, 'img');
+			}
+			if (stage1Vid) {
+				document.getElementById('tb-stage1-vid-val').value = stage1Vid;
+				document.getElementById('tb-stage1-vid-name').textContent = stage1Vid.split('/').pop();
+				const pVid = document.getElementById('tb-stage1-vid-preview');
+				if (pVid) { pVid.src = stage1Vid; pVid.load(); }
+				document.getElementById('tb-stage1-vid-preview-box')?.classList.remove('d-none');
+				document.getElementById('tb-stage1-vid-remove')?.classList.remove('d-none');
+			} else {
+				removeStageMedia(1, 'vid');
+			}
+
+			const stage2Desc = stages[1]?.desc || l.layer2_touch || '';
+			const stage2Img = stages[1]?.image || l.layer2_image || '';
+			const stage2Vid = stages[1]?.video || l.layer2_video || '';
+			document.getElementById('tb-layer2').value = stage2Desc;
+			if (stage2Img) {
+				document.getElementById('tb-stage2-img-val').value = stage2Img;
+				document.getElementById('tb-stage2-img-name').textContent = stage2Img.split('/').pop();
+				const pImg = document.getElementById('tb-stage2-img-preview');
+				if (pImg) pImg.src = stage2Img;
+				document.getElementById('tb-stage2-img-preview-box')?.classList.remove('d-none');
+				document.getElementById('tb-stage2-img-remove')?.classList.remove('d-none');
+			} else {
+				removeStageMedia(2, 'img');
+			}
+			if (stage2Vid) {
+				document.getElementById('tb-stage2-vid-val').value = stage2Vid;
+				document.getElementById('tb-stage2-vid-name').textContent = stage2Vid.split('/').pop();
+				const pVid = document.getElementById('tb-stage2-vid-preview');
+				if (pVid) { pVid.src = stage2Vid; pVid.load(); }
+				document.getElementById('tb-stage2-vid-preview-box')?.classList.remove('d-none');
+				document.getElementById('tb-stage2-vid-remove')?.classList.remove('d-none');
+			} else {
+				removeStageMedia(2, 'vid');
+			}
+
+			const stage3Desc = stages[2]?.desc || l.layer3_do || '';
+			const stage3Img = stages[2]?.image || l.layer3_image || '';
+			const stage3Vid = stages[2]?.video || l.layer3_video || '';
+			document.getElementById('tb-layer3').value = stage3Desc;
+			if (stage3Img) {
+				document.getElementById('tb-stage3-img-val').value = stage3Img;
+				document.getElementById('tb-stage3-img-name').textContent = stage3Img.split('/').pop();
+				const pImg = document.getElementById('tb-stage3-img-preview');
+				if (pImg) pImg.src = stage3Img;
+				document.getElementById('tb-stage3-img-preview-box')?.classList.remove('d-none');
+				document.getElementById('tb-stage3-img-remove')?.classList.remove('d-none');
+			} else {
+				removeStageMedia(3, 'img');
+			}
+			if (stage3Vid) {
+				document.getElementById('tb-stage3-vid-val').value = stage3Vid;
+				document.getElementById('tb-stage3-vid-name').textContent = stage3Vid.split('/').pop();
+				const pVid = document.getElementById('tb-stage3-vid-preview');
+				if (pVid) { pVid.src = stage3Vid; pVid.load(); }
+				document.getElementById('tb-stage3-vid-preview-box')?.classList.remove('d-none');
+				document.getElementById('tb-stage3-vid-remove')?.classList.remove('d-none');
+			} else {
+				removeStageMedia(3, 'vid');
+			}
+
+			const stage4Desc = stages[3]?.desc || l.layer4_listen || '';
+			const stage4Img = stages[3]?.image || l.layer4_image || '';
+			const stage4Vid = stages[3]?.video || l.layer4_video || '';
+			document.getElementById('tb-layer4').value = stage4Desc;
+			if (stage4Img) {
+				document.getElementById('tb-stage4-img-val').value = stage4Img;
+				document.getElementById('tb-stage4-img-name').textContent = stage4Img.split('/').pop();
+				const pImg = document.getElementById('tb-stage4-img-preview');
+				if (pImg) pImg.src = stage4Img;
+				document.getElementById('tb-stage4-img-preview-box')?.classList.remove('d-none');
+				document.getElementById('tb-stage4-img-remove')?.classList.remove('d-none');
+			} else {
+				removeStageMedia(4, 'img');
+			}
+			if (stage4Vid) {
+				document.getElementById('tb-stage4-vid-val').value = stage4Vid;
+				document.getElementById('tb-stage4-vid-name').textContent = stage4Vid.split('/').pop();
+				const pVid = document.getElementById('tb-stage4-vid-preview');
+				if (pVid) { pVid.src = stage4Vid; pVid.load(); }
+				document.getElementById('tb-stage4-vid-preview-box')?.classList.remove('d-none');
+				document.getElementById('tb-stage4-vid-remove')?.classList.remove('d-none');
+			} else {
+				removeStageMedia(4, 'vid');
 			}
 
 			// Theme
@@ -1048,7 +1564,7 @@
 					cachedMyTours = data.spots || [];
 				}
 
-				// Render Tours with Custom Theme & Status Badges
+				// Render Tours with Custom Theme & Status Badges (No unnecessary emojis)
 				const spotsList = document.getElementById('ambassador-spots-list');
 				if (spotsList) {
 					if (!cachedMyTours.length) {
@@ -1082,12 +1598,12 @@
 												${s.title}
 											</h4>
 											<div class="small text-muted mb-2">
-												<span>📍 ${s.location}</span> • <strong class="text-accent">${Number(s.price).toLocaleString('vi-VN')}đ</strong>
+												<span>${s.location}</span> • <strong class="text-accent">${Number(s.price).toLocaleString('vi-VN')}đ</strong>
 											</div>
 
 											<div class="p-2 bg-light rounded-10 border mb-3 small" style="font-size: 12px;">
-												<strong class="d-block text-dark">🤝 Nghệ nhân: ${s.hostName || s.artisan?.name || 'Bản địa'}</strong>
-												<span class="text-muted">🎨 UI: ${theme.themePreset || 'Gốm mộc'} (${theme.heroLayout || 'Split'})</span>
+												<strong class="d-block text-dark">Nghệ nhân: ${s.hostName || s.artisan?.name || 'Bản địa'}</strong>
+												<span class="text-muted">Giao diện: ${theme.themePreset || 'Gốm mộc'} (${theme.heroLayout || 'Split'})</span>
 											</div>
 
 											${s.reviewScores ? `
@@ -1099,10 +1615,10 @@
 
 											<div class="mt-auto d-flex align-items-center gap-2 pt-2 border-top">
 												<button type="button" class="btn btn-outline-primary btn-sm font-weight-bold px-3" onclick="editTour(${s.id})">
-													🎨 Sửa & Tùy biến UI
+													Chỉnh sửa & Tùy biến Giao diện
 												</button>
 												<a href="/detail.html?id=${s.id}" target="_blank" class="btn btn-primary btn-sm font-weight-bold px-3" title="Mở trang Detail xem giao diện thực tế">
-													👁️ Xem Detail →
+													Xem trang Detail
 												</a>
 											</div>
 										</div>
@@ -1131,7 +1647,7 @@
 			}
 		}
 
-		// Tour Builder Form Handler (POST or PUT with customTheme)
+		// Tour Builder Form Handler (POST or PUT with customTheme, videoUrl, stages)
 		document.getElementById('ambassador-tour-form')?.addEventListener('submit', async (e) => {
 			e.preventDefault();
 			const editId = document.getElementById('tb-edit-id').value;
@@ -1155,6 +1671,37 @@
 			const hostSelect = document.getElementById('tb-host-select');
 			const selectedHostId = hostSelect?.value && hostSelect.value !== 'custom' ? Number(hostSelect.value) : null;
 
+			const stages = [
+				{
+					id: 1,
+					name: 'Giai đoạn 1: Quan sát',
+					desc: document.getElementById('tb-layer1').value.trim(),
+					image: document.getElementById('tb-stage1-img-val').value.trim(),
+					video: document.getElementById('tb-stage1-vid-val').value.trim()
+				},
+				{
+					id: 2,
+					name: 'Giai đoạn 2: Chạm tay',
+					desc: document.getElementById('tb-layer2').value.trim(),
+					image: document.getElementById('tb-stage2-img-val').value.trim(),
+					video: document.getElementById('tb-stage2-vid-val').value.trim()
+				},
+				{
+					id: 3,
+					name: 'Giai đoạn 3: Tự làm',
+					desc: document.getElementById('tb-layer3').value.trim(),
+					image: document.getElementById('tb-stage3-img-val').value.trim(),
+					video: document.getElementById('tb-stage3-vid-val').value.trim()
+				},
+				{
+					id: 4,
+					name: 'Giai đoạn 4: Lắng nghe',
+					desc: document.getElementById('tb-layer4').value.trim(),
+					image: document.getElementById('tb-stage4-img-val').value.trim(),
+					video: document.getElementById('tb-stage4-vid-val').value.trim()
+				}
+			];
+
 			const payload = {
 				title: document.getElementById('tb-title').value.trim(),
 				category: document.getElementById('tb-category').value,
@@ -1163,16 +1710,27 @@
 				maxGuests: Number(document.getElementById('tb-max-guests').value || 8),
 				price: Number(document.getElementById('tb-price').value),
 				imageUrl: document.getElementById('tb-image').value.trim(),
+				videoUrl: document.getElementById('tb-video-url').value.trim(),
+				videoTitle: document.getElementById('tb-video-title').value.trim() || 'Thước phim thực địa di sản',
 				hostId: selectedHostId,
 				hostName: document.getElementById('tb-host-name').value.trim(),
 				specialIntro: document.getElementById('tb-special-intro').value.trim(),
 				story: document.getElementById('tb-story').value.trim(),
 				layers: {
-					layer1_observe: document.getElementById('tb-layer1').value.trim(),
-					layer2_touch: document.getElementById('tb-layer2').value.trim(),
-					layer3_do: document.getElementById('tb-layer3').value.trim(),
-					layer4_listen: document.getElementById('tb-layer4').value.trim()
+					layer1_observe: stages[0].desc,
+					layer1_image: stages[0].image,
+					layer1_video: stages[0].video,
+					layer2_touch: stages[1].desc,
+					layer2_image: stages[1].image,
+					layer2_video: stages[1].video,
+					layer3_do: stages[2].desc,
+					layer3_image: stages[2].image,
+					layer3_video: stages[2].video,
+					layer4_listen: stages[3].desc,
+					layer4_image: stages[3].image,
+					layer4_video: stages[3].video
 				},
+				stages: stages,
 				artisan: {
 					name: document.getElementById('tb-host-name').value.trim(),
 					years: 'Hơn 25 năm giữ nghề',
@@ -1211,7 +1769,7 @@
 
 				if (msg) {
 					msg.className = 'small text-success font-weight-bold';
-					msg.innerHTML = `✅ ${result.message} <a href="/detail.html?id=${savedTourId}" target="_blank" class="ml-2 btn btn-sm btn-success py-0 px-2 font-weight-bold text-white">Xem trang Detail ngay →</a>`;
+					msg.innerHTML = `${result.message} <a href="/detail.html?id=${savedTourId}" target="_blank" class="ml-2 btn btn-sm btn-success py-0 px-2 font-weight-bold text-white">Xem trang Detail ngay →</a>`;
 				}
 
 				setTimeout(async () => {

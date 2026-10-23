@@ -608,10 +608,10 @@ async function initDetailPage() {
                 <h1 class="display-4 font-weight-bold text-white mb-3" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">${exp.title}</h1>
                 <p class="lead text-white-opacity mb-4" style="font-size: 1.15rem; line-height: 1.6;">${exp.specialIntro || exp.story || ''}</p>
                 <div class="d-flex align-items-center gap-2 flex-wrap">
-                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">📍 ${exp.location}</span>
-                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">⏱️ ${exp.duration}</span>
-                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">👥 Tối đa ${exp.maxGuests || 8} khách</span>
-                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">🎓 Đại sứ đồng hành: ${exp.ambassador}</span>
+                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">Địa điểm: ${exp.location}</span>
+                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">Thời lượng: ${exp.duration}</span>
+                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">Tối đa ${exp.maxGuests || 8} khách</span>
+                  <span class="badge badge-light px-3 py-2 text-dark font-weight-bold">Đại sứ đồng hành: ${exp.ambassador}</span>
                 </div>
               </div>
             </div>
@@ -640,11 +640,11 @@ async function initDetailPage() {
                 <span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">${theme.badgeText || 'Hành trình Kể chuyện Di sản'}</span>
                 <h2 class="h3 font-weight-bold text-forest-green mb-3">${exp.title}</h2>
                 <div class="p-3 bg-warm-ivory rounded-15 border-left border-gold mb-3" style="border-left-width: 4px !important;">
-                  <strong class="d-block text-dark small font-weight-bold mb-1">🌿 Lời tự sự từ Nghệ nhân & Đại sứ:</strong>
+                  <strong class="d-block text-dark small font-weight-bold mb-1">Lời tự sự từ Nghệ nhân & Đại sứ:</strong>
                   <p class="font-italic text-muted small mb-0">${exp.artisan ? `“${exp.artisan.quote}”` : exp.story}</p>
                 </div>
                 <div class="small text-muted mb-0">
-                  <span>📍 ${exp.location}</span> • <span>⏱️ ${exp.duration}</span> • <span>🤝 Đại sứ: <strong>${exp.ambassador}</strong></span>
+                  <span>Địa điểm: ${exp.location}</span> • <span>Thời lượng: ${exp.duration}</span> • <span>Đại sứ đồng hành: <strong>${exp.ambassador}</strong></span>
                 </div>
               </div>
             </div>
@@ -669,13 +669,79 @@ async function initDetailPage() {
       });
     }
 
-    // Populate Story & 5 Layers
+    // Populate Tour Video Player (nếu có thước phim phóng sự thực địa)
+    const tourVideoBox = document.getElementById('detail-tour-video-box');
+    const tourVideoPlayer = document.getElementById('detail-tour-video-player');
+    const tourVideoTitle = document.getElementById('detail-tour-video-title');
+    if (tourVideoBox && tourVideoPlayer) {
+      if (exp.videoUrl) {
+        tourVideoPlayer.src = exp.videoUrl;
+        if (tourVideoTitle && exp.videoTitle) {
+          tourVideoTitle.textContent = exp.videoTitle;
+        }
+        tourVideoBox.classList.remove('d-none');
+      } else {
+        tourVideoBox.classList.add('d-none');
+      }
+    }
+
+    // Populate Story & 4 Stages Media
     document.getElementById('detail-story-content').textContent = exp.story || '';
-    if (exp.layers) {
-      if (document.getElementById('detail-layer1')) document.getElementById('detail-layer1').textContent = exp.layers.layer1_observe || '';
-      if (document.getElementById('detail-layer2')) document.getElementById('detail-layer2').textContent = exp.layers.layer2_touch || '';
-      if (document.getElementById('detail-layer3')) document.getElementById('detail-layer3').textContent = exp.layers.layer3_do || '';
-      if (document.getElementById('detail-layer4')) document.getElementById('detail-layer4').textContent = exp.layers.layer4_listen || '';
+    
+    // Stages data extraction (from exp.stages array or exp.layers)
+    const stages = exp.stages || [];
+    const layers = exp.layers || {};
+
+    const stage1Desc = stages[0]?.desc || layers.layer1_observe || '';
+    const stage1Img = stages[0]?.image || layers.layer1_image || '';
+    const stage1Vid = stages[0]?.video || layers.layer1_video || '';
+    if (document.getElementById('detail-layer1')) document.getElementById('detail-layer1').textContent = stage1Desc;
+    if (stage1Img && document.getElementById('detail-layer1-img')) {
+      document.getElementById('detail-layer1-img').src = stage1Img;
+      document.getElementById('detail-layer1-img-box')?.classList.remove('d-none');
+    }
+    if (stage1Vid && document.getElementById('detail-layer1-vid')) {
+      document.getElementById('detail-layer1-vid').src = stage1Vid;
+      document.getElementById('detail-layer1-vid-box')?.classList.remove('d-none');
+    }
+
+    const stage2Desc = stages[1]?.desc || layers.layer2_touch || '';
+    const stage2Img = stages[1]?.image || layers.layer2_image || '';
+    const stage2Vid = stages[1]?.video || layers.layer2_video || '';
+    if (document.getElementById('detail-layer2')) document.getElementById('detail-layer2').textContent = stage2Desc;
+    if (stage2Img && document.getElementById('detail-layer2-img')) {
+      document.getElementById('detail-layer2-img').src = stage2Img;
+      document.getElementById('detail-layer2-img-box')?.classList.remove('d-none');
+    }
+    if (stage2Vid && document.getElementById('detail-layer2-vid')) {
+      document.getElementById('detail-layer2-vid').src = stage2Vid;
+      document.getElementById('detail-layer2-vid-box')?.classList.remove('d-none');
+    }
+
+    const stage3Desc = stages[2]?.desc || layers.layer3_do || '';
+    const stage3Img = stages[2]?.image || layers.layer3_image || '';
+    const stage3Vid = stages[2]?.video || layers.layer3_video || '';
+    if (document.getElementById('detail-layer3')) document.getElementById('detail-layer3').textContent = stage3Desc;
+    if (stage3Img && document.getElementById('detail-layer3-img')) {
+      document.getElementById('detail-layer3-img').src = stage3Img;
+      document.getElementById('detail-layer3-img-box')?.classList.remove('d-none');
+    }
+    if (stage3Vid && document.getElementById('detail-layer3-vid')) {
+      document.getElementById('detail-layer3-vid').src = stage3Vid;
+      document.getElementById('detail-layer3-vid-box')?.classList.remove('d-none');
+    }
+
+    const stage4Desc = stages[3]?.desc || layers.layer4_listen || '';
+    const stage4Img = stages[3]?.image || layers.layer4_image || '';
+    const stage4Vid = stages[3]?.video || layers.layer4_video || '';
+    if (document.getElementById('detail-layer4')) document.getElementById('detail-layer4').textContent = stage4Desc;
+    if (stage4Img && document.getElementById('detail-layer4-img')) {
+      document.getElementById('detail-layer4-img').src = stage4Img;
+      document.getElementById('detail-layer4-img-box')?.classList.remove('d-none');
+    }
+    if (stage4Vid && document.getElementById('detail-layer4-vid')) {
+      document.getElementById('detail-layer4-vid').src = stage4Vid;
+      document.getElementById('detail-layer4-vid-box')?.classList.remove('d-none');
     }
 
     // Artisan
