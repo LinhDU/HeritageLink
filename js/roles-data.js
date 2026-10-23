@@ -335,7 +335,7 @@ const DETAIL_ROLES_BY_EXP_ID = {
     badges: ["Đã có sự đồng ý ghi hình của nghệ nhân", "Đã kiểm duyệt: xác thực · storytelling · tương tác"]
   },
   8: {
-    ambassadorName: "Trần Phương Linh",
+    ambassadorName: "Nguyễn Hoàng Mạnh",
     ambassadorRole: "đã trực tiếp khảo sát thực địa tại làng Vạn Phúc, ghi hình cỗ khung cửi Jacquard gỗ và xây dựng hồ sơ Lụa Vân; là đầu mối kết nối cùng nghệ nhân Mai.",
     artisanName: "Nghệ nhân Nguyễn Thị Mai",
     artisanRole: "nghệ nhân 46 năm nghề trực tiếp hướng dẫn kỹ thuật quay tơ dệt lụa và chịu trách nhiệm về chất lượng, an toàn buổi trải nghiệm.",

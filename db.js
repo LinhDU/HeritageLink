@@ -390,8 +390,8 @@ const seedExperiences = [
     price: 850000,
     duration: '1 buổi (3.5 giờ)',
     maxGuests: 8,
-    ambassador: 'Trần Phương Linh',
-    ambassadorId: 2,
+    ambassador: 'Nguyễn Hoàng Mạnh',
+    ambassadorId: 9,
     hostId: 8,
     hostName: 'Nghệ nhân Nguyễn Thị Mai',
     rating: 5.0,
@@ -451,7 +451,7 @@ const seedExperiences = [
       heroLayout: 'cinematic',
       fontStyle: 'serif',
       badgeText: 'Thực địa 100% cùng Nghệ nhân Lão thành Vạn Phúc',
-      ambassadorNote: 'Chào bạn, mình là Phương Linh. Vạn Phúc mùa này rực rỡ sắc màu lụa phơi trong nắng. Mình sẽ cùng bạn đến tận xưởng nghệ nhân Mai, tận mắt thấy quy trình dệt Lụa Vân độc bản nhé!',
+      ambassadorNote: 'Chào bạn, mình là Hoàng Mạnh. Vạn Phúc mùa này rực rỡ sắc màu lụa phơi trong nắng. Mình sẽ cùng bạn đến tận xưởng nghệ nhân Mai, tận mắt thấy quy trình dệt Lụa Vân độc bản nhé!',
       audioTitle: 'Tiếng thoi đưa & Chuyện nghìn năm Lụa Vân tiến vua',
       audioGuideUrl: '#',
       culturalTips: 'Nên mặc trang phục trang nhã để có những bức ảnh kỷ niệm tuyệt đẹp bên giàn tơ và súc lụa óng ánh.'
@@ -553,6 +553,18 @@ const memoryStore = {
       phone: '0912889977',
       region: 'Vạn Phúc, Hà Đông, Hà Nội',
       craft: 'Dệt Lụa Vân Cổ Truyền',
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: 9,
+      email: 'manh.nguyen@heritagelink.vn',
+      name: 'Nguyễn Hoàng Mạnh',
+      passwordHash: bcrypt.hashSync('daisu123', 10),
+      passwordhash: bcrypt.hashSync('daisu123', 10),
+      role: 'ambassador',
+      phone: '0981238899',
+      school: 'ĐH Quốc gia Hà Nội',
+      region: 'Hà Nội (Vạn Phúc, Hà Đông)',
       createdAt: new Date().toISOString()
     }
   ],
@@ -1061,7 +1073,7 @@ const seedHeritageProfiles = [
     category: 'craft',
     categoryName: 'Làng nghề thủ công',
     coverImage: 'images/vanphuc/img_8039.jpg',
-    ambassadorName: 'Trần Phương Linh',
+    ambassadorName: 'Nguyễn Hoàng Mạnh',
     ambassadorSchool: 'ĐH Quốc gia Hà Nội',
     consentGranted: 'Đã nhận được sự đồng thuận và ủy quyền truyền thông từ Nghệ nhân Nguyễn Thị Mai và Hội đồng Làng nghề Lụa Vạn Phúc.',
     verifiedDate: '23/10/2026',
