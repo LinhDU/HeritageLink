@@ -770,6 +770,12 @@ async function initDetailPage() {
       }
     }
 
+    // Populate Dedicated Ambassador Tab
+    if (document.getElementById('detail-amb-name')) document.getElementById('detail-amb-name').textContent = exp.ambassador || 'Lê Minh Anh';
+    if (document.getElementById('detail-amb-region')) document.getElementById('detail-amb-region').textContent = exp.location || 'Bắc Ninh';
+    if (document.getElementById('detail-amb-badge')) document.getElementById('detail-amb-badge').textContent = (exp.customTheme && exp.customTheme.badgeText) || 'Khảo sát thực địa 100% cùng Nghệ nhân';
+    if (document.getElementById('detail-amb-note')) document.getElementById('detail-amb-note').textContent = (exp.customTheme && exp.customTheme.ambassadorNote) ? `“${exp.customTheme.ambassadorNote}”` : `“Chào bạn, hãy cùng chúng mình trải nghiệm trọn vẹn văn hóa sống bản địa này nhé!”`;
+
     // Setup Interactive Tab Navigation
     const tabBtns = document.querySelectorAll('.detail-tab-btn');
     tabBtns.forEach(btn => {

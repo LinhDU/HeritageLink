@@ -167,6 +167,9 @@
 						<button class="detail-tab-btn" data-tab="tab-artisan" type="button">
 							Nghệ nhân & Hộ dân
 						</button>
+						<button class="detail-tab-btn" data-tab="tab-ambassador" type="button">
+							Đại sứ Đồng hành
+						</button>
 						<button class="detail-tab-btn" data-tab="tab-reviews" type="button">
 							Đánh giá du khách (<span id="tab-review-count-badge">38</span>)
 						</button>
@@ -440,16 +443,66 @@
 						<div class="p-4 bg-white rounded-20 border shadow-sm">
 							<h4 class="h6 font-weight-bold text-forest-green mb-3">Những điều cần biết</h4>
 							<ul class="list-unstyled mb-0 small text-muted">
-								<li class="mb-2"><strong>📍 Điểm đón tiếp:</strong> Xưởng gốm Bác Nam, Thôn Phấn Trung, Xã Phù Lãng, Quế Võ, Bắc Ninh.</li>
-								<li class="mb-2"><strong>👕 Trang phục:</strong> Quần áo thoải mái, dễ giặt sạch sau khi thực hành nhào nặn đất.</li>
-								<li class="mb-2"><strong>🎁 Bao gồm:</strong> Nguyên liệu đất sét, men trấu, công cụ chuốt, trà xanh làng quê, nung và đóng gói sản phẩm.</li>
-								<li class="mb-2"><strong>🏮 Quy tắc ứng xử:</strong> Tôn trọng không gian thờ tổ nghề gốm của gia đình nghệ nhân.</li>
-								<li><strong>🔄 Chính sách đổi lịch:</strong> Báo trước 24 giờ không mất phí để nghệ nhân chuẩn bị đất chuốt.</li>
+								<li class="mb-2"><strong>Điểm đón tiếp:</strong> Xưởng gốm Bác Nam, Thôn Phấn Trung, Xã Phù Lãng, Quế Võ, Bắc Ninh.</li>
+								<li class="mb-2"><strong>Trang phục:</strong> Quần áo thoải mái, dễ giặt sạch sau khi thực hành nhào nặn đất.</li>
+								<li class="mb-2"><strong>Bao gồm:</strong> Nguyên liệu đất sét, men trấu, công cụ chuốt, trà xanh làng quê, nung và đóng gói sản phẩm.</li>
+								<li class="mb-2"><strong>Quy tắc ứng xử:</strong> Tôn trọng không gian thờ tổ nghề gốm của gia đình nghệ nhân.</li>
+								<li><strong>Chính sách đổi lịch:</strong> Báo trước 24 giờ không mất phí để nghệ nhân chuẩn bị đất chuốt.</li>
 							</ul>
 						</div>
 					</div>
 
-					<!-- TAB 4: ĐÁNH GIÁ THỰC TẾ -->
+					<!-- TAB 4: ĐẠI SỨ ĐỒNG HÀNH (TAB RIÊNG BIỆT) -->
+					<div class="detail-tab-pane" id="tab-ambassador">
+						<div class="p-4 bg-white rounded-20 border shadow-sm mb-4">
+							<div class="row align-items-center mb-4 pb-3 border-bottom">
+								<div class="col-auto mb-3 mb-md-0">
+									<img src="images/person_1.jpg" alt="Avatar Đại sứ" class="rounded-circle shadow-sm" style="width: 80px; height: 80px; object-fit: cover; border: 3px solid var(--color-accent);" id="detail-amb-avatar" />
+								</div>
+								<div class="col">
+									<div class="d-flex flex-wrap align-items-center mb-1">
+										<h3 class="h5 font-weight-bold text-forest-green mb-0 mr-3" id="detail-amb-name">Lê Minh Anh</h3>
+										<span class="badge badge-accent text-white px-3 py-1 font-weight-bold small" id="detail-amb-badge">Khảo sát thực địa 100% cùng Nghệ nhân</span>
+									</div>
+									<p class="text-muted small mb-0">
+										Đại sứ Sinh viên HeritageLink • Địa bàn phụ trách: <strong class="text-dark" id="detail-amb-region">Bắc Ninh & Hà Giang</strong>
+									</p>
+								</div>
+							</div>
+
+							<div class="mb-4">
+								<h4 class="h6 font-weight-bold text-forest-green mb-2">Lời ngỏ từ Đại sứ gửi du khách</h4>
+								<div class="p-3 bg-warm-ivory rounded-15 border-left border-gold shadow-2xs" style="border-left-width: 4px !important;">
+									<p class="font-italic small text-muted mb-0" id="detail-amb-note">
+										“Chào bạn, hãy cùng chúng mình trải nghiệm trọn vẹn văn hóa sống bản địa này nhé!”
+									</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-6 mb-3 mb-md-0">
+									<div class="p-3 bg-light rounded-15 border h-100">
+										<strong class="d-block text-forest-green small font-weight-bold mb-2">Trách nhiệm bảo chứng văn hóa:</strong>
+										<ul class="list-unstyled small text-muted mb-0" style="line-height: 1.7;">
+											<li>• Trực tiếp điền dã khảo sát thực địa, gặp gỡ và đồng hành cùng nghệ nhân bản địa.</li>
+											<li>• Thiết kế lộ trình 4 lớp cảm xúc di sản có chiều sâu tri thức văn hóa.</li>
+											<li>• Đảm bảo chia sẻ kinh tế công bằng (85% GMV tới trực tiếp hộ dân).</li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="p-3 bg-light rounded-15 border h-100">
+										<strong class="d-block text-forest-green small font-weight-bold mb-2">Đồng hành trong suốt chuyến đi:</strong>
+										<p class="small text-muted mb-0" style="line-height: 1.7;">
+											Đại sứ là người bạn đồng hành tin cậy, hỗ trợ kết nối văn hóa, giải đáp thắc mắc về phong tục tập quán và hướng dẫn du khách trải nghiệm văn hóa bản địa một cách tôn trọng nhất.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- TAB 5: ĐÁNH GIÁ THỰC TẾ -->
 					<div class="detail-tab-pane" id="tab-reviews">
 						<div class="p-4 bg-white rounded-20 border shadow-sm">
 							<div class="d-flex align-items-center mb-3">

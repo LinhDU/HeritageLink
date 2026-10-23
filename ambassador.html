@@ -136,66 +136,210 @@
 
 	<!-- Main Ambassador Portal Content -->
 	<main id="ambassador-main-content" class="py-4">
-		<div class="container">
-			<!-- Ambassador Profile Header Card (From Screenshot) -->
-			<div class="bg-white p-4 rounded-20 shadow-sm border mb-4">
-				<div class="row align-items-center">
-					<div class="col-auto mb-3 mb-md-0">
-						<img src="images/person_1.jpg" alt="Avatar Đại sứ" class="rounded-circle shadow-sm" style="width: 85px; height: 85px; object-fit: cover; border: 3px solid var(--color-accent);" />
-					</div>
-					<div class="col">
-						<div class="d-flex flex-wrap align-items-center mb-1">
-							<h2 class="h4 font-weight-bold text-forest-green mb-0 mr-3" id="profile-name">Lê Minh Anh</h2>
-							<span class="badge badge-accent px-3 py-1 font-weight-bold text-white">Đại sứ Xuất sắc (Cấp cao nhất)</span>
+		<div class="container-fluid px-lg-4 px-xl-5">
+			<div class="row">
+				<!-- CỘT TRÁI: MENU ĐIỀU HƯỚNG DỌC (MENU BÊN TRÁI MÀN HÌNH) -->
+				<div class="col-lg-3 col-xl-3 mb-4">
+					<div class="amb-sidebar-wrapper sticky-top" style="top: 85px; z-index: 100;">
+						<!-- Profile Summary Card in Sidebar -->
+						<div class="p-3 bg-white rounded-20 border shadow-sm mb-3 text-center">
+							<div class="position-relative d-inline-block mb-2">
+								<img id="sidebar-profile-avatar" src="images/person_1.jpg" alt="Avatar Đại sứ" class="rounded-circle shadow-sm" style="width: 76px; height: 76px; object-fit: cover; border: 3px solid var(--color-accent);" />
+								<span class="position-absolute badge badge-success rounded-circle" style="bottom: 2px; right: 2px; width: 14px; height: 14px; border: 2px solid #fff;" title="Đang hoạt động"></span>
+							</div>
+							<h3 class="h6 font-weight-bold text-forest-green mb-1" id="sidebar-profile-name">Lê Minh Anh</h3>
+							<span class="badge badge-accent text-white px-3 py-1 font-weight-bold small d-inline-block">Đại sứ Xuất sắc</span>
+							
+							<div class="small text-muted mt-3 pt-2 border-top text-left" style="font-size: 12px; line-height: 1.55;">
+								<div class="d-flex justify-content-between mb-1">
+									<span>Đơn vị:</span>
+									<strong class="text-dark" id="sidebar-profile-school">ĐH KHXH&NV</strong>
+								</div>
+								<div class="d-flex justify-content-between mb-1">
+									<span>Địa bàn:</span>
+									<strong class="text-dark" id="sidebar-profile-region">Bắc Ninh & Hà Giang</strong>
+								</div>
+								<div class="d-flex justify-content-between">
+									<span>Hoa hồng:</span>
+									<strong class="text-forest-green font-weight-bold">5% GMV / tour</strong>
+								</div>
+							</div>
 						</div>
-						<p class="text-muted small mb-1">
-							Đơn vị: <strong class="text-dark">ĐH Khoa học Xã hội & Nhân văn</strong> • Địa bàn phụ trách: <strong class="text-dark">Bắc Ninh & Hà Giang</strong>
-						</p>
-						<p class="text-muted small mb-0">
-							Hoa hồng bảo trợ: <strong class="text-forest-green font-weight-bold">5% GMV trên mỗi booking</strong> • Tỷ lệ hoàn thành tour: <strong class="text-success font-weight-bold">98%</strong>
-						</p>
-					</div>
-					<div class="col-md-auto mt-3 mt-md-0 text-md-right">
-						<a href="ambassador-handbook.html" class="btn btn-outline-primary btn-sm px-3 py-2 font-weight-bold shadow-sm mr-2">
-							Cẩm nang & Đào tạo
-						</a>
-						<button type="button" class="btn btn-primary btn-sm px-4 py-2 font-weight-bold shadow-sm" onclick="switchAmbTab('amb-tab-spots')">
-							+ Đề xuất Hồ sơ mới
-						</button>
+
+						<!-- Vertical Navigation Menu -->
+						<div class="bg-white rounded-20 border shadow-sm p-2 mb-3">
+							<div class="px-3 pt-2 pb-1 text-uppercase font-weight-bold text-muted small" style="font-size: 10.5px; letter-spacing: 0.5px;">
+								Menu Điều Hành
+							</div>
+							<ul class="amb-sidebar-nav" id="ambDashboardTabs" role="tablist">
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-amb-tab-profile" onclick="switchAmbTab('amb-tab-profile')" role="tab" aria-selected="false" aria-controls="amb-tab-profile">
+										<span>Thông tin & Hồ sơ Đại sứ</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn active" id="btn-amb-tab-overview" onclick="switchAmbTab('amb-tab-overview')" role="tab" aria-selected="true" aria-controls="amb-tab-overview">
+										<span>1. Thống kê & Hiệu suất</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-amb-tab-spots" onclick="switchAmbTab('amb-tab-spots')" role="tab" aria-selected="false" aria-controls="amb-tab-spots">
+										<span>2. Quản lý & Tạo Tour Di sản</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-amb-tab-bookings" onclick="switchAmbTab('amb-tab-bookings')" role="tab" aria-selected="false" aria-controls="amb-tab-bookings">
+										<span>3. Lịch đón khách & Booking</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-amb-tab-modules" onclick="switchAmbTab('amb-tab-modules')" role="tab" aria-selected="false" aria-controls="amb-tab-modules">
+										<span>4. Học phần Đào tạo</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-amb-tab-commission" onclick="switchAmbTab('amb-tab-commission')" role="tab" aria-selected="false" aria-controls="amb-tab-commission">
+										<span>5. Đối soát Hoa hồng 5%</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+
+						<!-- Quick Actions in Sidebar -->
+						<div class="p-3 bg-white rounded-20 border shadow-sm">
+							<button type="button" class="btn btn-primary btn-block font-weight-bold py-2 shadow-sm mb-2" onclick="switchAmbTab('amb-tab-spots'); document.getElementById('tour-builder-wrapper')?.classList.remove('d-none'); window.scrollTo({ top: 120, behavior: 'smooth' });">
+								+ Khởi tạo Tour Mới
+							</button>
+							<a href="ambassador-handbook.html" class="btn btn-outline-primary btn-block btn-sm font-weight-bold py-2">
+								Cẩm nang & Đào tạo
+							</a>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- Dashboard Tabs Navigation (Divided by Tabs for Easy Tracking) -->
-			<div class="portal-tabs-wrapper mb-4 rounded-15 border">
-				<ul class="portal-tabs-nav" id="ambDashboardTabs" role="tablist">
-					<li>
-						<button type="button" class="portal-tab-btn active" id="btn-amb-tab-overview" onclick="switchAmbTab('amb-tab-overview')" role="tab" aria-selected="true" aria-controls="amb-tab-overview">
-							<span>1. Thống kê & Hiệu suất</span>
-						</button>
-					</li>
-					<li>
-						<button type="button" class="portal-tab-btn" id="btn-amb-tab-spots" onclick="switchAmbTab('amb-tab-spots')" role="tab" aria-selected="false" aria-controls="amb-tab-spots">
-							<span>2. Quản lý & Tạo Tour Di sản</span>
-						</button>
-					</li>
-					<li>
-						<button type="button" class="portal-tab-btn" id="btn-amb-tab-bookings" onclick="switchAmbTab('amb-tab-bookings')" role="tab" aria-selected="false" aria-controls="amb-tab-bookings">
-							<span>3. Lịch đón khách</span>
-						</button>
-					</li>
-					<li>
-						<button type="button" class="portal-tab-btn" id="btn-amb-tab-modules" onclick="switchAmbTab('amb-tab-modules')" role="tab" aria-selected="false" aria-controls="amb-tab-modules">
-							<span>4. Học phần Đào tạo</span>
-						</button>
-					</li>
-					<li>
-						<button type="button" class="portal-tab-btn" id="btn-amb-tab-commission" onclick="switchAmbTab('amb-tab-commission')" role="tab" aria-selected="false" aria-controls="amb-tab-commission">
-							<span>5. Đối soát Hoa hồng 5%</span>
-						</button>
-					</li>
-				</ul>
-			</div>
+				<!-- CỘT PHẢI: KHÔNG GIAN NỘI DUNG TỪNG TAB -->
+				<div class="col-lg-9 col-xl-9">
+					<!-- ==============================================================
+					     TAB 0: THÔNG TIN & HỒ SƠ ĐẠI SỨ (TAB RIÊNG BIỆT)
+					     ============================================================== -->
+					<div class="portal-pane" id="amb-tab-profile" role="tabpanel" aria-labelledby="btn-amb-tab-profile">
+						<!-- Profile Overview Banner -->
+						<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+							<div class="row align-items-center mb-4 pb-4 border-bottom">
+								<div class="col-auto mb-3 mb-md-0">
+									<div class="position-relative">
+										<img id="profile-detail-avatar" src="images/person_1.jpg" alt="Avatar Đại sứ" class="rounded-circle shadow" style="width: 100px; height: 100px; object-fit: cover; border: 4px solid var(--color-accent);" />
+										<span class="position-absolute badge badge-success rounded-circle" style="bottom: 4px; right: 4px; width: 18px; height: 18px; border: 3px solid #fff;" title="Tài khoản đang hoạt động"></span>
+									</div>
+								</div>
+								<div class="col">
+									<div class="d-flex flex-wrap align-items-center mb-2">
+										<h2 class="h3 font-weight-bold text-forest-green mb-0 mr-3" id="profile-detail-name">Lê Minh Anh</h2>
+										<span class="badge badge-accent px-3 py-1 font-weight-bold text-white shadow-2xs">Đại sứ Xuất sắc (Cấp cao nhất)</span>
+										<span class="badge badge-light border ml-2 px-3 py-1 small font-weight-bold text-muted">Mã: AMB-2026-088</span>
+									</div>
+									<p class="text-muted small mb-1">
+										Đơn vị học tập: <strong class="text-dark" id="profile-detail-school">ĐH Khoa học Xã hội & Nhân văn (ĐHQG Hà Nội)</strong> • Khoa: <strong class="text-dark">Văn hóa học</strong>
+									</p>
+									<p class="text-muted small mb-0">
+										Địa bàn khảo sát thực địa: <strong class="text-dark" id="profile-detail-region">Bắc Ninh & Hà Giang</strong> • Ngày gia nhập: <strong class="text-dark">15/01/2026</strong>
+									</p>
+								</div>
+								<div class="col-md-auto mt-3 mt-md-0 text-md-right">
+									<span class="badge badge-success px-3 py-2 font-weight-bold d-block mb-2">Đã xác minh KYC & Thực địa</span>
+									<button type="button" class="btn btn-outline-primary btn-sm px-3 py-2 font-weight-bold" onclick="switchAmbTab('amb-tab-spots')">
+										Xem các Tour đang phụ trách →
+									</button>
+								</div>
+							</div>
+
+							<!-- 4 Profile Highlights Cards -->
+							<div class="row text-center mb-4">
+								<div class="col-6 col-md-3 mb-3 mb-md-0">
+									<div class="p-3 rounded-15 bg-light border h-100">
+										<span class="text-muted small d-block font-weight-bold mb-1">Tỷ lệ hoàn thành</span>
+										<strong class="h4 text-success font-weight-bold mb-0">98%</strong>
+										<small class="d-block text-muted mt-1">Xuất sắc</small>
+									</div>
+								</div>
+								<div class="col-6 col-md-3 mb-3 mb-md-0">
+									<div class="p-3 rounded-15 bg-light border h-100">
+										<span class="text-muted small d-block font-weight-bold mb-1">Hoa hồng bảo trợ</span>
+										<strong class="h4 text-forest-green font-weight-bold mb-0">5% GMV</strong>
+										<small class="d-block text-muted mt-1">Minh bạch tự động</small>
+									</div>
+								</div>
+								<div class="col-6 col-md-3">
+									<div class="p-3 rounded-15 bg-light border h-100">
+										<span class="text-muted small d-block font-weight-bold mb-1">Hộ dân đồng hành</span>
+										<strong class="h4 text-primary font-weight-bold mb-0">14 Hộ dân</strong>
+										<small class="d-block text-muted mt-1">Ủy quyền bảo trợ</small>
+									</div>
+								</div>
+								<div class="col-6 col-md-3">
+									<div class="p-3 rounded-15 bg-light border h-100">
+										<span class="text-muted small d-block font-weight-bold mb-1">Khóa đào tạo</span>
+										<strong class="h4 text-accent font-weight-bold mb-0">4/4 Học phần</strong>
+										<small class="d-block text-muted mt-1">Đạt chứng chỉ</small>
+									</div>
+								</div>
+							</div>
+
+							<!-- Detailed Profile Information Sections -->
+							<div class="row">
+								<div class="col-md-6 mb-4">
+									<div class="p-4 rounded-15 bg-warm-ivory border h-100">
+										<h4 class="h6 font-weight-bold text-forest-green mb-3 pb-2 border-bottom">
+											Thông tin Liên hệ & Định danh
+										</h4>
+										<dl class="row small mb-0" style="line-height: 1.8;">
+											<dt class="col-sm-5 text-muted">Email Đại sứ:</dt>
+											<dd class="col-sm-7 font-weight-bold text-dark" id="profile-detail-email">daisu@heritagelink.vn</dd>
+
+											<dt class="col-sm-5 text-muted">Số điện thoại:</dt>
+											<dd class="col-sm-7 font-weight-bold text-dark" id="profile-detail-phone">0977 345 678</dd>
+
+											<dt class="col-sm-5 text-muted">Tài khoản thụ hưởng:</dt>
+											<dd class="col-sm-7 font-weight-bold text-dark">Vietcombank - ***8889 (Chính chủ)</dd>
+
+											<dt class="col-sm-5 text-muted">Vai trò chính:</dt>
+											<dd class="col-sm-7 font-weight-bold text-dark">Khảo sát, thiết kế kịch bản 4 lớp và bảo trợ truyền thông</dd>
+										</dl>
+									</div>
+								</div>
+
+								<div class="col-md-6 mb-4">
+									<div class="p-4 rounded-15 bg-light border h-100">
+										<h4 class="h6 font-weight-bold text-forest-green mb-3 pb-2 border-bottom">
+											Cam kết Trách nhiệm Văn hóa của Đại sứ
+										</h4>
+										<ul class="list-unstyled small text-muted mb-0" style="line-height: 1.7;">
+											<li class="mb-2">
+												<strong class="text-dark">• Khảo sát thực địa 100%:</strong> Tự tay về làng, trải nghiệm và chụp ảnh, quay video thực tế cùng nghệ nhân.
+											</li>
+											<li class="mb-2">
+												<strong class="text-dark">• Tôn trọng chủ thể di sản:</strong> Đảm bảo hộ dân và nghệ nhân luôn nhận đúng 85% giá trị tour ngay khi hoàn thành.
+											</li>
+											<li class="mb-0">
+												<strong class="text-dark">• Đồng hành đón tiếp:</strong> Hỗ trợ du khách chu đáo và hướng dẫn quy tắc ứng xử văn hóa tại địa phương.
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="p-4 bg-white rounded-15 border border-gold" style="border-width: 1.5px !important;">
+										<h4 class="h6 font-weight-bold text-forest-green mb-2">
+											Triết lý Giữ hồn Di sản từ Đại sứ Lê Minh Anh
+										</h4>
+										<blockquote class="font-italic small text-muted mb-0" style="line-height: 1.7;">
+											“Chúng mình tin rằng di sản sống không nằm yên trong các trang sách hay viện bảo tàng, mà nằm trong đôi bàn tay nhào nặn đất sét của bác Nam, trong giọt mồ hôi bên lò nung rơm củi 700 năm. Là sinh viên văn hóa, sứ mệnh của chúng mình là kể câu chuyện ấy bằng ngôn ngữ chân thực nhất, để mỗi bước chân người trẻ tìm về đều là một lần tiếp nối ngọn lửa nghề ngàn đời.”
+										</blockquote>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
 			<!-- ==============================================================
 			     TAB 1: THỐNG KÊ & HIỆU SUẤT
@@ -921,7 +1065,9 @@
 				</div>
 			</div>
 
-		</div>
+				</div><!-- /.col-lg-9 -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
 	</main>
 
 	<!-- Footer -->
@@ -1536,11 +1682,21 @@
 				const data = await res.json();
 				if (!res.ok) return;
 
-				document.getElementById('profile-name').textContent = data.ambassador.name;
-				document.getElementById('stat-views').textContent = data.stats.views;
-				document.getElementById('stat-bookings').textContent = data.stats.bookings;
-				document.getElementById('stat-commission-recorded').textContent = data.stats.recordedCommission;
-				document.getElementById('stat-commission-pending').textContent = data.stats.pendingCommission;
+				const amb = data.ambassador || {};
+				if (document.getElementById('sidebar-profile-name')) document.getElementById('sidebar-profile-name').textContent = amb.name || 'Lê Minh Anh';
+				if (document.getElementById('sidebar-profile-school')) document.getElementById('sidebar-profile-school').textContent = amb.school || 'ĐH KHXH&NV';
+				if (document.getElementById('sidebar-profile-region')) document.getElementById('sidebar-profile-region').textContent = amb.region || 'Bắc Ninh & Hà Giang';
+
+				if (document.getElementById('profile-detail-name')) document.getElementById('profile-detail-name').textContent = amb.name || 'Lê Minh Anh';
+				if (document.getElementById('profile-detail-school')) document.getElementById('profile-detail-school').textContent = amb.school || 'ĐH Khoa học Xã hội & Nhân văn (ĐHQG Hà Nội)';
+				if (document.getElementById('profile-detail-region')) document.getElementById('profile-detail-region').textContent = amb.region || 'Bắc Ninh & Hà Giang';
+				if (document.getElementById('profile-detail-email')) document.getElementById('profile-detail-email').textContent = amb.email || 'daisu@heritagelink.vn';
+				if (document.getElementById('profile-detail-phone')) document.getElementById('profile-detail-phone').textContent = amb.phone || '0977 345 678';
+
+				if (document.getElementById('stat-views')) document.getElementById('stat-views').textContent = data.stats.views;
+				if (document.getElementById('stat-bookings')) document.getElementById('stat-bookings').textContent = data.stats.bookings;
+				if (document.getElementById('stat-commission-recorded')) document.getElementById('stat-commission-recorded').textContent = data.stats.recordedCommission;
+				if (document.getElementById('stat-commission-pending')) document.getElementById('stat-commission-pending').textContent = data.stats.pendingCommission;
 
 				// Modules
 				const modulesList = document.getElementById('ambassador-modules-list');
