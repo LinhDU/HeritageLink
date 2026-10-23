@@ -360,7 +360,7 @@ const seedExperiences = [
     hostName: 'Xưởng gốm Bác Nam',
     rating: 5.0,
     reviewCount: 15,
-    imageClass: 'images/gom-bacninh.jpg',
+    imageClass: 'images/gom-amchen.jpg',
     badge: 'Sản phẩm OCOP',
     hasStay: false,
     verifiedDate: '14/10/2026',
