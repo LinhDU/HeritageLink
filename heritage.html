@@ -58,19 +58,73 @@
 		</div>
 	</nav>
 
-	<!-- Main Scrollytelling Profile Container -->
-	<main class="py-5 mt-5">
-		<div class="container mt-4">
-			<!-- Header Navigation Bar between Heritage Profiles -->
-			<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
-				<div>
-					<span class="eyebrow mb-1">Hồ sơ Di sản sống</span>
-					<h1 class="h3 font-weight-bold text-forest-green mb-0">Tư liệu Di sản & Câu chuyện Bản địa</h1>
+	<!-- SECTION 2: HERO — HỒ SƠ DI SẢN SỐNG (TRUYỀN THỐNG TRANG CHỦ) -->
+	<section class="hero-traditional-section" id="hero">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-7">
+					<div class="hero-traditional-content pr-lg-4">
+						<div class="traditional-seal-eyebrow mb-3">
+							<span class="heritage-seal-tag">HỒ SƠ GỐC</span>
+							<span class="eyebrow-divider">—</span>
+							<span class="eyebrow-sub-text">Tư liệu Di sản & Câu chuyện Sống</span>
+						</div>
+
+						<h1 class="traditional-hero-title mb-3">
+							Câu chuyện Di sản.<br>
+							<span class="traditional-hero-highlight">Ký ức sống qua ngàn năm.</span>
+						</h1>
+
+						<p class="traditional-lead">
+							Nguồn tư liệu số hóa văn hóa bản địa được khảo sát thực địa bởi Đại sứ Sinh viên và trực tiếp ủy quyền bởi Hội đồng Nghệ nhân. Khám phá huyền tích, kỹ nghệ tổ truyền và triết lý sống của người gìn giữ lửa nghề.
+						</p>
+
+						<div class="traditional-quote-strip mb-4">
+							<span class="quote-text">“Gìn giữ cho muôn đời sau bằng sự thấu cảm, lòng tự hào và trách nhiệm sẻ chia.”</span>
+						</div>
+
+						<div class="traditional-cta-group">
+							<a href="#heritage-content" class="btn btn-heritage-primary">
+								Đọc tư liệu hồ sơ
+							</a>
+							<a href="explore.html" class="btn btn-heritage-outline">
+								Đặt tour trải nghiệm
+							</a>
+						</div>
+					</div>
 				</div>
-				<!-- Dropdown quick switcher -->
+
+				<!-- Khung ảnh tư liệu truyền thống -->
+				<div class="col-lg-5 mt-4 mt-lg-0">
+					<div class="traditional-photo-frame">
+						<div class="photo-inner-border">
+							<div class="slides">
+								<img src="images/gom-bacninh.jpg" alt="Di sản sống Phù Lãng" class="active">
+							</div>
+						</div>
+						<div class="photo-caption-strip">
+							<span class="caption-seal">[ HỒ SƠ THỰC ĐỊA ]</span>
+							<span class="caption-text">Gốm Phù Lãng – Men da lươn 700 năm bên bờ sông Cầu</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Main Scrollytelling Profile Container -->
+	<main class="py-5" id="heritage-content" style="background-color: var(--traditional-paper, #FAF6EE);">
+		<div class="container">
+			<!-- Header Navigation Bar between Heritage Profiles -->
+			<div class="d-flex justify-content-between align-items-center mb-5 pb-3 border-bottom flex-wrap gap-3">
+				<div>
+					<p class="traditional-eyebrow mb-1"><span class="heritage-seal-tag">TƯ LIỆU SỐ HÓA</span> THỰC ĐỊA BẢN ĐỊA</p>
+					<h2 class="h3 font-weight-bold mb-0 font-serif" style="color: var(--traditional-jade);">Hồ Sơ Di Sản Sống</h2>
+				</div>
+				<!-- Dropdown quick switcher mộc bản -->
 				<div class="d-flex align-items-center">
-					<span class="small text-muted mr-2">Chọn hồ sơ:</span>
-					<select id="heritage-slug-switcher" class="form-control form-control-sm rounded-10 custom-select" style="width: 250px;">
+					<span class="small font-weight-bold text-dark mr-2 font-serif">Chọn hồ sơ:</span>
+					<select id="heritage-slug-switcher" class="form-control form-control-sm custom-select" style="width: 270px; border: 1px solid var(--traditional-border-bronze);">
 						<option value="gom-phu-lang">Gốm Phù Lãng (Bắc Ninh)</option>
 						<option value="lo-lo-chai">Lô Lô Chải & H'Mông (Hà Giang)</option>
 						<option value="theu-khoai-chau">Thêu tay cung đình (Hưng Yên)</option>
@@ -81,29 +135,30 @@
 				</div>
 			</div>
 
-			<!-- Dynamic Heritage Profile Hero View -->
-			<article class="bg-white rounded-20 border shadow-sm p-4 p-md-5 mb-5" id="heritage-article-box">
-				<!-- Cover Image Banner -->
-				<div class="rounded-15 overflow-hidden mb-4 position-relative" style="height: 380px;">
-					<img id="profile-cover-img" src="images/gom-bacninh.jpg" alt="Di sản sống" class="w-100 h-100" style="object-fit: cover;">
-					<div class="position-absolute" style="bottom: 20px; left: 20px; right: 20px;">
-						<div class="p-3 rounded-15 bg-white text-dark d-inline-block shadow-sm" style="max-width: 600px;">
-							<span class="badge badge-accent px-2 py-1 text-white small mr-2" id="profile-category-tag">Làng nghề thủ công</span>
-							<span class="small text-muted font-weight-bold" id="profile-location-tag">Quế Võ, Bắc Ninh</span>
-						</div>
+			<!-- Dynamic Heritage Profile Hero View (Mộc bản Cuộn Thư Tịch) -->
+			<article class="application-form-box p-4 p-md-5 mb-5" id="heritage-article-box" style="background: #FFFFFF;">
+				<!-- Cover Image Banner Mộc bản -->
+				<div class="traditional-photo-frame mb-4" style="box-shadow: none;">
+					<div class="photo-inner-border" style="height: 380px;">
+						<img id="profile-cover-img" src="images/gom-bacninh.jpg" alt="Di sản sống" style="width: 100%; height: 100%; object-fit: cover;">
+					</div>
+					<div class="photo-caption-strip d-flex justify-content-between align-items-center flex-wrap">
+						<span class="caption-seal" id="profile-category-tag">[ LÀNG NGHỀ THỦ CÔNG ]</span>
+						<span class="caption-text font-weight-bold" id="profile-location-tag">Quế Võ, Bắc Ninh</span>
 					</div>
 				</div>
 
 				<!-- Title & Ambassador Byline -->
-				<h2 class="h2 font-weight-bold text-forest-green mb-3" id="profile-title">
+				<h2 class="h2 font-weight-bold mb-3 font-serif" style="color: var(--traditional-jade);" id="profile-title">
 					Gốm Phù Lãng – Nghệ thuật men da lươn 700 năm bên bờ sông Cầu
 				</h2>
 
-				<!-- Consent & Verification Strip -->
-				<div class="p-3 bg-light rounded-15 border-left border-gold mb-4 small" style="border-left-width: 4px !important;">
-					<div class="d-flex align-items-center justify-content-between flex-wrap">
+				<!-- Consent & Verification Strip Mộc bản -->
+				<div class="p-3 mb-4 small" style="background: #FAF6EE; border: 1px solid var(--traditional-border-bronze); border-left: 4px solid var(--traditional-seal) !important;">
+					<div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
 						<div>
-							<strong class="text-forest-green">Biên bản ủy quyền & đồng thuận cộng đồng:</strong>
+							<div class="heritage-seal-tag mb-1">XÁC THỰC THỰC ĐỊA</div>
+							<strong class="text-forest-green d-block">Biên bản ủy quyền & đồng thuận cộng đồng:</strong>
 							<span class="text-muted d-block" id="profile-consent-text">
 								Đã có biên bản thỏa thuận & ủy quyền truyền thông văn hóa từ Hội đồng Nghệ nhân Phù Lãng.
 							</span>
@@ -112,22 +167,26 @@
 							Đã kiểm duyệt: 10/10/2026
 						</span>
 					</div>
-					<div class="mt-2 text-muted" style="font-size: 11px;">
+					<div class="mt-2 text-muted pt-2 border-top" style="font-size: 11.5px;">
 						Khảo sát và số hóa bởi: <strong class="text-dark" id="profile-ambassador-info">Lê Minh Anh • ĐH Khoa học Xã hội & Nhân văn</strong>
 					</div>
 				</div>
 
 				<!-- Section: Lịch sử & Nguồn gốc -->
 				<section class="mb-5">
-					<h3 class="h4 font-weight-bold text-forest-green mb-3">1. Nguồn gốc & Lịch sử ngàn đời</h3>
-					<p class="lead text-muted" id="profile-history-content">
+					<div class="d-flex align-items-center gap-2 mb-3">
+						<h3 class="h4 font-weight-bold font-serif mb-0" style="color: var(--traditional-jade);">1. Nguồn gốc & Lịch sử ngàn đời</h3>
+					</div>
+					<p class="lead text-muted" id="profile-history-content" style="line-height: 1.75; font-size: 1.05rem;">
 						Khởi nguồn từ thế kỷ 13 thời nhà Trần do quan Trạng Hứa Vĩnh Kiều truyền dạy, làng gốm Phù Lãng nằm nép mình bên dòng sông Cầu êm ả. Trải qua hơn 700 năm thăng trầm, đây là một trong ba dòng gốm cổ xưa bậc nhất miền Bắc còn giữ lửa nghề thủ công không pha lẫn.
 					</p>
 				</section>
 
 				<!-- Section: Quy trình nghề cổ truyền -->
 				<section class="mb-5">
-					<h3 class="h4 font-weight-bold text-forest-green mb-3">2. Quy trình chế tác kỳ công</h3>
+					<div class="d-flex align-items-center gap-2 mb-3">
+						<h3 class="h4 font-weight-bold font-serif mb-0" style="color: var(--traditional-jade);">2. Quy trình chế tác kỳ công</h3>
+					</div>
 					<div class="row" id="profile-steps-container">
 						<!-- Steps injected dynamically -->
 					</div>
@@ -135,16 +194,23 @@
 
 				<!-- Section: Tiếng nói Nghệ nhân -->
 				<section class="mb-5">
-					<h3 class="h4 font-weight-bold text-forest-green mb-3">3. Tiếng nói người trong cuộc</h3>
-					<div class="p-4 bg-warm-ivory rounded-20 border">
+					<div class="d-flex align-items-center gap-2 mb-3">
+						<h3 class="h4 font-weight-bold font-serif mb-0" style="color: var(--traditional-jade);">3. Tiếng nói người trong cuộc</h3>
+					</div>
+					<div class="p-4 rounded-0 border" style="background: #FAF6EE; border: 1px solid var(--traditional-border-bronze) !important; outline: 1px solid rgba(179, 138, 56, 0.2); outline-offset: -4px;">
 						<div class="row align-items-center">
 							<div class="col-md-3 text-center mb-3 mb-md-0">
-								<img id="profile-artisan-img" src="images/person_2.jpg" alt="Nghệ nhân" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid var(--color-accent);">
+								<div class="traditional-photo-frame mx-auto" style="width: 110px; padding: 4px; box-shadow: none;">
+									<div class="photo-inner-border" style="height: 100px;">
+										<img id="profile-artisan-img" src="images/person_2.jpg" alt="Nghệ nhân" style="width: 100%; height: 100%; object-fit: cover;">
+									</div>
+								</div>
 							</div>
 							<div class="col-md-9">
-								<h4 class="h5 font-weight-bold text-forest-green mb-1" id="profile-artisan-name">Bác Phạm Văn Nam</h4>
+								<span class="heritage-seal-tag mb-1">NGHỆ NHÂN BẢN ĐỊA</span>
+								<h4 class="h5 font-weight-bold font-serif mb-1" style="color: var(--traditional-jade);" id="profile-artisan-name">Bác Phạm Văn Nam</h4>
 								<span class="d-block small text-muted font-weight-bold mb-2" id="profile-artisan-role">Chủ cơ sở gốm Nam Phù Lãng • 42 năm giữ nghề</span>
-								<blockquote class="font-italic text-dark mb-0 pl-3 border-left" id="profile-artisan-quote" style="border-left: 3px solid var(--color-accent) !important;">
+								<blockquote class="font-italic text-dark mb-0 pl-3 border-left" id="profile-artisan-quote" style="border-left: 3px solid var(--traditional-bronze) !important; font-family: 'Lora', Georgia, serif; line-height: 1.6;">
 									“Gốm Phù Lãng không bóng bẩy tráng lệ, nó mang màu đất nâu ấm và khói rơm của làng quê Việt Nam.”
 								</blockquote>
 							</div>
@@ -153,11 +219,11 @@
 				</section>
 
 				<!-- Section: Trải nghiệm liên kết có thể đặt chỗ -->
-				<section class="p-4 rounded-20 bg-forest-green text-white" id="profile-related-exp-box">
+				<section class="p-4" id="profile-related-exp-box" style="background: var(--traditional-jade); border: 1px solid var(--traditional-border-bronze); color: #FAF6EE;">
 					<div class="row align-items-center">
 						<div class="col-md-8 mb-3 mb-md-0">
-							<span class="badge badge-warning text-dark font-weight-bold mb-2">Trải nghiệm thực tế</span>
-							<h4 class="h5 font-weight-bold text-white mb-1" id="profile-linked-title">
+							<span class="heritage-seal-tag mb-2">TRẢI NGHIỆM THỰC TẾ</span>
+							<h4 class="h5 font-weight-bold text-white mb-1 font-serif" id="profile-linked-title">
 								Gốm truyền thống Phù Lãng – Nghệ thuật men da lươn 700 năm
 							</h4>
 							<p class="small text-white-opacity mb-0">
@@ -165,7 +231,7 @@
 							</p>
 						</div>
 						<div class="col-md-4 text-md-right">
-							<a href="detail.html?id=1" id="profile-linked-btn" class="btn btn-accent px-4 py-2 font-weight-bold shadow-lg">
+							<a href="detail.html?id=1" id="profile-linked-btn" class="btn btn-heritage-primary px-4 py-2 font-weight-bold" style="background: #DFB847; color: #173831 !important; border-color: #DFB847;">
 								Đặt trải nghiệm ngay →
 							</a>
 						</div>
@@ -175,12 +241,115 @@
 		</div>
 	</main>
 
-	<!-- Footer -->
-	<footer class="site-footer">
+	<!-- SECTION: JOIN THE HERITAGE MOVEMENT (ĐỒNG BỘ TRANG CHỦ) -->
+	<section class="cta-movement-section" id="movement">
 		<div class="container text-center">
-			<p class="mb-0 text-white-opacity small">
-				HeritageLink &copy; 2026. Hồ sơ Di sản sống được bảo vệ quyền tác giả và sự đồng thuận của cộng đồng bản địa.
-			</p>
+			<div class="row justify-content-center">
+				<div class="col-lg-8" data-aos="fade-up">
+					<p class="traditional-eyebrow" style="color: #DFB847; justify-content: center;"><span class="heritage-seal-tag">ĐỒNG HÀNH</span> CHUNG TAY GÌN GIỮ</p>
+					<h2 class="display-4 text-white font-weight-bold mb-3 font-serif" style="font-size: 2.3rem;">Di sản sẽ sống mãi<br>khi câu chuyện được tiếp nối.</h2>
+					<div class="heritage-divider mb-4"><span class="heritage-seal">Lưu Giữ Bản Sắc</span></div>
+					<p class="lead text-white-opacity mb-5">
+						HeritageLink là phong trào gìn giữ các giá trị văn hóa bản địa bằng sức trẻ, sự thấu cảm và sự sẻ chia kinh tế minh bạch.
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<!-- Path 1: Traveler -->
+				<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+					<div class="traditional-movement-card h-100 d-flex flex-column justify-content-between">
+						<div>
+							<div class="movement-roman mb-2">I.</div>
+							<h3 class="movement-card-title mb-2">Dành cho Du khách</h3>
+							<p class="movement-card-desc mb-4">Trải nghiệm những nét văn hóa nguyên bản, tự tay làm đồ thủ công và lắng nghe câu chuyện từ nghệ nhân.</p>
+						</div>
+						<a href="explore.html" class="btn btn-heritage-outline btn-block">Khám phá trải nghiệm</a>
+					</div>
+				</div>
+
+				<!-- Path 2: Student Ambassador (Featured) -->
+				<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+					<div class="traditional-movement-card featured-movement-card h-100 d-flex flex-column justify-content-between">
+						<div>
+							<div class="movement-roman mb-2">II.</div>
+							<h3 class="movement-card-title text-accent-gold mb-2">Dành cho Sinh viên</h3>
+							<p class="movement-card-desc mb-4">Trở thành Đại sứ Di sản, xây dựng portfolio thực tế, rèn luyện kỹ năng truyền thông và nhận hoa hồng bảo trợ.</p>
+						</div>
+						<a href="ambassador-apply.html" class="btn btn-heritage-primary btn-block">Trở thành Đại sứ</a>
+					</div>
+				</div>
+
+				<!-- Path 3: Community & Artisans -->
+				<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+					<div class="traditional-movement-card h-100 d-flex flex-column justify-content-between">
+						<div>
+							<div class="movement-roman mb-2">III.</div>
+							<h3 class="movement-card-title mb-2">Dành cho Cộng đồng</h3>
+							<p class="movement-card-desc mb-4">Giới thiệu làng nghề hoặc nghệ nhân quê bạn để chúng tôi cùng đại sứ sinh viên đến hỗ trợ số hóa miễn phí.</p>
+						</div>
+						<a href="community.html" class="btn btn-heritage-outline btn-block">Giới thiệu di sản</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- FOOTER ĐỒNG BỘ TRANG CHỦ -->
+	<footer class="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 mb-4 mb-lg-0">
+					<a href="index.html" class="brand-logo-footer mb-3">
+						<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-footer">
+						<div class="logo-text-block">
+							<span class="logo-main-text">HeritageLink</span>
+							<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN • KẾT NỐI NHỊP SỐNG NGÀN NĂM</span>
+						</div>
+					</a>
+					<p class="text-white-opacity mb-3">
+						HeritageLink – Nền tảng kết nối trải nghiệm di sản Việt qua Mạng lưới Đại sứ Sinh viên.
+					</p>
+					<div class="revenue-split-badge mb-3">
+						<strong class="d-block text-accent mb-1">Mô hình chia sẻ doanh thu 85/5/2/8:</strong>
+						<span class="d-block small text-white-opacity">85% Nghệ nhân • 5% Đại sứ • 2% Cổng thanh toán • 8% Vận hành</span>
+					</div>
+					<p class="small text-white-opacity">&ldquo;Không chỉ đến để nhìn di sản, mà đến để sống cùng di sản.&rdquo;</p>
+				</div>
+
+				<div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+					<h3 class="footer-heading mb-3">Khám phá</h3>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-2"><a href="explore.html" class="text-white-opacity">Tất cả trải nghiệm</a></li>
+						<li class="mb-2"><a href="heritage.html" class="text-white-opacity">Hồ sơ Di sản sống</a></li>
+						<li class="mb-2"><a href="passport.html" class="text-white-opacity">Hộ chiếu số</a></li>
+						<li class="mb-2"><a href="ai-itinerary.html" class="text-white-opacity">AI Gợi ý lộ trình</a></li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+					<h3 class="footer-heading mb-3">Mạng lưới</h3>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-2"><a href="ambassadors.html" class="text-white-opacity">Dành cho Đại sứ Sinh viên</a></li>
+						<li class="mb-2"><a href="community.html" class="text-white-opacity">Dành cho Nghệ nhân & Hộ dân</a></li>
+						<li class="mb-2"><a href="host.html" class="text-white-opacity">Cổng tiếp đón của Hộ dân</a></li>
+						<li class="mb-2"><a href="admin.html" class="text-white-opacity">Cổng quản trị Super Admin</a></li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3 col-md-4">
+					<h3 class="footer-heading mb-3">Cam kết bảo tồn</h3>
+					<p class="small text-white-opacity mb-2">100% nội dung trải nghiệm có sự đồng thuận và ủy quyền của cộng đồng bản địa.</p>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-1">Hotline: 0988.xxx.xxx (Hỗ trợ 24/7)</li>
+						<li class="mb-1">Email: contact@heritagelink.vn</li>
+						<li>Văn phòng: Hà Nội & Đà Nẵng</li>
+					</ul>
+				</div>
+			</div>
+			<div class="border-top border-white-opacity mt-4 pt-3 text-center">
+				<p class="small text-white-opacity mb-0">HeritageLink &copy; 2026. Mạng lưới Đại sứ Sinh viên & Nghệ nhân Bản địa.</p>
+			</div>
 		</div>
 	</footer>
 

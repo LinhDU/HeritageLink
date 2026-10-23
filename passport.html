@@ -56,48 +56,95 @@
 		</div>
 	</nav>
 
-	<!-- Main Passport Page Container -->
-	<main class="py-5 mt-5">
-		<div class="container mt-4" style="max-width: 960px;">
-			<!-- Passport Header -->
-			<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-				<div>
-					<span class="eyebrow mb-1">Gamification & Nhật ký số</span>
-					<h1 class="h2 font-weight-bold text-forest-green mb-0">Hộ chiếu Di sản Số của bạn</h1>
+	<!-- SECTION: HERO TRUYỀN THỐNG HỘ CHIẾU DI SẢN -->
+	<section class="hero-traditional-section" id="hero">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-7">
+					<div class="hero-traditional-content pr-lg-4">
+						<div class="traditional-seal-eyebrow mb-3">
+							<span class="heritage-seal-tag">HỘ CHIẾU SỐ & TEM ĐỘC BẢN</span>
+							<span class="eyebrow-divider">—</span>
+							<span class="eyebrow-sub-text">Nhật ký gìn giữ văn hóa của mỗi cá nhân</span>
+						</div>
+
+						<h1 class="traditional-hero-title mb-3">
+							Hộ chiếu Di sản Số.<br>
+							<span class="traditional-hero-highlight">Mỗi con tem, một hành trình.</span>
+						</h1>
+
+						<p class="traditional-lead">
+							Mỗi lần bạn đặt chân đến một xưởng nghề, lắng nghe một nghệ nhân cao niên và tự tay hoàn thiện sản phẩm, bạn sẽ nhận được một con tem số bảo chứng đóng góp thực tế cho công cuộc bảo tồn văn hóa Việt.
+						</p>
+
+						<div class="traditional-quote-strip mb-4">
+							<span class="quote-text">“Dấu ấn văn hóa không nằm ở bức ảnh check-in, mà ở sự thấu cảm khắc sâu.”</span>
+						</div>
+
+						<div class="traditional-cta-group">
+							<a href="#passport-collection-section" class="btn btn-heritage-primary">
+								Xem bộ sưu tập tem
+							</a>
+							<a href="explore.html" class="btn btn-heritage-outline">
+								Khám phá để tích lũy
+							</a>
+						</div>
+					</div>
 				</div>
-				<div class="d-flex gap-2">
-					<button class="btn btn-sm btn-outline-primary font-weight-bold" onclick="alert('Đã tạo liên kết chia sẻ Hộ chiếu Di sản của bạn!');">
-						Chia sẻ Hộ chiếu
-					</button>
-					<a href="explore.html" class="btn btn-sm btn-accent font-weight-bold">
-						Khám phá để nhận tem mới +
-					</a>
+
+				<!-- Khung ảnh tư liệu truyền thống -->
+				<div class="col-lg-5 mt-4 mt-lg-0">
+					<div class="traditional-photo-frame">
+						<div class="photo-inner-border">
+							<div class="slides">
+								<img src="images/hoian.jpg" alt="Bộ sưu tập tem di sản" class="active">
+							</div>
+						</div>
+						<div class="photo-caption-strip">
+							<span class="caption-seal">[ CHỨNG NHẬN ĐỒNG HÀNH ]</span>
+							<span class="caption-text">Mỗi con tem xác nhận trải nghiệm thực địa và ủng hộ trực tiếp 85% cho nghệ nhân</span>
+						</div>
+					</div>
 				</div>
 			</div>
+		</div>
+	</section>
 
-			<!-- Passport Book Visual Card -->
-			<div class="passport-cover-preview mb-5">
+	<!-- Main Passport Page Container -->
+	<main class="py-5" id="passport-collection-section" style="background-color: var(--traditional-paper, #FAF6EE);">
+		<div class="container" style="max-width: 1040px;">
+			<div class="text-center mb-5" data-aos="fade-up">
+				<p class="traditional-eyebrow"><span class="heritage-seal-tag">NHẬT KÝ SỐ</span> DẤU ẤN VĂN HÓA VIỆT</p>
+				<h2 class="display-4 font-weight-bold mb-3 font-serif" style="color: var(--traditional-jade); font-size: 2.2rem;">Hộ Chiếu & Bộ Sưu Tập Tem Di Sản</h2>
+				<div class="heritage-divider mb-3"><span class="heritage-seal">Bảo Tồn Bản Địa</span></div>
+				<p class="lead text-muted mx-auto" style="max-width: 680px; font-size: 0.98rem;">
+					Ghi nhận cấp bậc gìn giữ và vinh danh những du khách tích cực đồng hành cùng nghệ nhân cao niên trên khắp dải đất hình chữ S.
+				</p>
+			</div>
+
+			<!-- Passport Book Visual Card (Mộc bản Jade Frame) -->
+			<div class="passport-cover-preview mb-5" style="border: 2px solid var(--traditional-gold); outline: 1px solid rgba(179, 138, 56, 0.4); outline-offset: -5px; border-radius: 0px !important;">
 				<div class="row align-items-center">
 					<div class="col-md-3 text-center mb-4 mb-md-0">
-						<div class="passport-emblem mx-auto">
+						<div class="passport-emblem mx-auto mb-2">
 							<img src="images/logo-icon.png" alt="HeritageLink Huy hiệu Di sản" class="passport-emblem-img">
 						</div>
-						<strong class="d-block text-white" id="passport-holder-name">Trần Văn Khách</strong>
-						<span class="small text-accent-gold" id="passport-code">HL-PASSPORT-VN2026</span>
+						<strong class="d-block text-white font-serif" id="passport-holder-name" style="font-size: 1.15rem;">Trần Văn Khách</strong>
+						<span class="small text-accent-gold" id="passport-code" style="letter-spacing: 1px;">HL-PASSPORT-VN2026</span>
 					</div>
 
 					<div class="col-md-9 border-left pl-md-4" style="border-left: 1px solid rgba(184, 155, 112, 0.3) !important;">
-						<div class="d-flex justify-content-between align-items-center mb-2">
+						<div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
 							<div>
 								<span class="small text-white-opacity text-uppercase letter-spacing-1">Cấp bậc nhà gìn giữ:</span>
-								<h3 class="h4 font-weight-bold text-accent-gold mb-0" id="passport-level-title">Người khám phá (Explorer)</h3>
+								<h3 class="h4 font-weight-bold text-accent-gold mb-0 font-serif" id="passport-level-title">Người khám phá (Explorer)</h3>
 							</div>
-							<span class="badge badge-accent px-3 py-1 font-weight-bold" id="passport-stamp-counter">1 / 6 Tem</span>
+							<span class="heritage-seal-tag" id="passport-stamp-counter">1 / 6 Tem</span>
 						</div>
 
 						<!-- Rank Progress Bar -->
-						<div class="passport-rank-bar">
-							<div class="passport-rank-fill" id="passport-level-progress-bar" style="width: 25%;"></div>
+						<div class="passport-rank-bar" style="border-radius: 0px;">
+							<div class="passport-rank-fill" id="passport-level-progress-bar" style="width: 25%; border-radius: 0px;"></div>
 						</div>
 
 						<div class="d-flex justify-content-between text-white-opacity small">
@@ -200,29 +247,132 @@
 			<!-- Cultural Themes Overview -->
 			<div class="row">
 				<div class="col-md-6 mb-3">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
-						<h3 class="h6 font-weight-bold text-forest-green mb-2">Chủ đề: Làng nghề & Thủ công</h3>
+					<div class="application-form-box p-4 h-100">
+						<h3 class="h6 font-weight-bold text-forest-green mb-2 font-serif">Chủ đề: Làng nghề & Thủ công</h3>
 						<p class="small text-muted mb-2">Bộ sưu tập tôn vinh đôi bàn tay tài hoa của nghệ nhân các làng nghề nghìn năm.</p>
-						<span class="badge badge-accent px-2 py-1 small">1/3 Tem đã thu thập</span>
+						<span class="heritage-seal-tag">1/3 Tem đã thu thập</span>
 					</div>
 				</div>
 				<div class="col-md-6 mb-3">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
-						<h3 class="h6 font-weight-bold text-forest-green mb-2">Chủ đề: Đời sống & Không gian bản địa</h3>
+					<div class="application-form-box p-4 h-100">
+						<h3 class="h6 font-weight-bold text-forest-green mb-2 font-serif">Chủ đề: Đời sống & Không gian bản địa</h3>
 						<p class="small text-muted mb-2">Khám phá nếp ăn, nếp ở, những phong tục tập quán mộc mạc lưu truyền.</p>
-						<span class="badge badge-light px-2 py-1 small text-muted">0/3 Tem đã thu thập</span>
+						<span class="heritage-seal-tag" style="border-color: #999; color: #666;">0/3 Tem đã thu thập</span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
 
-	<!-- Footer -->
+	<!-- SECTION: PHONG TRÀO DI SẢN (CTA ĐỒNG BỘ TRANG CHỦ) -->
+	<section class="cta-movement-section">
+		<div class="container position-relative" style="z-index: 2;">
+			<div class="row justify-content-center text-center mb-5">
+				<div class="col-lg-8" data-aos="fade-up">
+					<p class="traditional-eyebrow text-accent-gold"><span class="heritage-seal-tag">PHONG TRÀO</span> TIẾP NỐI MẠCH NGUỒN</p>
+					<h2 class="display-4 text-white font-weight-bold mb-3 font-serif" style="font-size: 2.3rem;">Di sản sẽ sống mãi<br>khi câu chuyện được tiếp nối.</h2>
+					<div class="heritage-divider mb-4"><span class="heritage-seal">Lưu Giữ Bản Sắc</span></div>
+					<p class="lead text-white-opacity mb-5">
+						HeritageLink là phong trào gìn giữ các giá trị văn hóa bản địa bằng sức trẻ, sự thấu cảm và sự sẻ chia kinh tế minh bạch.
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<!-- Path 1: Traveler -->
+				<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+					<div class="traditional-movement-card h-100 d-flex flex-column justify-content-between">
+						<div>
+							<div class="movement-roman mb-2">I.</div>
+							<h3 class="movement-card-title mb-2">Dành cho Du khách</h3>
+							<p class="movement-card-desc mb-4">Trải nghiệm những nét văn hóa nguyên bản, tự tay làm đồ thủ công và lắng nghe câu chuyện từ nghệ nhân.</p>
+						</div>
+						<a href="explore.html" class="btn btn-heritage-outline btn-block">Khám phá trải nghiệm</a>
+					</div>
+				</div>
+
+				<!-- Path 2: Student Ambassador (Featured) -->
+				<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+					<div class="traditional-movement-card featured-movement-card h-100 d-flex flex-column justify-content-between">
+						<div>
+							<div class="movement-roman mb-2">II.</div>
+							<h3 class="movement-card-title text-accent-gold mb-2">Dành cho Sinh viên</h3>
+							<p class="movement-card-desc mb-4">Trở thành Đại sứ Di sản, xây dựng portfolio thực tế, rèn luyện kỹ năng truyền thông và nhận hoa hồng bảo trợ.</p>
+						</div>
+						<a href="ambassador-apply.html" class="btn btn-heritage-primary btn-block">Trở thành Đại sứ</a>
+					</div>
+				</div>
+
+				<!-- Path 3: Community & Artisans -->
+				<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+					<div class="traditional-movement-card h-100 d-flex flex-column justify-content-between">
+						<div>
+							<div class="movement-roman mb-2">III.</div>
+							<h3 class="movement-card-title mb-2">Dành cho Cộng đồng</h3>
+							<p class="movement-card-desc mb-4">Giới thiệu làng nghề hoặc nghệ nhân quê bạn để chúng tôi cùng đại sứ sinh viên đến hỗ trợ số hóa miễn phí.</p>
+						</div>
+						<a href="community.html" class="btn btn-heritage-outline btn-block">Giới thiệu di sản</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- FOOTER ĐỒNG BỘ TRANG CHỦ -->
 	<footer class="site-footer">
-		<div class="container text-center">
-			<p class="mb-0 text-white-opacity small">
-				HeritageLink &copy; 2026. Hộ chiếu Di sản số chứng nhận đóng góp cho bảo tồn văn hóa Việt.
-			</p>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 mb-4 mb-lg-0">
+					<a href="index.html" class="brand-logo-footer mb-3">
+						<img src="images/logo-icon.png" alt="HeritageLink Logo" class="logo-icon-footer">
+						<div class="logo-text-block">
+							<span class="logo-main-text">HeritageLink</span>
+							<span class="logo-slogan-text">LƯU GIỮ HỒN CỐT DI SẢN • KẾT NỐI NHỊP SỐNG NGÀN NĂM</span>
+						</div>
+					</a>
+					<p class="text-white-opacity mb-3">
+						HeritageLink – Nền tảng kết nối trải nghiệm di sản Việt qua Mạng lưới Đại sứ Sinh viên.
+					</p>
+					<div class="revenue-split-badge mb-3">
+						<strong class="d-block text-accent mb-1">Mô hình chia sẻ doanh thu 85/5/2/8:</strong>
+						<span class="d-block small text-white-opacity">85% Nghệ nhân • 5% Đại sứ • 2% Cổng thanh toán • 8% Vận hành</span>
+					</div>
+					<p class="small text-white-opacity">&ldquo;Không chỉ đến để nhìn di sản, mà đến để sống cùng di sản.&rdquo;</p>
+				</div>
+
+				<div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+					<h3 class="footer-heading mb-3">Khám phá</h3>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-2"><a href="explore.html" class="text-white-opacity">Tất cả trải nghiệm</a></li>
+						<li class="mb-2"><a href="heritage.html" class="text-white-opacity">Hồ sơ Di sản sống</a></li>
+						<li class="mb-2"><a href="passport.html" class="text-white-opacity">Hộ chiếu số</a></li>
+						<li class="mb-2"><a href="ai-itinerary.html" class="text-white-opacity">AI Gợi ý lộ trình</a></li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+					<h3 class="footer-heading mb-3">Mạng lưới</h3>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-2"><a href="ambassadors.html" class="text-white-opacity">Dành cho Đại sứ Sinh viên</a></li>
+						<li class="mb-2"><a href="community.html" class="text-white-opacity">Dành cho Nghệ nhân & Hộ dân</a></li>
+						<li class="mb-2"><a href="host.html" class="text-white-opacity">Cổng tiếp đón của Hộ dân</a></li>
+						<li class="mb-2"><a href="admin.html" class="text-white-opacity">Cổng quản trị Super Admin</a></li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3 col-md-4">
+					<h3 class="footer-heading mb-3">Cam kết bảo tồn</h3>
+					<p class="small text-white-opacity mb-2">100% nội dung trải nghiệm có sự đồng thuận và ủy quyền của cộng đồng bản địa.</p>
+					<ul class="list-unstyled small text-white-opacity">
+						<li class="mb-1">Hotline: 0988.xxx.xxx (Hỗ trợ 24/7)</li>
+						<li class="mb-1">Email: contact@heritagelink.vn</li>
+						<li>Văn phòng: Hà Nội & Đà Nẵng</li>
+					</ul>
+				</div>
+			</div>
+			<div class="border-top border-white-opacity mt-4 pt-3 text-center">
+				<p class="small text-white-opacity mb-0">HeritageLink &copy; 2026. Mạng lưới Đại sứ Sinh viên & Nghệ nhân Bản địa.</p>
+			</div>
 		</div>
 	</footer>
 
