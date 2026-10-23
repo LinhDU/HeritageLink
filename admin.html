@@ -456,6 +456,17 @@
 
 		<!-- Navigation Menu -->
 		<div class="admin-sidebar-menu">
+			<span class="sidebar-category-label">TÀI KHOẢN & HỆ THỐNG</span>
+
+			<button type="button" class="sidebar-nav-item" onclick="switchTab('profile')">
+				<div class="nav-left">
+					<span class="nav-icon-svg">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+					</span>
+					<span>Thông tin & Hồ sơ Admin</span>
+				</div>
+			</button>
+
 			<span class="sidebar-category-label">ĐIỀU HÀNH & BÁO CÁO</span>
 
 			<button type="button" class="sidebar-nav-item active" onclick="switchTab('overview')">
@@ -584,6 +595,100 @@
 		<!-- DYNAMIC TAB PANES CONTAINER -->
 		<main id="admin-main-content" class="p-4 p-md-5" style="flex:1;">
 			
+			<!-- ========================================== -->
+			<!-- TAB 0: SUPER ADMIN PROFILE & CREDENTIALS   -->
+			<!-- ========================================== -->
+			<section id="tab-profile" class="admin-tab-pane">
+				<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+					<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-4 pb-3 border-bottom">
+						<div class="d-flex align-items-center gap-3">
+							<div class="admin-avatar mr-3" style="width: 68px; height: 68px; font-size: 24px; border: 3px solid var(--color-gold);">SA</div>
+							<div>
+								<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-1">Toàn quyền Điều hành Hệ thống</span>
+								<h2 class="h4 font-weight-bold text-forest-green mb-0">Ban Quản Trị Hệ Thống Super Admin</h2>
+								<span class="small text-muted">admin@heritagelink.vn &bull; Mã phiên làm việc: <code>AUTH-SEC-2026-SA01</code></span>
+							</div>
+						</div>
+						<span class="badge badge-success px-3 py-2 font-weight-bold">Trạng thái: Trực tuyến & An toàn</span>
+					</div>
+
+					<div class="row mb-4">
+						<div class="col-md-6 mb-3 mb-md-0">
+							<div class="p-3 bg-light rounded-15 border h-100">
+								<h3 class="h6 font-weight-bold text-forest-green mb-3">Quyền hạn Quản trị Nền tảng</h3>
+								<ul class="list-unstyled mb-0 small" style="line-height: 1.85;">
+									<li><strong>Vai trò:</strong> Super Administrator (Cấp cao nhất)</li>
+									<li><strong>Thẩm định 3 tiêu chí:</strong> Phê duyệt tour do Đại sứ & Nghệ nhân đề xuất</li>
+									<li><strong>Cấp tài khoản:</strong> Xét duyệt hồ sơ Đại sứ Di sản & Hộ dân bản địa</li>
+									<li><strong>Đối soát dòng tiền:</strong> Giám sát tự động tỷ lệ 85% Hộ dân - 5% Đại sứ - 2% Cổng TT - 8% Nền tảng</li>
+									<li><strong>Bảo mật:</strong> Xác thực 2 lớp (2FA) & Mã hóa SSL 256-bit</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="p-3 bg-light rounded-15 border h-100">
+								<h3 class="h6 font-weight-bold text-forest-green mb-3">Thông số Kỹ thuật & Hạ tầng</h3>
+								<ul class="list-unstyled mb-0 small" style="line-height: 1.85;">
+									<li><strong>Môi trường:</strong> Production Cloud Platform</li>
+									<li><strong>Cơ sở dữ liệu:</strong> SQLite3 WAL Mode / JSON Store</li>
+									<li><strong>Cổng thanh toán:</strong> VietQR Dynamic QR / Napas 24/7</li>
+									<li><strong>Thời gian hoạt động (Uptime):</strong> 99.98%</li>
+									<li><strong>Cơ chế tự động hóa:</strong> Tự động ghi nhận doanh thu 85% ngay sau khi du khách check-in</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Phân bổ Doanh thu Nền tảng 85/5/2/8 -->
+					<div class="p-4 bg-warm-ivory rounded-20 border mb-4">
+						<h3 class="h6 font-weight-bold text-forest-green mb-2">Quy tắc Phân bổ Dòng tiền Cốt lõi (85/5/2/8)</h3>
+						<p class="small text-muted mb-3">
+							HeritageLink vận hành theo nguyên tắc bảo tồn di sản bền vững: Hộ dân là trung tâm giữ nghề nhận phần lớn nhất.
+						</p>
+						<div class="revenue-split-bar mb-3">
+							<div class="split-seg-host" style="width: 85%;"><span>85% Hộ dân (Nghệ nhân)</span></div>
+							<div class="split-seg-ambassador" style="width: 5%;"><span>5% Đại sứ</span></div>
+							<div class="split-seg-payment" style="width: 2%;"><span>2% TT</span></div>
+							<div class="split-seg-platform" style="width: 8%;"><span>8% Nền tảng</span></div>
+						</div>
+						<div class="row text-center mt-3 small">
+							<div class="col-3">
+								<strong class="text-success d-block">85% Hộ dân</strong>
+								<span class="text-muted">Nhận trực tiếp</span>
+							</div>
+							<div class="col-3">
+								<strong class="text-accent d-block">5% Đại sứ</strong>
+								<span class="text-muted">Hoa hồng nội dung</span>
+							</div>
+							<div class="col-3">
+								<strong class="text-secondary d-block">2% Cổng thanh toán</strong>
+								<span class="text-muted">Phí ngân hàng</span>
+							</div>
+							<div class="col-3">
+								<strong class="text-primary d-block">8% Nền tảng</strong>
+								<span class="text-muted">Vận hành & Quỹ bảo tồn</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Quick Admin Action Buttons -->
+					<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 pt-3 border-top">
+						<div class="d-flex gap-2">
+							<button type="button" class="btn btn-outline-primary btn-sm font-weight-bold px-3 py-2 mr-2" onclick="switchTab('moderation')">
+								Vào thẩm định Tour chờ duyệt
+							</button>
+							<button type="button" class="btn btn-outline-primary btn-sm font-weight-bold px-3 py-2" onclick="switchTab('ambassadors')">
+								Xem danh sách Đại sứ
+							</button>
+						</div>
+						<button type="button" class="btn btn-outline-danger btn-sm font-weight-bold px-3 py-2" onclick="document.getElementById('admin-logout-btn')?.click()">
+							Đăng xuất phiên Super Admin
+						</button>
+					</div>
+				</div>
+			</section>
+
 			<!-- ========================================== -->
 			<!-- TAB 1: OVERVIEW & STATISTICS              -->
 			<!-- ========================================== -->
@@ -1367,6 +1472,7 @@
 		let chartInstances = {};
 
 		const tabTitles = {
+			'profile': { title: 'Thông tin & Hồ sơ Quản trị viên Super Admin' },
 			'overview': { title: 'Tổng quan & Thống kê' },
 			'analytics': { title: 'Bảng Thống kê & Phân tích KPI' },
 			'ambassadors': { title: 'Quản lý Đại sứ & Cấp tài khoản' },

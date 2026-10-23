@@ -150,65 +150,167 @@
 		</div>
 	</header>
 
-	<!-- Portal Section Tabs Navigation (7 Tabs dividing all required prompt sections) -->
-	<div class="portal-tabs-wrapper">
-		<div class="container">
-			<ul class="portal-tabs-nav" id="ambassadorPortalTabs" role="tablist">
-				<li>
-					<button type="button" class="portal-tab-btn active" id="btn-tab-amb-who" onclick="switchPortalTab('tab-amb-who')" role="tab" aria-selected="true" aria-controls="tab-amb-who">
-						<span class="tab-icon">🎓</span>
-						<span>1. Đại sứ là ai?</span>
-						<span class="tab-badge">Mục a</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-amb-journey" onclick="switchPortalTab('tab-amb-journey')" role="tab" aria-selected="false" aria-controls="tab-amb-journey">
-						<span class="tab-icon">🗺️</span>
-						<span>2. Hành trình 10 bước</span>
-						<span class="tab-badge">Mục b</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-amb-layers" onclick="switchPortalTab('tab-amb-layers')" role="tab" aria-selected="false" aria-controls="tab-amb-layers">
-						<span class="tab-icon">🎭</span>
-						<span>3. Kịch bản 4 lớp</span>
-						<span class="tab-badge">Mục c</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-amb-skills" onclick="switchPortalTab('tab-amb-skills')" role="tab" aria-selected="false" aria-controls="tab-amb-skills">
-						<span class="tab-icon">💡</span>
-						<span>4. Kỹ năng đào tạo</span>
-						<span class="tab-badge">Mục d</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-amb-checklist" onclick="switchPortalTab('tab-amb-checklist')" role="tab" aria-selected="false" aria-controls="tab-amb-checklist">
-						<span class="tab-icon">📋</span>
-						<span>5. Checklist & Đạo đức</span>
-						<span class="tab-badge">Mục e-f</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-amb-evaluation" onclick="switchPortalTab('tab-amb-evaluation')" role="tab" aria-selected="false" aria-controls="tab-amb-evaluation">
-						<span class="tab-icon">⚖️</span>
-						<span>6. Đánh giá & Quyền lợi</span>
-						<span class="tab-badge">Mục g-h</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-amb-apply" onclick="switchPortalTab('tab-amb-apply')" role="tab" aria-selected="false" aria-controls="tab-amb-apply">
-						<span class="tab-icon">✍️</span>
-						<span>7. Đăng ký Đại sứ</span>
-						<span class="tab-badge">Ứng tuyển</span>
-					</button>
-				</li>
-			</ul>
-		</div>
-	</div>
+	<!-- Main Ambassador Portal Content (2-Column Dashboard Layout) -->
+	<main id="ambassadors-main-content" class="py-4">
+		<div class="container-fluid px-lg-4 px-xl-5">
+			<div class="row">
+				<!-- CỘT TRÁI: MENU ĐIỀU HƯỚNG DỌC (MENU BÊN TRÁI MÀN HÌNH) -->
+				<div class="col-lg-3 col-xl-3 mb-4">
+					<div class="role-sidebar-wrapper sticky-top" style="top: 85px; z-index: 100;">
+						<!-- Profile Summary Card in Sidebar -->
+						<div class="p-3 bg-white rounded-20 border shadow-sm mb-3 text-center">
+							<div class="position-relative d-inline-block mb-2">
+								<img src="images/person_1.jpg" alt="Đại sứ tiêu biểu" class="rounded-circle shadow-sm" style="width: 76px; height: 76px; object-fit: cover; border: 3px solid var(--color-accent);" />
+								<span class="position-absolute badge badge-success rounded-circle" style="bottom: 2px; right: 2px; width: 14px; height: 14px; border: 2px solid #fff;" title="Đang tuyển sinh"></span>
+							</div>
+							<h3 class="h6 font-weight-bold text-forest-green mb-1">Mạng Lưới Đại Sứ Di Sản</h3>
+							<span class="badge badge-accent text-white px-3 py-1 font-weight-bold small d-inline-block">Sinh Viên Khởi Nghiệp</span>
+							
+							<div class="small text-muted mt-3 pt-2 border-top text-left" style="font-size: 12.5px; line-height: 1.6;">
+								<div class="d-flex justify-content-between mb-1">
+									<span>Quy mô:</span>
+									<strong class="text-dark">120+ Sinh viên toàn quốc</strong>
+								</div>
+								<div class="d-flex justify-content-between mb-1">
+									<span>Hoa hồng:</span>
+									<strong class="text-success font-weight-bold">5% GMV / booking</strong>
+								</div>
+								<div class="d-flex justify-content-between mb-1">
+									<span>Phương pháp:</span>
+									<strong class="text-forest-green font-weight-bold">Kịch bản 4 lớp</strong>
+								</div>
+								<div class="d-flex justify-content-between">
+									<span>Chứng nhận:</span>
+									<strong class="text-dark">Đoàn/Hội xác thực</strong>
+								</div>
+							</div>
+						</div>
 
-	<!-- Main Content Area: Individual Tab Panes for Ambassador -->
-	<main class="container py-4">
+						<!-- Vertical Navigation Menu -->
+						<div class="bg-white rounded-20 border shadow-sm p-2 mb-3">
+							<div class="px-3 pt-2 pb-1 text-uppercase font-weight-bold text-muted small" style="font-size: 10.5px; letter-spacing: 0.5px;">
+								Menu Định Hướng Đại Sứ
+							</div>
+							<ul class="role-sidebar-nav" id="ambassadorPortalTabs" role="tablist">
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-amb-profile" onclick="switchPortalTab('tab-amb-profile')" role="tab" aria-selected="false" aria-controls="tab-amb-profile">
+										<span>Thông tin Hội đồng & Mạng lưới</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn active" id="btn-tab-amb-who" onclick="switchPortalTab('tab-amb-who')" role="tab" aria-selected="true" aria-controls="tab-amb-who">
+										<span>1. Đại sứ là ai?</span>
+										<span class="tab-badge">Mục a</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-amb-journey" onclick="switchPortalTab('tab-amb-journey')" role="tab" aria-selected="false" aria-controls="tab-amb-journey">
+										<span>2. Hành trình 10 bước</span>
+										<span class="tab-badge">Mục b</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-amb-layers" onclick="switchPortalTab('tab-amb-layers')" role="tab" aria-selected="false" aria-controls="tab-amb-layers">
+										<span>3. Kịch bản 4 lớp</span>
+										<span class="tab-badge">Mục c</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-amb-skills" onclick="switchPortalTab('tab-amb-skills')" role="tab" aria-selected="false" aria-controls="tab-amb-skills">
+										<span>4. Kỹ năng đào tạo</span>
+										<span class="tab-badge">Mục d</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-amb-checklist" onclick="switchPortalTab('tab-amb-checklist')" role="tab" aria-selected="false" aria-controls="tab-amb-checklist">
+										<span>5. Checklist & Đạo đức</span>
+										<span class="tab-badge">Mục e-f</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-amb-evaluation" onclick="switchPortalTab('tab-amb-evaluation')" role="tab" aria-selected="false" aria-controls="tab-amb-evaluation">
+										<span>6. Đánh giá & Quyền lợi</span>
+										<span class="tab-badge">Mục g-h</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-amb-apply" onclick="switchPortalTab('tab-amb-apply')" role="tab" aria-selected="false" aria-controls="tab-amb-apply">
+										<span>7. Đăng ký Đại sứ</span>
+										<span class="tab-badge">Ứng tuyển</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+
+						<!-- Quick Actions Card -->
+						<div class="p-3 bg-white rounded-20 border shadow-sm">
+							<small class="text-muted font-weight-bold d-block text-uppercase mb-2" style="font-size: 10.5px;">Hành động nhanh:</small>
+							<button type="button" class="btn btn-accent btn-sm btn-block font-weight-bold py-2 mb-2" onclick="switchPortalTab('tab-amb-apply')">
+								Ứng tuyển Đại sứ ngay →
+							</button>
+							<a href="ambassador.html" class="btn btn-outline-primary btn-sm btn-block font-weight-bold py-2 mb-2">
+								Vào Dashboard Đại sứ
+							</a>
+							<a href="ambassador-handbook.html" class="btn btn-outline-secondary btn-sm btn-block font-weight-bold py-2">
+								Xem Cẩm nang Đào tạo
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- CỘT PHẢI: TOÀN BỘ NỘI DUNG CÁC TAB & PROFILE (THÔNG TIN BÊN PHẢI) -->
+				<div class="col-lg-9 col-xl-9">
+
+					<!-- ==============================================================
+					     TAB 0: THÔNG TIN HỘI ĐỒNG & MẠNG LƯỚI ĐẠI SỨ (DEDICATED PROFILE TAB)
+					     ============================================================== -->
+					<div class="portal-pane" id="tab-amb-profile" role="tabpanel" aria-labelledby="btn-tab-amb-profile">
+						<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+							<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-4 pb-3 border-bottom">
+								<div>
+									<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Hội đồng Cố vấn & Mạng lưới</span>
+									<h2 class="h3 font-weight-bold text-forest-green mb-1">Mạng Lưới Đại Sứ Di Sản Sinh Viên</h2>
+									<p class="text-muted mb-0 small">Chương trình ươm mầm sinh viên khởi nghiệp đổi mới sáng tạo trong lĩnh vực số hóa văn hóa bản địa.</p>
+								</div>
+								<span class="badge badge-success px-3 py-2 font-weight-bold">Khóa 2026 đang tuyển sinh</span>
+							</div>
+
+							<div class="row mb-4">
+								<div class="col-md-6 mb-3 mb-md-0">
+									<div class="p-3 bg-light rounded-15 border h-100">
+										<h3 class="h6 font-weight-bold text-forest-green mb-3">Mô hình Hoạt động Đại sứ</h3>
+										<ul class="list-unstyled mb-0 small" style="line-height: 1.85;">
+											<li><strong>Đối tượng:</strong> Sinh viên các trường ĐH/CĐ toàn quốc yêu thích văn hóa</li>
+											<li><strong>Vai trò:</strong> Biên kịch trải nghiệm, điền dã, số hóa 4 lớp nội dung</li>
+											<li><strong>Quan hệ với Hộ dân:</strong> Đồng hành 1-1, hỗ trợ công nghệ cho nghệ nhân cao tuổi</li>
+											<li><strong>Doanh thu:</strong> Hưởng 5% hoa hồng trên mỗi lượt du khách đặt tour</li>
+											<li><strong>Xác thực:</strong> Cấp Giấy chứng nhận Đại sứ Di sản từ Đoàn/Hội</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="p-3 bg-light rounded-15 border h-100">
+										<h3 class="h6 font-weight-bold text-forest-green mb-3">Hội đồng Cố vấn Chuyên môn</h3>
+										<ul class="list-unstyled mb-0 small" style="line-height: 1.85;">
+											<li><strong>Chuyên môn Di sản:</strong> Giảng viên Khoa Di sản & Văn hóa học</li>
+											<li><strong>Chuyên môn Truyền thông:</strong> Chuyên gia Content & Video storytelling</li>
+											<li><strong>Cố vấn Bản địa:</strong> Các Nghệ nhân ưu tú & Trưởng ban làng nghề</li>
+											<li><strong>Cố vấn Công nghệ:</strong> Đội ngũ Kỹ sư Nền tảng HeritageLink</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="p-4 bg-warm-ivory rounded-20 border">
+								<h3 class="h6 font-weight-bold text-forest-green mb-2">Tuyên ngôn Sứ mệnh Đại sứ Di sản</h3>
+								<p class="text-muted small mb-0" style="line-height: 1.7;">
+									“Đại sứ Di sản không chỉ là người quay video hay hướng dẫn viên du lịch đơn thuần. Bạn là người chắp cánh cho câu chuyện ngàn đời của các nghệ nhân bản địa, đưa văn hóa truyền thống tiếp cận thế hệ trẻ bằng ngôn ngữ chân thật và hiện đại nhất.”
+								</p>
+							</div>
+						</div>
+					</div>
+
 
 		<!-- ==============================================================
 		     TAB 1: ĐẠI SỨ LÀ AI & TỔNG QUAN (Mục a)
@@ -806,7 +908,9 @@
 				</div>
 			</div>
 		</div>
-
+				</div><!-- /.col-lg-9 -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
 	</main>
 
 	<!-- Footer -->

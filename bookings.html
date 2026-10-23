@@ -56,81 +56,297 @@
 		</div>
 	</nav>
 
-	<!-- Main Bookings & Lookup Container -->
-	<main class="py-5 mt-5">
-		<div class="container mt-4" style="max-width: 960px;">
-			<!-- Header -->
-			<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-				<div>
-					<span class="eyebrow mb-1">Dịch vụ & Check-in</span>
-					<h1 class="h2 font-weight-bold text-forest-green mb-0">Quản lý Đặt chỗ & Tra cứu QR</h1>
-				</div>
-				<a href="explore.html" class="btn btn-accent btn-sm font-weight-bold">
-					Đặt thêm trải nghiệm mới +
-				</a>
-			</div>
-
-			<!-- Lookup Bar (Tra cứu nhanh theo mã hoặc SĐT) -->
-			<div class="bg-white p-4 rounded-20 border shadow-sm mb-5">
-				<h2 class="h6 font-weight-bold text-forest-green mb-3">Tra cứu nhanh đặt chỗ (Không cần đăng nhập)</h2>
-				<form id="booking-lookup-form" class="row align-items-end">
-					<div class="col-md-5 form-group mb-2 mb-md-0">
-						<label class="small text-muted font-weight-bold">Mã đặt chỗ</label>
-						<input type="text" id="lookup-code" class="form-control form-control-sm rounded-10" placeholder="Ví dụ: HL-BK01">
-					</div>
-					<div class="col-md-4 form-group mb-2 mb-md-0">
-						<label class="small text-muted font-weight-bold">Hoặc Số điện thoại</label>
-						<input type="tel" id="lookup-phone" class="form-control form-control-sm rounded-10" placeholder="0909988776">
-					</div>
-					<div class="col-md-3">
-						<button type="submit" class="btn btn-primary btn-sm btn-block font-weight-bold py-2">
-							Tra cứu ngay
-						</button>
-					</div>
-				</form>
-
-				<!-- Lookup Result Preview Box -->
-				<div id="lookup-result-box" class="mt-4 pt-3 border-top hidden">
-					<!-- Injected dynamically -->
-				</div>
-			</div>
-
-			<!-- 4-Step Booking Process Timeline -->
-			<div class="row text-center mb-5">
-				<div class="col-3">
-					<div class="p-3 bg-white rounded-15 border">
-						<span class="badge badge-primary px-2 py-1 mb-1">1</span>
-						<strong class="d-block small text-dark">Chọn lịch</strong>
+	<!-- Multi-Role Switcher Toolbar -->
+	<div class="role-portal-bar mt-5 pt-3">
+		<div class="container">
+			<div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+				<div class="d-flex align-items-center gap-2">
+					<span class="text-white-opacity small font-weight-bold text-uppercase mr-2">
+						Không gian điều hành các vai trò:
+					</span>
+					<div class="role-switcher-container">
+						<a href="bookings.html" class="role-switch-pill active" title="Cổng dành cho du khách">
+							<span>Cổng Du Khách</span>
+							<span class="role-badge-tag">Đang mở</span>
+						</a>
+						<a href="ambassador.html" class="role-switch-pill" title="Dashboard Đại sứ sinh viên">
+							<span>Dashboard Đại sứ</span>
+						</a>
+						<a href="host.html" class="role-switch-pill" title="Cổng xem lịch của Hộ dân">
+							<span>Lịch đón khách (Hộ dân)</span>
+						</a>
+						<a href="admin.html" class="role-switch-pill" title="Trung tâm điều hành Super Admin">
+							<span>Super Admin</span>
+						</a>
 					</div>
 				</div>
-				<div class="col-3">
-					<div class="p-3 bg-white rounded-15 border">
-						<span class="badge badge-primary px-2 py-1 mb-1">2</span>
-						<strong class="d-block small text-dark">Xác nhận</strong>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="p-3 bg-white rounded-15 border">
-						<span class="badge badge-accent px-2 py-1 mb-1">3</span>
-						<strong class="d-block small text-dark">Thanh toán</strong>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="p-3 bg-white rounded-15 border border-gold">
-						<span class="badge badge-success px-2 py-1 mb-1">4</span>
-						<strong class="d-block small text-dark">QR Check-in</strong>
-					</div>
-				</div>
-			</div>
-
-			<!-- User's Live Booking List -->
-			<div class="bg-white rounded-20 border shadow-sm p-4 p-md-5">
-				<h2 class="h5 font-weight-bold text-forest-green mb-3">Lịch sử Đặt chỗ của bạn</h2>
-				<div id="user-bookings-container">
-					<!-- Injected dynamically by script.js -->
+				<div class="d-none d-md-block text-white-opacity small font-weight-bold">
+					Bảo tồn văn hóa: <span class="text-accent">85% tiền vé về thẳng nghệ nhân</span>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- Subpage Hero Banner -->
+	<header class="portal-hero-banner text-white py-4">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-8">
+					<span class="portal-eyebrow">— DỊCH VỤ & CHECK-IN DU KHÁCH —</span>
+					<h1 class="h2 font-weight-bold text-white mb-1">Cổng Quản lý Đặt chỗ & Vé QR Du Khách</h1>
+					<p class="mb-0 text-white-opacity" style="font-size: 1.05rem;">
+						Tra cứu lịch đặt tour, quét mã QR Check-in đón tiếp và sưu tầm Tem Hộ chiếu Di sản số
+					</p>
+				</div>
+				<div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+					<a href="explore.html" class="btn btn-accent px-4 py-2 font-weight-bold shadow-sm">
+						Đặt thêm trải nghiệm mới →
+					</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Main Bookings Portal Content (2-Column Dashboard Layout) -->
+	<main id="client-main-content" class="py-4">
+		<div class="container-fluid px-lg-4 px-xl-5">
+			<div class="row">
+				<!-- CỘT TRÁI: MENU ĐIỀU HƯỚNG DỌC (MENU BÊN TRÁI MÀN HÌNH) -->
+				<div class="col-lg-3 col-xl-3 mb-4">
+					<div class="role-sidebar-wrapper sticky-top" style="top: 85px; z-index: 100;">
+						<!-- Profile Summary Card in Sidebar -->
+						<div class="p-3 bg-white rounded-20 border shadow-sm mb-3 text-center">
+							<div class="position-relative d-inline-block mb-2">
+								<img id="sidebar-client-avatar" src="images/person_2.jpg" alt="Avatar Du khách" class="rounded-circle shadow-sm" style="width: 76px; height: 76px; object-fit: cover; border: 3px solid var(--color-accent);" />
+								<span class="position-absolute badge badge-success rounded-circle" style="bottom: 2px; right: 2px; width: 14px; height: 14px; border: 2px solid #fff;" title="Đã xác thực"></span>
+							</div>
+							<h3 class="h6 font-weight-bold text-forest-green mb-1" id="sidebar-client-name">Nguyễn Văn Du Khách</h3>
+							<span class="badge badge-accent text-white px-3 py-1 font-weight-bold small d-inline-block">Khách Hàng Khám Phá</span>
+							
+							<div class="small text-muted mt-3 pt-2 border-top text-left" style="font-size: 12.5px; line-height: 1.6;">
+								<div class="d-flex justify-content-between mb-1">
+									<span>Hạng thành viên:</span>
+									<strong class="text-dark">Di sản Bạc</strong>
+								</div>
+								<div class="d-flex justify-content-between mb-1">
+									<span>Tem đã đóng:</span>
+									<strong class="text-success font-weight-bold">3 Tem di sản</strong>
+								</div>
+								<div class="d-flex justify-content-between mb-1">
+									<span>Mã hộ chiếu:</span>
+									<strong class="text-forest-green">HL-PASS-2026</strong>
+								</div>
+								<div class="d-flex justify-content-between">
+									<span>Điểm bảo trợ:</span>
+									<strong class="text-accent font-weight-bold">150 Điểm</strong>
+								</div>
+							</div>
+						</div>
+
+						<!-- Vertical Navigation Menu -->
+						<div class="bg-white rounded-20 border shadow-sm p-2 mb-3">
+							<div class="px-3 pt-2 pb-1 text-uppercase font-weight-bold text-muted small" style="font-size: 10.5px; letter-spacing: 0.5px;">
+								Menu Quản Lý Du Khách
+							</div>
+							<ul class="role-sidebar-nav" id="clientPortalTabs" role="tablist">
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-client-tab-profile" onclick="switchClientTab('client-tab-profile')" role="tab" aria-selected="false" aria-controls="client-tab-profile">
+										<span>Thông tin & Hồ sơ Du khách</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn active" id="btn-client-tab-bookings" onclick="switchClientTab('client-tab-bookings')" role="tab" aria-selected="true" aria-controls="client-tab-bookings">
+										<span>Lịch sử Đặt chỗ của tôi</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-client-tab-lookup" onclick="switchClientTab('client-tab-lookup')" role="tab" aria-selected="false" aria-controls="client-tab-lookup">
+										<span>Tra cứu nhanh & Check-in QR</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-client-tab-passport" onclick="switchClientTab('client-tab-passport')" role="tab" aria-selected="false" aria-controls="client-tab-passport">
+										<span>Hộ chiếu Di sản số & Tem</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+
+						<!-- Quick Actions Card -->
+						<div class="p-3 bg-white rounded-20 border shadow-sm">
+							<small class="text-muted font-weight-bold d-block text-uppercase mb-2" style="font-size: 10.5px;">Khám phá tiếp:</small>
+							<a href="explore.html" class="btn btn-accent btn-sm btn-block font-weight-bold py-2 mb-2">
+								Đặt thêm trải nghiệm mới →
+							</a>
+							<a href="passport.html" class="btn btn-outline-primary btn-sm btn-block font-weight-bold py-2 mb-2">
+								Mở sổ Hộ chiếu Di sản
+							</a>
+							<button class="btn btn-outline-danger btn-sm btn-block font-weight-bold py-2" onclick="logoutClient()">
+								Đăng xuất
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- CỘT PHẢI: TOÀN BỘ NỘI DUNG CÁC TAB & PROFILE (THÔNG TIN BÊN PHẢI) -->
+				<div class="col-lg-9 col-xl-9">
+
+					<!-- ==============================================================
+					     TAB 0: THÔNG TIN & HỒ SƠ DU KHÁCH (DEDICATED PROFILE TAB)
+					     ============================================================== -->
+					<div class="portal-pane" id="client-tab-profile" role="tabpanel" aria-labelledby="btn-client-tab-profile">
+						<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+							<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-4 pb-3 border-bottom">
+								<div>
+									<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Tài khoản Du khách</span>
+									<h2 class="h3 font-weight-bold text-forest-green mb-1">Hồ sơ Du Khách Trải Nghiệm Di Sản</h2>
+									<p class="text-muted mb-0 small">Thông tin định danh, quyền lợi tích lũy và bảo tồn di sản của bạn.</p>
+								</div>
+								<span class="badge badge-success px-3 py-2 font-weight-bold">Tài khoản đã xác thực</span>
+							</div>
+
+							<div class="row mb-4">
+								<div class="col-md-6 mb-3 mb-md-0">
+									<div class="p-3 bg-light rounded-15 border h-100">
+										<h3 class="h6 font-weight-bold text-forest-green mb-3">Thông tin cá nhân</h3>
+										<ul class="list-unstyled mb-0 small" style="line-height: 1.85;">
+											<li><strong>Họ và tên:</strong> Nguyễn Văn Du Khách</li>
+											<li><strong>Email:</strong> client@heritagelink.vn</li>
+											<li><strong>Số điện thoại:</strong> 0909.988.776</li>
+											<li><strong>Mã định danh du khách:</strong> #HL-GUEST-04</li>
+											<li><strong>Sở thích:</strong> Làng nghề thủ công, Ẩm thực truyền thống, Trải nghiệm bản địa</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="p-3 bg-light rounded-15 border h-100">
+										<h3 class="h6 font-weight-bold text-forest-green mb-3">Đóng góp Bảo tồn Văn hóa</h3>
+										<ul class="list-unstyled mb-0 small" style="line-height: 1.85;">
+											<li><strong>Tổng số tour đã tham gia:</strong> 3 trải nghiệm</li>
+											<li><strong>Số tiền đã chuyển thẳng nghệ nhân (85%):</strong> 2.167.500 ₫</li>
+											<li><strong>Tem Hộ chiếu Di sản đã sưu tập:</strong> 3 con tem số</li>
+											<li><strong>Danh hiệu danh dự:</strong> Người Bạn Của Làng Nghề</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="p-4 bg-warm-ivory rounded-20 border">
+								<h3 class="h6 font-weight-bold text-forest-green mb-2">Ý nghĩa hành trình của bạn</h3>
+								<p class="text-muted small mb-0" style="line-height: 1.7;">
+									Mỗi vé bạn đặt trên HeritageLink không đơn thuần là một chuyến đi, mà là <strong>85% doanh thu trực tiếp chuyển đến hộ gia đình nghệ nhân</strong>, giúp họ tiếp tục giữ nghề, nuôi sống gia đình và truyền lại tinh hoa cho thế hệ con cháu.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- ==============================================================
+					     TAB 1: LỊCH SỬ ĐẶT CHỖ CỦA TÔI
+					     ============================================================== -->
+					<div class="portal-pane active" id="client-tab-bookings" role="tabpanel" aria-labelledby="btn-client-tab-bookings">
+						<div class="bg-white rounded-20 border shadow-sm p-4 p-md-5 mb-4">
+							<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom flex-wrap gap-2">
+								<div>
+									<h2 class="h5 font-weight-bold text-forest-green mb-0">Lịch sử Đặt chỗ & Vé QR của bạn</h2>
+									<span class="small text-muted">Xuất trình mã QR Check-in khi đến xưởng để nghệ nhân xác nhận đón tiếp.</span>
+								</div>
+								<a href="explore.html" class="btn btn-outline-primary btn-sm font-weight-bold">
+									Đặt thêm tour mới +
+								</a>
+							</div>
+							<div id="user-bookings-container">
+								<!-- Injected dynamically by script.js -->
+							</div>
+						</div>
+					</div>
+
+					<!-- ==============================================================
+					     TAB 2: TRA CỨU NHANH & CHECK-IN QR
+					     ============================================================== -->
+					<div class="portal-pane" id="client-tab-lookup" role="tabpanel" aria-labelledby="btn-client-tab-lookup">
+						<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+							<h2 class="h5 font-weight-bold text-forest-green mb-3">Tra cứu nhanh đặt chỗ theo mã hoặc SĐT</h2>
+							<form id="booking-lookup-form" class="row align-items-end mb-4">
+								<div class="col-md-5 form-group mb-2 mb-md-0">
+									<label class="small text-muted font-weight-bold">Mã đặt chỗ</label>
+									<input type="text" id="lookup-code" class="form-control rounded-10" placeholder="Ví dụ: HL-BK01" value="HL-BK01">
+								</div>
+								<div class="col-md-4 form-group mb-2 mb-md-0">
+									<label class="small text-muted font-weight-bold">Hoặc Số điện thoại</label>
+									<input type="tel" id="lookup-phone" class="form-control rounded-10" placeholder="0909988776" value="0909988776">
+								</div>
+								<div class="col-md-3">
+									<button type="submit" class="btn btn-primary btn-block font-weight-bold py-2">
+										Tra cứu ngay
+									</button>
+								</div>
+							</form>
+
+							<!-- Lookup Result Preview Box -->
+							<div id="lookup-result-box" class="pt-3 border-top hidden">
+								<!-- Injected dynamically -->
+							</div>
+						</div>
+
+						<!-- 4-Step Booking Process Timeline -->
+						<div class="row text-center mb-4">
+							<div class="col-3">
+								<div class="p-3 bg-white rounded-15 border">
+									<span class="badge badge-primary px-2 py-1 mb-1">1</span>
+									<strong class="d-block small text-dark">Chọn lịch</strong>
+								</div>
+							</div>
+							<div class="col-3">
+								<div class="p-3 bg-white rounded-15 border">
+									<span class="badge badge-primary px-2 py-1 mb-1">2</span>
+									<strong class="d-block small text-dark">Xác nhận</strong>
+								</div>
+							</div>
+							<div class="col-3">
+								<div class="p-3 bg-white rounded-15 border">
+									<span class="badge badge-accent px-2 py-1 mb-1">3</span>
+									<strong class="d-block small text-dark">Thanh toán</strong>
+								</div>
+							</div>
+							<div class="col-3">
+								<div class="p-3 bg-white rounded-15 border border-gold">
+									<span class="badge badge-success px-2 py-1 mb-1">4</span>
+									<strong class="d-block small text-dark">QR Check-in</strong>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- ==============================================================
+					     TAB 3: HỘ CHIẾU DI SẢN SỐ & TEM
+					     ============================================================== -->
+					<div class="portal-pane" id="client-tab-passport" role="tabpanel" aria-labelledby="btn-client-tab-passport">
+						<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+							<div class="row align-items-center">
+								<div class="col-lg-8">
+									<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Sưu tập Văn hóa</span>
+									<h2 class="h4 font-weight-bold text-forest-green mb-2">Hộ Chiếu Di Sản Số (Digital Passport)</h2>
+									<p class="text-muted small mb-3">
+										Mỗi lần bạn hoàn thành trải nghiệm và quét mã Check-in tại xưởng nghề, hộ chiếu số sẽ tự động đóng một con tem di sản độc quyền, ghi dấu hành trình và đóng góp của bạn.
+									</p>
+									<a href="passport.html" class="btn btn-primary font-weight-bold px-4 py-2">
+										Xem chi tiết cuốn Hộ chiếu số của bạn →
+									</a>
+								</div>
+								<div class="col-lg-4 text-center mt-3 mt-lg-0">
+									<div class="p-3 bg-warm-ivory rounded-20 border d-inline-block">
+										<div class="text-accent font-weight-bold mb-1" style="font-size: 2rem;">3 Tem</div>
+										<span class="small text-dark font-weight-bold d-block">Gốm Phù Lãng &bull; Chè Shan Tuyết &bull; Dệt Thổ Cẩm</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div><!-- /.col-lg-9 -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
 	</main>
 
 	<!-- Footer -->
@@ -146,5 +362,40 @@
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="script.js"></script>
+	<script>
+		function switchClientTab(targetTabId) {
+			document.querySelectorAll('.portal-pane').forEach(p => p.classList.remove('active'));
+			document.querySelectorAll('.portal-tab-btn').forEach(b => {
+				b.classList.remove('active');
+				b.setAttribute('aria-selected', 'false');
+			});
+
+			const targetPane = document.getElementById(targetTabId);
+			if (targetPane) targetPane.classList.add('active');
+
+			const targetBtn = document.getElementById('btn-' + targetTabId);
+			if (targetBtn) {
+				targetBtn.classList.add('active');
+				targetBtn.setAttribute('aria-selected', 'true');
+			}
+		}
+
+		function logoutClient() {
+			localStorage.removeItem('hl_user');
+			fetch('/api/logout', { method: 'POST' }).finally(() => {
+				window.location.href = 'login.html';
+			});
+		}
+
+		// Update user name in sidebar if logged in
+		try {
+			const u = JSON.parse(localStorage.getItem('hl_user') || '{}');
+			if (u && u.name) {
+				const el = document.getElementById('sidebar-client-name');
+				if (el) el.textContent = u.name;
+			}
+		} catch(e) {}
+	</script>
+
 </body>
 </html>

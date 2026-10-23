@@ -116,199 +116,357 @@
 	<header class="portal-hero-banner text-white py-4">
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="col-md-8">
+				<div class="col-lg-8">
 					<span class="portal-eyebrow">— KHÔNG GIAN ĐIỀU HÀNH BẢN ĐỊA —</span>
 					<h1 class="h2 font-weight-bold text-white mb-1" id="host-welcome-name">Chào Bác Phạm Văn Nam</h1>
 					<p class="mb-0 text-white-opacity" style="font-size: 1.15rem;">
 						Xưởng Gốm Phù Lãng (Quế Võ, Bắc Ninh) &bull; Thu nhập minh bạch: Bạn nhận trọn <strong>85% doanh thu vé</strong> trực tiếp.
 					</p>
 				</div>
-				<div class="col-md-4 text-md-right mt-3 mt-md-0">
-					<div class="p-3 bg-white text-dark rounded-15 shadow-sm text-left d-inline-block">
-						<small class="text-muted d-block font-weight-bold text-uppercase">Đại sứ sinh viên hỗ trợ bác:</small>
-						<strong class="text-forest-green" style="font-size: 1.15rem;">Lê Minh Anh (ĐH KHXH&NV)</strong>
-						<div class="mt-2">
-							<a href="tel:0977345678" class="btn btn-primary btn-sm font-weight-bold py-1 px-3">
-								Gọi Đại sứ: 0977.345.678
-							</a>
-						</div>
+				<div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
+					<div class="d-inline-flex flex-column align-items-lg-end gap-2">
+						<button type="button" class="btn btn-accent px-4 py-2 font-weight-bold shadow-sm" onclick="switchHostTab('host-tab-bookings')">
+							Xem Lịch Đón Khách Hôm Nay →
+						</button>
+						<a href="tel:0977345678" class="btn btn-outline-white btn-sm px-3 py-1 text-white">
+							Gọi Đại sứ hỗ trợ: 0977.345.678
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<!-- Host Tabs Navigation (Divided by Tabs for Easy Tracking) -->
-	<div class="portal-tabs-wrapper">
-		<div class="container">
-			<ul class="portal-tabs-nav" id="hostTabs" role="tablist">
-				<li>
-					<button type="button" class="portal-tab-btn active" id="btn-host-tab-finance" onclick="switchHostTab('host-tab-finance')" role="tab" aria-selected="true" aria-controls="host-tab-finance">
-						<span class="tab-icon">📊</span>
-						<span>1. Thu nhập 85% & Thống kê</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-host-tab-bookings" onclick="switchHostTab('host-tab-bookings')" role="tab" aria-selected="false" aria-controls="host-tab-bookings">
-						<span class="tab-icon">📅</span>
-						<span>2. Lịch đón khách đón tiếp</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-host-tab-checkin" onclick="switchHostTab('host-tab-checkin')" role="tab" aria-selected="false" aria-controls="host-tab-checkin">
-						<span class="tab-icon">📱</span>
-						<span>3. Quét mã QR Check-in</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-host-tab-alerts" onclick="switchHostTab('host-tab-alerts')" role="tab" aria-selected="false" aria-controls="host-tab-alerts">
-						<span class="tab-icon">💬</span>
-						<span>4. Tin báo Zalo/SMS & Hỗ trợ</span>
-					</button>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<!-- Main Content Area: Individual Tab Panes -->
-	<main class="container py-4">
-
-		<!-- ==============================================================
-		     TAB 1: THU NHẬP 85% & THỐNG KÊ
-		     ============================================================== -->
-		<div class="portal-pane active" id="host-tab-finance" role="tabpanel" aria-labelledby="btn-host-tab-finance">
-			<div class="row mb-4">
-				<div class="col-md-4 mb-4 mb-md-0">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
-						<div class="d-flex justify-content-between align-items-center mb-2">
-							<span class="text-muted font-weight-bold text-uppercase small">Doanh thu Đã nhận (85%)</span>
-							<span class="badge badge-success px-2 py-1 small">Đã chuyển khoản</span>
-						</div>
-						<div class="stat-number-large text-success mb-1" id="host-revenue-received">1.445.000 ₫</div>
-						<small class="text-muted">Đã đối soát và chuyển vào tài khoản ngân hàng của gia đình.</small>
-					</div>
-				</div>
-
-				<div class="col-md-4 mb-4 mb-md-0">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
-						<div class="d-flex justify-content-between align-items-center mb-2">
-							<span class="text-muted font-weight-bold text-uppercase small">Doanh thu Tạm tính (85%)</span>
-							<span class="badge badge-warning text-dark px-2 py-1 small">Chờ đón khách</span>
-						</div>
-						<div class="stat-number-large text-accent mb-1" id="host-revenue-pending">2.040.000 ₫</div>
-						<small class="text-muted">Sẽ chuyển vào tài khoản ngay sau khi khách quét mã Check-in hoàn thành trải nghiệm.</small>
-					</div>
-				</div>
-
-				<div class="col-md-4">
-					<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
-						<div class="d-flex justify-content-between align-items-center mb-2">
-							<span class="text-muted font-weight-bold text-uppercase small">Tổng khách đã đón</span>
-							<span class="badge badge-primary px-2 py-1 small" style="background-color: var(--color-primary);">Năm 2026</span>
-						</div>
-						<div class="stat-number-large text-primary mb-1" id="host-guest-count">14 lượt</div>
-						<small class="text-muted">Đánh giá trung bình từ du khách: <strong class="text-warning">4.9/5.0</strong> (Rất hài lòng)</small>
-					</div>
-				</div>
-			</div>
-
-			<!-- Visual Revenue Breakdown Card -->
-			<div class="p-4 bg-white rounded-20 border shadow-sm mb-4">
-				<h3 class="h5 font-weight-bold text-forest-green mb-3">Minh bạch cơ chế chia sẻ: Bạn nhận 85% cao nhất</h3>
-				<div class="revenue-split-bar mb-3">
-					<div class="split-seg-host" style="width: 85%;"><span>85% Bác nhận</span></div>
-					<div class="split-seg-ambassador" style="width: 5%;"><span>5% Đại sứ</span></div>
-					<div class="split-seg-payment" style="width: 2%;"><span>2%</span></div>
-					<div class="split-seg-platform" style="width: 8%;"><span>8%</span></div>
-				</div>
-				<p class="small text-muted mb-0">
-					Mỗi tour có giá 850.000đ thì bác nhận về trọn vẹn <strong>722.500đ</strong>, không tốn bất kỳ chi phí ẩn nào.
-				</p>
-			</div>
-		</div>
-
-		<!-- ==============================================================
-		     TAB 2: LỊCH ĐÓN KHÁCH ĐÓN TIẾP
-		     ============================================================== -->
-		<div class="portal-pane" id="host-tab-bookings" role="tabpanel" aria-labelledby="btn-host-tab-bookings">
-			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
-				<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
-					<div>
-						<h2 class="h5 font-weight-bold text-forest-green mb-0">Danh sách khách đặt tour đón tiếp</h2>
-						<span class="small text-muted">Bác bấm "Đón khách" khi đã chuẩn bị sẵn sàng không gian tiếp đón.</span>
-					</div>
-					<span class="badge badge-success px-3 py-1 font-weight-bold">Tự động cập nhật</span>
-				</div>
-				<div id="host-bookings-table-container">
-					<!-- Injected dynamically -->
-				</div>
-			</div>
-		</div>
-
-		<!-- ==============================================================
-		     TAB 3: QUÉT MÃ QR CHECK-IN
-		     ============================================================== -->
-		<div class="portal-pane" id="host-tab-checkin" role="tabpanel" aria-labelledby="btn-host-tab-checkin">
-			<div class="p-4 p-md-5 bg-white rounded-20 border border-gold shadow-sm">
-				<div class="row align-items-center">
-					<div class="col-lg-7">
-						<h2 class="h4 font-weight-bold text-forest-green mb-2">Quét mã QR Check-in khi khách tới xưởng</h2>
-						<p class="text-muted mb-4" style="font-size: 1.1rem;">
-							Khi du khách đến, bác chỉ cần xem mã đặt chỗ trên điện thoại khách (ví dụ: <code>HL-BK01</code>) rồi bấm nút xác nhận. Ngay khi quét thành công, hệ thống sẽ xác nhận hoàn thành và cộng trọn 85% doanh thu cho bác!
-						</p>
-						<div class="input-group mb-3" style="max-width: 480px;">
-							<input type="text" id="host-checkin-input" class="form-control form-control-lg font-weight-bold" placeholder="Nhập mã vé (VD: HL-BK01)" value="HL-BK01">
-							<div class="input-group-append">
-								<button class="btn btn-primary btn-lg font-weight-bold px-4" id="host-do-checkin-btn">
-									Xác nhận Check-in
-								</button>
+	<!-- Main Host Portal Content (2-Column Dashboard Layout) -->
+	<main id="host-main-content" class="py-4">
+		<div class="container-fluid px-lg-4 px-xl-5">
+			<div class="row">
+				<!-- CỘT TRÁI: MENU ĐIỀU HƯỚNG DỌC (MENU BÊN TRÁI MÀN HÌNH) -->
+				<div class="col-lg-3 col-xl-3 mb-4">
+					<div class="host-sidebar-wrapper sticky-top" style="top: 85px; z-index: 100;">
+						<!-- Profile Summary Card in Sidebar -->
+						<div class="p-3 bg-white rounded-20 border shadow-sm mb-3 text-center">
+							<div class="position-relative d-inline-block mb-2">
+								<img id="sidebar-host-avatar" src="images/img_1.jpg" alt="Chân dung Bác Nam" class="rounded-circle shadow-sm" style="width: 78px; height: 78px; object-fit: cover; border: 3px solid var(--color-accent);" />
+								<span class="position-absolute badge badge-success rounded-circle" style="bottom: 2px; right: 2px; width: 14px; height: 14px; border: 2px solid #fff;" title="Đang đón khách"></span>
+							</div>
+							<h3 class="h6 font-weight-bold text-forest-green mb-1" id="sidebar-host-name">Bác Phạm Văn Nam</h3>
+							<span class="badge badge-accent text-white px-3 py-1 font-weight-bold small d-inline-block">Nghệ nhân Bản địa (85%)</span>
+							
+							<div class="small text-muted mt-3 pt-2 border-top text-left" style="font-size: 12.5px; line-height: 1.6;">
+								<div class="d-flex justify-content-between mb-1">
+									<span>Xưởng gốm:</span>
+									<strong class="text-dark">Gốm Phù Lãng</strong>
+								</div>
+								<div class="d-flex justify-content-between mb-1">
+									<span>Địa bàn:</span>
+									<strong class="text-dark">Quế Võ, Bắc Ninh</strong>
+								</div>
+								<div class="d-flex justify-content-between mb-1">
+									<span>Tỷ lệ nhận:</span>
+									<strong class="text-success font-weight-bold">85% Doanh thu</strong>
+								</div>
+								<div class="d-flex justify-content-between">
+									<span>Đại sứ hỗ trợ:</span>
+									<strong class="text-forest-green">Lê Minh Anh</strong>
+								</div>
 							</div>
 						</div>
-						<div id="host-checkin-feedback" class="small mt-2 font-weight-bold"></div>
-					</div>
-					<div class="col-lg-5 text-center mt-4 mt-lg-0">
-						<div class="p-4 bg-warm-ivory rounded-20 border d-inline-block">
-							<div class="text-success font-weight-bold mb-2" style="font-size: 2.2rem;">✓ HOÀN TẤT</div>
-							<strong class="d-block text-forest-green" style="font-size: 1.15rem;">Check-in tự động cấp Tem Hộ chiếu</strong>
-							<p class="small text-muted mb-0 mt-1">Du khách sẽ nhận ngay con tem di sản số để lưu giữ kỷ niệm về xưởng của bác.</p>
+
+						<!-- Vertical Navigation Menu -->
+						<div class="bg-white rounded-20 border shadow-sm p-2 mb-3">
+							<div class="px-3 pt-2 pb-1 text-uppercase font-weight-bold text-muted small" style="font-size: 10.5px; letter-spacing: 0.5px;">
+								Menu Điều Hành Hộ Dân
+							</div>
+							<ul class="role-sidebar-nav" id="hostTabs" role="tablist">
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-host-tab-profile" onclick="switchHostTab('host-tab-profile')" role="tab" aria-selected="false" aria-controls="host-tab-profile">
+										<span>Thông tin & Hồ sơ Hộ dân</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn active" id="btn-host-tab-finance" onclick="switchHostTab('host-tab-finance')" role="tab" aria-selected="true" aria-controls="host-tab-finance">
+										<span>Thu nhập 85% & Thống kê</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-host-tab-bookings" onclick="switchHostTab('host-tab-bookings')" role="tab" aria-selected="false" aria-controls="host-tab-bookings">
+										<span>Lịch đón khách</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-host-tab-checkin" onclick="switchHostTab('host-tab-checkin')" role="tab" aria-selected="false" aria-controls="host-tab-checkin">
+										<span>Quét mã QR Check-in</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-host-tab-alerts" onclick="switchHostTab('host-tab-alerts')" role="tab" aria-selected="false" aria-controls="host-tab-alerts">
+										<span>Tin báo & Hỗ trợ</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+
+						<!-- Quick Actions Card -->
+						<div class="p-3 bg-white rounded-20 border shadow-sm">
+							<small class="text-muted font-weight-bold d-block text-uppercase mb-2" style="font-size: 10.5px;">Đại sứ đồng hành:</small>
+							<div class="d-flex align-items-center mb-2">
+								<img src="images/person_1.jpg" alt="Lê Minh Anh" class="rounded-circle mr-2" style="width: 34px; height: 34px; object-fit: cover;">
+								<div>
+									<strong class="d-block text-dark small">Lê Minh Anh</strong>
+									<span class="small text-muted" style="font-size: 11px;">ĐH KHXH&NV</span>
+								</div>
+							</div>
+							<a href="tel:0977345678" class="btn btn-outline-primary btn-sm btn-block font-weight-bold py-2 mb-2">
+								Gọi Đại sứ: 0977.345.678
+							</a>
+							<button class="btn btn-outline-danger btn-sm btn-block font-weight-bold py-2" id="host-logout-sidebar-btn" onclick="document.getElementById('host-logout-btn')?.click()">
+								Đăng xuất tài khoản
+							</button>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<!-- ==============================================================
-		     TAB 4: TIN NHẮN SMS / ZALO & ĐẠI SỨ HỖ TRỢ
-		     ============================================================== -->
-		<div class="portal-pane" id="host-tab-alerts" role="tabpanel" aria-labelledby="btn-host-tab-alerts">
-			<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
-				<h3 class="h5 font-weight-bold text-forest-green mb-3">Mô phỏng kênh thông báo quen thuộc của bà con</h3>
-				<!-- Simulation: SMS / Zalo Alert Notification -->
-				<div class="sms-mock-box mb-4 shadow-sm">
-					<div class="d-flex align-items-start">
-						<div>
-							<div class="d-flex align-items-center mb-1">
-								<strong class="text-forest-green font-weight-bold" style="font-size: 1.15rem;">[Mô phỏng Tin nhắn SMS / Zalo gửi về điện thoại cô/chú]</strong>
-								<span class="badge badge-success ml-2 px-2 py-1">Tự động gửi</span>
+				<!-- CỘT PHẢI: TOÀN BỘ NỘI DUNG THÔNG TIN VÀ CÁC TAB (THÔNG TIN BÊN PHẢI) -->
+				<div class="col-lg-9 col-xl-9">
+
+					<!-- ==============================================================
+					     TAB 0: THÔNG TIN & HỒ SƠ HỘ DÂN / NGHỆ NHÂN (DEDICATED PROFILE TAB)
+					     ============================================================== -->
+					<div class="portal-pane" id="host-tab-profile" role="tabpanel" aria-labelledby="btn-host-tab-profile">
+						<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+							<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-4 pb-3 border-bottom">
+								<div>
+									<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Hồ sơ xác thực làng nghề</span>
+									<h2 class="h3 font-weight-bold text-forest-green mb-1">Hồ sơ Hộ dân & Nghệ nhân Gìn giữ Di sản</h2>
+									<p class="text-muted mb-0 small">Thông tin định danh, tài khoản ngân hàng nhận 85% doanh thu và cam kết bảo tồn di sản.</p>
+								</div>
+								<span class="badge badge-success px-3 py-2 font-weight-bold">Đã ký kết hợp tác 3 bên</span>
 							</div>
-							<p class="mb-0 text-dark" style="font-size: 1.1rem;" id="host-latest-sms">
-								<em>"HeritageLink thông báo: Có khách Trần Hoài Nam đặt tour Gốm Phù Lãng lúc 13:30 chiều mai (2 khách). Thu nhập bác nhận về: <strong>1.445.000đ (85%)</strong>. Bác bấm Xác nhận đón khách dưới đây nhé!"</em>
+
+							<!-- Thông tin cá nhân & Địa chỉ xưởng -->
+							<div class="row mb-4">
+								<div class="col-md-6 mb-3 mb-md-0">
+									<div class="p-3 bg-light rounded-15 border h-100">
+										<h3 class="h6 font-weight-bold text-forest-green mb-3">Thông tin Nghệ nhân & Xưởng nghề</h3>
+										<ul class="list-unstyled mb-0 small" style="line-height: 1.8;">
+											<li><strong>Họ và tên:</strong> Bác Phạm Văn Nam</li>
+											<li><strong>Tuổi nghề:</strong> 38 năm kinh nghiệm chế tác gốm đất nung</li>
+											<li><strong>Danh hiệu:</strong> Nghệ nhân Gốm Phù Lãng tiêu biểu</li>
+											<li><strong>Địa chỉ xưởng:</strong> Thôn Thủ Công, Xã Phù Lãng, TX. Quế Võ, Tỉnh Bắc Ninh</li>
+											<li><strong>Số điện thoại:</strong> 0988.123.456</li>
+											<li><strong>Quy mô đón tiếp:</strong> 15 - 20 khách / ca trải nghiệm</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="p-3 bg-light rounded-15 border h-100">
+										<h3 class="h6 font-weight-bold text-forest-green mb-3">Tài khoản Ngân hàng nhận 85% Doanh thu</h3>
+										<ul class="list-unstyled mb-3 small" style="line-height: 1.8;">
+											<li><strong>Ngân hàng thụ hưởng:</strong> Vietcombank (Ngoại thương Việt Nam)</li>
+											<li><strong>Số tài khoản:</strong> 0011004567890</li>
+											<li><strong>Chủ tài khoản:</strong> PHAM VAN NAM</li>
+											<li><strong>Chi nhánh:</strong> Vietcombank Bắc Ninh</li>
+											<li><strong>Thời gian nhận tiền:</strong> Tự động chuyển sau khi khách hoàn thành check-in</li>
+										</ul>
+										<div class="p-2 bg-white rounded-10 border text-center">
+											<small class="text-success font-weight-bold">Trạng thái: Đã liên kết thanh toán VietQR tự động</small>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Đại sứ hỗ trợ & Cam kết bảo tồn -->
+							<div class="p-4 bg-warm-ivory rounded-20 border mb-4">
+								<h3 class="h6 font-weight-bold text-forest-green mb-2">Đại sứ Sinh viên đồng hành</h3>
+								<p class="text-muted small mb-3">
+									Mỗi hộ dân trên HeritageLink được ghép nối với 01 Đại sứ sinh viên phụ trách hỗ trợ số hóa, quay phim 4 lớp, hướng dẫn du khách và giải quyết mọi thủ tục công nghệ.
+								</p>
+								<div class="d-flex align-items-center justify-content-between flex-wrap gap-2 bg-white p-3 rounded-15 border">
+									<div class="d-flex align-items-center">
+										<img src="images/person_1.jpg" alt="Lê Minh Anh" class="rounded-circle mr-3" style="width: 50px; height: 50px; object-fit: cover;">
+										<div>
+											<strong class="d-block text-dark font-weight-bold">Lê Minh Anh</strong>
+											<span class="small text-muted">Khoa Văn hóa học - Đại học KHXH&NV</span>
+										</div>
+									</div>
+									<div class="d-flex align-items-center gap-2">
+										<a href="tel:0977345678" class="btn btn-primary btn-sm font-weight-bold px-3 py-2 mr-2">
+											Gọi ngay: 0977.345.678
+										</a>
+										<button type="button" class="btn btn-outline-primary btn-sm font-weight-bold px-3 py-2" onclick="switchHostTab('host-tab-alerts')">
+											Xem tin nhắn Zalo
+										</button>
+									</div>
+								</div>
+							</div>
+
+							<!-- 3 Cam kết tiếp đón văn minh -->
+							<h3 class="h6 font-weight-bold text-forest-green mb-3">3 Cam kết tiếp đón của Hộ dân bản địa</h3>
+							<div class="row">
+								<div class="col-md-4 mb-3 mb-md-0">
+									<div class="p-3 bg-white rounded-15 border h-100">
+										<strong class="text-forest-green d-block mb-1 small font-weight-bold">1. Giữ gìn hồn cốt nghề</strong>
+										<p class="text-muted small mb-0">Truyền dạy quy trình làm gốm thủ công bằng cả tâm huyết, không làm tắt bước.</p>
+									</div>
+								</div>
+								<div class="col-md-4 mb-3 mb-md-0">
+									<div class="p-3 bg-white rounded-15 border h-100">
+										<strong class="text-forest-green d-block mb-1 small font-weight-bold">2. Tiếp đón chân thành</strong>
+										<p class="text-muted small mb-0">Coi du khách như người thân về thăm làng, không chèo kéo, không bán hàng cưỡng ép.</p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="p-3 bg-white rounded-15 border h-100">
+										<strong class="text-forest-green d-block mb-1 small font-weight-bold">3. Minh bạch doanh thu</strong>
+										<p class="text-muted small mb-0">Nhận đúng 85% giá trị tour, cùng nền tảng và đại sứ bảo tồn bền vững nguồn di sản.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- ==============================================================
+					     TAB 1: THU NHẬP 85% & THỐNG KÊ
+					     ============================================================== -->
+					<div class="portal-pane active" id="host-tab-finance" role="tabpanel" aria-labelledby="btn-host-tab-finance">
+						<div class="row mb-4">
+							<div class="col-md-4 mb-4 mb-md-0">
+								<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
+									<div class="d-flex justify-content-between align-items-center mb-2">
+										<span class="text-muted font-weight-bold text-uppercase small">Doanh thu Đã nhận (85%)</span>
+										<span class="badge badge-success px-2 py-1 small">Đã chuyển khoản</span>
+									</div>
+									<div class="stat-number-large text-success mb-1" id="host-revenue-received">1.445.000 ₫</div>
+									<small class="text-muted">Đã đối soát và chuyển vào tài khoản ngân hàng của gia đình.</small>
+								</div>
+							</div>
+
+							<div class="col-md-4 mb-4 mb-md-0">
+								<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
+									<div class="d-flex justify-content-between align-items-center mb-2">
+										<span class="text-muted font-weight-bold text-uppercase small">Doanh thu Tạm tính (85%)</span>
+										<span class="badge badge-warning text-dark px-2 py-1 small">Chờ đón khách</span>
+									</div>
+									<div class="stat-number-large text-accent mb-1" id="host-revenue-pending">2.040.000 ₫</div>
+									<small class="text-muted">Sẽ chuyển vào tài khoản ngay sau khi khách quét mã Check-in hoàn thành trải nghiệm.</small>
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="p-4 bg-white rounded-20 border shadow-sm h-100">
+									<div class="d-flex justify-content-between align-items-center mb-2">
+										<span class="text-muted font-weight-bold text-uppercase small">Tổng khách đã đón</span>
+										<span class="badge badge-primary px-2 py-1 small" style="background-color: var(--color-primary);">Năm 2026</span>
+									</div>
+									<div class="stat-number-large text-primary mb-1" id="host-guest-count">14 lượt</div>
+									<small class="text-muted">Đánh giá trung bình từ du khách: <strong class="text-warning">4.9/5.0</strong> (Rất hài lòng)</small>
+								</div>
+							</div>
+						</div>
+
+						<!-- Visual Revenue Breakdown Card -->
+						<div class="p-4 bg-white rounded-20 border shadow-sm mb-4">
+							<h3 class="h5 font-weight-bold text-forest-green mb-3">Minh bạch cơ chế chia sẻ: Bạn nhận 85% cao nhất</h3>
+							<div class="revenue-split-bar mb-3">
+								<div class="split-seg-host" style="width: 85%;"><span>85% Bác nhận</span></div>
+								<div class="split-seg-ambassador" style="width: 5%;"><span>5% Đại sứ</span></div>
+								<div class="split-seg-payment" style="width: 2%;"><span>2%</span></div>
+								<div class="split-seg-platform" style="width: 8%;"><span>8%</span></div>
+							</div>
+							<p class="small text-muted mb-0">
+								Mỗi tour có giá 850.000đ thì bác nhận về trọn vẹn <strong>722.500đ</strong>, không tốn bất kỳ chi phí ẩn nào.
 							</p>
 						</div>
 					</div>
-				</div>
 
-				<div class="p-4 bg-warm-ivory rounded-20 border">
-					<h4 class="h6 font-weight-bold text-forest-green mb-2">Bác cần hỗ trợ nhanh?</h4>
-					<p class="text-muted small mb-3">Bạn sinh viên Đại sứ phụ trách địa bàn luôn sẵn sàng ghé xưởng hoặc gọi điện giải đáp mọi thắc mắc của gia đình.</p>
-					<a href="tel:0977345678" class="btn btn-primary font-weight-bold px-4 py-2">
-						📞 Bấm để gọi bạn Đại sứ: 0977.345.678
-					</a>
-				</div>
-			</div>
-		</div>
+					<!-- ==============================================================
+					     TAB 2: LỊCH ĐÓN KHÁCH ĐÓN TIẾP
+					     ============================================================== -->
+					<div class="portal-pane" id="host-tab-bookings" role="tabpanel" aria-labelledby="btn-host-tab-bookings">
+						<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
+							<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+								<div>
+									<h2 class="h5 font-weight-bold text-forest-green mb-0">Danh sách khách đặt tour đón tiếp</h2>
+									<span class="small text-muted">Bác bấm "Đón khách" khi đã chuẩn bị sẵn sàng không gian tiếp đón.</span>
+								</div>
+								<span class="badge badge-success px-3 py-1 font-weight-bold">Tự động cập nhật</span>
+							</div>
+							<div id="host-bookings-table-container">
+								<!-- Injected dynamically -->
+							</div>
+						</div>
+					</div>
 
+					<!-- ==============================================================
+					     TAB 3: QUÉT MÃ QR CHECK-IN
+					     ============================================================== -->
+					<div class="portal-pane" id="host-tab-checkin" role="tabpanel" aria-labelledby="btn-host-tab-checkin">
+						<div class="p-4 p-md-5 bg-white rounded-20 border border-gold shadow-sm">
+							<div class="row align-items-center">
+								<div class="col-lg-7">
+									<h2 class="h4 font-weight-bold text-forest-green mb-2">Quét mã QR Check-in khi khách tới xưởng</h2>
+									<p class="text-muted mb-4" style="font-size: 1.1rem;">
+										Khi du khách đến, bác chỉ cần xem mã đặt chỗ trên điện thoại khách (ví dụ: <code>HL-BK01</code>) rồi bấm nút xác nhận. Ngay khi quét thành công, hệ thống sẽ xác nhận hoàn thành và cộng trọn 85% doanh thu cho bác!
+									</p>
+									<div class="input-group mb-3" style="max-width: 480px;">
+										<input type="text" id="host-checkin-input" class="form-control form-control-lg font-weight-bold" placeholder="Nhập mã vé (VD: HL-BK01)" value="HL-BK01">
+										<div class="input-group-append">
+											<button class="btn btn-primary btn-lg font-weight-bold px-4" id="host-do-checkin-btn">
+												Xác nhận Check-in
+											</button>
+										</div>
+									</div>
+									<div id="host-checkin-feedback" class="small mt-2 font-weight-bold"></div>
+								</div>
+								<div class="col-lg-5 text-center mt-4 mt-lg-0">
+									<div class="p-4 bg-warm-ivory rounded-20 border d-inline-block">
+										<div class="text-success font-weight-bold mb-2" style="font-size: 2.2rem;">✓ HOÀN TẤT</div>
+										<strong class="d-block text-forest-green" style="font-size: 1.15rem;">Check-in tự động cấp Tem Hộ chiếu</strong>
+										<p class="small text-muted mb-0 mt-1">Du khách sẽ nhận ngay con tem di sản số để lưu giữ kỷ niệm về xưởng của bác.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- ==============================================================
+					     TAB 4: TIN NHẮN SMS / ZALO & ĐẠI SỨ HỖ TRỢ
+					     ============================================================== -->
+					<div class="portal-pane" id="host-tab-alerts" role="tabpanel" aria-labelledby="btn-host-tab-alerts">
+						<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm">
+							<h3 class="h5 font-weight-bold text-forest-green mb-3">Mô phỏng kênh thông báo quen thuộc của bà con</h3>
+							<!-- Simulation: SMS / Zalo Alert Notification -->
+							<div class="sms-mock-box mb-4 shadow-sm">
+								<div class="d-flex align-items-start">
+									<div>
+										<div class="d-flex align-items-center mb-1">
+											<strong class="text-forest-green font-weight-bold" style="font-size: 1.15rem;">[Mô phỏng Tin nhắn SMS / Zalo gửi về điện thoại cô/chú]</strong>
+											<span class="badge badge-success ml-2 px-2 py-1">Tự động gửi</span>
+										</div>
+										<p class="mb-0 text-dark" style="font-size: 1.1rem;" id="host-latest-sms">
+											<em>"HeritageLink thông báo: Có khách Trần Hoài Nam đặt tour Gốm Phù Lãng lúc 13:30 chiều mai (2 khách). Thu nhập bác nhận về: <strong>1.445.000đ (85%)</strong>. Bác bấm Xác nhận đón khách dưới đây nhé!"</em>
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="p-4 bg-warm-ivory rounded-20 border">
+								<h4 class="h6 font-weight-bold text-forest-green mb-2">Bác cần hỗ trợ nhanh?</h4>
+								<p class="text-muted small mb-3">Bạn sinh viên Đại sứ phụ trách địa bàn luôn sẵn sàng ghé xưởng hoặc gọi điện giải đáp mọi thắc mắc của gia đình.</p>
+								<a href="tel:0977345678" class="btn btn-primary font-weight-bold px-4 py-2">
+									📞 Bấm để gọi bạn Đại sứ: 0977.345.678
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div><!-- /.col-lg-9 -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
 	</main>
+
 
 	<!-- Footer -->
 	<footer class="site-footer bg-forest-green text-white py-5 mt-5">
@@ -358,8 +516,15 @@
 				const data = await res.json();
 				if (!res.ok) return;
 
-				document.getElementById('host-welcome-name').textContent = `Chào ${data.host.name}`;
-				document.getElementById('host-revenue-received').textContent = `${(data.stats.totalRevenue).toLocaleString('vi-VN')} ₫`;
+				if (document.getElementById('host-welcome-name')) {
+					document.getElementById('host-welcome-name').textContent = `Chào ${data.host.name}`;
+				}
+				if (document.getElementById('sidebar-host-name')) {
+					document.getElementById('sidebar-host-name').textContent = data.host.name;
+				}
+				if (document.getElementById('host-revenue-received')) {
+					document.getElementById('host-revenue-received').textContent = `${(data.stats.totalRevenue).toLocaleString('vi-VN')} ₫`;
+				}
 
 				const container = document.getElementById('host-bookings-table-container');
 				if (data.bookings && data.bookings.length) {

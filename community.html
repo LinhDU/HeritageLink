@@ -149,58 +149,161 @@
 		</div>
 	</header>
 
-	<!-- Portal Section Tabs Navigation (Tabbed Interface for Ease of Tracking) -->
-	<div class="portal-tabs-wrapper">
-		<div class="container">
-			<ul class="portal-tabs-nav" id="communityPortalTabs" role="tablist">
-				<li>
-					<button type="button" class="portal-tab-btn active" id="btn-tab-overview" onclick="switchPortalTab('tab-overview')" role="tab" aria-selected="true" aria-controls="tab-overview">
-						<span class="tab-icon">📋</span>
-						<span>1. Tổng quan & Đối tượng</span>
-						<span class="tab-badge">Mục a-b</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-workflow" onclick="switchPortalTab('tab-workflow')" role="tab" aria-selected="false" aria-controls="tab-workflow">
-						<span class="tab-icon">⚡</span>
-						<span>2. Việc làm & Không cần làm</span>
-						<span class="tab-badge">Mục c-d</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-revenue" onclick="switchPortalTab('tab-revenue')" role="tab" aria-selected="false" aria-controls="tab-revenue">
-						<span class="tab-icon">💰</span>
-						<span>3. Doanh thu 85% & Quyền lợi</span>
-						<span class="tab-badge">Mục e</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-commitments" onclick="switchPortalTab('tab-commitments')" role="tab" aria-selected="false" aria-controls="tab-commitments">
-						<span class="tab-icon">🤝</span>
-						<span>4. Trách nhiệm & Cam kết</span>
-						<span class="tab-badge">Mục f</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-register" onclick="switchPortalTab('tab-register')" role="tab" aria-selected="false" aria-controls="tab-register">
-						<span class="tab-icon">📝</span>
-						<span>5. Đăng ký hợp tác</span>
-						<span class="tab-badge">Mục g</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="portal-tab-btn" id="btn-tab-faq" onclick="switchPortalTab('tab-faq')" role="tab" aria-selected="false" aria-controls="tab-faq">
-						<span class="tab-icon">❓</span>
-						<span>6. Câu hỏi thường gặp</span>
-						<span class="tab-badge">Mục h</span>
-					</button>
-				</li>
-			</ul>
-		</div>
-	</div>
+	<!-- Main Community Portal Content (2-Column Dashboard Layout) -->
+	<main id="community-main-content" class="py-4">
+		<div class="container-fluid px-lg-4 px-xl-5">
+			<div class="row">
+				<!-- CỘT TRÁI: MENU ĐIỀU HƯỚNG DỌC (MENU BÊN TRÁI MÀN HÌNH) -->
+				<div class="col-lg-3 col-xl-3 mb-4">
+					<div class="role-sidebar-wrapper sticky-top" style="top: 85px; z-index: 100;">
+						<!-- Profile Summary Card in Sidebar -->
+						<div class="p-3 bg-white rounded-20 border shadow-sm mb-3 text-center">
+							<div class="position-relative d-inline-block mb-2">
+								<img src="images/logo-icon.png" alt="Biểu trưng Ban Điều phối" class="rounded-circle shadow-sm" style="width: 76px; height: 76px; object-fit: cover; border: 3px solid var(--color-accent); background: var(--color-primary);" />
+								<span class="position-absolute badge badge-success rounded-circle" style="bottom: 2px; right: 2px; width: 14px; height: 14px; border: 2px solid #fff;" title="Đang điều phối"></span>
+							</div>
+							<h3 class="h6 font-weight-bold text-forest-green mb-1">Ban Điều Phối Làng Nghề</h3>
+							<span class="badge badge-accent text-white px-3 py-1 font-weight-bold small d-inline-block">Cộng Đồng Bản Địa</span>
+							
+							<div class="small text-muted mt-3 pt-2 border-top text-left" style="font-size: 12.5px; line-height: 1.6;">
+								<div class="d-flex justify-content-between mb-1">
+									<span>Mạng lưới:</span>
+									<strong class="text-dark">24 Hộ nghề liên kết</strong>
+								</div>
+								<div class="d-flex justify-content-between mb-1">
+									<span>Địa bàn:</span>
+									<strong class="text-dark">Bắc Ninh & Hà Giang</strong>
+								</div>
+								<div class="d-flex justify-content-between mb-1">
+									<span>Tỷ lệ về hộ:</span>
+									<strong class="text-success font-weight-bold">85% Doanh thu</strong>
+								</div>
+								<div class="d-flex justify-content-between">
+									<span>Quỹ làng nghề:</span>
+									<strong class="text-forest-green font-weight-bold">2% Quỹ bảo tồn</strong>
+								</div>
+							</div>
+						</div>
 
-	<!-- Main Content Area: Individual Tab Panes -->
-	<main class="container py-4">
+						<!-- Vertical Navigation Menu -->
+						<div class="bg-white rounded-20 border shadow-sm p-2 mb-3">
+							<div class="px-3 pt-2 pb-1 text-uppercase font-weight-bold text-muted small" style="font-size: 10.5px; letter-spacing: 0.5px;">
+								Menu Không Gian Làng Nghề
+							</div>
+							<ul class="role-sidebar-nav" id="communityPortalTabs" role="tablist">
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-comm-profile" onclick="switchPortalTab('tab-comm-profile')" role="tab" aria-selected="false" aria-controls="tab-comm-profile">
+										<span>Thông tin Ban Điều phối</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn active" id="btn-tab-overview" onclick="switchPortalTab('tab-overview')" role="tab" aria-selected="true" aria-controls="tab-overview">
+										<span>1. Tổng quan & Đối tượng</span>
+										<span class="tab-badge">Mục a-b</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-workflow" onclick="switchPortalTab('tab-workflow')" role="tab" aria-selected="false" aria-controls="tab-workflow">
+										<span>2. Việc làm & Không cần làm</span>
+										<span class="tab-badge">Mục c-d</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-revenue" onclick="switchPortalTab('tab-revenue')" role="tab" aria-selected="false" aria-controls="tab-revenue">
+										<span>3. Doanh thu 85% & Quyền lợi</span>
+										<span class="tab-badge">Mục e</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-commitments" onclick="switchPortalTab('tab-commitments')" role="tab" aria-selected="false" aria-controls="tab-commitments">
+										<span>4. Trách nhiệm & Cam kết</span>
+										<span class="tab-badge">Mục f</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-register" onclick="switchPortalTab('tab-register')" role="tab" aria-selected="false" aria-controls="tab-register">
+										<span>5. Đăng ký hợp tác</span>
+										<span class="tab-badge">Mục g</span>
+									</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="portal-tab-btn" id="btn-tab-faq" onclick="switchPortalTab('tab-faq')" role="tab" aria-selected="false" aria-controls="tab-faq">
+										<span>6. Câu hỏi thường gặp</span>
+										<span class="tab-badge">Mục h</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+
+						<!-- Quick Actions Card -->
+						<div class="p-3 bg-white rounded-20 border shadow-sm">
+							<small class="text-muted font-weight-bold d-block text-uppercase mb-2" style="font-size: 10.5px;">Hỗ trợ làng nghề:</small>
+							<button type="button" class="btn btn-accent btn-sm btn-block font-weight-bold py-2 mb-2" onclick="switchPortalTab('tab-register')">
+								Gửi đăng ký hộ dân mới →
+							</button>
+							<a href="host.html" class="btn btn-outline-primary btn-sm btn-block font-weight-bold py-2 mb-2">
+								Cổng đón khách của Hộ dân
+							</a>
+							<a href="tel:19006868" class="btn btn-outline-secondary btn-sm btn-block font-weight-bold py-2">
+								Hotline hỗ trợ: 1900.6868
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- CỘT PHẢI: TOÀN BỘ NỘI DUNG CÁC TAB & PROFILE (THÔNG TIN BÊN PHẢI) -->
+				<div class="col-lg-9 col-xl-9">
+
+					<!-- ==============================================================
+					     TAB 0: THÔNG TIN BAN ĐIỀU PHỐI CỘNG ĐỒNG & LÀNG NGHỀ (DEDICATED PROFILE TAB)
+					     ============================================================== -->
+					<div class="portal-pane" id="tab-comm-profile" role="tabpanel" aria-labelledby="btn-tab-comm-profile">
+						<div class="bg-white p-4 p-md-5 rounded-20 border shadow-sm mb-4">
+							<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-4 pb-3 border-bottom">
+								<div>
+									<span class="badge badge-accent px-3 py-1 font-weight-bold text-white mb-2">Ban Đại Diện & Trưởng Thôn</span>
+									<h2 class="h3 font-weight-bold text-forest-green mb-1">Hồ sơ Ban Điều Phối Cộng Đồng Bản Địa</h2>
+									<p class="text-muted mb-0 small">Đại diện cho các hộ dân giữ nghề thủ công truyền thống tại các vùng di sản văn hóa.</p>
+								</div>
+								<span class="badge badge-success px-3 py-2 font-weight-bold">Mạng lưới 24 hộ liên kết</span>
+							</div>
+
+							<div class="row mb-4">
+								<div class="col-md-6 mb-3 mb-md-0">
+									<div class="p-3 bg-light rounded-15 border h-100">
+										<h3 class="h6 font-weight-bold text-forest-green mb-3">Thông tin Ban Điều phối</h3>
+										<ul class="list-unstyled mb-0 small" style="line-height: 1.85;">
+											<li><strong>Trưởng ban điều phối:</strong> Bác Phạm Văn Nam (Làng gốm Phù Lãng)</li>
+											<li><strong>Phó ban điều phối:</strong> Già làng Lý Văn Kiên (Bản Nậm Đăm, Hà Giang)</li>
+											<li><strong>Địa bàn hoạt động:</strong> Bắc Ninh, Hà Giang, Thừa Thiên Huế</li>
+											<li><strong>Mục tiêu:</strong> Bảo tồn nghề cổ, đưa 85% giá trị tour đến tận tay gia đình nghệ nhân</li>
+											<li><strong>Số hộ đăng ký tham gia:</strong> 24 hộ gia đình đã thẩm định 3 tiêu chí</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="p-3 bg-light rounded-15 border h-100">
+										<h3 class="h6 font-weight-bold text-forest-green mb-3">Quy chế Quỹ Bảo tồn Di sản (2%)</h3>
+										<ul class="list-unstyled mb-0 small" style="line-height: 1.85;">
+											<li><strong>Nguồn quỹ:</strong> Trích từ doanh thu mỗi vé đặt tour (2% GMV)</li>
+											<li><strong>Mục đích:</strong> Tu bổ nhà sinh hoạt chung, mua nguyên liệu dạy nghề cho thiếu nhi</li>
+											<li><strong>Giám sát:</strong> Hội đồng làng nghề & Đại diện Ban Quản trị HeritageLink</li>
+											<li><strong>Báo cáo:</strong> Công khai minh bạch hàng quý tại cuộc họp thôn bản</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="p-4 bg-warm-ivory rounded-20 border">
+								<h3 class="h6 font-weight-bold text-forest-green mb-2">Vai trò trung tâm của Cộng đồng</h3>
+								<p class="text-muted small mb-0" style="line-height: 1.7;">
+									Tại HeritageLink, người dân bản địa không phải là nhân sự phục vụ du lịch theo dạng công nghiệp, mà là <strong>chủ nhân của di sản sống</strong>. Bác và gia đình giữ nghề, Đại sứ sinh viên hỗ trợ quay phim, chụp ảnh, còn nền tảng tự động đối soát tài chính 85% về thẳng tài khoản ngân hàng của gia đình.
+								</p>
+							</div>
+						</div>
+					</div>
+
 
 		<!-- ==============================================================
 		     TAB 1: TỔNG QUAN & ĐỐI TƯỢNG THAM GIA (Mục a & b)
@@ -832,7 +935,9 @@
 				</div>
 			</div>
 		</div>
-
+				</div><!-- /.col-lg-9 -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
 	</main>
 
 	<!-- Footer -->
